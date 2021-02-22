@@ -11,7 +11,7 @@
 import {ok, badRequest, response} from 'wix-http-functions';
 // import stripe from 'stripe';
 import express from 'express';
-//import {stripeWebhookHandler} from 'backend/StripeBackend';
+//import {formstackWebhookHandler} from 'backend/StripeBackend';
 import wixData from 'wix-data';
 import bodyparser from 'body-parser';
 
@@ -31,13 +31,13 @@ let responseBody = {
 export function post_checkoutUpdate(request) {
 
 
-  //stripeWebhookHandler('test'); // this one works
+  //formstackWebhookHandler('test'); // this one works
 
   app.post('/formstackcallbacklessonrequest', bodyParser.raw({type: 'application/json'}), (request, response) => {
   const sig = request.headers['stripe-signature'];
 
   //THE PROBLEM: my code can never reach here
-  stripeWebhookHandler('inside app.post');
+  formstackWebhookHandler('inside app.post');
 
   let event;
 
@@ -51,7 +51,7 @@ export function post_checkoutUpdate(request) {
   if (event.type === 'checkout.session.completed') {
   const session = event.data.object;
 
-  //stripeWebhookHandler(session);
+  //formstackWebhookHandler(session);
 
   }
 
@@ -61,6 +61,7 @@ export function post_checkoutUpdate(request) {
 
   app.listen(8000, () => console.log('Running on port 8000'));
   /*
+  NOTE: Original Commented this Out
   let responseBody = {
   "status": 200,
   "body"  : 'test'
@@ -72,7 +73,7 @@ export function post_checkoutUpdate(request) {
 } //END export function post_checkoutUpdate(request)
 
 //this function is for me to observe and handle data received from Stripe webhook
-function stripeWebhookHandler (content) {
+function formstackWebhookHandler (content) {
  let currentItem = {
    "webhookData": content
   };
