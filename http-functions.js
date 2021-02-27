@@ -15,6 +15,7 @@ import wixData from 'wix-data';
  * @TABLE: webhookPayload
  * @ATTRIBUTES:
  * 	title: some meaningful and short concatenation of other attributes
+ * 	source: FormStack, Stripe, SendGrid...
  * 	payload: the (almost always) JSON Payload (the point of the webHook in the first place)
  * 	payloadId: the _source_ ID for this Instance
  * 	webhookStamp: either now.toISOStamp() or best from root.recievedTimestamp
@@ -35,6 +36,7 @@ export function post_freeLessonRequest(request) {
 
 
 	const title = 'freeLessonRequest';
+	const source = "FormStack";
 	const fsFormId = '4262311';
 	const manualHandshake = '8FD7E76007870C3F4352D478B19E5AE6E61672918EBDEADC023491A7ABBE8197';
 	const verifyHandshake = '8FD7E76007870C3F4352D478B19E5AE6E61672918EBDEADC023491A7ABBE8197';
@@ -48,15 +50,19 @@ export function post_freeLessonRequest(request) {
 		return request.body.json()
 			.then((body) => {
 				// insert the item in a collection
-				let titleThis = title;
-				let thisPayload = JSON.stringify(JSON.parse(body));
+				let thisTitle = title;
+				// let thisPayload = JSON.stringify(JSON.parse(body));
+				let thisPayload = JSON.stringify(body);
 				let thisWebhookStamp = new Date();
+				let thisTitleStamp = thisWebhookStamp.toString();
+				thisTitle = thisTitle + ' ' + thisTitleStamp;
 				thisWebhookStamp = thisWebhookStamp.toISOString();
 				let thisCurrentStatusStamp = new Date();
 
 				let thisCurrentStatus = 'PENDING';//for this form
 				let recordInsert = {
-					"title": titleThis,
+					"title": thisTitle,
+					"source": source,
 					"payload": thisPayload,
 					"payloadId": body.UniqueID,
 					"webhookStamp": thisWebhookStamp,
@@ -68,8 +74,8 @@ export function post_freeLessonRequest(request) {
 				}
 				wixData.insert("webhookPayload", recordInsert);
 				console.log('free_lesson_request Received');
-				// console.log(body);
-				// console.log(recordInsert);
+				console.log(thisPayload);
+				console.log(recordInsert);
 				// console.log(body.HandshakeKey);
 				return ok(options);
 			})
