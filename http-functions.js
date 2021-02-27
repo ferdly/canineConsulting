@@ -8,6 +8,21 @@ import { ok, notFound, serverError } from 'wix-http-functions'; //YOUTUBE:v=4yCB
 // Premium site - https://mysite.com/_functions-dev/example/multiply?leftOperand=3&rightOperand=4
 // Free site - https://brad7390.wixsite.com/my-site-2/_functions-dev/freeLessonRequest
 
+/**
+ * @TODO: make this a YAML File somewhere
+ * @TABLE: webhookPayload
+ * @ATTRIBUTES:
+ * 	title: some meaningful and short concatenation of other attributes
+ * 	payload: the (almost always) JSON Payload (the point of the webHook in the first place)
+ * 	payloadId: the _source_ ID for this Instance
+ * 	webhookStamp: either now.toISOStamp() or best from root.recievedTimestamp
+ * 	webhookId: the _source_ ID for the webHook itself, for freeLessonRequest it's '4262311'
+ * 	currentStatus: depending on Handshake confirmed type, for freeLessonRequest 'PENDING' (leave as last before Resolved)
+ * 	currentStamp: updated as currentStatus changes (leave as last before Resolved)
+ * 	resolvedStatus: null until Resolved
+ * 	resolvedStamp: null until Resolved
+ */
+
 // export function get_freeLessonRequest(request) {
 export function post_freeLessonRequest(request) {
 	let options = {
@@ -31,10 +46,28 @@ export function post_freeLessonRequest(request) {
 		return request.body.json()
 			.then((body) => {
 				// insert the item in a collection
+				let titleThis = 'short and meaningful concatenation';
+				let thisWebhookStamp = new Date();
+				thisWebhookStamp = thisWebhookStamp.toISOString();
+				let thisCurrentStamp = new Date();
 
+				let thisCurrentStatus = 'PENDING';//for this form
+				let recordInsert = {
+					"title": titleThis,
+					"payload": body,
+					"payloadId": body.UniqueID,
+					"webhookStamp": thisWebhookStamp,
+					"webhookId": body.FormID,
+					"currentStatus": thisCurrentStatus,
+					"currentStamp": thisCurrentStamp,
+					"resolvedStatus": null,
+					"resolvedStamp": null,
+				}
+				// return wixData.insert("webhookPayload", recordInsert);
 				console.log('free_lesson_request Received');
 				console.log(body);
-				console.log(body.HandshakeKey);
+				console.log(recordInsert);
+				// console.log(body.HandshakeKey);
 				return ok(options);
 			})
 	} else {
@@ -51,7 +84,10 @@ export function post_freeLessonRequest(request) {
 
 export function webhookPayload_INSERT(title, body, timestamp) {
 	const insertTableName = 'webhookPayload';
-	const insertFieldNames = ['title', 'payload', 'webhookStamp', 'webhookId', 'currentStatus', 'currentStatusStamp', 'resolvedStatus', 'resolvedStatusStamp'];
+	const insertFieldNames = ['title', 'payload', 'payloadId', 'webhookStamp', 'webhookId', 'currentStatus', 'currentStatusStamp', 'resolvedStatus', 'resolvedStatusStamp'];
 	let payload = body;
+	let webhookStamp = new Date();
+	webhookStamp = webhookStamp.toISOString();
+	let webhookId = body.FormID;
 
 }
