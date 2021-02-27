@@ -1,5 +1,7 @@
 
 import { ok, notFound, serverError } from 'wix-http-functions'; //YOUTUBE:v=4yCBplV3MPQ&t=1s
+import wixData from 'wix-data';
+
 // URL to call this HTTP function from your published site looks like:
 // Premium site - https://mysite.com/_functions/example/multiply?leftOperand=3&rightOperand=4
 // Free site - https://brad7390.wixsite.com/my-site-2/_functions/freeLessonRequest
@@ -46,27 +48,28 @@ export function post_freeLessonRequest(request) {
 		return request.body.json()
 			.then((body) => {
 				// insert the item in a collection
-				let titleThis = 'short and meaningful concatenation';
+				let titleThis = title;
+				let thisPayload = JSON.stringify(JSON.parse(body));
 				let thisWebhookStamp = new Date();
 				thisWebhookStamp = thisWebhookStamp.toISOString();
-				let thisCurrentStamp = new Date();
+				let thisCurrentStatusStamp = new Date();
 
 				let thisCurrentStatus = 'PENDING';//for this form
 				let recordInsert = {
 					"title": titleThis,
-					"payload": body,
+					"payload": thisPayload,
 					"payloadId": body.UniqueID,
 					"webhookStamp": thisWebhookStamp,
 					"webhookId": body.FormID,
 					"currentStatus": thisCurrentStatus,
-					"currentStamp": thisCurrentStamp,
+					"currentStatusStamp": thisCurrentStatusStamp,
 					"resolvedStatus": null,
-					"resolvedStamp": null,
+					"resolvedStatusStamp": null,
 				}
-				// return wixData.insert("webhookPayload", recordInsert);
+				wixData.insert("webhookPayload", recordInsert);
 				console.log('free_lesson_request Received');
-				console.log(body);
-				console.log(recordInsert);
+				// console.log(body);
+				// console.log(recordInsert);
 				// console.log(body.HandshakeKey);
 				return ok(options);
 			})
