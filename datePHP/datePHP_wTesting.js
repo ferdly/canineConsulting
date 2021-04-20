@@ -53,20 +53,34 @@ let isoDatePHP_ToDo = [
 
 // console.log(supportedCaseOptionsALL);
 //pets.includes('cat')
+//<Testing Setup Objects/Arrays>
+//  <initialize variables>
 let testDateObject = {};
 let testFormatObject = {};
 let testFormatKeyArray = [];
 let testDateKeyArray = []
-let testKey = 'thousandSeconds';
+let testKey = '';
+let testDescr = "";
+let testDate = new Date();
+let testFormat = "";
+//  </initialize variables>
+//  <testDateObject & testDateKeyArray Elements>
+testKey = 'now';
 testDateKeyArray.push(testKey);
-let testDescr = "1000 miliseconds";
-let testDate = new Date("Jan 1 1970 00:00:01 GMT");
+testDescr = "Current Date-Time (or close enough)";
+testDate = new Date();
 testDateObject[testKey] = {};
 testDateObject[testKey]["descr"] = testDescr;
 testDateObject[testKey]["date"] = testDate;
-// testDateThisObject = testDateObject[testKey];
-// console.log(testDateThisObject);
-
+//<====================>
+testKey = 'thousandSeconds';
+testDateKeyArray.push(testKey);
+testDescr = "1000 miliseconds";
+testDate = new Date("Jan 1 1970 00:00:01 GMT");
+testDateObject[testKey] = {};
+testDateObject[testKey]["descr"] = testDescr;
+testDateObject[testKey]["date"] = testDate;
+//<====================>
 testKey = 'bradBday';
 testDateKeyArray.push(testKey);
 testDescr = "Happy Birthday Brad";
@@ -74,16 +88,49 @@ testDate = new Date("March 11, 1960 6:00");
 testDateObject[testKey] = {};
 testDateObject[testKey]["descr"] = testDescr;
 testDateObject[testKey]["date"] = testDate;
-// testDateThisObject = testDateObject[testKey];
-// console.log(testDateThisObject);
-
-testKey = 'ddt';
+//<====================>
+testKey = 'leapYearSuceed';
+testDateKeyArray.push(testKey);
+testDescr = "2/29 on Leap Year";
+testDate = new Date("February 29, 2008 12:00 pm");
+testDateObject[testKey] = {};
+testDateObject[testKey]["descr"] = testDescr;
+testDateObject[testKey]["date"] = testDate;
+//<====================>
+testKey = 'leapYearFail';
+testDateKeyArray.push(testKey);
+testDescr = "2/29 non Leap Year, still okay as 3/1";
+testDate = new Date("February 29, 1961 2:00 pm");
+testDateObject[testKey] = {};
+testDateObject[testKey]["descr"] = testDescr;
+testDateObject[testKey]["date"] = testDate;
+//  </testDateObject & testDateKeyArray Elements>
+//<========================================>
+//  <testFormatObject & testFormatKeyArray Elements>
+testKey = 'cISO';
 testFormatKeyArray.push(testKey);
-testDescr = "Default Date-Time";
-let testFormat = "ddt";
+testDescr = "ISO Full Date-Time";
+testFormat = "c";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
+//<====================>
+testKey = 'IMF';
+testFormatKeyArray.push(testKey);
+testDescr = "Internet Message Format RFC2822";
+testFormat = "r";
+testFormatObject[testKey] = {};
+testFormatObject[testKey]["descr"] = testDescr;
+testFormatObject[testKey]["format"] = testFormat;
+//<====================>
+testKey = 'ddt';
+testFormatKeyArray.push(testKey);
+testDescr = "Default Date-Time";
+testFormat = "ddt";
+testFormatObject[testKey] = {};
+testFormatObject[testKey]["descr"] = testDescr;
+testFormatObject[testKey]["format"] = testFormat;
+//<====================>
 testKey = 'dd';
 testFormatKeyArray.push(testKey);
 testDescr = "Default Date";
@@ -91,6 +138,7 @@ testFormat = "dd";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
+//<====================>
 testKey = 'dt';
 testFormatKeyArray.push(testKey);
 testDescr = "Default Time";
@@ -98,6 +146,7 @@ testFormat = "dt";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
+//<====================>
 testKey = 'crsCatDt';
 testFormatKeyArray.push(testKey);
 testDescr = "Course Catalog Date";
@@ -105,6 +154,7 @@ testFormat = "Course Catalog Date";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
+//<====================>
 testKey = 'calTm';
 testFormatKeyArray.push(testKey);
 testDescr = "Calendar Time";
@@ -112,15 +162,43 @@ testFormat = "Calendar Time";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
+//<====================>
+testKey = 'will';
+testFormatKeyArray.push(testKey);
+testDescr = "Will opening";
+testFormat = "\\O\\n \\t\\h\\i\\s l \\t\\h\\e jS \\d\\a\\y \\o\\f F \\i\\n \\t\\h\\e \\y\\e\\a\\r \\o\\f \\o\\u\\r \\L\\o\\r\\d Y, \\b\\e\\i\\n\\g \\o\\f \\s\\o\\u\\n\\d \\m\\i\\n\\d \\a\\n\\d \\b\\o\\d\\y...";
+testFormatObject[testKey] = {};
+testFormatObject[testKey]["descr"] = testDescr;
+testFormatObject[testKey]["format"] = testFormat;
+//  </testFormatObject & testFormatKeyArray Elements>
+//<Testing Setup Objects/Arrays>
 // console.log(testDateObject);
 // console.log(JSON.stringify(testDateObject, undefined, 4));
 // console.log(testDateKeyArray);
 // console.log(testFormatObject);
-console.log(JSON.stringify(testFormatObject, undefined, 4));
+// console.log(JSON.stringify(testFormatObject, undefined, 4));
 // console.log(testFormatKeyArray);
 
 
 // formattedDateFromTest = dateFormat(i.date, j.format)
+let formatedDatesTestResult = [];
+let elementarray = [];
+for (let i = 0; i < testDateKeyArray.length; i++) {
+	const dateKey = testDateKeyArray[i];
+	for (let j = 0; j < testFormatKeyArray.length; j++) {
+		const formatKey = testFormatKeyArray[j];
+		let dateThis = testDateObject[dateKey]['date'];
+		let formatThis = testFormatObject[formatKey]['format'];
+		let formattedDateString = dateFormat(formatThis,dateThis)
+		elementArray = [];
+		elementArray.push(dateKey);
+		elementArray.push(formatKey);
+		elementArray.push(formattedDateString);
+		formatedDatesTestResult.push(elementArray);
+		// console.log(elementArray);
+	}
+}
+console.log(formatedDatesTestResult);
 
 
 
@@ -138,6 +216,7 @@ function dateFormat(format,date = ""){
     formatAlias = formatAlias === 'ddt' ? 'default date time' : formatAlias;
     formatAlias = formatAlias === 'dd' ? 'default date' : formatAlias;
     formatAlias = formatAlias === 'dt' ? 'default time' : formatAlias;
+    format = formatAlias === 'r' ? "D, j M Y G:i:s O" : format;
     format = formatAlias === 'default date time' ? "F j, Y \\a\\t g:i a" : format;
     format = formatAlias === 'default date' ? "F j, Y" : format;
     format = formatAlias === 'default time' ? "g:i a" : format;
@@ -157,11 +236,12 @@ function dateFormat(format,date = ""){
     //<Full Date/Time>
     let fullDateTimeFormatArray = ['c','r','U'];
     if (fullDateTimeFormatArray.indexOf(format) >= 0) {
-        if(format === 'c'){
-            return date.toISOString()
+		if(format === 'c'){
+			return date.toISOString()
         }
         if(format === 'r'){
-            return date.toISOString()
+			//CANNOT BE REACHED: Caught at Aliases
+            // return date.toISOString()
         }
         if(format === 'U'){
             return date[Symbol.toPrimitive]('number');//date.toISOString()
@@ -243,6 +323,10 @@ function dateFormat(format,date = ""){
 			case 'y': // A two digit representation of a year (99 OR 03)
 				string+= y.toString().slice(-2);
 				break;
+
+			case 'G': // 24-hour format of an hour without leading zeros
+				string+= h;
+				break;
 				
 			case 'H': // 24-hour format of an hour with leading zeros (00 to 23)
 				string+= (h < 10) ? "0"+h : h;
@@ -277,6 +361,23 @@ function dateFormat(format,date = ""){
 				
 			case 'c': // ISO 8601 date (eg: 2012-11-20T18:05:54.944Z)
 				string+= date.toISOString();
+				break;		
+			case 'O': // Difference to GMT w/o colon between HH and MM
+				let diffNumGMT = 0,
+				diffSign = '',
+				diffHH = '',
+				diffMM= '',
+				doubleZeros = '00';
+
+				diffNumGMT = date.getTimezoneOffset();
+				diffSign += diffNumGMT > 0 ? '-' : '+';
+				diffHH = Math.floor(Math.abs(diffNumGMT / 60)).toString();
+				diffHH = doubleZeros.concat(diffHH).substr(-2);
+				diffMM = (Math.abs(diffNumGMT) % 60).toString();
+				diffMM = doubleZeros.concat(diffMM).substr(-2);
+				diffGMT = diffSign + diffHH + diffMM;
+				// console.log(diffGMT);
+				string+= diffGMT;
 				break;		
 				
 			default:
