@@ -1,0 +1,22 @@
+{ 
+    "ddt": { 
+        "descr": "Default Date-Time", 
+        "format": "ddt" 
+    }, 
+    "dd": { 
+        "descr": "Default Date", 
+        "format": "dd" 
+    }, 
+    "dt": { 
+        "descr": "Default Time", 
+        "format": "dt" 
+    }, 
+    "crsCatDt": { 
+        "descr": "Course Catalog Date", 
+        "format": "Course Catalog Date" 
+    }, 
+    "calTm": { 
+        "descr": "Calendar Time", 
+        "format": "Calendar Time" 
+    } 
+} 
