@@ -6,7 +6,7 @@
  *
  */
 supportedCaseOptions = ['j','d','l','w','D','m','n','F','M','Y','y','H','g','h','a','i','s','c'];
-appendedCaseOptionsONE = ['\\','S','A'];
+appendedCaseOptionsONE = ['\\','S','A','G','O','r'];
 phpSupportedFormatElements = ['d','D','j','l','N','S','w','z','W','F','m','M','n','t','L','o','Y','y','a','A','B','g','G','h','H','i','s','u','v','e','I','O','P','p','T','Z','c','r','U'];
 supportedCaseOptionsALL = supportedCaseOptions.concat(appendedCaseOptionsONE);
 phpSupportedFormatElementsToDo = [];
@@ -20,7 +20,7 @@ phpSupportedFormatElements.forEach(element => {
 
 // console.log(phpSupportedFormatElements.toString());
 // console.log(supportedCaseOptionsALL.toString());
-// console.log(phpSupportedFormatElementsToDo.toString());
+console.log(phpSupportedFormatElementsToDo.toString());
 let rankedDatePHP_toDo = [
     ['U','Seconds since the Unix Epoch (January 1 1970 00:00:00 GMT): See also time()'],
     ['T','Timezone abbreviation: Examples, EST, MDT'],
@@ -107,10 +107,18 @@ testDateObject[testKey]["date"] = testDate;
 //  </testDateObject & testDateKeyArray Elements>
 //<========================================>
 //  <testFormatObject & testFormatKeyArray Elements>
-testKey = 'cISO';
+testKey = 'ISOstr';
 testFormatKeyArray.push(testKey);
 testDescr = "ISO Full Date-Time";
-testFormat = "c";
+testFormat = "ISO";
+testFormatObject[testKey] = {};
+testFormatObject[testKey]["descr"] = testDescr;
+testFormatObject[testKey]["format"] = testFormat;
+//<====================>
+testKey = 'ISOnum';
+testFormatKeyArray.push(testKey);
+testDescr = "ISO as Numeric String";
+testFormat = "ISO Numeric";
 testFormatObject[testKey] = {};
 testFormatObject[testKey]["descr"] = testDescr;
 testFormatObject[testKey]["format"] = testFormat;
@@ -203,23 +211,27 @@ console.log(formatedDatesTestResult);
 
 
 function dateFormat(format,date = ""){
-    /** 
-     * !NOTES:
-     * ø IF entire format is a Full Date-Time THEN format()
-     * ø IF character count[nCC] is Odd AND 
-     * ø ↪ number of backslashes[nBS] is nBS === floor(nCC/2) THEN Proceed 
-     * ø ELSE push backslashes ('\\') in front 
-     * ø ↪ of any of the Single Charactr Full Date/Time format letters
+	/** 
+	 * !NOTES:
+	 * ø IF entire format is a Full Date-Time THEN format()
+	 * ø IF character count[nCC] is Odd AND 
+	 * ø ↪ number of backslashes[nBS] is nBS === floor(nCC/2) THEN Proceed 
+	 * ø ELSE push backslashes ('\\') in front 
+	 * ø ↪ of any of the Single Charactr Full Date/Time format letters
      */
-    //<supported Aliases>
+	//<supported Aliases>
     let formatAlias = format.toLowerCase();
     formatAlias = formatAlias === 'ddt' ? 'default date time' : formatAlias;
     formatAlias = formatAlias === 'dd' ? 'default date' : formatAlias;
     formatAlias = formatAlias === 'dt' ? 'default time' : formatAlias;
-    format = formatAlias === 'r' ? "D, j M Y G:i:s O" : format;
     format = formatAlias === 'default date time' ? "F j, Y \\a\\t g:i a" : format;
     format = formatAlias === 'default date' ? "F j, Y" : format;
     format = formatAlias === 'default time' ? "g:i a" : format;
+	//<====================>
+    format = formatAlias === 'r' ? "D, j M Y G:i:s O" : format;
+    format = formatAlias === 'iso' ? "c" : format;
+    format = formatAlias === 'iso numeric' ? "C" : format;
+	//<====================>
     format = formatAlias === 'course catalog date' ? 'l F jS' : format;
     format = formatAlias === 'calendar time' ? 'h:iA' : format;
     //</supported Aliases>
@@ -361,6 +373,9 @@ function dateFormat(format,date = ""){
 				
 			case 'c': // ISO 8601 date (eg: 2012-11-20T18:05:54.944Z)
 				string+= date.toISOString();
+				break;		
+			case 'C': // ISO to Numeric String
+				string+= date.toISOString().replace(/[^0-9]/g,'');
 				break;		
 			case 'O': // Difference to GMT w/o colon between HH and MM
 				let diffNumGMT = 0,
