@@ -4,7 +4,7 @@ let errorString = '';
 let elementKind = 'ppendingKind';
 
 //<likely Parameterized>
-let pathArray = ['name.first','name.last','addresses.address.city']
+let pathArray = ['name.first', 'name.last', 'addresses.address.city']
 //</likely Parameterized>
 
 //<relatively Konstant>
@@ -20,9 +20,9 @@ let nameInstnttd = [];
 let oathStart = '';
 let checkLength = -777;
 supportedElementKeyArray.forEach(elementKey => {
-    elementKind = supportedObjectElementKeyArray.includes(elementKey) ? 'object': elementKind;
-    elementKind = supportedArrayElementKeyArray.includes(elementKey) ? 'array': elementKind; //tertiary sugar is more extensible
-    elementKind = supportedArrayofObjectsElementKeyArray.includes(elementKey) ? 'arrayOfObjects': elementKind; //tertiary sugar is more extensible
+    elementKind = supportedObjectElementKeyArray.includes(elementKey) ? 'object' : elementKind;
+    elementKind = supportedArrayElementKeyArray.includes(elementKey) ? 'array' : elementKind; //tertiary sugar is more extensible
+    elementKind = supportedArrayofObjectsElementKeyArray.includes(elementKey) ? 'arrayOfObjects' : elementKind; //tertiary sugar is more extensible
     // console.log(elementKind);
     // elementStart = elementKind === 'object' ? elementKey + '.' : 'ppending';
     // elementStart = elementKind === 'array' ? elementKey + '[' : elementStart;
@@ -30,19 +30,18 @@ supportedElementKeyArray.forEach(elementKey => {
     // console.log(elementStart);
     checkLength = elementStart.length;
     pathArray.forEach(path => {
-        if(path.substr(0,checkLength) === elementStart){
+        if (path.substr(0, checkLength) === elementStart) {
             nameInstnttd = Object.keys(wixContact);
             if (!nameInstnttd.includes(elementKey)) {
                 if (elementKind === 'object') {
-                    wixContact[elementKey] = {};                    
-                } else 
-                if (elementKind === 'array'){
-                    wixContact[elementKey] = [];                                
-                } else 
-                if (elementKind === 'arrayOfObjects'){
-                    wixContact[elementKey] = [{}];                                
-                } else 
-                {
+                    wixContact[elementKey] = {};
+                } else
+                if (elementKind === 'array') {
+                    wixContact[elementKey] = [];
+                } else
+                if (elementKind === 'arrayOfObjects') {
+                    wixContact[elementKey] = [{}];
+                } else {
                     error = true;
                     errorString += 'Unsupported elementKind: ' + "'" + elementKind + "'";
                 }
@@ -56,18 +55,3 @@ console.log('error: ' + error);
 console.log('errorString: "' + errorString + '"');
 console.log(wixContact);
 
-
-
-// nameInstnttd = Object.keys(person);
-// console.log(nameInstnttd);
-// if (!nameInstnttd.includes('name')) {
-//     person.name = {};
-// }
-// if (!nameInstnttd.includes('name')) {
-//     console.log('test after instantiation worked')
-// }
-// person.name.first = 'Lisel'
-
-
-
-// console.log(person);
