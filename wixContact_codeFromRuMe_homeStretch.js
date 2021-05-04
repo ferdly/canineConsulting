@@ -64,14 +64,14 @@ let ruMeCode = '';
 let uiKey = '';
 let value = '';
 let processedPathArray = [];
-let swEmptyPathCount = 0;
-let swUnchkdCount = 0;
-let swInstObjCount = 0;
-let swIndxICount = 0;
-let swInstArrCount = 0;
-let swInstElmtObjCount = 0;
-let swNullPathCount = 0;
-let swDfltAssigCount = 0;
+// let swEmptyPathCount = 0;
+// let swUnchkdCount = 0;
+// let swInstObjCount = 0;
+// let swIndxICount = 0;
+// let swInstArrCount = 0;
+// let swInstElmtObjCount = 0;
+// let swNullPathCount = 0;
+// let swDfltAssigCount = 0;
 
 for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
     element = assinmentPathArray[forIndex];
@@ -89,6 +89,11 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
     uiKeyUnChecked = uiKey === 'NNULL' ? false : uiKeyUnChecked;
     uiKeyUnChecked = chkbxKeyArray.includes(uiKey) === true ? false : uiKeyUnChecked;
     value = "as" + name.toUpperCase();
+    //<KLUDGEY: but double-check if not corrected in 2d Array>
+    //ø    \_ I mean, it is good to have just one word for 'NNULL'
+    let overloadPath = ruMePath === 'NNULL' && ruMeCode !== 'NNULL' ? true : false;
+    ruMePath = overloadPath ? 'NNA' : ruMePath;
+    //</KLUDGEY: but double-check if not corrected in 2d Array>
 
     let attributeChain = '';
     let indexReplaceString = '';
@@ -96,12 +101,12 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
     holderString = "About to Enter SWITCH: ${swDfltAssigCount} Assigned"
     switch (true) {
         case ruMePath.length === 0:
-            swEmptyPathCount++;
+            // swEmptyPathCount++;
             console.warn("'path' must he 'NNULL' or a valid path.")
             console.warn(clElement);
             break;
         case uiKeyUnChecked:
-            swUnchkdCount++;
+            // swUnchkdCount++;
 
             break;
 
@@ -109,14 +114,19 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
             // swIndxICount++;
             break;
         case name === 'INSTANTIATE_OBJECT':
-            swInstObjCount++;
+            // swInstObjCount++;
 
             attributeChain = 'wixContact';
-            indexReplaceString = '.' + index;
+            indexReplaceString = '.' + index + '';
             path = path.replace('.i', indexReplaceString);
             pathSplit = path.split(".");
             pathSplit.forEach(chunk => {
-                attributeChain += "['" + chunk + "']";
+                if (index === chunk) {
+                    attributeChain += "[" + chunk + "]";
+                } else {
+
+                    attributeChain += "['" + chunk + "']";
+                }
             });
             attributeChain += ' = {}';
             if (name === "INSTANTIATE_OBJECT" && path === "info.emails[i]") {
@@ -128,7 +138,7 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
             processedPathArray.push(element.toString());
             break;
         case name === 'INSTANTIATE_ARRAY':
-            swInstArrCount++;
+            // swInstArrCount++;
             attributeChain = 'wixContact';
             pathSplit = path.split(".");
             pathSplit.forEach(chunk => {
@@ -141,22 +151,30 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
             processedPathArray.push(element.toString());
             break;
         case name === 'INSTANTIATE_ELEMENT_OBJECT':
-            swInstElmtObjCount++;
+            // swInstElmtObjCount++;
 
             console.warn("name === 'INSTANTIATE_ELEMENT_OBJECT'")
             console.warn(clElement);
             break;
         case ruMePath === 'NNULL':
-            swNullPathCount++;
+            // swNullPathCount++;
             break;
 
         default:
-            swDfltAssigCount++;
-            indexReplaceString = '[' + index + ']';
-            path = path.replace('[i]', indexReplaceString);
-            let valueEvalString = "ruMeUser.";
-            valueEvalString += ruMePath;
-            value = eval(valueEvalString);
+            // swDfltAssigCount++;
+            // indexReplaceString = '[' + index + ']';
+            // path = path.replace('[i]', indexReplaceString);
+            indexReplaceString = '[' + index + '].';
+            path = path.replace('.i.', indexReplaceString);
+            if (ruMePath === 'NNA') {
+                value = eval(ruMeCode);                
+            }else
+            {
+
+                let valueEvalString = "ruMeUser.";
+                valueEvalString += ruMePath;
+                value = eval(valueEvalString);
+            }
             evalString = "wixContact." + path + " = \"" + value + "\"";
             eval(evalString);
             break;
