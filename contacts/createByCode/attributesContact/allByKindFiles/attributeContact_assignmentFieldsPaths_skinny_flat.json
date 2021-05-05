@@ -136,8 +136,12 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
-            "ruMeNotes": []
+            "uiKey": "NNULL|NEVER",
+            "ruMeNotes": [
+                "expected, and certainly at first this value is never pos by a user",
+                "so the uiKey is same as group, with '|NEVER' appended",
+                "same for other _id's (phone, address)"
+            ]
         },
         {
             "name": "tag",
@@ -172,7 +176,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "email",
             "ruMeNotes": []
         },
         {
@@ -181,7 +185,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "email|NEVER",
             "ruMeNotes": []
         },
         {
@@ -189,10 +193,11 @@
             "path": "info.emails.tag",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "eval('othER')",
+            "ruMeCode": "new String('othER')",
             "uiKey": "email",
             "ruMeNotes": [
-                "test of weird case for normal word"
+                "test of weird case for normal word",
+                "new Sting('othER') from MDN, 4 other below"
             ]
         },
         {
@@ -222,7 +227,7 @@
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "emailP",
             "ruMeNotes": []
         },
         {
@@ -231,7 +236,7 @@
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "emailP|NEVER",
             "ruMeNotes": []
         },
         {
@@ -239,7 +244,7 @@
             "path": "info.emails.tag",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "eval('Login')",
+            "ruMeCode": "new String('Login')",
             "uiKey": "emailP",
             "ruMeNotes": []
         },
@@ -278,7 +283,7 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "NNULL|NEVER",
             "ruMeNotes": []
         },
         {
@@ -323,7 +328,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "phoneP",
             "ruMeNotes": []
         },
         {
@@ -332,7 +337,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "phoneP|NEVER",
             "ruMeNotes": []
         },
         {
@@ -340,7 +345,7 @@
             "path": "info.phones.tag",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "eval('cell')",
+            "ruMeCode": "new String('cell')",
             "uiKey": "phoneP",
             "ruMeNotes": []
         },
@@ -368,7 +373,7 @@
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "phone",
             "ruMeNotes": []
         },
         {
@@ -376,7 +381,7 @@
             "path": "info.phones._id",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "NNULL",
+            "ruMeCode": "phone|NEVER",
             "uiKey": "NNULL",
             "ruMeNotes": []
         },
@@ -385,7 +390,7 @@
             "path": "info.phones.tag",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "eval('home')",
+            "ruMeCode": "new String('home')",
             "uiKey": "phone",
             "ruMeNotes": []
         },
@@ -577,7 +582,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": [
                 "uiKey is 'address' ",
                 " ↪ regardless of the fact that 'tag' is outside the 'address' object ",
@@ -590,7 +595,7 @@
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address|NEVER",
             "ruMeNotes": []
         },
         {
@@ -598,7 +603,7 @@
             "path": "info.addresses.tag",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "eval('home')",
+            "ruMeCode": "new String('home')",
             "uiKey": "address",
             "ruMeNotes": []
         },
