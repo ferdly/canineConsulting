@@ -381,8 +381,8 @@
             "path": "info.phones._id",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "phone|NEVER",
-            "uiKey": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULLphone|NEVER",
             "ruMeNotes": []
         },
         {
