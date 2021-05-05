@@ -181,7 +181,7 @@
         },
         {
             "name": "_id",
-            "path": "info.emails._id",
+            "path": "info.emails.i._id",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -190,7 +190,7 @@
         },
         {
             "name": "tag",
-            "path": "info.emails.tag",
+            "path": "info.emails.i.tag",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "new String('othER')",
@@ -202,7 +202,7 @@
         },
         {
             "name": "email",
-            "path": "info.emails.email",
+            "path": "info.emails.i.email",
             "index": 0,
             "ruMePath": "email",
             "ruMeCode": "NNULL",
@@ -211,7 +211,7 @@
         },
         {
             "name": "primary",
-            "path": "info.emails.primary",
+            "path": "info.emails.i.primary",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -232,7 +232,7 @@
         },
         {
             "name": "_id",
-            "path": "info.emails._id",
+            "path": "info.emails.i._id",
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -241,7 +241,7 @@
         },
         {
             "name": "tag",
-            "path": "info.emails.tag",
+            "path": "info.emails.i.tag",
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "new String('Login')",
@@ -250,7 +250,7 @@
         },
         {
             "name": "email",
-            "path": "info.emails.email",
+            "path": "info.emails.i.email",
             "index": 1,
             "ruMePath": "emailPrimary",
             "ruMeCode": "NNULL",
@@ -259,7 +259,7 @@
         },
         {
             "name": "primary",
-            "path": "info.emails.primary",
+            "path": "info.emails.i.primary",
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "eval(true)",
