@@ -1,0 +1,394 @@
+[
+    {
+        "name": "_id",
+        "path": "_id",
+        "reMePath":""
+        
+    
+    },
+    {
+        "name": "revision",
+        "path": "revision",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "source",
+        "path": "source",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "sourceType",
+        "path": "source.sourceType",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "appId",
+        "path": "source.appId",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "_createdDate",
+        "path": "_createdDate",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "_updatedDate",
+        "path": "_updatedDate",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "lastActivity",
+        "path": "lastActivity",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "activityDate",
+        "path": "lastActivity.activityDate",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "activityType",
+        "path": "lastActivity.activityType",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "primaryInfo",
+        "path": "primaryInfo",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "email",
+        "path": "primaryInfo.email",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "phone",
+        "path": "primaryInfo.phone",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "info",
+        "path": "info",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "name",
+        "path": "info.name",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "first",
+        "path": "info.name.first",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "last",
+        "path": "info.name.last",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "company",
+        "path": "info.company",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "jobTitle",
+        "path": "info.jobTitle",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "locale",
+        "path": "info.locale",
+        "reMePath":""
+        
+
+    },
+    {
+        "name": "birthdate",
+        "path": "info.birthdate",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "picture",
+        "path": "info.picture",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "image",
+        "path": "info.picture.image",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "imageProvider",
+        "path": "info.picture.imageProvider",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "emails",
+        "path": "info.emails",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "_id",
+        "path": "info.emails.[i]._id",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "tag",
+        "path": "info.emails.[i].tag",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "email",
+        "path": "info.emails.[i].email",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "primary",
+        "path": "info.emails.[i].primary",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "phones",
+        "path": "info.phones",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "_id",
+        "path": "info.phones.[i]._id",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "tag",
+        "path": "info.phones.[i].tag",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "countryCode",
+        "path": "info.phones.[i].countryCode",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "phone",
+        "path": "info.phones.[i].phone",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "e164Phone",
+        "path": "info.phones.[i].e164Phone",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "primary",
+        "path": "info.phones.[i].primary",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "addresses",
+        "path": "info.addresses",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "_id",
+        "path": "info.addresses.[i]._id",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "tag",
+        "path": "info.addresses.[i].tag",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address",
+        "path": "info.addresses.[i].address",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.formatted",
+        "path": "info.addresses.[i].address.formatted",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.addressLine2",
+        "path": "info.addresses.[i].address.addressLine2",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.location",
+        "path": "info.addresses.[i].address.location",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.location.latitude",
+        "path": "info.addresses.[i].address.location.latitude",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.location.longitude",
+        "path": "info.addresses.[i].address.location.longitude",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.city",
+        "path": "info.addresses.[i].address.city",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.subdivision",
+        "path": "info.addresses.[i].address.subdivision",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.country",
+        "path": "info.addresses.[i].address.country",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.postalCode",
+        "path": "info.addresses.[i].address.postalCode",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "oneOfNextTwo",
+        "path": "oneOfNextTwo",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.addressLine1",
+        "path": "info.addresses.[i].address.addressLine1",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.streetAddress",
+        "path": "info.addresses.[i].address.streetAddress",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.streetAddress.number",
+        "path": "info.addresses.[i].address.streetAddress.number",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "address.streetAddress.name",
+        "path": "info.addresses.[i].address.streetAddress.name",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "labelKeys",
+        "path": "info.labelKeys",
+        "reMePath":""
+        
+        
+    },
+    {
+        "name": "extendedFields",
+        "path": "info.extendedFields",
+        "reMePath":""
+        
+        
+    }
+]

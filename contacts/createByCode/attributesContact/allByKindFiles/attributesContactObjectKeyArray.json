@@ -1,0 +1,80 @@
+{
+    "attributeArray": [
+        {
+            "name": "primaryInfo",
+            "path": "primaryInfo",
+            "OptReqSys": "OPTIONAL",
+            "type": "OBJECT.PrimaryInfo",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "TEST: by Setting an email or phone to primary:true, this will,indeed, be system"
+            ],
+            "description": [
+                "Contact's primary phone and email."
+            ]
+        },
+        {
+            "name": "info",
+            "path": "info",
+            "OptReqSys": "OPTIONAL",
+            "type": "OBJECT.Info",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's details."
+            ]
+        },
+        {
+            "name": "name",
+            "path": "info.name",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.OBJECT.Name",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Object for Contact's first and last name."
+            ]
+        },
+        {
+            "name": "address",
+            "path": "info.addresses.[i].address",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.OBJECT.AddressDetails",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Street address."
+            ]
+        },
+        {
+            "name": "streetAddress",
+            "path": "info.addresses.[i].address.streetAddress",
+            "OptReqSys": "OPTION",
+            "type": "[i].ELEMENT.ELEMENT.OBJECT.StreetAddressInfo",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Street address object",
+                "with number and name in separate fields."
+            ]
+        },
+        {
+            "name": "location",
+            "path": "info.addresses.[i].address.location",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.OBJECT.AddressLocation",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Coordinates of the physical address.",
+                "Lat-Lng may be optional| but why if you are neither"
+            ]
+        }
+    ]
+}

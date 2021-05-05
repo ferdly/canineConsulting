@@ -1,0 +1,123 @@
+//https://www.wix.com/velo/reference/wix-users/register
+
+NAME,
+REQUIRED-OPTIONAL,
+TYPE,
+DESCRIPTION
+ZXZ
+
+email,
+REQUIRED,
+string,
+The email address to use when registering the user as a site member.
+ZXZ
+
+password,
+REQUIRED,
+string,
+The password the newly added site member will use to log in.
+ZXZ
+
+options,
+OPTIONAL,
+RegistrationOptions,
+Registration options.
+ZXZ
+
+contactInfo,
+OPTIONAL,
+ContactInfo,
+Contact information.
+ZXZ
+
+firstName,
+OPTIONAL,
+string,
+Contact's first name.
+ZXZ
+
+lastName,
+OPTIONAL,
+string,
+Contact's last name.
+ZXZ
+
+picture,
+OPTIONAL,
+string,
+Contact's image source.
+ZXZ
+
+emails,
+OPTIONAL,
+Array<string>,
+List of contact's email addresses. When creating a contact, if no phone number is provided, at least one email address must be provided.
+ZXZ
+
+loginEmail,
+OPTIONAL,
+string,
+Email address the contact who is also a member uses to log into the system.
+ZXZ
+
+phones,
+OPTIONAL,
+Array<string>,
+List of contact's phone numbers. When creating a contact, if no email is provided, at least one phone number must be provided.
+ZXZ
+
+labels,
+OPTIONAL,
+Array<string>,
+List of contact's labels. Labels are used to organize contacts. When setting the labels property, you can only list labels that already exist in your site's Contacts List.
+ZXZ
+
+language,
+OPTIONAL,
+string,
+Contact's language.
+ZXZ
+
+customFields,
+OPTIONAL,
+string | number | Date,
+Any number of custom fields. Customs fields are used to store additional information about your site's contacts. When setting a custom field, use key:value pairs where the key matches the names defined in your site's Contacts List. You can only set values for custom fields that already exist in the Contacts application.
+ZXZ
+
+privacyStatus
+OPTIONAL,
+string,
+Sets the privacy status to "PUBLIC" or "PRIVATE"
+ZXZ
+
+XZX
+PRIVACY STATUS EXPANDED
+Sets the privacy status of a new member upon registration. One of:,
+"PUBLIC": Sets the new member status to public. A member whose status is public is a member of the site's community.,
+"PRIVATE": Sets the new member status to private. A member whose status is private is not a member of the site's community. The default is set to private.
+XZX
+
+=====
+
+Returns
+Fulfilled - When the user has been registered. Rejected - Error message.
+
+Return Type:
+
+Promise<RegistrationResult>
+NAME
+TYPE
+DESCRIPTION
+
+status
+string
+Registration status. Either "Pending" or "Active".
+
+approvalToken
+OPTIONAL
+string
+A token for approving the user as a site member using the approveByToken() function. The token is safe to pass via email or from client-side code to backend code. The token is only available when status is "Pending".
+
+user
+User
+The user that has been registered.

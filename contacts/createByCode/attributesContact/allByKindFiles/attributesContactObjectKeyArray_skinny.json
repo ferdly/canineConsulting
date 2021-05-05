@@ -1,0 +1,34 @@
+{
+    "attributeArray": [
+        {
+            "name": "primaryInfo",
+            "path": "primaryInfo",
+            "other": ""
+        },
+        {
+            "name": "info",
+            "path": "info",
+            "other": ""
+        },
+        {
+            "name": "name",
+            "path": "info.name",
+            "other": ""
+        },
+        {
+            "name": "address",
+            "path": "info.addresses.[i].address",
+            "other": ""
+        },
+        {
+            "name": "streetAddress",
+            "path": "info.addresses.[i].address.streetAddress",
+            "other": ""
+        },
+        {
+            "name": "location",
+            "path": "info.addresses.[i].address.location",
+            "other": ""
+        }
+    ]
+}

@@ -1,0 +1,132 @@
+{
+    "attributeArray": [
+        {
+            "name": "_id",
+            "path": "_id",
+            "OptReqSys": "system",
+            "type": "string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact ID."
+            ]
+        },
+        {
+            "name": "revision",
+            "path": "revision",
+            "OptReqSys": "system",
+            "type": "number",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Revision number| which increments by 1 each time the contact is updated.",
+                "To prevent conflicting changes| the existing revision must be used when updating a contact."
+            ]
+        },
+        {
+            "name": "source",
+            "path": "source",
+            "OptReqSys": "OptReqSys",
+            "type": "OBJECT.Source",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Details about the contact's source."
+            ]
+        },
+        {
+            "name": "sourceType",
+            "path": "source.sourceType",
+            "OptReqSys": "requiredElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "CODE",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "Literal, or SYS?"
+            ],
+            "description": [
+                "Source type.Some possible values: ",
+                "'OTHER'|'ADMIN'|'WIX_APP'|'IMPORT'|'THIRD_PARTY'|'WIX_BOOKINGS'|'WIX_CHAT'|'WIX_EMAIL_MARKETING'|'WIX_EVENTS'",
+                "'WIX_FORMS'|'WIX_GROUPS'|'WIX_HOTELS'|'WIX_MARKET_PLACE'|'WIX_MUSIC'|'WIX_RESTAURANTS'|'WIX_SITE_MEMBERS'|'WIX_STORES'."
+            ]
+        },
+        {
+            "name": "appId",
+            "path": "source.appId",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "Empty if Not 'real app'?"
+            ],
+            "description": [
+                "App ID| if the contact was created by an app."
+            ]
+        },
+        {
+            "name": "_createdDate",
+            "path": "_createdDate",
+            "OptReqSys": "system",
+            "type": "Date",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Date and time the contact was created."
+            ]
+        },
+        {
+            "name": "_updatedDate",
+            "path": "_updatedDate",
+            "OptReqSys": "system",
+            "type": "Date",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Date and time the contact was last updated."
+            ]
+        },
+        {
+            "name": "lastActivity",
+            "path": "lastActivity",
+            "OptReqSys": "system",
+            "type": "OBJECT.LastActivity",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Details about the contact's last action in the site.",
+                "(¿System only Right?)"
+            ]
+        },
+        {
+            "name": "activityDate",
+            "path": "lastActivity.activityDate",
+            "OptReqSys": "system",
+            "type": "ELEMENT.Date",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Date and time of the last action."
+            ]
+        },
+        {
+            "name": "activityType",
+            "path": "lastActivity.activityType",
+            "OptReqSys": "system",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's last action in the site."
+            ]
+        }
+    ]
+}

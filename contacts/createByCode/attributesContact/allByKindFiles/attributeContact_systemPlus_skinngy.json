@@ -1,0 +1,54 @@
+{
+    "attributeArray": [
+        {
+            "name": "_id",
+            "path": "_id",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "revision",
+            "path": "revision",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "source",
+            "path": "source",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "sourceType",
+            "path": "source.sourceType",
+            "ruMePath": "CODE"
+        },
+        {
+            "name": "appId",
+            "path": "source.appId",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "_createdDate",
+            "path": "_createdDate",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "_updatedDate",
+            "path": "_updatedDate",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "lastActivity",
+            "path": "lastActivity",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "activityDate",
+            "path": "lastActivity.activityDate",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "activityType",
+            "path": "lastActivity.activityType",
+            "ruMePath": "NA"
+        }
+    ]
+}

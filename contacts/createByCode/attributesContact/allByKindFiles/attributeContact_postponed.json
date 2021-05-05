@@ -1,0 +1,69 @@
+{
+    "attributeArray": [
+        {
+            "name": "labelKeys",
+            "path": "info.labelKeys",
+            "OptReqSys": "OPTIONAL",
+            "type": "Array<string>",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "List of contact label keys.",
+                "Contact labels help categorize contacts.",
+                "Label keys must exist to be added to the contact.",
+                "Contact labels can be created or retrieved with findOrCreateLabel() or queryLabels()."
+            ]
+        },
+        {
+            "name": "picture",
+            "path": "info.picture",
+            "OptReqSys": "OPTIONAL",
+            "type": "ELEMENT.OBJECT.ContactPicture",
+            "ruMePath": "TBD",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's profile picture."
+            ]
+        },
+        {
+            "name": "image",
+            "path": "info.picture.image",
+            "OptReqSys": "requiredElement",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "TBD",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Image source."
+            ]
+        },
+        {
+            "name": "imageProvider",
+            "path": "info.picture.imageProvider",
+            "OptReqSys": "requiredElement",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "TBD",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Indicates whether the image is retrieved from Wix Media or an external provider."
+            ]
+        },
+        {
+            "name": "extendedFields",
+            "path": "info.extendedFields",
+            "OptReqSys": "OPTIONAL",
+            "type": "Object",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Set of key-value pairs.Contact's extended fields| which allow you to store",
+                "additional information about your contacts.To view or create extended fields|",
+                "use findOrCreateExtendedField()| getExtendedField()| or queryExtendedFields()."
+            ]
+        }
+    ]
+}

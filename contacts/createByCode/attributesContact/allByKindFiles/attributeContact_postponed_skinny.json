@@ -1,0 +1,34 @@
+{
+    "attributeArray": [
+        {
+            "name": "labelKeys",
+            "path": "info.labelKeys",
+            "type": "Array<string>",
+            "ruMePath": ""
+        },
+        {
+            "name": "picture",
+            "path": "info.picture",
+            "type": "ELEMENT.OBJECT.ContactPicture",
+            "ruMePath": "TBD"
+        },
+        {
+            "name": "image",
+            "path": "info.picture.image",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "TBD"
+        },
+        {
+            "name": "imageProvider",
+            "path": "info.picture.imageProvider",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "TBD"
+        },
+        {
+            "name": "extendedFields",
+            "path": "info.extendedFields",
+            "type": "Object",
+            "ruMePath": ""
+        }
+    ]
+}

@@ -1,0 +1,671 @@
+{
+    "attributeArray": [
+        {
+            "name": "KEY.name",
+            "path": "KEY.path",
+            "index": "KEY.index",
+            "ruMePath": "KEY.ruMePath",
+            "ruMeCode": "KEY.ruMeCode",
+            "ruMeNotes": [
+                "KEY.ruMeNotes"
+            ]
+        },
+        {
+            "name": "email",
+            "path": "primaryInfo.email",
+            "index": "",
+            "ruMePath": "ZXZNA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "expectation is that this will automate based on emails[i].primay = true",
+                "am ready to instantiate 'primaryInfo' (above) and set primary Email here if wrong"
+            ]
+        },
+        {
+            "name": "phone",
+            "path": "primaryInfo.phone",
+            "index": "",
+            "ruMePath": "ZXZNA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "expectation is that this will automate based on emails[i].primay = true",
+                "am ready to instantiate 'primaryInfoß' (above) and set primary Email here if wrong"
+            ]
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info",
+            "index": "",
+            "ruMePath": "NULL",
+            "ruMeCode": "eval('{}')",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.name",
+            "index": "",
+            "ruMePath": "name.first",
+            "ruMeCode": "eval('{}')",
+            "ruMeNotes": []
+        },
+        {
+            "name": "first",
+            "path": "info.name.first",
+            "index": "",
+            "ruMePath": "name.first",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "last",
+            "path": "info.name.last",
+            "index": "",
+            "ruMePath": "name.last",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "company",
+            "path": "info.company",
+            "index": "",
+            "ruMePath": "company",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "jobTitle",
+            "path": "info.jobTitle",
+            "index": "",
+            "ruMePath": "jobTitle",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "locale",
+            "path": "info.locale",
+            "index": "",
+            "ruMePath": "locale",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "birthdate",
+            "path": "info.birthdate",
+            "index": "",
+            "ruMePath": "birthdate",
+            "ruMeCode": "",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_ARRAY",
+            "path": "info.emails",
+            "index": "",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('[]')",
+            "ruMeNotes": [],
+            "array": [
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.emails[i]",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.emails._id",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.emails.tag",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "email",
+                        "path": "info.emails.email",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.emails.primary",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    }
+                ],
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.emails[i]",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.emails._id",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.emails.tag",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('othER')",
+                        "ruMeNotes": [
+                            "test of weird case for normal word"
+                        ]
+                    },
+                    {
+                        "name": "email",
+                        "path": "info.emails.email",
+                        "index": 0,
+                        "ruMePath": "email",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.emails.primary",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": [
+                            "first, fake not primary",
+                            "test not set at first, to see if primary:true makes this false, if not eval(false)"
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.emails[i]",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.emails._id",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.emails.tag",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('Login')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "email",
+                        "path": "info.emails.email",
+                        "index": 1,
+                        "ruMePath": "emailPrimary",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.emails.primary",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval(true)",
+                        "ruMeNotes": [
+                            "second, qiqgroup is primary"
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "name": "INSTANTIATE_ARRAY",
+            "path": "info.phones",
+            "index": "",
+            "ruMePath": "ZXZNA",
+            "ruMeCode": "eval('[]')",
+            "ruMeNotes": [],
+            "array": [
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.phones[i]",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.phones._id",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.phones.tag",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "phone",
+                        "path": "info.phones.phone",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.phones.primary",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    }
+                ],
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.phones[i]",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.phones._id",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.phones.tag",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('cell')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "phone",
+                        "path": "info.phones.phone",
+                        "index": 0,
+                        "ruMePath": "cell",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.phones.primary",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval(true)",
+                        "ruMeNotes": []
+                    }
+                ],
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.phones[i]",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.phones._id",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.phones.tag",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('home')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "phone",
+                        "path": "info.phones.phone",
+                        "index": 1,
+                        "ruMePath": "phone",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "primary",
+                        "path": "info.phones.primary",
+                        "index": 1,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval(true)",
+                        "ruMeNotes": []
+                    }
+                ]
+            ]
+        },
+        {
+            "name": "INSTANTIATE_ARRAY",
+            "path": "info.addresses",
+            "index": "i",
+            "ruMePath": "ZXZNA",
+            "ruMeCode": "eval('[]')",
+            "ruMeNotes": [],
+            "array": [
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.addresses[i]",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.addresses._id",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.addresses.tag",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "INSTANTIATE_OBJECT",
+                        "path": "info.addresses.address",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "formatted",
+                        "path": "info.addresses.address.formatted",
+                        "index": "i",
+                        "ruMePath": "i-TBD",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "streetAddress",
+                        "path": "info.addresses.address.streetAddress",
+                        "index": "i",
+                        "ruMePath": "NULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": [
+                            "¿maybe not correct eval()?"
+                        ]
+                    },
+                    {
+                        "name": "number",
+                        "path": "info.addresses.address.streetAddress.number",
+                        "index": "i",
+                        "ruMePath": "location.street.number",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "name",
+                        "path": "info.addresses.address.streetAddress.name",
+                        "index": "i",
+                        "ruMePath": "location.street.name",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "apt",
+                        "path": "info.addresses.address.streetAddress.apt",
+                        "index": "i",
+                        "ruMePath": "location.street.apt",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "addressLine2",
+                        "path": "info.addresses.address.addressLine2",
+                        "index": "i",
+                        "ruMePath": "NA",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "city",
+                        "path": "info.addresses.address.city",
+                        "index": "i",
+                        "ruMePath": "location.city",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "subdivision",
+                        "path": "info.addresses.address.subdivision",
+                        "index": "i",
+                        "ruMePath": "location.subdivision",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "postalCode",
+                        "path": "info.addresses.address.postalCode",
+                        "index": "i",
+                        "ruMePath": "location.postalCode",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "country",
+                        "path": "info.addresses.address.country",
+                        "index": "i",
+                        "ruMePath": "location.country",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "location",
+                        "path": "info.addresses.address",
+                        "index": "i",
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "latitude",
+                        "path": "info.addresses.address.location.latitude",
+                        "index": "i",
+                        "ruMePath": "coordinates.latitude",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "longitude",
+                        "path": "info.addresses.address.location.longitude",
+                        "index": "i",
+                        "ruMePath": "coordinates.longitude",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    }
+                ],
+                [
+                    {
+                        "name": "INSTANTIATE_ELEMENT_OBJECT",
+                        "path": "info.addresses[i]",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "_id",
+                        "path": "info.addresses._id",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "tag",
+                        "path": "info.addresses.tag",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('home')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "INSTANTIATE_OBJECT",
+                        "path": "info.addresses.address",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "formatted",
+                        "path": "info.addresses.address.formatted",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "",
+                        "ruMeNotes": [
+                            "lots of fuss, save for later when broad sweep is working"
+                        ]
+                    },
+                    {
+                        "name": "INSTANTIATE_OBJECT",
+                        "path": "info.addresses.address.streetAddress",
+                        "index": 0,
+                        "ruMePath": "NULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": [
+                            "¿maybe not correct eval()?"
+                        ]
+                    },
+                    {
+                        "name": "number",
+                        "path": "info.addresses.address.streetAddress.number",
+                        "index": 0,
+                        "ruMePath": "location.street.number",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "name",
+                        "path": "info.addresses.address.streetAddress.name",
+                        "index": 0,
+                        "ruMePath": "location.street.name",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "apt",
+                        "path": "info.addresses.address.streetAddress.apt",
+                        "index": 0,
+                        "ruMePath": "location.street.apt",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "addressLine2",
+                        "path": "info.addresses.address.addressLine2",
+                        "index": 0,
+                        "ruMePath": "location.addressLine2",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "city",
+                        "path": "info.addresses.address.city",
+                        "index": 0,
+                        "ruMePath": "location.city",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "subdivision",
+                        "path": "info.addresses.address.subdivision",
+                        "index": 0,
+                        "ruMePath": "location.subdivision",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "postalCode",
+                        "path": "info.addresses.address.postalCode",
+                        "index": 0,
+                        "ruMePath": "location.postalCode",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "country",
+                        "path": "info.addresses.address.country",
+                        "index": 0,
+                        "ruMePath": "location.country",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "INSTANTIATE_OBJECT",
+                        "path": "info.addresses.address.location",
+                        "index": 0,
+                        "ruMePath": "NNULL",
+                        "ruMeCode": "eval('{}')",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "latitude",
+                        "path": "info.addresses.address.location.latitude",
+                        "index": 0,
+                        "ruMePath": "coordinates.latitude",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    },
+                    {
+                        "name": "longitude",
+                        "path": "info.addresses.address.location.longitude",
+                        "index": 0,
+                        "ruMePath": "coordinates.longitude",
+                        "ruMeCode": "",
+                        "ruMeNotes": []
+                    }
+                ]
+            ]
+        }
+    ]
+}

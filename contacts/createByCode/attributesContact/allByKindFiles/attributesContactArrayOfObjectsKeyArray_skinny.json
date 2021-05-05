@@ -1,0 +1,22 @@
+{
+    "attributeArray": [
+        {
+            "name": "emails",
+            "path": "info.emails",
+            "other":"something"
+            
+        },
+        {
+            "name": "phones",
+            "path": "info.phones",
+            "other":"something"
+            
+        },
+        {
+            "name": "addresses",
+            "path": "info.addresses",
+            "other":"something"
+            
+        }
+    ]
+}

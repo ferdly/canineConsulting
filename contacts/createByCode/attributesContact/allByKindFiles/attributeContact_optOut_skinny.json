@@ -1,0 +1,19 @@
+{
+    "attributeArray": [
+        {
+            "name": "addressLine1",
+            "path": "info.addresses.[i].address.addressLine1",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "e164Phone",
+            "path": "info.phones.[i].e164Phone",
+            "ruMePath": "NA"
+        },
+        {
+            "name": "countryCode",
+            "path": "info.phones.[i].countryCode",
+            "ruMePath": "NA"
+        }
+    ]
+}

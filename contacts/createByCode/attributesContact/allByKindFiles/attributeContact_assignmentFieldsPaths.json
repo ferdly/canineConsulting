@@ -1,0 +1,361 @@
+{
+    "attributeArray": [
+        {
+            "name": "email",
+            "path": "primaryInfo.email",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "TEST: by Setting an email to primary:true, this will,indeed, be system"
+            ],
+            "description": [
+                "Primary email address.",
+                "This property reflects the email address in contactInfo.emails where primary is true."
+            ]
+        },
+        {
+            "name": "phone",
+            "path": "primaryInfo.phone",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "TEST: by Setting a phone to primary:true, this will,indeed, be system"
+            ],
+            "description": [
+                "Primary phone number.",
+                "This property reflects the phone number in contactInfo.phones where primary is true."
+            ]
+        },
+        {
+            "name": "first",
+            "path": "info.name.first",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "name.first",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's first name."
+            ]
+        },
+        {
+            "name": "last",
+            "path": "info.name.last",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.ELEMENT.string",
+            "ruMePath": "name.last",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's last name."
+            ]
+        },
+        {
+            "name": "company",
+            "path": "info.company",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's company name."
+            ]
+        },
+        {
+            "name": "jobTitle",
+            "path": "info.jobTitle",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's job title."
+            ]
+        },
+        {
+            "name": "locale",
+            "path": "info.locale",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Contact's locale: Typically| this is a lowercase 2-letter language code"
+            ]
+        },
+        {
+            "name": "birthdate",
+            "path": "info.birthdate",
+            "OptReqSys": "optionalElement",
+            "type": "ELEMENT.string",
+            "ruMePath": "dob.date",
+            "ruMeCode": "ELEMENT.substr(0,10)",
+            "ruMeNotes": ["birthdate added at instantiation"],
+            "description": [
+                "Contact's birthdate,formatted as 'YYYY-MM-DD'."
+            ]
+        },
+        {
+            "name": "_id",
+            "path": "info.emails.[i]._id",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Email ID."
+            ]
+        },
+        {
+            "name": "tag",
+            "path": "info.emails.[i].tag",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Email type. One of:'UNTAGGED'|'MAIN'|'HOME'|'WORK'"
+            ]
+        },
+        {
+            "name": "email",
+            "path": "info.emails.[i].email",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Email address."
+            ]
+        },
+        {
+            "name": "primary",
+            "path": "info.emails.[i].primary",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.boolean",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Indicates whether this is the contact's primary email address.",
+                "When changing primary to true for an email| the contact's other emails become false."
+            ]
+        },
+        {
+            "name": "_id",
+            "path": "info.phones.[i]._id",
+            "OptReqSys": "system",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Phone ID.",
+                "(¿system|right?)"
+            ]
+        },
+        {
+            "name": "tag",
+            "path": "info.phones.[i].tag",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "cell/phone as cell/home respectively"
+            ],
+            "description": [
+                "Phone type.'UNTAGGED' is shown as 'Other' in the Contact List.",
+                "One of:'UNTAGGED'|'MAIN'|'HOME'|'MOBILE'|'WORK'|'FAX'"
+            ]
+        },
+        {
+            "name": "phone",
+            "path": "info.phones.[i].phone",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "cell [0], phone[1]"
+            ],
+            "description": [
+                "Phone number."
+            ]
+        },
+        {
+            "name": "primary",
+            "path": "info.phones.[i].primary",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.boolean",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [
+                "cell/true, phone/false"
+            ],
+            "description": [
+                "Whether this is the contact's primary phone number.",
+                "When changing primary to true for a phone| the contact's other phones become false."
+            ]
+        },
+        {
+            "name": "_id",
+            "path": "info.addresses.[i]._id",
+            "OptReqSys": "system",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Street address ID.",
+                "(¿system|right?)"
+            ]
+        },
+        {
+            "name": "tag",
+            "path": "info.addresses.[i].tag",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Address type. 'UNTAGGED' is shown as 'Other' in the Contact List.",
+                "One of:'UNTAGGED'|'HOME'|'WORK'|'BILLING'|'SHIPPING'"
+            ]
+        },
+        {
+            "name": "formatted",
+            "path": "info.addresses.[i].address.formatted",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Human-readable address string.",
+                "If not provided| the value is generated from the available address data."
+            ]
+        },
+        {
+            "name": "number",
+            "path": "info.addresses.[i].address.streetAddress.number",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.ELEMENT.string",
+            "ruMePath": "location.street.number",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Street number."
+            ]
+        },
+        {
+            "name": "name",
+            "path": "info.addresses.[i].address.streetAddress.name",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.ELEMENT.string",
+            "ruMePath": "location.street.name",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Street name."
+            ]
+        },
+        {
+            "name": "addressLine2",
+            "path": "info.addresses.[i].address.addressLine2",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Free text providing more detailed address information",
+                "such as apartment| suite| or floor."
+            ]
+        },
+        {
+            "name": "city",
+            "path": "info.addresses.[i].address.city",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "location.city",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "City name."
+            ]
+        },
+        {
+            "name": "subdivision",
+            "path": "info.addresses.[i].address.subdivision",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "location.state",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Code for a subdivision (such as state| prefecture| or province)",
+                "in an ISO 3166-2 format."
+            ]
+        },
+        {
+            "name": "postalCode",
+            "path": "info.addresses.[i].address.postalCode",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "location.postcode",
+            "ruMeCode": "",
+            "ruMeNotes": ["location.postalCode as STRING added at instantiation "],
+            "description": [
+                "Postal or zip code."
+            ]
+        },
+        {
+            "name": "country",
+            "path": "info.addresses.[i].address.country",
+            "OptReqSys": "optionalElement",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "location.country",
+            "ruMeCode": "",
+            "ruMeNotes": ["country overridded for 'United States' as 'US' at instantiation "],
+            "description": [
+                "2-letter country code in an ISO-3166 alpha-2 format."
+            ]
+        },
+        {
+            "name": "latitude",
+            "path": "info.addresses.[i].address.location.latitude",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.ELEMENT.ELEMENT.number",
+            "ruMePath": "coordinates.latitude",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Address's latitude."
+            ]
+        },
+        {
+            "name": "longitude",
+            "path": "info.addresses.[i].address.location.longitude",
+            "OptReqSys": "requiredElement",
+            "type": "[i].ELEMENT.ELEMENT.ELEMENT.number",
+            "ruMePath": "coordinates.longitude",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Address's longitude."
+            ]
+        }
+    ]
+}

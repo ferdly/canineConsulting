@@ -1,0 +1,14 @@
+Notes:
+  
+- phones as stringOnly Array WORKS
+- emails as stringOnly Array WORKS
+- addresses:
+  - IS NOT in Member element at all
+  - IS in Contact, array of Objects
+    - NOT supplied Objects
+    - ONE Object Empty other than country:USA
+- labels: 
+  - IS NOT a Member element at all
+  - IS in Contact, array of Strings
+    - NOT supplied String Array
+    - ONE String: "contacts-site_members_request"

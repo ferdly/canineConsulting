@@ -1,0 +1,40 @@
+{
+    "attributeArray": [
+        {
+            "name": "emails",
+            "path": "info.emails",
+            "OptReqSys": "OPTIONAL",
+            "type": "Array.OBJECT.Email",
+            "ruMePath": "email",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "List of up to 50 email addresses."
+            ]
+        },
+        {
+            "name": "phones",
+            "path": "info.phones",
+            "OptReqSys": "OPTIONAL",
+            "type": "Array.OBJECT.Phone",
+            "ruMePath": "",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "List of up to 50 phone numbers."
+            ]
+        },
+        {
+            "name": "addresses",
+            "path": "info.addresses",
+            "OptReqSys": "OPTIONAL",
+            "type": "Array.OBJECT.OBJECT.<Address>",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "List of up to 50 addresses."
+            ]
+        }
+    ]
+}

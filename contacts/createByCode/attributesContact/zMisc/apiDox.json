@@ -1,0 +1,80 @@
+[
+    {
+      "name": "email",
+      "required-optional": "REQUIRED",
+      "type": "string",
+      "description": "The email address to use when registering the user as a site member."
+    },
+    {
+      "name": "password",
+      "required-optional": "REQUIRED",
+      "type": "string",
+      "description": "The password the newly added site member will use to log in."
+    },
+    {
+      "name": "options",
+      "required-optional": "OPTIONAL",
+      "type": "RegistrationOptions",
+      "description": "Registration options."
+    },
+    {
+      "name": "contactInfo",
+      "required-optional": "OPTIONAL",
+      "type": "ContactInfo",
+      "description": "Contact information."
+    },
+    {
+      "name": "firstName",
+      "required-optional": "OPTIONAL",
+      "type": "string",
+      "description": "Contact's first name."
+    },
+    {
+      "name": "lastName",
+      "required-optional": "OPTIONAL",
+      "type": "string",
+      "description": "Contact's last name."
+    },
+    {
+      "name": "picture",
+      "required-optional": "OPTIONAL",
+      "type": "string",
+      "description": "Contact's image source."
+    },
+    {
+      "name": "emails",
+      "required-optional": "OPTIONAL",
+      "type": "Array<string>",
+      "description": "List of contact's email addresses. When creating a contactzCOMMAz if no phone number is providedzCOMMAz at least one email address must be provided."
+    },
+    {
+      "name": "loginEmail",
+      "required-optional": "OPTIONAL",
+      "type": "string",
+      "description": "Email address the contact who is also a member uses to log into the system."
+    },
+    {
+      "name": "phones",
+      "required-optional": "OPTIONAL",
+      "type": "Array<string>",
+      "description": "List of contact's phone numbers. When creating a contactzCOMMAz if no email is providedzCOMMAz at least one phone number must be provided."
+    },
+    {
+      "name": "labels",
+      "required-optional": "OPTIONAL",
+      "type": "Array<string>",
+      "description": "List of contact's labels. Labels are used to organize contacts. When setting the labels propertyzCOMMAz you can only list labels that already exist in your site's Contacts List."
+    },
+    {
+      "name": "language",
+      "required-optional": "OPTIONAL",
+      "type": "string",
+      "description": "Contact's language."
+    },
+    {
+      "name": "customFields",
+      "required-optional": "OPTIONAL",
+      "type": "string | number | Date",
+      "description": "Any number of custom fields. Customs fields are used to store additional information about your site's contacts. When setting a custom fieldzCOMMAz use key:value pairs where the key matches the names defined in your site's Contacts List. You can only set values for custom fields that already exist in the Contacts application."
+    }
+   ]

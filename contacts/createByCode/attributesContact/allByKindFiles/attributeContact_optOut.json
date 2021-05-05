@@ -1,0 +1,42 @@
+{
+    "attributeArray": [
+        {
+            "name": "addressLine1",
+            "path": "info.addresses.[i].address.addressLine1",
+            "OptReqSys": "OPTION",
+            "type": "[i].ELEMENT.ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "Main address line",
+                "usually street and number| as free text."
+            ]
+        },
+        {
+            "name": "e164Phone",
+            "path": "info.phones.[i].e164Phone",
+            "OptReqSys": "OPTIONAL",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "ITU E.164-formatted phone number.",
+                "Automatically generated using phone and countryCode| as long as both of those values are valid."
+            ]
+        },
+        {
+            "name": "countryCode",
+            "path": "info.phones.[i].countryCode",
+            "OptReqSys": "OPTIONAL",
+            "type": "[i].ELEMENT.string",
+            "ruMePath": "NA",
+            "ruMeCode": "",
+            "ruMeNotes": [],
+            "description": [
+                "ISO-3166 alpha-2 country code."
+            ]
+        }
+    ]
+}
