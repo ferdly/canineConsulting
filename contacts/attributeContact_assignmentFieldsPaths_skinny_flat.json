@@ -415,7 +415,7 @@
         {
             "name": "INSTANTIATE_ARRAY",
             "path": "info.addresses",
-            "index": "i",
+            "index": "NNULL",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('[]')",
             "uiKey": "addresses",
