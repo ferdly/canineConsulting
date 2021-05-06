@@ -113,7 +113,7 @@
             "index": "NNULL",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('[]')",
-            "uiKey": "NNULL",
+            "uiKey": "emails",
             "ruMeNotes": []
         },
         {
@@ -274,7 +274,7 @@
             "index": "NNULL",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('[]')",
-            "uiKey": "NNULL",
+            "uiKey": "phones",
             "ruMeNotes": []
         },
         {
@@ -283,7 +283,7 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL|NEVER",
+            "uiKey": "NNULL",
             "ruMeNotes": []
         },
         {
@@ -292,7 +292,7 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "NNULL|NEVER",
             "ruMeNotes": []
         },
         {
@@ -333,7 +333,7 @@
         },
         {
             "name": "_id",
-            "path": "info.phones._id",
+            "path": "info.phones.i._id",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -342,7 +342,7 @@
         },
         {
             "name": "tag",
-            "path": "info.phones.tag",
+            "path": "info.phones.i.tag",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "new String('cell')",
@@ -351,7 +351,7 @@
         },
         {
             "name": "phone",
-            "path": "info.phones.phone",
+            "path": "info.phones.i.phone",
             "index": 0,
             "ruMePath": "cell",
             "ruMeCode": "NNULL",
@@ -360,7 +360,7 @@
         },
         {
             "name": "primary",
-            "path": "info.phones.primary",
+            "path": "info.phones.i.primary",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "eval(true)",
@@ -382,12 +382,12 @@
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULLphone|NEVER",
+            "uiKey": "phone|NEVER",
             "ruMeNotes": []
         },
         {
             "name": "tag",
-            "path": "info.phones.tag",
+            "path": "info.phones.i.tag",
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "new String('home')",
@@ -396,7 +396,7 @@
         },
         {
             "name": "phone",
-            "path": "info.phones.phone",
+            "path": "info.phones.i.phone",
             "index": 1,
             "ruMePath": "phone",
             "ruMeCode": "NNULL",
@@ -405,7 +405,7 @@
         },
         {
             "name": "primary",
-            "path": "info.phones.primary",
+            "path": "info.phones.i.primary",
             "index": 1,
             "ruMePath": "NNULL",
             "ruMeCode": "eval(true)",
@@ -418,7 +418,7 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('[]')",
-            "uiKey": "NNULL",
+            "uiKey": "addresses",
             "ruMeNotes": []
         },
         {
@@ -591,7 +591,7 @@
         },
         {
             "name": "_id",
-            "path": "info.addresses._id",
+            "path": "info.addresses.i._id",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -600,7 +600,7 @@
         },
         {
             "name": "tag",
-            "path": "info.addresses.tag",
+            "path": "info.addresses.i.tag",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "new String('home')",
@@ -609,7 +609,7 @@
         },
         {
             "name": "INSTANTIATE_OBJECT",
-            "path": "info.addresses.address",
+            "path": "info.addresses.i.address",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
@@ -618,7 +618,7 @@
         },
         {
             "name": "formatted",
-            "path": "info.addresses.address.formatted",
+            "path": "info.addresses.i.address.formatted",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
@@ -629,7 +629,7 @@
         },
         {
             "name": "INSTANTIATE_OBJECT",
-            "path": "info.addresses.address.streetAddress",
+            "path": "info.addresses.i.address.streetAddress",
             "index": 0,
             "ruMePath": "NULL",
             "ruMeCode": "eval('{}')",
@@ -640,7 +640,7 @@
         },
         {
             "name": "number",
-            "path": "info.addresses.address.streetAddress.number",
+            "path": "info.addresses.i.address.streetAddress.number",
             "index": 0,
             "ruMePath": "location.street.number",
             "ruMeCode": "NNULL",
@@ -649,7 +649,7 @@
         },
         {
             "name": "name",
-            "path": "info.addresses.address.streetAddress.name",
+            "path": "info.addresses.i.address.streetAddress.name",
             "index": 0,
             "ruMePath": "location.street.name",
             "ruMeCode": "NNULL",
@@ -658,7 +658,7 @@
         },
         {
             "name": "apt",
-            "path": "info.addresses.address.streetAddress.apt",
+            "path": "info.addresses.i.address.streetAddress.apt",
             "index": 0,
             "ruMePath": "location.street.apt",
             "ruMeCode": "NNULL",
@@ -667,7 +667,7 @@
         },
         {
             "name": "addressLine2",
-            "path": "info.addresses.address.addressLine2",
+            "path": "info.addresses.i.address.addressLine2",
             "index": 0,
             "ruMePath": "location.addressLine2",
             "ruMeCode": "NNULL",
@@ -676,7 +676,7 @@
         },
         {
             "name": "city",
-            "path": "info.addresses.address.city",
+            "path": "info.addresses.i.address.city",
             "index": 0,
             "ruMePath": "location.city",
             "ruMeCode": "NNULL",
@@ -685,7 +685,7 @@
         },
         {
             "name": "subdivision",
-            "path": "info.addresses.address.subdivision",
+            "path": "info.addresses.i.address.subdivision",
             "index": 0,
             "ruMePath": "location.subdivision",
             "ruMeCode": "NNULL",
@@ -694,7 +694,7 @@
         },
         {
             "name": "postalCode",
-            "path": "info.addresses.address.postalCode",
+            "path": "info.addresses.i.address.postalCode",
             "index": 0,
             "ruMePath": "location.postalCode",
             "ruMeCode": "NNULL",
@@ -703,7 +703,7 @@
         },
         {
             "name": "country",
-            "path": "info.addresses.address.country",
+            "path": "info.addresses.i.address.country",
             "index": 0,
             "ruMePath": "location.country",
             "ruMeCode": "NNULL",
@@ -712,7 +712,7 @@
         },
         {
             "name": "INSTANTIATE_OBJECT",
-            "path": "info.addresses.address.location",
+            "path": "info.addresses.i.address.location",
             "index": 0,
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
@@ -721,7 +721,7 @@
         },
         {
             "name": "latitude",
-            "path": "info.addresses.address.location.latitude",
+            "path": "info.addresses.i.address.location.latitude",
             "index": 0,
             "ruMePath": "coordinates.latitude",
             "ruMeCode": "NNULL",
@@ -730,7 +730,7 @@
         },
         {
             "name": "longitude",
-            "path": "info.addresses.address.location.longitude",
+            "path": "info.addresses.i.address.location.longitude",
             "index": 0,
             "ruMePath": "coordinates.longitude",
             "ruMeCode": "NNULL",
