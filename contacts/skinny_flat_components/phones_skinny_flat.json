@@ -1,0 +1,148 @@
+{
+    "attributeArray": [
+        {
+            "name": "INSTANTIATE_ARRAY",
+            "path": "info.phones",
+            "index": "NNULL",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('[]')",
+            "uiKey": "phones",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.phones[i]",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "_id",
+            "path": "info.phones._id",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL|NEVER",
+            "ruMeNotes": []
+        },
+        {
+            "name": "tag",
+            "path": "info.phones.tag",
+            "index": "i",
+            "ruMePath": "i-TBD",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "phone",
+            "path": "info.phones.phone",
+            "index": "i",
+            "ruMePath": "i-TBD",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "primary",
+            "path": "info.phones.primary",
+            "index": "i",
+            "ruMePath": "i-TBD",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.phones[i]",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "phoneP",
+            "ruMeNotes": []
+        },
+        {
+            "name": "_id",
+            "path": "info.phones.i._id",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "phoneP|NEVER",
+            "ruMeNotes": []
+        },
+        {
+            "name": "tag",
+            "path": "info.phones.i.tag",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "new String('cell')",
+            "uiKey": "phoneP",
+            "ruMeNotes": []
+        },
+        {
+            "name": "phone",
+            "path": "info.phones.i.phone",
+            "index": 0,
+            "ruMePath": "cell",
+            "ruMeCode": "NNULL",
+            "uiKey": "phoneP",
+            "ruMeNotes": []
+        },
+        {
+            "name": "primary",
+            "path": "info.phones.i.primary",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval(true)",
+            "uiKey": "phoneP",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.phones[i]",
+            "index": 1,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "phone",
+            "ruMeNotes": []
+        },
+        {
+            "name": "_id",
+            "path": "info.phones._id",
+            "index": 1,
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "phone|NEVER",
+            "ruMeNotes": []
+        },
+        {
+            "name": "tag",
+            "path": "info.phones.i.tag",
+            "index": 1,
+            "ruMePath": "NNULL",
+            "ruMeCode": "new String('home')",
+            "uiKey": "phone",
+            "ruMeNotes": []
+        },
+        {
+            "name": "phone",
+            "path": "info.phones.i.phone",
+            "index": 1,
+            "ruMePath": "phone",
+            "ruMeCode": "NNULL",
+            "uiKey": "phone",
+            "ruMeNotes": []
+        },
+        {
+            "name": "primary",
+            "path": "info.phones.i.primary",
+            "index": 1,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval(true)",
+            "uiKey": "phone",
+            "ruMeNotes": []
+        }
+    ]
+}

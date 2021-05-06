@@ -1,0 +1,329 @@
+{
+    "attributeArray": [
+        {
+            "name": "INSTANTIATE_ARRAY",
+            "path": "info.addresses",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('[]')",
+            "uiKey": "addresses",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses[i]",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "_id",
+            "path": "info.addresses._id",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "tag",
+            "path": "info.addresses.tag",
+            "index": "i",
+            "ruMePath": "i-TBD",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses.address",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "formatted",
+            "path": "info.addresses.address.formatted",
+            "index": "i",
+            "ruMePath": "i-TBD",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "streetAddress",
+            "path": "info.addresses.address.streetAddress",
+            "index": "i",
+            "ruMePath": "NULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "NNULL",
+            "ruMeNotes": [
+                "¿maybe not correct eval()?"
+            ]
+        },
+        {
+            "name": "number",
+            "path": "info.addresses.address.streetAddress.number",
+            "index": "i",
+            "ruMePath": "location.street.number",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "name",
+            "path": "info.addresses.address.streetAddress.name",
+            "index": "i",
+            "ruMePath": "location.street.name",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "apt",
+            "path": "info.addresses.address.streetAddress.apt",
+            "index": "i",
+            "ruMePath": "location.street.apt",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "addressLine2",
+            "path": "info.addresses.address.addressLine2",
+            "index": "i",
+            "ruMePath": "NA",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "city",
+            "path": "info.addresses.address.city",
+            "index": "i",
+            "ruMePath": "location.city",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "subdivision",
+            "path": "info.addresses.address.subdivision",
+            "index": "i",
+            "ruMePath": "location.subdivision",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "postalCode",
+            "path": "info.addresses.address.postalCode",
+            "index": "i",
+            "ruMePath": "location.postalCode",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "country",
+            "path": "info.addresses.address.country",
+            "index": "i",
+            "ruMePath": "location.country",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "location",
+            "path": "info.addresses.address",
+            "index": "i",
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "latitude",
+            "path": "info.addresses.address.location.latitude",
+            "index": "i",
+            "ruMePath": "coordinates.latitude",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "longitude",
+            "path": "info.addresses.address.location.longitude",
+            "index": "i",
+            "ruMePath": "coordinates.longitude",
+            "ruMeCode": "NNULL",
+            "uiKey": "NNULL",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses[i]",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "address",
+            "ruMeNotes": [
+                "uiKey is 'address' ",
+                " ↪ regardless of the fact that 'tag' is outside the 'address' object ",
+                " ↪ which is part of the overall 'addresses element object'"
+            ]
+        },
+        {
+            "name": "_id",
+            "path": "info.addresses.i._id",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "address|NEVER",
+            "ruMeNotes": []
+        },
+        {
+            "name": "tag",
+            "path": "info.addresses.i.tag",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "new String('home')",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses.i.address",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "formatted",
+            "path": "info.addresses.i.address.formatted",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": [
+                "lots of fuss, save for later when broad sweep is working"
+            ]
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses.i.address.streetAddress",
+            "index": 0,
+            "ruMePath": "NULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "address",
+            "ruMeNotes": [
+                "¿maybe not correct eval()?"
+            ]
+        },
+        {
+            "name": "number",
+            "path": "info.addresses.i.address.streetAddress.number",
+            "index": 0,
+            "ruMePath": "location.street.number",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "name",
+            "path": "info.addresses.i.address.streetAddress.name",
+            "index": 0,
+            "ruMePath": "location.street.name",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "apt",
+            "path": "info.addresses.i.address.streetAddress.apt",
+            "index": 0,
+            "ruMePath": "location.street.apt",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "addressLine2",
+            "path": "info.addresses.i.address.addressLine2",
+            "index": 0,
+            "ruMePath": "location.addressLine2",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "city",
+            "path": "info.addresses.i.address.city",
+            "index": 0,
+            "ruMePath": "location.city",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "subdivision",
+            "path": "info.addresses.i.address.subdivision",
+            "index": 0,
+            "ruMePath": "location.subdivision",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "postalCode",
+            "path": "info.addresses.i.address.postalCode",
+            "index": 0,
+            "ruMePath": "location.postalCode",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "country",
+            "path": "info.addresses.i.address.country",
+            "index": 0,
+            "ruMePath": "location.country",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "INSTANTIATE_OBJECT",
+            "path": "info.addresses.i.address.location",
+            "index": 0,
+            "ruMePath": "NNULL",
+            "ruMeCode": "eval('{}')",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "latitude",
+            "path": "info.addresses.i.address.location.latitude",
+            "index": 0,
+            "ruMePath": "coordinates.latitude",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        },
+        {
+            "name": "longitude",
+            "path": "info.addresses.i.address.location.longitude",
+            "index": 0,
+            "ruMePath": "coordinates.longitude",
+            "ruMeCode": "NNULL",
+            "uiKey": "address",
+            "ruMeNotes": []
+        }
+    ]
+}
