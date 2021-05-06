@@ -147,16 +147,36 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
 
 }
 
-let addressFormattedParam = wixContact.info.addresses[0];
-let addressFormattedResult = parseFormattedAddress(addressFormattedParam);
-wixContact.info.addresses[0].formatted = addressFormattedResult;
+let addressFormattedParam = wixContact.info.addresses[0].address;
 // console.log(addressFormattedParam);
-// console.log(addressFormattedResult);
+let addressFormattedResult = parseFormattedAddress(addressFormattedParam);
+wixContact.info.addresses[0].address.formatted = addressFormattedResult;
 
 
 
-export function parseFormattedAddress(addressObject){
-    return "PPENDING";
+export function parseFormattedAddress(element){
+    //<formatted>
+    let apt = element.streetAddress.apt;// ?? '';
+    let streetAddress2 = element.addressLine2;// ?? '';
+    streetAddress2 += streetAddress2.length > 0 ? ', ' : '';
+    let formattedString = '';
+    formattedString = element.streetAddress.number;
+    formattedString += ' ';
+    formattedString += element.streetAddress.name;
+    formattedString += ' ';
+    formattedString += apt;
+    formattedString += ', ';
+    formattedString += streetAddress2;
+    formattedString += element.city;
+    formattedString += ', ';
+    formattedString += element.subdivision;
+    formattedString += ' ';
+    formattedString += element.postalCode;
+    formattedString += ', ';
+    formattedString += element.country === 'US' ? 'USA' : element.country;
+    //</formatted>
+    "addressLine2"
+    return formattedString;
 }
 
 
@@ -198,10 +218,10 @@ if (chkbxKeyArray.includes("phones")) {
     originalArray = wixContact.info.phones;
     wixContact.info.phones = originalArray.filter(element => element !== null && element !== undefined);
 }
-// if (chkbxKeyArray.includes("addresses")) {
-//     originalArray = wixContact.info.addresses;
-//     wixContact.info.addresses = originalArray.filter(element => element !== null && element !== undefined);
-// }
+if (chkbxKeyArray.includes("addresses")) {
+    originalArray = wixContact.info.addresses;
+    wixContact.info.addresses = originalArray.filter(element => element !== null && element !== undefined);
+}
 
 console.log(JSON.stringify(wixContact, undefined, 4))
 errorString += 'DEBUG STEPS';
