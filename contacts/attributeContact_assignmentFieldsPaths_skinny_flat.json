@@ -723,7 +723,7 @@
             "name": "latitude",
             "path": "info.addresses.i.address.location.latitude",
             "index": 0,
-            "ruMePath": "coordinates.latitude",
+            "ruMePath": "location.coordinates.latitude",
             "ruMeCode": "NNULL",
             "uiKey": "address",
             "ruMeNotes": []
@@ -732,7 +732,7 @@
             "name": "longitude",
             "path": "info.addresses.i.address.location.longitude",
             "index": 0,
-            "ruMePath": "coordinates.longitude",
+            "ruMePath": "location.coordinates.longitude",
             "ruMeCode": "NNULL",
             "uiKey": "address",
             "ruMeNotes": []
