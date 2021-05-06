@@ -581,7 +581,7 @@
             "path": "info.addresses[i]",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "NNULL",
+            "ruMeCode": "eval('{}')",
             "uiKey": "address",
             "ruMeNotes": [
                 "uiKey is 'address' ",

@@ -10,15 +10,15 @@ let holderString = '';
 let chkbxKeyArray = [];
 chkbxKeyArray.push('first');
 chkbxKeyArray.push('last');
-chkbxKeyArray.push('company');
-chkbxKeyArray.push('jobTitle');
-chkbxKeyArray.push('locale');
-chkbxKeyArray.push('birthdate');
-chkbxKeyArray.push('email');
-chkbxKeyArray.push('emailP');
-chkbxKeyArray.push('phoneP');
-chkbxKeyArray.push('phone');
-// chkbxKeyArray.push('address');
+// chkbxKeyArray.push('company');
+// chkbxKeyArray.push('jobTitle');
+// chkbxKeyArray.push('locale');
+// chkbxKeyArray.push('birthdate');
+// chkbxKeyArray.push('email');
+// chkbxKeyArray.push('emailP');
+// chkbxKeyArray.push('phoneP');
+// chkbxKeyArray.push('phone');
+chkbxKeyArray.push('address');
 //  </UI checkbox emulation commentOut to unCheck>
 //  <instatiate arrays by checking elements>
 let chkEmails = chkbxKeyArray.includes('email') ? true : false;
@@ -154,21 +154,26 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
         default:
             attributeChain = 'wixContact';
             attributeChain += composePathChunkString(element);
-            //<ORIGINAL: before 202106095900>
-            // indexReplaceString = '[' + index + '].';
-            // path = path.replace('.i.', indexReplaceString);
+            console.log('attributeChain: ' + attributeChain);
+            indexReplaceString = '[' + index + '].';
+            path = path.replace('.i.', indexReplaceString);
+            //<ORIGINAL: before SOON>
             if (ruMePath === 'NNA') {
                 value = eval(ruMeCode);
             } else {
-                
+
                 let valueEvalString = "ruMeUser.";
                 valueEvalString += ruMePath;
                 value = eval(valueEvalString);
+                //ø \_ tempted to use the 'composePathChunkString()' here, but
+                //ø    until the source is NOT ruMe...
             }
+            //</ORIGINAL: before SOON>
+            //<ORIGINAL: before 202106095900>
             // evalString = "wixContact." + path + " = \"" + value + "\"";
             //</ORIGINAL: before 202106095900>
             evalString = attributeChain + " = \"" + value + "\"";
-            console.log('evalString: ' + evalString)
+            // console.log('evalString: ' + evalString)
             eval(evalString);
 
             break;
@@ -177,7 +182,7 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
 }
 
 export function composePathChunkString(element = []) {
-// export function composePathChunkString(element = [], whichPath = 'path') {
+    // export function composePathChunkString(element = [], whichPath = 'path') {
     if (!Array.isArray(element)) {
         return;
     }
@@ -191,8 +196,9 @@ export function composePathChunkString(element = []) {
     let attributeChain = "";
     let indexReplaceString = '.' + index + '';
     path = path.replace('[i]', indexReplaceString);
-    let
-        pathSplit = path.split(".");
+    indexReplaceString = '.' + index + '.';
+    path = path.replace('.i.', indexReplaceString);
+    let pathSplit = path.split(".");
     pathSplit.forEach(chunk => {
         if (index === chunk) {
             attributeChain += "[" + chunk + "]";
