@@ -1,0 +1,61 @@
+{ 
+    "info": { 
+        "name": { 
+            "first": "Jamie", 
+            "last": "Schmidt" 
+        }, 
+        "company": "Saddle Associates", 
+        "jobTitle": "Human Resources", 
+        "locale": "en-US", 
+        "birthdate": "1962-07-19", 
+        "emails": [ 
+            { 
+                "tag": "othER", 
+                "email": "jamie.schmidt@example.com" 
+            }, 
+            { 
+                "tag": "Login", 
+                "email": "qiqgroup+jamie@gmail.com", 
+                "primary": "true" 
+            } 
+        ], 
+        "phones": [ 
+            { 
+                "tag": "cell", 
+                "phone": "(408)-813-3232", 
+                "primary": "true" 
+            }, 
+            { 
+                "tag": "home", 
+                "phone": "(283)-320-0081", 
+                "primary": "true" 
+            } 
+        ], 
+        "addresses": [ 
+            { 
+                "tag": "home", 
+                "address": { 
+                    "streetAddress": { 
+                        "number": "8924", 
+                        "name": "Saddle Dr", 
+                        "apt": "312" 
+                    }, 
+                    "addressLine2": "Suite 562", 
+                    "city": "Portland", 
+                    "subdivision": "MT", 
+                    "postalCode": "90405", 
+                    "country": "US", 
+                    "location": { 
+                        "latitude": "51.3730", 
+                        "longitude": "146.7068" 
+                    }, 
+                    "formatted": "8924 Saddle Dr 312, Suite 562, Portland, MT 90405, USA" 
+                } 
+            } 
+        ] 
+    }, 
+    "labelKeys": [ 
+        "40be321580422404", 
+        "smallgoose471" 
+    ] 
+}

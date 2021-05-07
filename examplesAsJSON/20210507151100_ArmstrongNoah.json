@@ -1,0 +1,61 @@
+{ 
+    "info": { 
+        "name": { 
+            "first": "Noah", 
+            "last": "Armstrong" 
+        }, 
+        "company": "Locust College", 
+        "jobTitle": "Maintenance", 
+        "locale": "en-US", 
+        "birthdate": "1978-09-18", 
+        "emails": [ 
+            { 
+                "tag": "othER", 
+                "email": "noah.armstrong@example.com" 
+            }, 
+            { 
+                "tag": "Login", 
+                "email": "qiqgroup+noah@gmail.com", 
+                "primary": "true" 
+            } 
+        ], 
+        "phones": [ 
+            { 
+                "tag": "cell", 
+                "phone": "(291)-582-3867", 
+                "primary": "true" 
+            }, 
+            { 
+                "tag": "home", 
+                "phone": "(830)-366-5089", 
+                "primary": "true" 
+            } 
+        ], 
+        "addresses": [ 
+            { 
+                "tag": "home", 
+                "address": { 
+                    "streetAddress": { 
+                        "number": "9215", 
+                        "name": "Locust Rd", 
+                        "apt": "737" 
+                    }, 
+                    "addressLine2": "Box 500", 
+                    "city": "Hamsburg", 
+                    "subdivision": "NM", 
+                    "postalCode": "48618", 
+                    "country": "US", 
+                    "location": { 
+                        "latitude": "-1.6196", 
+                        "longitude": "-53.3486" 
+                    }, 
+                    "formatted": "9215 Locust Rd 737, Box 500, Hamsburg, NM 48618, USA" 
+                } 
+            } 
+        ] 
+    }, 
+    "labelKeys": [ 
+        "5bcd9a445221856c", 
+        "silvergoose268" 
+    ] 
+} 

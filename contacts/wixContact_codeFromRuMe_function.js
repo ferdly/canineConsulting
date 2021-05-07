@@ -3,18 +3,18 @@
 // let nnullElement = chkbxKeyArray.unshift();
 //  <UI checkbox emulation commentOut to unCheck>
 let chkbxKeyArray = [];
-// chkbxKeyArray.push('labelKeys');
-// chkbxKeyArray.push('first');
+chkbxKeyArray.push('labelKeys');
+chkbxKeyArray.push('first');
 chkbxKeyArray.push('last');
-// chkbxKeyArray.push('company');
-// chkbxKeyArray.push('jobTitle');
-// chkbxKeyArray.push('locale');
-// chkbxKeyArray.push('birthdate');
+chkbxKeyArray.push('company');
+chkbxKeyArray.push('jobTitle');
+chkbxKeyArray.push('locale');
+chkbxKeyArray.push('birthdate');
 chkbxKeyArray.push('email');
-// chkbxKeyArray.push('emailP');
-// chkbxKeyArray.push('phoneP');
+chkbxKeyArray.push('emailP');
+chkbxKeyArray.push('phoneP');
 chkbxKeyArray.push('phone');
-// chkbxKeyArray.push('address');
+chkbxKeyArray.push('address');
 //  </UI checkbox emulation commentOut to unCheck>
 
 //  <instatiate arrays by checking elements>
@@ -48,7 +48,8 @@ console.log(chkbxKeyArray.toString());
 //</UI checkbox emulation>
 
 //<Single for Testing>
-let ruMeUserObject = { gender: "male", name: { title: "Mr", first: "Floyd", last: "Holt" }, location: { street: { number: 5365, name: "Woodland St", apt: "371" }, city: "Elko", state: "California", country: "US", postcode: 13195, coordinates: { latitude: "-32.1370", longitude: "-38.8458" }, timezone: { offset: "-5:00", description: "Eastern Time (US & Canada), Bogota, Lima" }, postalCode: "13195", subdivision: "CA", addressLine2: "Box 122" }, email: "floyd.holt@example.com", login: { uuid: "5638f410-b574-4551-b262-ff4bf4ebfb87", username: "happycat971", password: "buster1", salt: "RwDqvtgU", md5: "9584ff21a6d448905719e2216eb9b976", sha1: "f684942cda707ba52d78af9c104b290d70fc392f", sha256: "fa1c0cd4a1c8927cb9a3a5d2d6b7c6004641a8174faec28643938fdf0921660a" }, dob: { date: "1996-01-15T05:11:36.209Z", age: 25 }, registered: { date: "2006-11-05T22:27:23.562Z", age: 15 }, phone: "(938)-796-5414", cell: "(315)-781-5760", id: { name: "SSN", value: "364-38-2775" }, picture: { large: "https://randomuser.me/api/portraits/men/71.jpg", medium: "https://randomuser.me/api/portraits/med/men/71.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/71.jpg" }, nat: "US", seed: "3628bfbbd09c27aa", locale: "en-US", birthdate: "1996-01-15", company: "Woodland College", jobTitle: "Supervisor", emailPrimary: "qiqgroup+floyd@gmail.com" };
+// let ruMeUserObject = { gender: "male", name: { title: "Mr", first: "Floyd", last: "Holt" }, location: { street: { number: 5365, name: "Woodland St", apt: "371" }, city: "Elko", state: "California", country: "US", postcode: 13195, coordinates: { latitude: "-32.1370", longitude: "-38.8458" }, timezone: { offset: "-5:00", description: "Eastern Time (US & Canada), Bogota, Lima" }, postalCode: "13195", subdivision: "CA", addressLine2: "Box 122" }, email: "floyd.holt@example.com", login: { uuid: "5638f410-b574-4551-b262-ff4bf4ebfb87", username: "happycat971", password: "buster1", salt: "RwDqvtgU", md5: "9584ff21a6d448905719e2216eb9b976", sha1: "f684942cda707ba52d78af9c104b290d70fc392f", sha256: "fa1c0cd4a1c8927cb9a3a5d2d6b7c6004641a8174faec28643938fdf0921660a" }, dob: { date: "1996-01-15T05:11:36.209Z", age: 25 }, registered: { date: "2006-11-05T22:27:23.562Z", age: 15 }, phone: "(938)-796-5414", cell: "(315)-781-5760", id: { name: "SSN", value: "364-38-2775" }, picture: { large: "https://randomuser.me/api/portraits/men/71.jpg", medium: "https://randomuser.me/api/portraits/med/men/71.jpg", thumbnail: "https://randomuser.me/api/portraits/thumb/men/71.jpg" }, nat: "US", seed: "3628bfbbd09c27aa", locale: "en-US", birthdate: "1996-01-15", company: "Woodland College", jobTitle: "Supervisor", emailPrimary: "qiqgroup+floyd@gmail.com" };
+let ruMeUserObject = {gender:"female",name:{title:"Mrs",first:"Jamie",last:"Schmidt"},location:{street:{number:8924,name:"Saddle Dr",apt:"312"},city:"Portland",state:"Montana",country:"US",postcode:90405,coordinates:{latitude:"51.3730",longitude:"146.7068"},timezone:{offset:"+2:00",description:"Kaliningrad, South Africa"},postalCode:"90405",subdivision:"MT",addressLine2:"Suite 562"},email:"jamie.schmidt@example.com",login:{uuid:"6d68ebb8-e274-4353-8dac-565d44d55310",username:"smallgoose471",password:"pacers",salt:"iDroulVY",md5:"21afed9cf0918b156c4ec5054c63dc6d",sha1:"5faa1fee9920094a289ae00a7faaec19eed05881",sha256:"a12a5e0ca1bafe9fddf2a267301e030b71748cdc69191d96c59450ab861a1c3c"},dob:{date:"1962-07-19T11:12:44.405Z",age:59},registered:{date:"2016-12-16T18:55:25.572Z",age:5},phone:"(283)-320-0081",cell:"(408)-813-3232",id:{name:"SSN",value:"577-84-7732"},picture:{large:"https://randomuser.me/api/portraits/women/24.jpg",medium:"https://randomuser.me/api/portraits/med/women/24.jpg",thumbnail:"https://randomuser.me/api/portraits/thumb/women/24.jpg"},nat:"US",seed:"40be321580422404",locale:"en-US",birthdate:"1962-07-19",company:"Saddle Associates",jobTitle:"Human Resources",emailPrimary:"qiqgroup+jamie@gmail.com",developer:{transformedAttributes:[["locale: literal 'en-US'"],["postalCode: ensure 5 and string - left postcode as number"],["birthdate: dob.date to left 10. no change to original"],["subdivision: 2letter version of 'state' - original not removed"],["Company: Street name + random business kind"],["jobTitle: random jobTitle"],["emailPrimary: qiqgroup + firstName - real so that enrollment happens"],["addressLine2: random number and random type"],["street.apt: random number more useful than addressLine2"]]}};
 //</Single for Testing>
 
 let thisRandomUserDotMeJSON = JSON.stringify(ruMeUserObject);
