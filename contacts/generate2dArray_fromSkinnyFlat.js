@@ -3,8 +3,10 @@
 // /*20210505200700*/let partOneFlatSkinnyJSON = "{\"attributeArray\":[{\"name\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"KEY.index\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]},{\"na";
 // /*20210505200700*/let partTwoFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
 // let flatSkinny = JSON.parse(partOneFlatSkinnyJSON + partTwoFlatSkinnyJSON);
-let simplArraysFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
-let simplArraysFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
+let keysInfoFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
+let mainInfoFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
+let simpleArraysFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
+let addressesArrayFlatSkinnyJSON = "me\":\"KEY.name\",\"path\":\"KEY.path\",\"index\":\"i\",\"ruMePath\":\"KEY.ruMePath\",\"ruMeCode\":\"KEY.ruMeCode\",\"uiKey\":\"KEY.uiKey\",\"ruMeNotes\":[\"KEY.ruMeNotes\"]}]}";
 // let flatSkinny = JSON.parse(partOneFlatSkinnyJSON + partTwoFlatSkinnyJSON);
 
 let which = [];
