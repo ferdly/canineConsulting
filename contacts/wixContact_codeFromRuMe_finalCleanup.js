@@ -8,7 +8,7 @@ let holderString = '';
 // let nnullElement = chkbxKeyArray.unshift();
 //  <UI checkbox emulation commentOut to unCheck>
 let chkbxKeyArray = [];
-chkbxKeyArray.push('labelKeys');
+// chkbxKeyArray.push('labelKeys');
 chkbxKeyArray.push('first');
 chkbxKeyArray.push('last');
 chkbxKeyArray.push('company');
@@ -150,8 +150,6 @@ for (let forIndex = 0; forIndex < assinmentPathArray.length; forIndex++) {
 }
 
 let addressFormattedParam = {"instantiated":true};
-// addressFormattedParam = wixContact.info.addresses[0].address ?? {"nnull":true};
-// console.log(addressFormattedParam);
 let doFormattedAddress = false;
 doFormattedAddress = typeof wixContact.info === 'object' && wixContact.info !== null;
 if (doFormattedAddress) {
