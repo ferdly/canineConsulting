@@ -1,0 +1,26 @@
+{
+    "attributeArray": [
+        {
+            "name": "KEY.name",
+            "path": "KEY.path",
+            "index": "KEY.index",
+            "ruMePath": "KEY.ruMePath",
+            "ruMeCode": "KEY.ruMeCode",
+            "uiKey": "KEY.uiKey",
+            "ruMeNotes": [
+                "KEY.ruMeNotes"
+            ]
+        },
+        {
+            "name": "KEY.name",
+            "path": "KEY.path",
+            "index": "i",
+            "ruMePath": "KEY.ruMePath",
+            "ruMeCode": "KEY.ruMeCode",
+            "uiKey": "KEY.uiKey",
+            "ruMeNotes": [
+                "KEY.ruMeNotes"
+            ]
+        }
+   ]
+}

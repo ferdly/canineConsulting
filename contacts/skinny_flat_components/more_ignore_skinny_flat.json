@@ -1,0 +1,48 @@
+{
+    "attributeArray": [
+        {
+            "name": "dog",
+            "path": "animal.pet.dog",
+            "index": "i",
+            "ruMePath": "animalApi.dog",
+            "ruMeCode": "eval('dog')",
+            "uiKey": "pets",
+            "ruMeNotes": [
+                "a not about a dog"
+            ]
+        },
+        {
+            "name": "cat",
+            "path": "animal.pet.cat",
+            "index": "i",
+            "ruMePath": "animalApi.cat",
+            "ruMeCode": "eval('cat')",
+            "uiKey": "pets",
+            "ruMeNotes": [
+                "a not about a cat"
+            ]
+        },
+        {
+            "name": "parakete",
+            "path": "animal.pet.parakete",
+            "index": "i",
+            "ruMePath": "animalApi.parakete",
+            "ruMeCode": "eval('parakete')",
+            "uiKey": "pets",
+            "ruMeNotes": [
+                "a not about a parakete"
+            ]
+        },
+        {
+            "name": "goldFish",
+            "path": "animal.pet.goldFish",
+            "index": "i",
+            "ruMePath": "animalApi.goldFish",
+            "ruMeCode": "eval('goldFish')",
+            "uiKey": "pets",
+            "ruMeNotes": [
+                "a not about a goldFish"
+            ]
+        }
+   ]
+}
