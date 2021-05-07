@@ -175,7 +175,6 @@ export function parseFormattedAddress(element){
     formattedString += ', ';
     formattedString += element.country === 'US' ? 'USA' : element.country;
     //</formatted>
-    "addressLine2"
     return formattedString;
 }
 
