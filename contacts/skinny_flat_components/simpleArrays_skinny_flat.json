@@ -2,6 +2,39 @@
     "attributeArray": [
         {
             "name": "INSTANTIATE_ARRAY",
+            "path": "labelKeys",
+            "index": "NNULL",
+            "ruMePath": "ZXZruMePath",
+            "ruMeCode": "eval('[]')",
+            "uiKey": "labelKeys",
+            "ruMeNotes": [
+                "critical for WiX"
+            ]
+        },
+        {
+            "name": "labelKeys-Seed",
+            "path": "labelKeys.i",
+            "index": 0,
+            "ruMePath": "seed",
+            "ruMeCode": "eval('seed-' + this)",
+            "uiKey": "labelKeys",
+            "ruMeNotes": [
+                "for repeatable ruMe calls"
+            ]
+        },
+        {
+            "name": "labelKeys-Username",
+            "path": "labelKeys.i",
+            "index": 1,
+            "ruMePath": "login.username",
+            "ruMeCode": "eval('username-' + this)",
+            "uiKey": "labelKeys",
+            "ruMeNotes": [
+                "for another label"
+            ]
+        },
+        {
+            "name": "INSTANTIATE_ARRAY",
             "path": "info.emails",
             "index": "NNULL",
             "ruMePath": "NNULL",

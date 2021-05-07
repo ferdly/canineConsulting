@@ -3,8 +3,8 @@
         {
             "name": "INSTANTIATE_ARRAY",
             "path": "info.addresses",
-            "index": "i",
-            "ruMePath": "NNULL",
+            "index": "NNA",
+            "ruMePath": "NNA",
             "ruMeCode": "eval('[]')",
             "uiKey": "addresses",
             "ruMeNotes": []
@@ -13,36 +13,36 @@
             "name": "INSTANTIATE_OBJECT",
             "path": "info.addresses[i]",
             "index": "i",
-            "ruMePath": "NNULL",
-            "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "ruMePath": "NNA",
+            "ruMeCode": "NNA",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
             "name": "_id",
             "path": "info.addresses._id",
             "index": "i",
-            "ruMePath": "NNULL",
+            "ruMePath": "NNA",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
             "name": "tag",
             "path": "info.addresses.tag",
             "index": "i",
-            "ruMePath": "i-TBD",
-            "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "ruMePath": "i-NNA",
+            "ruMeCode": "i-TBD",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
             "name": "INSTANTIATE_OBJECT",
             "path": "info.addresses.address",
             "index": "i",
-            "ruMePath": "NNULL",
+            "ruMePath": "NNA",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -51,16 +51,18 @@
             "index": "i",
             "ruMePath": "i-TBD",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
-            "ruMeNotes": []
+            "uiKey": "address",
+            "ruMeNotes": [
+                "not even a holder, this is done outside of this paradigm"
+            ]
         },
         {
             "name": "streetAddress",
             "path": "info.addresses.address.streetAddress",
             "index": "i",
-            "ruMePath": "NULL",
+            "ruMePath": "NNA",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": [
                 "¿maybe not correct eval()?"
             ]
@@ -71,7 +73,7 @@
             "index": "i",
             "ruMePath": "location.street.number",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -80,7 +82,7 @@
             "index": "i",
             "ruMePath": "location.street.name",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -89,16 +91,16 @@
             "index": "i",
             "ruMePath": "location.street.apt",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
             "name": "addressLine2",
             "path": "info.addresses.address.addressLine2",
             "index": "i",
-            "ruMePath": "NA",
+            "ruMePath": "location.addressLine2",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -107,7 +109,7 @@
             "index": "i",
             "ruMePath": "location.city",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -116,7 +118,7 @@
             "index": "i",
             "ruMePath": "location.subdivision",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -125,7 +127,7 @@
             "index": "i",
             "ruMePath": "location.postalCode",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -134,7 +136,7 @@
             "index": "i",
             "ruMePath": "location.country",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -143,7 +145,7 @@
             "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -152,7 +154,7 @@
             "index": "i",
             "ruMePath": "coordinates.latitude",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -161,7 +163,7 @@
             "index": "i",
             "ruMePath": "coordinates.longitude",
             "ruMeCode": "NNULL",
-            "uiKey": "NNULL",
+            "uiKey": "address",
             "ruMeNotes": []
         },
         {
@@ -207,13 +209,11 @@
         {
             "name": "formatted",
             "path": "info.addresses.i.address.formatted",
-            "index": 0,
+            "index": "i",
             "ruMePath": "NNULL",
             "ruMeCode": "NNULL",
             "uiKey": "address",
-            "ruMeNotes": [
-                "lots of fuss, save for later when broad sweep is working"
-            ]
+            "ruMeNotes": []
         },
         {
             "name": "INSTANTIATE_OBJECT",
