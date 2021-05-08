@@ -2,49 +2,48 @@
 // let chkbxKeyArray = ['NNULL', 'first', 'last', 'company', 'jobTitle', 'locale', 'birthdate', 'email', 'emailP', 'phoneP', 'phone', 'address'];
 // let nnullElement = chkbxKeyArray.unshift();
 //  <UI checkbox emulation commentOut to unCheck>
-let chkbxKeyArray = [];
-chkbxKeyArray.push('labelKeys');
-chkbxKeyArray.push('first');
-chkbxKeyArray.push('last');
-chkbxKeyArray.push('company');
-chkbxKeyArray.push('jobTitle');
-chkbxKeyArray.push('locale');
-chkbxKeyArray.push('birthdate');
-chkbxKeyArray.push('email');
-chkbxKeyArray.push('emailP');
-chkbxKeyArray.push('phoneP');
-chkbxKeyArray.push('phone');
-chkbxKeyArray.push('address');
+let chkbxKeyArrayParam = [];
+chkbxKeyArrayParam.push('labelKeys');
+chkbxKeyArrayParam.push('first');
+chkbxKeyArrayParam.push('last');
+// chkbxKeyArrayParam.push('company');
+chkbxKeyArrayParam.push('jobTitle');
+chkbxKeyArrayParam.push('locale');
+chkbxKeyArrayParam.push('birthdate');
+chkbxKeyArrayParam.push('email');
+chkbxKeyArrayParam.push('emailP');
+chkbxKeyArrayParam.push('phoneP');
+chkbxKeyArrayParam.push('phone');
+chkbxKeyArrayParam.push('address');
 //  </UI checkbox emulation commentOut to unCheck>
 
-//  <instatiate arrays by checking elements>
-//  <NEW>
-chkbxKeyArray.push('following-elements-inferred');
-chkbxKeyArray.push('info');
-// !   \_postpone 'info' until later, manually push
-let chkName = chkbxKeyArray.includes('first') ? true : false;
-chkName = chkbxKeyArray.includes('last') ? true : chkName;
-if (chkName) {
-    chkbxKeyArray.push('name');
-}
-//  </NEW>
-let chkEmails = chkbxKeyArray.includes('email') ? true : false;
-chkEmails = chkbxKeyArray.includes('emailP') ? true : chkEmails;
-if (chkEmails) {
-    chkbxKeyArray.push('emails');
-}
-let chkPhones = chkbxKeyArray.includes('phone') ? true : false;
-chkPhones = chkbxKeyArray.includes('phoneP') ? true : chkPhones;
-if (chkPhones) {
-    chkbxKeyArray.push('phones');
-}
-let chkAddresses = chkbxKeyArray.includes('address') ? true : false;
-// chkAddresses = chkbxKeyArray.includes('addressMoreThanOne') ? true : chkAddresses;
-if (chkAddresses) {
-    chkbxKeyArray.push('addresses');
-}
-console.log(chkbxKeyArray.toString());
-//  </instatiate arrays by checking elements>
+// //  <instatiate arrays by checking elements>
+// //  <minimum>
+// chkbxKeyArrayParam.push('following-elements-inferred');
+// chkbxKeyArrayParam.push('info');
+// //  </minimum>
+// let chkName = chkbxKeyArrayParam.includes('first') ? true : false;
+// chkName = chkbxKeyArrayParam.includes('last') ? true : chkName;
+// if (chkName) {
+//     chkbxKeyArrayParam.push('name');
+// }
+// let chkEmails = chkbxKeyArrayParam.includes('email') ? true : false;
+// chkEmails = chkbxKeyArrayParam.includes('emailP') ? true : chkEmails;
+// if (chkEmails) {
+//     chkbxKeyArrayParam.push('emails');
+// }
+// let chkPhones = chkbxKeyArrayParam.includes('phone') ? true : false;
+// chkPhones = chkbxKeyArrayParam.includes('phoneP') ? true : chkPhones;
+// if (chkPhones) {
+//     chkbxKeyArrayParam.push('phones');
+// }
+// let chkAddresses = chkbxKeyArrayParam.includes('address') ? true : false;
+// // chkAddresses = chkbxKeyArrayParam.includes('addressMoreThanOne') ? true : chkAddresses;
+// if (chkAddresses) {
+//     chkbxKeyArrayParam.push('addresses');
+// }
+// console.log(chkbxKeyArrayParam.toString());
+// //  </instatiate arrays by checking elements>
 //</UI checkbox emulation>
 
 //<Single for Testing>
@@ -55,7 +54,8 @@ let ruMeUserObject = {gender:"female",name:{title:"Mrs",first:"Jamie",last:"Schm
 let thisRandomUserDotMeJSON = JSON.stringify(ruMeUserObject);
 
 let thisParamObject = {};
-thisParamObject.chkbxKeyArray = chkbxKeyArray;
+// thisParamObject.chkbxKeyArray = [];
+thisParamObject.chkbxKeyArray = chkbxKeyArrayParam;
 
 let returnedWixContact = composeWixContactCode(thisRandomUserDotMeJSON, thisParamObject)
 console.log(JSON.stringify(returnedWixContact, undefined, 4))
@@ -69,8 +69,50 @@ console.log(JSON.stringify(returnedWixContact, undefined, 4))
 
 
 export function composeWixContactCode(randomUserDotMeJSON, paramObject) {
-    // ! DELET THIS AND LINE BELOW
+    //  <instatiate arrays by checking elements>
+    //  <minimum>
+    paramObject.chkbxKeyArray.push('following-elements-inferred');
+    paramObject.chkbxKeyArray.push('info');
+    //  </minimum>
+    let chkName = paramObject.chkbxKeyArray.includes('first') ? true : false;
+    chkName = paramObject.chkbxKeyArray.includes('last') ? true : chkName;
+    if (chkName) {
+        paramObject.chkbxKeyArray.push('name');
+    }
+    let chkEmails = paramObject.chkbxKeyArray.includes('email') ? true : false;
+    chkEmails = paramObject.chkbxKeyArray.includes('emailP') ? true : chkEmails;
+    if (chkEmails) {
+        paramObject.chkbxKeyArray.push('emails');
+    }
+    let chkPhones = paramObject.chkbxKeyArray.includes('phone') ? true : false;
+    chkPhones = paramObject.chkbxKeyArray.includes('phoneP') ? true : chkPhones;
+    if (chkPhones) {
+        paramObject.chkbxKeyArray.push('phones');
+    }
+    let chkAddresses = paramObject.chkbxKeyArray.includes('address') ? true : false;
+    // chkAddresses = paramObject.chkbxKeyArray.includes('addressMoreThanOne') ? true : chkAddresses;
+    if (chkAddresses) {
+        paramObject.chkbxKeyArray.push('addresses');
+    }
+    console.log(paramObject.chkbxKeyArray.toString());
+    //  </instatiate arrays by checking elements>
     let wixContact = {};
+    //<devel Instantiate>
+	let devel = true;
+	let devReturnObject = {};
+	devReturnObject.devMessage = 'holder';
+	devReturnObject.devMessageArray = [];
+	let devMessage = '~LINE 21||Instantiated';
+	if(devel === true){
+		devMessage = '~LINE 21||Instantiated';
+		devReturnObject.devMessageArray.push(devMessage);
+		devReturnObject.paramObject = paramObject;
+        devReturnObject.devBoolean = false;
+        // devel = false;
+        // return devReturnObject;
+	}
+	//</devel Instantiate>
+
     let error = false;
     let errorString = '';
     let holderString = '';
@@ -81,16 +123,24 @@ export function composeWixContactCode(randomUserDotMeJSON, paramObject) {
 
 
 
-//<likely Parameterized>
-// /*mainInfo generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"]];
-// /*mainInfo+simpleArrays generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"],["INSTANTIATE_ARRAY","labelKeys","NNULL","ZXZruMePath","eval('[]')","labelKeys"],["labelKeys-Seed","labelKeys.i",0,"seed","eval('seed-' + this)","labelKeys"],["labelKeys-Username","labelKeys.i",1,"login.username","eval('username-' + this)","labelKeys"],["INSTANTIATE_ARRAY","info.emails","NNULL","NNULL","eval('[]')","emails"],["INSTANTIATE_OBJECT","info.emails[i]",0,"NNULL","eval('{}')","email"],["_id","info.emails.i._id",0,"NNULL","NNULL","email|NEVER"],["tag","info.emails.i.tag",0,"NNULL","new String('othER')","email"],["email","info.emails.i.email",0,"email","NNULL","email"],["primary","info.emails.i.primary",0,"NNULL","NNULL","email"],["INSTANTIATE_OBJECT","info.emails[i]",1,"NNULL","eval('{}')","emailP"],["_id","info.emails.i._id",1,"NNULL","NNULL","emailP|NEVER"],["tag","info.emails.i.tag",1,"NNULL","new String('Login')","emailP"],["email","info.emails.i.email",1,"emailPrimary","NNULL","emailP"],["primary","info.emails.i.primary",1,"NNULL","eval(true)","emailP"],["INSTANTIATE_ARRAY","info.phones","NNULL","NNULL","eval('[]')","phones"],["INSTANTIATE_OBJECT","info.phones[i]",0,"NNULL","eval('{}')","phoneP"],["_id","info.phones.i._id",0,"NNULL","NNULL","phoneP|NEVER"],["tag","info.phones.i.tag",0,"NNULL","new String('cell')","phoneP"],["phone","info.phones.i.phone",0,"cell","NNULL","phoneP"],["primary","info.phones.i.primary",0,"NNULL","eval(true)","phoneP"],["INSTANTIATE_OBJECT","info.phones[i]",1,"NNULL","eval('{}')","phone"],["_id","info.phones._id",1,"NNULL","NNULL","phone|NEVER"],["tag","info.phones.i.tag",1,"NNULL","new String('home')","phone"],["phone","info.phones.i.phone",1,"phone","NNULL","phone"],["primary","info.phones.i.primary",1,"NNULL","eval(true)","phone"]];
-/*mainInfo+simpleArrays+addressesArray generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"],["INSTANTIATE_ARRAY","labelKeys","NNULL","ZXZruMePath","eval('[]')","labelKeys"],["labelKeys-Seed","labelKeys.i",0,"seed","eval('seed-' + this)","labelKeys"],["labelKeys-Username","labelKeys.i",1,"login.username","eval('username-' + this)","labelKeys"],["INSTANTIATE_ARRAY","info.emails","NNULL","NNULL","eval('[]')","emails"],["INSTANTIATE_OBJECT","info.emails[i]",0,"NNULL","eval('{}')","email"],["_id","info.emails.i._id",0,"NNULL","NNULL","email|NEVER"],["tag","info.emails.i.tag",0,"NNULL","new String('othER')","email"],["email","info.emails.i.email",0,"email","NNULL","email"],["primary","info.emails.i.primary",0,"NNULL","NNULL","email"],["INSTANTIATE_OBJECT","info.emails[i]",1,"NNULL","eval('{}')","emailP"],["_id","info.emails.i._id",1,"NNULL","NNULL","emailP|NEVER"],["tag","info.emails.i.tag",1,"NNULL","new String('Login')","emailP"],["email","info.emails.i.email",1,"emailPrimary","NNULL","emailP"],["primary","info.emails.i.primary",1,"NNULL","eval(true)","emailP"],["INSTANTIATE_ARRAY","info.phones","NNULL","NNULL","eval('[]')","phones"],["INSTANTIATE_OBJECT","info.phones[i]",0,"NNULL","eval('{}')","phoneP"],["_id","info.phones.i._id",0,"NNULL","NNULL","phoneP|NEVER"],["tag","info.phones.i.tag",0,"NNULL","new String('cell')","phoneP"],["phone","info.phones.i.phone",0,"cell","NNULL","phoneP"],["primary","info.phones.i.primary",0,"NNULL","eval(true)","phoneP"],["INSTANTIATE_OBJECT","info.phones[i]",1,"NNULL","eval('{}')","phone"],["_id","info.phones._id",1,"NNULL","NNULL","phone|NEVER"],["tag","info.phones.i.tag",1,"NNULL","new String('home')","phone"],["phone","info.phones.i.phone",1,"phone","NNULL","phone"],["primary","info.phones.i.primary",1,"NNULL","eval(true)","phone"],["INSTANTIATE_ARRAY","info.addresses","NNA","NNA","eval('[]')","addresses"],["INSTANTIATE_OBJECT","info.addresses[i]",0,"NNULL","eval('{}')","address"],["_id","info.addresses.i._id",0,"NNULL","NNULL","address|NEVER"],["tag","info.addresses.i.tag",0,"NNULL","new String('home')","address"],["INSTANTIATE_OBJECT","info.addresses.i.address",0,"NNULL","eval('{}')","address"],["INSTANTIATE_OBJECT","info.addresses.i.address.streetAddress",0,"NULL","eval('{}')","address"],["number","info.addresses.i.address.streetAddress.number",0,"location.street.number","NNULL","address"],["name","info.addresses.i.address.streetAddress.name",0,"location.street.name","NNULL","address"],["apt","info.addresses.i.address.streetAddress.apt",0,"location.street.apt","NNULL","address"],["addressLine2","info.addresses.i.address.addressLine2",0,"location.addressLine2","NNULL","address"],["city","info.addresses.i.address.city",0,"location.city","NNULL","address"],["subdivision","info.addresses.i.address.subdivision",0,"location.subdivision","NNULL","address"],["postalCode","info.addresses.i.address.postalCode",0,"location.postalCode","NNULL","address"],["country","info.addresses.i.address.country",0,"location.country","NNULL","address"],["INSTANTIATE_OBJECT","info.addresses.i.address.location",0,"NNULL","eval('{}')","address"],["latitude","info.addresses.i.address.location.latitude",0,"location.coordinates.latitude","NNULL","address"],["longitude","info.addresses.i.address.location.longitude",0,"location.coordinates.longitude","NNULL","address"]];
+    //<likely Parameterized>
+    // /*mainInfo generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"]];
+    // /*mainInfo+simpleArrays generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"],["INSTANTIATE_ARRAY","labelKeys","NNULL","ZXZruMePath","eval('[]')","labelKeys"],["labelKeys-Seed","labelKeys.i",0,"seed","eval('seed-' + this)","labelKeys"],["labelKeys-Username","labelKeys.i",1,"login.username","eval('username-' + this)","labelKeys"],["INSTANTIATE_ARRAY","info.emails","NNULL","NNULL","eval('[]')","emails"],["INSTANTIATE_OBJECT","info.emails[i]",0,"NNULL","eval('{}')","email"],["_id","info.emails.i._id",0,"NNULL","NNULL","email|NEVER"],["tag","info.emails.i.tag",0,"NNULL","new String('othER')","email"],["email","info.emails.i.email",0,"email","NNULL","email"],["primary","info.emails.i.primary",0,"NNULL","NNULL","email"],["INSTANTIATE_OBJECT","info.emails[i]",1,"NNULL","eval('{}')","emailP"],["_id","info.emails.i._id",1,"NNULL","NNULL","emailP|NEVER"],["tag","info.emails.i.tag",1,"NNULL","new String('Login')","emailP"],["email","info.emails.i.email",1,"emailPrimary","NNULL","emailP"],["primary","info.emails.i.primary",1,"NNULL","eval(true)","emailP"],["INSTANTIATE_ARRAY","info.phones","NNULL","NNULL","eval('[]')","phones"],["INSTANTIATE_OBJECT","info.phones[i]",0,"NNULL","eval('{}')","phoneP"],["_id","info.phones.i._id",0,"NNULL","NNULL","phoneP|NEVER"],["tag","info.phones.i.tag",0,"NNULL","new String('cell')","phoneP"],["phone","info.phones.i.phone",0,"cell","NNULL","phoneP"],["primary","info.phones.i.primary",0,"NNULL","eval(true)","phoneP"],["INSTANTIATE_OBJECT","info.phones[i]",1,"NNULL","eval('{}')","phone"],["_id","info.phones._id",1,"NNULL","NNULL","phone|NEVER"],["tag","info.phones.i.tag",1,"NNULL","new String('home')","phone"],["phone","info.phones.i.phone",1,"phone","NNULL","phone"],["primary","info.phones.i.primary",1,"NNULL","eval(true)","phone"]];
+    /*mainInfo+simpleArrays+addressesArray generate2dArray_fromSkinnyFlat.js: 20210507130500*/ let assinmentPathArray = [["KEY.name","KEY.path","KEY.index","KEY.ruMePath","KEY.ruMeCode","KEY.uiKey"],["email","primaryInfo.email","NNULL","NNULL","NNULL","primaryInfo"],["phone","primaryInfo.phone","NNULL","NNULL","NNULL","primaryInfo"],["INSTANTIATE_OBJECT","info","NNULL","NULL","eval('{}')","info"],["INSTANTIATE_OBJECT","info.name","NNULL","name.first","eval('{}')","name"],["first","info.name.first","NNULL","name.first","NNULL","first"],["last","info.name.last","NNULL","name.last","NNULL","last"],["company","info.company","NNULL","company","NNULL","company"],["jobTitle","info.jobTitle","NNULL","jobTitle","NNULL","jobTitle"],["locale","info.locale","NNULL","locale","NNULL","locale"],["birthdate","info.birthdate","NNULL","birthdate","NNULL","birthdate"],["INSTANTIATE_ARRAY","labelKeys","NNULL","ZXZruMePath","eval('[]')","labelKeys"],["labelKeys-Seed","labelKeys.i",0,"seed","eval('seed-' + this)","labelKeys"],["labelKeys-Username","labelKeys.i",1,"login.username","eval('username-' + this)","labelKeys"],["INSTANTIATE_ARRAY","info.emails","NNULL","NNULL","eval('[]')","emails"],["INSTANTIATE_OBJECT","info.emails[i]",0,"NNULL","eval('{}')","email"],["_id","info.emails.i._id",0,"NNULL","NNULL","email|NEVER"],["tag","info.emails.i.tag",0,"NNULL","new String('othER')","email"],["email","info.emails.i.email",0,"email","NNULL","email"],["primary","info.emails.i.primary",0,"NNULL","NNULL","email"],["INSTANTIATE_OBJECT","info.emails[i]",1,"NNULL","eval('{}')","emailP"],["_id","info.emails.i._id",1,"NNULL","NNULL","emailP|NEVER"],["tag","info.emails.i.tag",1,"NNULL","new String('Login')","emailP"],["email","info.emails.i.email",1,"emailPrimary","NNULL","emailP"],["primary","info.emails.i.primary",1,"NNULL","eval(true)","emailP"],["INSTANTIATE_ARRAY","info.phones","NNULL","NNULL","eval('[]')","phones"],["INSTANTIATE_OBJECT","info.phones[i]",0,"NNULL","eval('{}')","phoneP"],["_id","info.phones.i._id",0,"NNULL","NNULL","phoneP|NEVER"],["tag","info.phones.i.tag",0,"NNULL","new String('cell')","phoneP"],["phone","info.phones.i.phone",0,"cell","NNULL","phoneP"],["primary","info.phones.i.primary",0,"NNULL","eval(true)","phoneP"],["INSTANTIATE_OBJECT","info.phones[i]",1,"NNULL","eval('{}')","phone"],["_id","info.phones._id",1,"NNULL","NNULL","phone|NEVER"],["tag","info.phones.i.tag",1,"NNULL","new String('home')","phone"],["phone","info.phones.i.phone",1,"phone","NNULL","phone"],["primary","info.phones.i.primary",1,"NNULL","eval(true)","phone"],["INSTANTIATE_ARRAY","info.addresses","NNA","NNA","eval('[]')","addresses"],["INSTANTIATE_OBJECT","info.addresses[i]",0,"NNULL","eval('{}')","address"],["_id","info.addresses.i._id",0,"NNULL","NNULL","address|NEVER"],["tag","info.addresses.i.tag",0,"NNULL","new String('home')","address"],["INSTANTIATE_OBJECT","info.addresses.i.address",0,"NNULL","eval('{}')","address"],["INSTANTIATE_OBJECT","info.addresses.i.address.streetAddress",0,"NULL","eval('{}')","address"],["number","info.addresses.i.address.streetAddress.number",0,"location.street.number","NNULL","address"],["name","info.addresses.i.address.streetAddress.name",0,"location.street.name","NNULL","address"],["apt","info.addresses.i.address.streetAddress.apt",0,"location.street.apt","NNULL","address"],["addressLine2","info.addresses.i.address.addressLine2",0,"location.addressLine2","NNULL","address"],["city","info.addresses.i.address.city",0,"location.city","NNULL","address"],["subdivision","info.addresses.i.address.subdivision",0,"location.subdivision","NNULL","address"],["postalCode","info.addresses.i.address.postalCode",0,"location.postalCode","NNULL","address"],["country","info.addresses.i.address.country",0,"location.country","NNULL","address"],["INSTANTIATE_OBJECT","info.addresses.i.address.location",0,"NNULL","eval('{}')","address"],["latitude","info.addresses.i.address.location.latitude",0,"location.coordinates.latitude","NNULL","address"],["longitude","info.addresses.i.address.location.longitude",0,"location.coordinates.longitude","NNULL","address"]];
     //</likely Parameterized>
 
     let doxKeyElement = assinmentPathArray[0];
     let copystring = doxKeyElement.toString()
     if (doxKeyElement.toString() === "KEY.name,KEY.path,KEY.index,KEY.ruMePath,KEY.ruMeCode,KEY.uiKey") {
-        doxKeyElement = assinmentPathArray.shift();
+        let dropKeyElement = assinmentPathArray.shift();
+		if(devel === true){
+			devMessage =  "~LINE 42|| doxKeyElement)";
+			devReturnObject.devMessage = devMessage;
+			devReturnObject.devMessageArray.push(devMessage);
+			devReturnObject.element = doxKeyElement;
+            devel = false;
+			// return devReturnObject;
+		}
     }
     let element = assinmentPathArray[0];
     let name = '';
@@ -114,8 +164,18 @@ export function composeWixContactCode(randomUserDotMeJSON, paramObject) {
         uiKey = element[5];
         let uiKeyUnChecked = true;
         uiKeyUnChecked = uiKey === 'NNULL' ? false : uiKeyUnChecked;
-        uiKeyUnChecked = chkbxKeyArray.includes(uiKey) === true ? false : uiKeyUnChecked;
-        value = "as" + name.toUpperCase();
+        uiKeyUnChecked = paramObject.chkbxKeyArray.includes(uiKey) === true ? false : uiKeyUnChecked;
+        if(devel === true){
+			devReturnObject.devBoolean = paramObject.chkbxKeyArray.includes('company');
+			devMessage =  devReturnObject.devBoolean ? 'TTRUE' : 'FFALSE';
+			devMessage =  "~LINE 82|| paramObject.chkbxKeyArray 'company' " + devMessage;
+			devReturnObject.devMessage = devMessage;
+			devReturnObject.devMessageArray.push(devMessage);
+			devReturnObject.element = element;
+            devel = false;
+			// return devReturnObject;
+		}
+        value = "as" + name.toUpperCase();//cow-catcher value
         //<KLUDGEY: but double-check if not corrected in 2d Array>
         //ø    \_ I mean, it is good to have just one word for 'NNULL'
         let overloadPath = ruMePath === 'NNULL' && ruMeCode !== 'NNULL' ? true : false;
@@ -216,15 +276,15 @@ export function composeWixContactCode(randomUserDotMeJSON, paramObject) {
     }
 
     let originalArray = [];
-    if (chkbxKeyArray.includes("emails")) {
+    if (paramObject.chkbxKeyArray.includes("emails")) {
         originalArray = wixContact.info.emails;
         wixContact.info.emails = originalArray.filter(element => element !== null && element !== undefined);
     }
-    if (chkbxKeyArray.includes("phones")) {
+    if (paramObject.chkbxKeyArray.includes("phones")) {
         originalArray = wixContact.info.phones;
         wixContact.info.phones = originalArray.filter(element => element !== null && element !== undefined);
     }
-    if (chkbxKeyArray.includes("addresses")) {
+    if (paramObject.chkbxKeyArray.includes("addresses")) {
         originalArray = wixContact.info.addresses;
         wixContact.info.addresses = originalArray.filter(element => element !== null && element !== undefined);
     }
