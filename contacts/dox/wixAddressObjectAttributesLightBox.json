@@ -2,68 +2,170 @@
     "notes": [
         "inert button for 'US' country",
         "'formatted' changed to 'PPENDING' until the optimum time to run the formattedFunction()",
-        "leaving both'streetAddress.apt' and 'addressLine2' until I know how wix handles the two"
+        "leaving both'streetAddress.apt' and 'addressLine2' until I know how wix handles the two",
+        "'SPLIT' indicates that an algorithm is going to handle these values, but there is a form element for the three",
+        "it isn't being 'skipped' for an algorithm, but it is being SPLIT by an algorithm",
+        "'apt' is being 'skipped' until determination of apt/addressLine2 is complete",
+        "for 'formatted'-'validation' the validation is the algorithm, watch and tweak"
     ],
     "wixContactAddressElementArray": [
         {
             "path": "tag",
-            "wixFormId": "#Tag",
-            "status": "inprogress"
+            "wixFormId": "#addrssTag",
+            "statusLayout": "complete",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "ZXZ"
+            ],
+            "statusSpecial": [
+                "ZXZ"
+            ]
         },
         {
             "path": "streetAddress.number",
-            "wixFormId": "#StreetAddressNumber",
-            "status": "pending"
+            "wixFormId": "#addrssStreetAddress",
+            "statusLayout": "complete",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "use .split(' ') etc"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         },
         {
             "path": "streetAddress.name",
-            "wixFormId": "#StreetAddressName",
-            "status": "pending"
+            "wixFormId": "#addrssStreetAddressSPLIT",
+            "statusLayout": "na",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "see above"
+            ],
+            "statusSpecial": [
+                "na"
+            ]
         },
         {
             "path": "streetAddress.apt",
-            "wixFormId": "#StreetAddressApt",
-            "status": "pending"
+            "wixFormId": "#addrssStreetAddressSPLIT",
+            "statusLayout": "na",
+            "statusValidation": "ZXZ",
+            "validation": "ZXZ",
+            "special": [
+                "see above",
+                "watch for status"
+            ],
+            "statusSpecial": [
+                "na",
+                "pending"
+            ]
         },
         {
             "path": "addressLine2",
-            "wixFormId": "#AddressLine2",
-            "status": "pending"
+            "wixFormId": "#addrssAddressLine2",
+            "statusLayout": "complete",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "watch for status"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         },
         {
             "path": "city",
-            "wixFormId": "#City",
-            "status": "pending"
+            "wixFormId": "#addrssCity",
+            "statusLayout": "complete",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "ZXZ"
+            ],
+            "statusSpecial": [
+                "ZXZ"
+            ]
         },
         {
             "path": "subdivision",
-            "wixFormId": "#Subdivision",
-            "status": "inprogress"
+            "wixFormId": "#addrssSubdivision",
+            "statusLayout": "complete",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "ZXZ"
+            ],
+            "statusSpecial": [
+                "ZXZ"
+            ]
         },
         {
             "path": "postalCode",
-            "wixFormId": "#PostalCode",
-            "status": "pending"
+            "wixFormId": "#addrssPostalCode",
+            "statusLayout": "complete",
+            "validation": "5-digit numeric",
+            "statusValidation": "pending",
+            "special": [
+                "ZXZ"
+            ],
+            "statusSpecial": [
+                "ZXZ"
+            ]
         },
         {
             "path": "location.latitude",
-            "wixFormId": "#LocationLatitude",
-            "status": "pending"
+            "wixFormId": "#addrssLocationLatitude",
+            "statusLayout": "complete",
+            "validation": "numeric (range?)",
+            "statusValidation": "pending",
+            "special": [
+                "local lookup json"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         },
         {
             "path": "location.longitude",
-            "wixFormId": "#LocationLongitude",
-            "status": "pending"
+            "wixFormId": "#addrssLocationLongitude",
+            "statusLayout": "complete",
+            "validation": "numeric (range?)",
+            "statusValidation": "pending",
+            "special": [
+                "local lookup json"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         },
         {
             "path": "country",
-            "wixFormId": "#KKONSTANT",
-            "status": "pending"
+            "wixFormId": "ZXZ#KKONSTANT",
+            "statusLayout": "complete",
+            "validation": "NA",
+            "statusValidation": "ZXZ",
+            "special": [
+                "Literal Overload in code"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         },
         {
             "path": "formatted",
-            "wixFormId": "#AALGORITHM",
-            "status": "na"
+            "wixFormId": "ZXZ#AALGORITHM",
+            "statusLayout": "na",
+            "validation": "NA",
+            "statusValidation": "ZXZ",
+            "special": [
+                "overload to 'PPENDING' until..."
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
         }
     ]
 }
