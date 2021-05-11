@@ -1,0 +1,69 @@
+{
+    "notes": [
+        "inert button for 'US' country",
+        "'formatted' changed to 'PPENDING' until the optimum time to run the formattedFunction()",
+        "leaving both'streetAddress.apt' and 'addressLine2' until I know how wix handles the two"
+    ],
+    "wixContactAddressElementArray": [
+        {
+            "path": "tag",
+            "wixFormId": "#Tag",
+            "status": "inprogress"
+        },
+        {
+            "path": "streetAddress.number",
+            "wixFormId": "#StreetAddressNumber",
+            "status": "pending"
+        },
+        {
+            "path": "streetAddress.name",
+            "wixFormId": "#StreetAddressName",
+            "status": "pending"
+        },
+        {
+            "path": "streetAddress.apt",
+            "wixFormId": "#StreetAddressApt",
+            "status": "pending"
+        },
+        {
+            "path": "addressLine2",
+            "wixFormId": "#AddressLine2",
+            "status": "pending"
+        },
+        {
+            "path": "city",
+            "wixFormId": "#City",
+            "status": "pending"
+        },
+        {
+            "path": "subdivision",
+            "wixFormId": "#Subdivision",
+            "status": "inprogress"
+        },
+        {
+            "path": "postalCode",
+            "wixFormId": "#PostalCode",
+            "status": "pending"
+        },
+        {
+            "path": "location.latitude",
+            "wixFormId": "#LocationLatitude",
+            "status": "pending"
+        },
+        {
+            "path": "location.longitude",
+            "wixFormId": "#LocationLongitude",
+            "status": "pending"
+        },
+        {
+            "path": "country",
+            "wixFormId": "#KKONSTANT",
+            "status": "pending"
+        },
+        {
+            "path": "formatted",
+            "wixFormId": "#AALGORITHM",
+            "status": "na"
+        },
+    ]
+}

@@ -12,9 +12,20 @@
             ]
         },
         {
-            "name": "labelKeys-Seed",
+            "name": "labelKeys-Gender",
             "path": "labelKeys.i",
             "index": 0,
+            "ruMePath": "gender",
+            "ruMeCode": "eval('gender-' + this)",
+            "uiKey": "labelKeys",
+            "ruMeNotes": [
+                "for repeatable ruMe calls"
+            ]
+        },
+        {
+            "name": "labelKeys-Seed",
+            "path": "labelKeys.i",
+            "index": 1,
             "ruMePath": "seed",
             "ruMeCode": "eval('seed-' + this)",
             "uiKey": "labelKeys",
@@ -25,7 +36,7 @@
         {
             "name": "labelKeys-Username",
             "path": "labelKeys.i",
-            "index": 1,
+            "index": 2,
             "ruMePath": "login.username",
             "ruMeCode": "eval('username-' + this)",
             "uiKey": "labelKeys",

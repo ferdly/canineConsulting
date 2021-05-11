@@ -1,0 +1,68 @@
+{
+    "emailTagOptions": [
+        {
+            "label": "Other",
+            "value": "UNTAGGED"
+        },
+        {
+            "label": "Main",
+            "value": "MAIN"
+        },
+        {
+            "label": "Home",
+            "value": "HOME"
+        },
+        {
+            "label": "Work",
+            "value": "WORK"
+        }
+    ],
+    "phoneTagOptions": [
+        {
+            "label": "Other",
+            "value": "UNTAGGED"
+        },
+        {
+            "label": "Main",
+            "value": "MAIN"
+        },
+        {
+            "label": "Home",
+            "value": "HOME"
+        },
+        {
+            "label": "Cell",
+            "value": "MOBILE"
+        },
+        {
+            "label": "Work",
+            "value": "WORK"
+        },
+        {
+            "label": "Fax",
+            "value": "FAX"
+        }
+    ],
+    "addressTagOptions": [
+        {
+            "label": "Other",
+            "value": "UNTAGGED"
+        },
+        {
+            "label": "Home",
+            "value": "HOME"
+        },
+        {
+            "label": "Work",
+            "value": "WORK"
+        },
+        {
+            "label": "Billing",
+            "value": "BILLING"
+        },
+        {
+            "label": "Shipping",
+            "value": "SHIPPING"
+        }
+    ]
+}
