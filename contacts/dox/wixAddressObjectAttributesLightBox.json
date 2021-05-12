@@ -167,5 +167,49 @@
                 "pending"
             ]
         }
+    ],
+    "wixContactLabelKeysElementArray": [
+        {
+            "path": "labelKeys",
+            "wixFormId": "#labelKeys",
+            "statusLayout": "pending",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [],
+            "statusSpecial": []
+        }
+    ],
+    "wixContactEmailPhoneElementArray": [
+        {
+            "path": "info.KKINDS.VVALUE",
+            "wixFormId": "#phemValue",
+            "statusLayout": "pending",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [],
+            "statusSpecial": []
+        },
+        {
+            "path": "info.KKINDS.tag",
+            "wixFormId": "#phemTag",
+            "statusLayout": "pending",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [],
+            "statusSpecial": []
+        },
+        {
+            "path": "info.KKINDS.primary",
+            "wixFormId": "#phemPrimary",
+            "statusLayout": "pending",
+            "validation": "ZXZ",
+            "statusValidation": "ZXZ",
+            "special": [
+                "true or no element"
+            ],
+            "statusSpecial": [
+                "pending"
+            ]
+        }
     ]
 }
