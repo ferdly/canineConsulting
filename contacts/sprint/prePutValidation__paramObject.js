@@ -20,16 +20,25 @@ testParamObject.errors = [];
 // ø <---------- <Email>  ---------->
 testParamObject.testingData.action = 'preDo Validate';
 testParamObject.testingData.kind = 'emails';
-testParamObject.testingData.email = "bradlowry@gmail.com";
-testParamObject.testingData.isValidHypothesis = true;
-testParamObject.testingData.scenarioDescr = "my email";
+// ø <----- <Scenario>  ----->
+// testParamObject.testingData.email = "bradlowry@gmail.com";
+// testParamObject.testingData.isValidHypothesis = true;
+// testParamObject.testingData.scenarioDescr = "my email";
+// ø <----- </Scenario> ----->
+// ø <----- <Scenario>  ----->
+testParamObject.testingData.email = "bradlowrygmail.com";
+// testParamObject.testingData.email = "@gmail.com";
+// testParamObject.testingData.email = "bradlowry@gmailcom";
+testParamObject.testingData.isValidHypothesis = false;
+testParamObject.testingData.scenarioDescr = "my email with three fails";
+// ø <----- </Scenario> ----->
 // ø <---------- </Email> ---------->
 // ø <-------------------- </Test Scenarios> -------------------->
 
 // ! <-------------------- <do Call>  -------------------->
 prePutValidation(testParamObject);
 // ! COULD BE an object method:
-if(testParamObject.isValid === testParamObject.isValidHypothesis){
+if(testParamObject.isValid === testParamObject.testingData.isValidHypothesis){
     testParamObject.testingData.result = true;
     testParamObject.testingData.resultDescr = 'Hypothesis succeeded: email is Valid';
 }else{
@@ -62,7 +71,7 @@ export function prePutValidation(paramObject = {}) {
             let errATzero = locationAT === 0 ? true : false;
             let errNoDOT = locationDOT < 0 ? true : false;
             isValid = errNoAT ? false : isValid;
-            if(errNoAT){isValidNOTlog.push('errNoAt')};
+            if(errNoAT){isValidNOTlog.push('errNoAT')};
             isValid = errATzero ? false : isValid;
             if(errATzero){isValidNOTlog.push('errATzero')};
             isValid = errNoDOT ? false : isValid;
@@ -89,5 +98,7 @@ export function prePutValidation(paramObject = {}) {
             paramObject.logs.push(messageThis);
                 break;
     }
-    paramObject.isValid;
+    paramObject.testingData.isValid = isValid;
+    paramObject.isValid = isValid;
+    paramObject.errors = isValidNOTlog;
 }//END lightboxCoreSwitchSkeleton(paramObject = {})

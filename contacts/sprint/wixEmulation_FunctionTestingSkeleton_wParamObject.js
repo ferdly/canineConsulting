@@ -22,15 +22,18 @@ testParamObject.testingData.action = 'preDo Validate';
 testParamObject.testingData.kind = 'emails';
 // ø <----- <Scenario>  ----->
 // testParamObject.testingData.email = "bradlowry@gmail.com";
-// testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "my email";
+testParamObject.testingData.email = "brad.lowry@g.mail.com";
+testParamObject.testingData.isValidHypothesis = true;
+testParamObject.testingData.scenarioDescr = "my email, with multiple DOTs for atDOT";
 // ø <----- </Scenario> ----->
 // ø <----- <Scenario>  ----->
-testParamObject.testingData.email = "bradlowrygmail.com";
+// testParamObject.testingData.email = "ZZZZ_BASE_ZZZZbradlowry@gmail.com";
+// testParamObject.testingData.email = "bradlowrygmail.com";
 // testParamObject.testingData.email = "@gmail.com";
-// testParamObject.testingData.email = "bradlowry@gmailcom";
-testParamObject.testingData.isValidHypothesis = false;
-testParamObject.testingData.scenarioDescr = "my email with three fails";
+// testParamObject.testingData.email = "brad.lowry@gmailcom";
+// testParamObject.testingData.email = "brad@lowry@gmail.com";
+// testParamObject.testingData.isValidHypothesis = false;
+// testParamObject.testingData.scenarioDescr = "my email with three fails";
 // ø <----- </Scenario> ----->
 // ø <---------- </Email> ---------->
 // ø <-------------------- </Test Scenarios> -------------------->
@@ -40,10 +43,10 @@ prePutValidation(testParamObject);
 // ! COULD BE an object method:
 if(testParamObject.isValid === testParamObject.testingData.isValidHypothesis){
     testParamObject.testingData.result = true;
-    testParamObject.testingData.resultDescr = 'Hypothesis succeeded: email is Valid';
+    testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected Result: ' + testParamObject.testingData.isValidHypothesis.toString();
 }else{
     testParamObject.testingData.result = true;
-    testParamObject.testingData.resultDescr = 'Hypothesis failed: email is Not Valid';
+    testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected Result: ' + testParamObject.isValid.toString();
 }
 console.warn(testParamObject.testingData.resultDescr);
 console.warn('testParamObject: ');
@@ -66,7 +69,7 @@ export function prePutValidation(paramObject = {}) {
             // let email = $w('#phemValue').value;
             let email = paramObject.testingData.email;
             let locationAT = email.indexOf('@');
-            let locationDOT = email.indexOf('.',email.indexOf('@'));
+            let locationDOT = email.indexOf('.',locationAT);
             let errNoAT = locationAT < 0 ? true : false;
             let errATzero = locationAT === 0 ? true : false;
             let errNoDOT = locationDOT < 0 ? true : false;
