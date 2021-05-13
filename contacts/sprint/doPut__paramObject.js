@@ -66,11 +66,11 @@ export function doPut(paramObject = {}){
                 let streetRaw = $w('#addrssStreetAddress').value;
                 let streetSplit = streetRaw.split(' ');
                 let streetNumber = streetSplit.shift();
-                let streetAptMaybe = streetSplit[streetSplit.length - 1];
-                let streetApt = '';
-                if(/^\d+$/.test(streetAptMaybe)){
-                    streetApt = streetSplit.pop();
-                }
+                // let streetAptMaybe = streetSplit[streetSplit.length - 1];
+                // let streetApt = '';
+                // if(/^\d+$/.test(streetAptMaybe)){
+                //     streetApt = streetSplit.pop();
+                // }
                 let streetName = streetSplit.join(' ');
                 // console.warn('streetNumber: ' + streetNumber);
                 // console.warn('streetName: ' + streetName);
@@ -79,9 +79,9 @@ export function doPut(paramObject = {}){
     
                 paramObject.new_updatedElement.address.streetAddress.number = streetNumber
                 paramObject.new_updatedElement.address.streetAddress.name = streetName;
-                paramObject.new_updatedElement.address.streetAddress.apt = streetApt;
+                // paramObject.new_updatedElement.address.streetAddress.apt = streetApt;
                 if($w('#addrssAddressLine2').value.trim().length > 0){
-                    paramObject.new_updatedElement.addressLine2 = $w('#addrssAddressLine2').value;
+                    paramObject.new_updatedElement.address.addressLine2 = $w('#addrssAddressLine2').value;
                 }
                 paramObject.new_updatedElement.address.city = $w('#addrssCity').value;
                 paramObject.new_updatedElement.address.subdivision = $w('#addrssSubdivision').value;
