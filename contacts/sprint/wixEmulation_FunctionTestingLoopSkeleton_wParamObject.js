@@ -53,91 +53,100 @@ testParamObject.errors = [];
 // ø <---------- </Core Implementation> ---------->
 // ø <-------------------- <LoadPreBuilt Scenarios>  -------------------->
 let testParamObjectArray = [];
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"bradlowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"brad.lowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email with early DOT"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"tim.walz@governor.us.mn.gov",isValidHypothesis:!0,scenarioDescr:"Gov. Walz with multiple DOTs"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynmansteamda.com",isValidHypothesis:!1,scenarioDescr:"No AT (@)"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"@steamda.com",isValidHypothesis:!1,scenarioDescr:"AT (@) at beginning"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynman@steamdacom",isValidHypothesis:!1,scenarioDescr:"No DOT (.) after AT"});
+// ø <---------- <Email>  ---------->
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"bradlowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email"});
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"brad.lowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email with early DOT"});
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"tim.walz@governor.us.mn.gov",isValidHypothesis:!0,scenarioDescr:"Gov. Walz with multiple DOTs"});
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynmansteamda.com",isValidHypothesis:!1,scenarioDescr:"No AT (@)"});
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"@steamda.com",isValidHypothesis:!1,scenarioDescr:"AT (@) at beginning"});
+testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynman@steamdacom",isValidHypothesis:!1,scenarioDescr:"No DOT (.) after AT"});
 testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard@feynman@steamda.com",isValidHypothesis:!1,scenarioDescr:"multiple ATs"});
-// testParamObject.unExpectedResultArray = [];
-testParamObject.unExpectedResultArray = [];
-testParamObject.testingData = testParamObjectArray[0];
-console.warn(testParamObjectArray);
+// ø <---------- </Email> ---------->
+// testParamObject.UnExpectedResultArray = [];
+testParamObject.ExpectedResultArray = [];
+testParamObject.UnExpectedResultArray = [];
+// testParamObject.testingData = testParamObjectArray[0];
+// console.warn(testParamObjectArray);
 // console.warn(testParamObject);
 // ø <-------------------- </LoadPreBuilt Scenarios> -------------------->
-
-// ! <-------------------- <do Call>  -------------------->
-prePutValidation(testParamObject);
-// ! COULD BE an object method:
-if(testParamObject.testingData.isValid === testParamObject.testingData.isValidHypothesis){
-    testParamObject.testingData.result = true;
-    testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected \'isValid\' Result: ' + testParamObject.testingData.isValidHypothesis.toString();
-}else{
-    testParamObject.testingData.result = true;
-    testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected \'isValid\' Result: ' 
+testParamObjectArray.forEach(testingDataObject => {
+    testParamObject.testingData = testingDataObject;
+    
+    // ! <-------------------- <do Call>  -------------------->
+    prePutValidation(testParamObject);
+    // ! COULD BE an object method:
+    if(testParamObject.testingData.isValid === testParamObject.testingData.isValidHypothesis){
+        testParamObject.testingData.result = true;
+        testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected \'isValid\' Result: ' + testParamObject.testingData.isValidHypothesis.toString();
+        let errorObject = testParamObject.testingData;
+        testParamObject.ExpectedResultArray.push(errorObject);
+    }else{
+        testParamObject.testingData.result = true;
+        testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected \'isValid\' Result: ' 
         + testParamObject.isValid.toString();
         let errorObject = testParamObject.testingData;
+        testParamObject.UnExpectedResultArray.push(errorObject);
         // console.warn('errorObject: ');
         // console.warn(errorObject);
-        console.warn('testParamObjectArray.unExpectedResultArray: ');
-        console.warn(testParamObjectArray.unExpectedResultArray);
-    testParamObject.unExpectedResultArray.push(errorObject);
-}
+        // console.warn('testParamObjectArray.UnExpectedResultArray: ');
+        // console.warn(testParamObjectArray.UnExpectedResultArray);
+    }
+    // ! <-------------------- </do Call> -------------------->
+});
+
 console.warn(testParamObject.testingData.resultDescr);
 // console.warn(testParamObject.testingData.resultDescr);
 testParamObject.testingData = {};
 // testParamObject.
 console.warn('testParamObject: ');
 console.warn(testParamObject);
-    // ! <-------------------- </do Call> -------------------->
         
         
         
-        export function prePutValidation(paramObject = {}) {
-            // let kind = $w('#recievedKind').value;
-            let messageThis = '';
-            let kind = paramObject.testingData.kind;
-            let action = paramObject.testingData.action;
-            let isValid = true;
-            let isValidNOTlog = [];
-            switch (kind) {
-                case 'emails':
-                    messageThis = action + ' | ' + kind
-            paramObject.logs.push(messageThis);
-            // let email = $w('#phemValue').value;
-            let email = paramObject.testingData.email;
-            let locationAT = email.indexOf('@');
-            let locationDOT = email.indexOf('.',locationAT);
-            let errNoAT = locationAT < 0 ? true : false;
-            let errATzero = locationAT === 0 ? true : false;
-            let errNoDOT = locationDOT < 0 ? true : false;
-            isValid = errNoAT ? false : isValid;
-            if(errNoAT){isValidNOTlog.push('errNoAT')};
-            isValid = errATzero ? false : isValid;
-            if(errATzero){isValidNOTlog.push('errATzero')};
-            isValid = errNoDOT ? false : isValid;
-            if(errNoDOT){isValidNOTlog.push('errNoDOT')};
-            break;
-            
+export function prePutValidation(paramObject = {}) {
+    // let kind = $w('#recievedKind').value;
+    let messageThis = '';
+    let kind = paramObject.testingData.kind;
+    let action = paramObject.testingData.action;
+    let isValid = true;
+    let isValidNOTlog = [];
+        switch (kind) {
+            case 'emails':
+                messageThis = action + ' | ' + kind
+                paramObject.logs.push(messageThis);
+                // let email = $w('#phemValue').value;
+                let email = paramObject.testingData.email;
+                let locationAT = email.indexOf('@');
+                let locationDOT = email.indexOf('.',locationAT);
+                let errNoAT = locationAT < 0 ? true : false;
+                let errATzero = locationAT === 0 ? true : false;
+                let errNoDOT = locationDOT < 0 ? true : false;
+                isValid = errNoAT ? false : isValid;
+                if(errNoAT){isValidNOTlog.push('errNoAT')};
+                isValid = errATzero ? false : isValid;
+                if(errATzero){isValidNOTlog.push('errATzero')};
+                isValid = errNoDOT ? false : isValid;
+                if(errNoDOT){isValidNOTlog.push('errNoDOT')};
+                break;
+        
             case 'phones':
-            messageThis = action + ' | ' + kind
-            paramObject.logs.push(messageThis);
-            break;
-            
+                messageThis = action + ' | ' + kind
+                paramObject.logs.push(messageThis);
+                break;
+        
             case 'addresses':
-            messageThis = action + ' | ' + kind
-            paramObject.logs.push(messageThis);
-            break;
-            
+                messageThis = action + ' | ' + kind
+                paramObject.logs.push(messageThis);
+                break;
+        
             case 'labelKeys':
-            messageThis = action + ' | ' + kind
-            paramObject.logs.push(messageThis);
-            break;
-            
+                messageThis = action + ' | ' + kind
+                paramObject.logs.push(messageThis);
+                break;
+        
             default:
-            messageThis = action + ' | ' + kind + ' – is not supported in Switch';
-            paramObject.logs.push(messageThis);
+                messageThis = action + ' | ' + kind + ' – is not supported in Switch';
+                paramObject.logs.push(messageThis);
                 break;
     }
     paramObject.testingData.isValid = isValid;
