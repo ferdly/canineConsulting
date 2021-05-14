@@ -79,24 +79,22 @@ testParamObject.testingData.action = 'preDo Validate';
 testParamObject.testingData.kind = 'addresses';
 // ø <----- <Scenarios Succeed>  ----->
 // ø <---------- <address Attributes>  ---------->
-// testParamObject.testingData.addrssStreetAddress = "315 N 3rd Ave E #101";
-// testParamObject.testingData.city = "Duluth";
-// testParamObject.testingData.postalCode = "55805";
+// testParamObject.testingData.addrssStreetAddress = "     315 N 3rd Ave E #101";
+// testParamObject.testingData.city = "Duluth     ";
+// testParamObject.testingData.postalCode = "    55805     ";
 // ø <---------- </address Attributes> ---------->
 // testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "My Addres (just validated data)";
+// testParamObject.testingData.scenarioDescr = "5 spaces before address, after city and either side of zip";
 // ø <----- </Scenarios Succeed> ----->
 // ø <----- <Scenarios Fail>  ----->
 // ø <---------- <address Attributes>  ---------->
-testParamObject.testingData.addrssStreetAddress = "";
+testParamObject.testingData.addrssStreetAddress = "315 N 3rd Ave E #101";
 testParamObject.testingData.city = "Duluth";
-testParamObject.testingData.postalCode = "55805";
+testParamObject.testingData.postalCode = "5580O";
 // ø <---------- </address Attributes> ---------->
 testParamObject.testingData.isValidHypothesis = false;
-testParamObject.testingData.scenarioDescr = "streetAddress is empty";
+testParamObject.testingData.scenarioDescr = "Zip 5 characters with 1 non-digit after (capital o for fun)";
 // ø <----- </Scenarios Fail> ----->
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
 // ø <---------- </Address> ---------->
 // ø <-------------------- </Test Scenarios> -------------------->
 console.warn('testParamObject.testingData: ');
@@ -136,6 +134,14 @@ throw new Error("Force Halt: ...because");
 // testParamObjectArray.push({action:"preDo Validate",kind:"lableKeys",labelKey:"",isValidHypothesis:!1,scenarioDescr:"just an empty string"});
 // ø <---------- </Label> ---------->
 // ø <---------- <Address>  ---------->
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"     315 N 3rd Ave E #101",city:"Duluth     ",postalCode:"    55805     ",isValidHypothesis:!0,scenarioDescr:"5 spaces before address, after city and either side of zip"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"city is 5 spaces (as empty)"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"558055",isValidHypothesis:!1,scenarioDescr:"Zip too many Digits"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580 5",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with internal space"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"Z55805",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with non-digit before"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580O",isValidHypothesis:!1,scenarioDescr:"Zip 5 characters with 1 non-digit after (capital o for fun)"});
 // ø <---------- </Address> ---------->
 // testParamObject.UnExpectedResultArray = [];
 testParamObject.ExpectedResultArray = [];
