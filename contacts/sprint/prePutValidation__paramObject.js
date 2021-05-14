@@ -13,9 +13,9 @@ if ("environment" === "live") {
 }
 // ø <-------------------- <Test Scenarios>  -------------------->
 // ! <enable for Scenario Building>
-let testParamObjectArray = [];
-let testParamObject = {};
-testParamObject.testingData = {};
+// let testParamObjectArray = [];
+// let testParamObject = {};
+// testParamObject.testingData = {};
 // ! </enable for Scenario Building>
 // ø <---------- <Email>  ---------->
 // testParamObject.testingData.action = 'preDo Validate';
@@ -75,8 +75,8 @@ testParamObject.testingData = {};
 // ø <----- </Scenarios Fail> ----->
 // ø <---------- </Label> ---------->
 // ø <---------- <Address>  ---------->
-testParamObject.testingData.action = 'preDo Validate';
-testParamObject.testingData.kind = 'addresses';
+// testParamObject.testingData.action = 'preDo Validate';
+// testParamObject.testingData.kind = 'addresses';
 // ø <----- <Scenarios Succeed>  ----->
 // ø <---------- <address Attributes>  ---------->
 // testParamObject.testingData.addrssStreetAddress = "     315 N 3rd Ave E #101";
@@ -88,30 +88,30 @@ testParamObject.testingData.kind = 'addresses';
 // ø <----- </Scenarios Succeed> ----->
 // ø <----- <Scenarios Fail>  ----->
 // ø <---------- <address Attributes>  ---------->
-testParamObject.testingData.addrssStreetAddress = "315 N 3rd Ave E #101";
-testParamObject.testingData.city = "Duluth";
-testParamObject.testingData.postalCode = "5580O";
+// testParamObject.testingData.addrssStreetAddress = "315 N 3rd Ave E #101";
+// testParamObject.testingData.city = "Duluth";
+// testParamObject.testingData.postalCode = "5580O";
 // ø <---------- </address Attributes> ---------->
-testParamObject.testingData.isValidHypothesis = false;
-testParamObject.testingData.scenarioDescr = "Zip 5 characters with 1 non-digit after (capital o for fun)";
+// testParamObject.testingData.isValidHypothesis = false;
+// testParamObject.testingData.scenarioDescr = "Zip 5 characters with 1 non-digit after (capital o for fun)";
 // ø <----- </Scenarios Fail> ----->
 // ø <---------- </Address> ---------->
 // ø <-------------------- </Test Scenarios> -------------------->
-console.warn('testParamObject.testingData: ');
-console.warn(testParamObject.testingData);
-console.warn('testParamObjectArray: ');
-console.warn(testParamObjectArray);
-throw new Error("Force Halt: ...because");
+// console.warn('testParamObject.testingData: ');
+// console.warn(testParamObject.testingData);
+// console.warn('testParamObjectArray: ');
+// console.warn(testParamObjectArray);
+// throw new Error("Force Halt: ...because");
 // ! ============================================================
 // ø <---------- <Core Implementation>  ---------->
-// let testParamObject = {};
-// testParamObject.testingData = {};
-// testParamObject.logs = [];
-// testParamObject.warnings = [];
-// testParamObject.errors = [];
+let testParamObject = {};
+testParamObject.testingData = {};
+testParamObject.logs = [];
+testParamObject.warnings = [];
+testParamObject.errors = [];
 // ø <---------- </Core Implementation> ---------->
 // ø <-------------------- <LoadPreBuilt Scenarios>  -------------------->
-// let testParamObjectArray = [];
+let testParamObjectArray = [];
 // ø <---------- <Email>  ---------->
 // testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"bradlowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"brad.lowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email with early DOT"});
@@ -134,7 +134,7 @@ throw new Error("Force Halt: ...because");
 // testParamObjectArray.push({action:"preDo Validate",kind:"lableKeys",labelKey:"",isValidHypothesis:!1,scenarioDescr:"just an empty string"});
 // ø <---------- </Label> ---------->
 // ø <---------- <Address>  ---------->
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
+testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"     315 N 3rd Ave E #101",city:"Duluth     ",postalCode:"    55805     ",isValidHypothesis:!0,scenarioDescr:"5 spaces before address, after city and either side of zip"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"city is 5 spaces (as empty)"});
@@ -198,6 +198,9 @@ export function prePutValidation(paramObject = {}) {
             paramObject.logs.push(messageThis);
             // let email = $w('#phemValue').value;
             let email = paramObject.testingData.email;
+            email = email.trim();
+            // $w('#phemValue').value = email;
+            paramObject.testingData.email = email;
             let locationAT = email.indexOf('@');
             let locationDOT = email.indexOf('.', locationAT);
             let errNoAT = locationAT < 0 ? true : false;
@@ -214,6 +217,8 @@ export function prePutValidation(paramObject = {}) {
         case 'phones':
             // let phone = $w('#phemValue').value;
             let phone = paramObject.testingData.phone;
+            // $w('#phemValue').value = phone;
+            phone = phone.trim();
             messageThis = action + ' | ' + kind
             paramObject.logs.push(messageThis);
             phone = phone.replace(/[^0-9]/g, '');
@@ -228,12 +233,14 @@ export function prePutValidation(paramObject = {}) {
             tempString = tempString.trim();
             let addressLength = tempString.length;
             // $w('#addrssStreetAddress').value = tempString;
+            paramObject.testingData.addrssStreetAddress = tempString;
             // ø \_ streetAddress
             tempString = paramObject.testingData.city;
             // tempString = $w('#addrssCity').value;
             tempString = tempString.trim();
             let cityLength = tempString.length;
             // $w('#addrssCity').value = tempString;
+            paramObject.testingData.city = tempString;
             // ø \_ city
             tempString = paramObject.testingData.postalCode;
             // tempString = $w('#addrssPostalCode').value;
@@ -242,6 +249,7 @@ export function prePutValidation(paramObject = {}) {
             tempString = tempString.replace(/[^0-9]/g, '');
             let zipLengthDigits = tempString.length
             // $w('#addrssPostalCode').value = tempString;
+            paramObject.testingData.postalCode = tempString;
             // ø \_ zip
             let isValidTemp = true;
             // ø validation
@@ -268,11 +276,13 @@ export function prePutValidation(paramObject = {}) {
 
         case 'labelKeys':
             messageThis = action + ' | ' + kind
+            // let tempString = $w('#lableKey').value;
             tempString = paramObject.testingData.labelKey;
-            isValidTemp = tempString.length < 1 ? false : true;
-            // let tempString = $w('#inputValueLabel').value;
             tempString = tempString.trim();
-            if (!isValidTemp) { isValidNOTlog.push('#inputValueLabel') };
+            // $w('#lableKey').value = tempString;
+            isValidTemp = tempString.length < 1 ? false : true;
+            tempString = tempString.trim();
+            if (!isValidTemp) { isValidNOTlog.push('#lableKey') };
             paramObject.logs.push(messageThis);
             break;
 
