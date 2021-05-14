@@ -1,0 +1,9 @@
+#YAML because it's _always_ better than text, but is text too
+
+Agile:
+  - mist: tools and templates and skeletons
+  - projectBacklog: tasks from WiX that can be completed in vsCode but are not
+  in a currrent Sprint
+  - sprint: imminent tasks from WiX that can be completed in vsCode
+  - zCompleted: those tasks that were completed in vsCode and have been
+  inserting into the _actual_ WiX code
