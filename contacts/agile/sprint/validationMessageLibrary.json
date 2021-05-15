@@ -12,7 +12,7 @@
             },
             "comments": "multiple '@'s could be added, but lack of 'patternCount()' is limiting"
         },
-        "​​​phemValuePH": {
+        "phemValuePH": {
             "message": "a phone must contain at least 10 numeric characters (digits)",
             "comments": "only validation is too short, because of extensions, this could be more than 10"
         },
@@ -20,7 +20,7 @@
             "message": "a label must not be an empty string"
         },
         "addrssStreetAddress": {
-            "message": "Stret Address must not be an empty string"
+            "message": "Street Address must not be an empty string"
         },
         "addrssCity": {
             "message": "City must not be an empty string"
