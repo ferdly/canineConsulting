@@ -1,97 +1,3 @@
-let live = null;
-live = true;
-live = false;
-if ("environment" === "live") {
-    // let $w('#phemValue') = {};
-    // let $w('#phemValue') = {};
-    // $w('#phemValue').value = "bradlowry@gmail.com";
-    // let $w('#recievedKind').value = {};
-    // $w('#recievedKind').value = 'emails';
-} else {
-    let wixFaux_phemValue = "bradlowry@gmail.com";
-    let wixFaux_recievedKind = 'emails';
-}
-// ø <-------------------- <Test Scenarios>  -------------------->
-// ! <enable for Scenario Building>
-// let testParamObjectArray = [];
-// let testParamObject = {};
-// testParamObject.testingData = {};
-// ! </enable for Scenario Building>
-// ø <---------- <Email>  ---------->
-// testParamObject.testingData.action = 'preDo Validate';
-// testParamObject.testingData.kind = 'emails';
-// ø <----- <Scenarios Succeed>  ----->
-// testParamObject.testingData.email = "tim.walz@governor.us.mn.gov";
-// testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "Gov. Walz with multiple DOTs";
-// ø <----- </Scenarios Succeed> ----->
-// ø <----- <Scenarios Fail>  ----->
-// testParamObject.testingData.email = "richard.feynman@steamdacom";
-// testParamObject.testingData.isValidHypothesis = false;
-// testParamObject.testingData.scenarioDescr = "No DOTs after AT";
-// ø <----- </Scenarios Fail> ----->
-// ø <---------- </Email> ---------->
-// ø <---------- <Phone>  ---------->
-// testParamObject.testingData.action = 'preDo Validate';
-// testParamObject.testingData.kind = 'phones';
-// ø <----- <Scenarios Succeed>  ----->
-// testParamObject.testingData.phone = "(315) 287-2578 ext 544";
-// testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "extension example";
-// ø <----- </Scenarios Succeed> ----->
-// ø <----- <Scenarios Fail>  ----->
-// testParamObject.testingData.phone = "315-287-257";
-// testParamObject.testingData.isValidHypothesis = false;
-// testParamObject.testingData.scenarioDescr = "too few characters (oops! keystroke for last digit failes)";
-// ! NO rejection where more than 10 numeric characters (see 'ext 544' above)
-// ! NO RegEx removal of stray characters under the belief that WiX does this already
-// ! NO removal of Leading '1', could work
-// ! NO rejection where Second  Numeric is '1' or '0', could work
-// ø <----- </Scenarios Fail> ----->
-// ø <---------- </Phone> ---------->
-// ø <---------- <Label>  ---------->
-// testParamObject.testingData.action = 'preDo Validate';
-// testParamObject.testingData.kind = 'labelKeys';
-// ø <----- <Scenarios Succeed>  ----->
-// testParamObject.testingData.labelKey = "HAPPY";
-// testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "just a word";
-// ø <----- </Scenarios Succeed> ----->
-// ø <----- <Scenarios Fail>  ----->
-// testParamObject.testingData.labelKey = "";
-// testParamObject.testingData.isValidHypothesis = false;
-// testParamObject.testingData.scenarioDescr = "just an empty string";
-// ø <----- </Scenarios Fail> ----->
-// ø <---------- </Label> ---------->
-// ø <---------- <Address>  ---------->
-// testParamObject.testingData.action = 'preDo Validate';
-// testParamObject.testingData.kind = 'addresses';
-// ø <----- <Scenarios Succeed>  ----->
-// ø <---------- <address Attributes>  ---------->
-// testParamObject.testingData.addrssStreetAddress = "     315 N 3rd Ave E #101";
-// testParamObject.testingData.city = "Duluth     ";
-// testParamObject.testingData.postalCode = "    55805     ";
-// ø <---------- </address Attributes> ---------->
-// testParamObject.testingData.isValidHypothesis = true;
-// testParamObject.testingData.scenarioDescr = "5 spaces before address, after city and either side of zip";
-// ø <----- </Scenarios Succeed> ----->
-// ø <----- <Scenarios Fail>  ----->
-// ø <---------- <address Attributes>  ---------->
-// testParamObject.testingData.addrssStreetAddress = "315 N 3rd Ave E #101";
-// testParamObject.testingData.city = "Duluth";
-// testParamObject.testingData.postalCode = "5580O";
-// ø <---------- </address Attributes> ---------->
-// testParamObject.testingData.isValidHypothesis = false;
-// testParamObject.testingData.scenarioDescr = "Zip 5 characters with 1 non-digit after (capital o for fun)";
-// ø <----- </Scenarios Fail> ----->
-// ø <---------- </Address> ---------->
-// ø <-------------------- </Test Scenarios> -------------------->
-// console.warn('testParamObject.testingData: ');
-// console.warn(testParamObject.testingData);
-// console.warn('testParamObjectArray: ');
-// console.warn(testParamObjectArray);
-// throw new Error("Force Halt: ...because");
-// ! ============================================================
 // ø <---------- <Core Implementation>  ---------->
 let testParamObject = {};
 testParamObject.formData = {};
@@ -99,51 +5,9 @@ testParamObject.formData = {};
 testParamObject.logs = [];
 testParamObject.warnings = [];
 testParamObject.errors = [];
+testParamObject.errorMessages = [];
 // ø <---------- </Core Implementation> ---------->
-// ø <-------------------- <LoadPreBuilt Scenarios>  -------------------->
-let testParamObjectArray = [];
-// ø <---------- <Email>  ---------->
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"bradlowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"brad.lowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email with early DOT"});
-// testParamObjectArray.push({ action: "preDo Validate", kind: "emails", email: "tim.walz@governor.us.mn.gov", isValidHypothesis: !0, scenarioDescr: "Gov. Walz with multiple DOTs" });
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynmansteamda.com",isValidHypothesis:!1,scenarioDescr:"No AT (@)"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"@steamda.com",isValidHypothesis:!1,scenarioDescr:"AT (@) at beginning"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynman@steamdacom",isValidHypothesis:!1,scenarioDescr:"No DOT (.) after AT"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard@feynman@steamda.com",isValidHypothesis:!1,scenarioDescr:"multiple ATs"});
-// ø <---------- </Email> ---------->
-// ø <---------- <Phone>  ---------->
-// testParamObjectArray.push({ action: "preDo Validate", kind: "phones", phone: "3152872578", isValidHypothesis: !0, scenarioDescr: "just ten digits" });
-// testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"315-287-2578",isValidHypothesis:!0,scenarioDescr:"simple common formatting"});
-// testParamObjectArray.push({ action: "preDo Validate", kind: "phones", phone: "(315) 287-2578", isValidHypothesis: !0, scenarioDescr: "more formal common formatting" });
-// testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"3# 1! 5% 2@ 8* 7& 2@ 5% 7& 8*",isValidHypothesis:!0,scenarioDescr:"crazy extra characters"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"(612) 625-5000 ext 778",isValidHypothesis:!0,scenarioDescr:"extension example main: reason to NOT limit to 10"});
-// testParamObjectArray.push({action:"preDoValidate",kind:"phones",phone:"625-5000 ext.728",isValidHypothesis:!1,scenarioDescr:"no area code, three digit extension: reason to NOT RegEx otherwise valid",isValid:!0,testHypothesisResult:!0,resultDescr:"Hypothesis failed: UnExpected 'isValid' testResult: true"});
-// testParamObjectArray.push({ action: "preDo Validate", kind: "phones", phone: "315-287-257", isValidHypothesis: !1, scenarioDescr: "too few characters (oops! keystroke for last digit fails)" });
-// ø <---------- </Phone> ---------->
-// ø <---------- <Label>  ---------->
-// testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys", labelKey: "HAPPY", isValidHypothesis: !0, scenarioDescr: "just a word" });
-// testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys", labelKey: "", isValidHypothesis: !1, scenarioDescr: "just an empty string" });
-// testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys",labelKey: "     ", isValidHypothesis: !1, scenarioDescr: "just 5 spaces as empty string"});
-// ø <---------- </Label> ---------->
-// ø <---------- <Address>  ---------->
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"     315 N 3rd Ave E #101",city:"Duluth     ",postalCode:"    55805     ",isValidHypothesis:!0,scenarioDescr:"5 spaces before address, after city and either side of zip"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"city is 5 spaces (as empty)"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"5580Z",isValidHypothesis:!1,scenarioDescr:"city empty, zip nondigits "});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"558055",isValidHypothesis:!1,scenarioDescr:"Zip too many Digits"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580 5",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with internal space"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"Z55805",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with non-digit before"});
-// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580O",isValidHypothesis:!1,scenarioDescr:"Zip 5 characters with 1 non-digit after (capital o for fun)"});
-// ø <---------- </Address> ---------->
-// testParamObject.UnExpectedResultArray = [];
-// testParamObject.ExpectedHypothesisFalseResultArray = [];
-// testParamObject.ExpectedHypothesisTrueResultArray = [];
-// testParamObject.UnExpectedResultArray = [];
-// testParamObject.testingData = testParamObjectArray[0];
-// console.warn(testParamObjectArray);
-// console.warn(testParamObject);
-// ø <-------------------- </LoadPreBuilt Scenarios> -------------------->
+
 testParamObjectArray.forEach(testingDataObject => {
     testParamObject.testingData = testingDataObject;
 
@@ -179,7 +43,7 @@ testParamObjectArray.forEach(testingDataObject => {
     let keyOne = "";
     let keyTwo = "";
     let messageThis = "";
-    testParamObject.errorMessages = [];
+    
     testParamObject.errors.forEach(elementThis => {
         if (typeof elementThis === 'string' && elementThis.length > 0) {
             keyOne = elementThis;
