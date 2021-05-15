@@ -1,90 +1,182 @@
+// ø <---------- <Simple Test>  ---------->
+let wixBoolean = false;
+let testFormDataObject = {};
+// ! <---------- <all attributes>  ---------->
+// ! <---------- <YIKES: match WiX object element>  ---------->
+// ø email attributes and phone attributes prefixed because of overlap
+testFormDataObject.emails.email = "bradlowry@gmail.com";
+testFormDataObject.emails.tag = "UNTAGGED";
+testFormDataObject.emails.primary = true;
+testFormDataObject.phones.phone = "218-310-5153";
+testFormDataObject.phones.tag = "UNTAGGED";
+testFormDataObject.phones.primary = true;
+testFormDataObject.labelKey = "HAPPY";
+testFormDataObject.addrssStreetAddress = "315 N 3rd Ave E #101";
+testFormDataObject.address.streetAddress.number = "315";
+testFormDataObject.address.streetAddress.name = "N 3rd Ave E # 101";
+testFormDataObject.addressLine2 = "Apt 101";
+testFormDataObject.city = "Duluth";
+testFormDataObject.subdivision = "MN";
+testFormDataObject.postalCode = "55805";
+testFormDataObject.country = "US";
+testFormDataObject.location.latitude = "15.5423";
+testFormDataObject.location.longitude = "-102.1378";
+testFormDataObject.formatted = "PPENDING";
+// ! <---------- </YIKES: match WiX object element> ---------->
+// ! <---------- </all attributes> ---------->
+
+// ø <---------- </Simple Test> ---------->
 // ø <---------- <Core Implementation>  ---------->
-let testParamObject = {};
-testParamObject.formData = {};
-// testParamObject.testingData = {};
-testParamObject.logs = [];
-testParamObject.warnings = [];
-testParamObject.errors = [];
-testParamObject.errorMessages = [];
+let kind = "PUT";
+let paramObjectThis = {};
+paramObjectThis.state = {};
+paramObjectThis.state.wix = wixBoolean === true ? true : false;
+paramObjectThis.state.action = "PUT";
+paramObjectThis.state.kind = $w('#recievedKind').value;
+paramObjectThis.state.count = $w('#recievedCount').value;
+paramObjectThis.state.maxIndex = $w('#recievedCount').value;
+paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
+paramObjectThis.formData = wixBoolean === true ? {} : testFormDataObject;
+paramObjectThis.logs = [];
+paramObjectThis.warnings = [];
+paramObjectThis.errors = [];
+paramObjectThis.errorMessages = [];
+paramObjectThis.overallResultMessages = [];
 // ø <---------- </Core Implementation> ---------->
+
+
+
+// ø <----- <preBuildParamObject>  ----->
+export function preBuildFormDataObject(paramObject) {
+    let tempSplit = []
+    switch (paramObject.state.kind) {
+        case 'emails':
+            if (paramObject.state.wix) {
+                paramObjectThis.formData.email = $w('#phemValue').value;
+                paramObjectThis.formData.tag = $w('#phemTag').value;
+                paramObjectThis.formData.primary = $w('#phemPrimary').isChecked();
+            } else {
+                paramObjectThis.formData.email = testFormDataObject.emails.email;
+                paramObjectThis.formData.tag = testFormDataObject.emails.tag;
+                paramObjectThis.formData.primary = testFormDataObject.emails.primary;
+            }
+            break;
+
+        case 'phones':
+            if (paramObject.state.wix) {
+                paramObjectThis.formData.phone = $w('#phemValue').value;
+                paramObjectThis.formData.tag = $w('#phemTag').value;
+                paramObjectThis.formData.primary = $w('#phemPrimary').isChecked();
+            } else {
+                paramObjectThis.formData.phone = testFormDataObject.phones.phone;
+                paramObjectThis.formData.tag = testFormDataObject.phones.tag;
+                paramObjectThis.formData.primary = testFormDataObject.phones.primary;
+            }
+            break;
+
+        case 'labelKeys':
+            if (paramObject.state.wix) {
+                paramObjectThis.formData.labelKey = $w('#labelKey').value;
+            } else {
+                paramObjectThis.formData.labelKey = testFormDataObject.labelKey;
+            }
+            break;
+
+        case 'addresses':
+            if (paramObject.state.wix) {
+                paramObjectThis.formData.tag = $w('#addrssTag').value;
+                paramObjectThis.formData.addrssStreetAddress = $w('#addrssStreetAddress').value;
+                paramObjectThis.formData.addressLine2 = $w('#addrssAddressLine2').value;
+                paramObjectThis.formData.city = $w('#addrssCity').value;
+                paramObjectThis.formData.subdivision = $w('#addrssSubdivision').value;
+                paramObjectThis.formData.postalCode = $w('#addrssPostalCode').value;
+                paramObjectThis.formData.country = "US";
+                paramObjectThis.formData.location.latitude = $w('#addrssLocationLatitude').value;
+                paramObjectThis.formData.location.longitude = $w('#addrssLocationLongitude').value;
+                paramObjectThis.formData.formatted = "PPENDING";
+            } else {
+                paramObjectThis.formData.addrssStreetAddress = testFormDataObject.addrssStreetAddress;
+                paramObjectThis.formData.addressLine2 = testFormDataObject.addressLine2;
+                paramObjectThis.formData.city = testFormDataObject.city;
+                paramObjectThis.formData.subdivision = testFormDataObject.subdivision;
+                paramObjectThis.formData.postalCode = testFormDataObject.postalCode;
+                paramObjectThis.formData.country = "US";
+                paramObjectThis.formData.location.latitude = testFormDataObject.location.latitude;
+                paramObjectThis.formData.location.longitude = testFormDataObject.location.longitude;
+                paramObjectThis.formData.formatted = "PPENDING";
+            }
+            tempSplit = (paramObjectThis.formData.addrssStreetAddress).split(' ');
+            testFormDataObject.address.streetAddress.number = tempSplit.shift();
+            testFormDataObject.address.streetAddress.name = tempSplit.join(' ');
+            break;
+
+        default:
+            paramObjectThis.overallResultMessages.push(paramObject.state.kind + ' is Not Supported for this SWITCH');
+            break;
+    }
+}
+// ø <----- </preBuildParamObject> ----->
+throw error('Force Halt');
 
 testParamObjectArray.forEach(testingDataObject => {
     testParamObject.testingData = testingDataObject;
 
     // ! <-------------------- <do Call>  -------------------->
     prePutValidation(testParamObject);
-    // ! COULD BE an object method:
-    // if (testParamObject.testingData.isValid === testParamObject.testingData.isValidHypothesis) {
-    //     testParamObject.testingData.testHypothesisResult = true;
-    //     testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected \'isValid\' testResult: ' + testParamObject.testingData.isValidHypothesis.toString();
-    //     let errorObject = testParamObject.testingData;
-    //     let hypothesistTrue = testParamObject.testingData.isValidHypothesis;
-    //     if (hypothesistTrue) {
-    //         testParamObject.ExpectedHypothesisTrueResultArray.push(errorObject);
-    //     } else {
-    //         testParamObject.ExpectedHypothesisFalseResultArray.push(errorObject);
-    //     }
-    // } else {
-    //     testParamObject.testingData.testHypothesisResult = true;
-    //     testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected \'isValid\' testResult: '
-    //         + testParamObject.isValid.toString();
-    //     let errorObject = testParamObject.testingData;
-    //     testParamObject.UnExpectedResultArray.push(errorObject);
-    //     // console.warn('errorObject: ');
-    //     // console.warn(errorObject);
-    //     // console.warn('testParamObjectArray.UnExpectedResultArray: ');
-    //     // console.warn(testParamObjectArray.UnExpectedResultArray);
-    // }
     // ! <-------------------- </do Call> -------------------->
 });
+
+export function gatherErrorMessage(paramObject) {
+
     // ! <errorMessageLibrary>
-    let errorMessageLibrary={messages:{phemValueEM:{NO_AT:{message:"an Email must have an '@' symbol"},AT_ZERO:{message:"an Email cannot have the '@' symbol as the first character"},NO_DOT:{message:"an Email must have at least one '.' (dot) after the '@' symbol"},comments:"multiple '@'s could be added, but lack of 'patternCount()' is limiting"},phemValuePH:{message:"a phone must contain at least 10 numeric characters (digits)",comments:"only validation is too short, because of extensions, this could be more than 10"},labelKey:{message:"a label must not be an empty string"},addrssStreetAddress:{message:"Stret Address must not be an empty string"},addrssCity:{message:"City must not be an empty string"},addrssPostalCode:{LENGTH:{message:"the Zip Code must be 5 characters in length"},NON_DIGITS:{message:"the Zip Code must be entirely numeric characters (digits)"}}}};
+    let errorMessageLibrary = { messages: { phemValueEM: { NO_AT: { message: "an Email must have an '@' symbol" }, AT_ZERO: { message: "an Email cannot have the '@' symbol as the first character" }, NO_DOT: { message: "an Email must have at least one '.' (dot) after the '@' symbol" }, comments: "multiple '@'s could be added, but lack of 'patternCount()' is limiting" }, phemValuePH: { message: "a phone must contain at least 10 numeric characters (digits)", comments: "only validation is too short, because of extensions, this could be more than 10" }, labelKey: { message: "a label must not be an empty string" }, addrssStreetAddress: { message: "Stret Address must not be an empty string" }, addrssCity: { message: "City must not be an empty string" }, addrssPostalCode: { LENGTH: { message: "the Zip Code must be 5 characters in length" }, NON_DIGITS: { message: "the Zip Code must be entirely numeric characters (digits)" } } } };
     // ! </errorMessageLibrary>
     let keyOne = "";
     let keyTwo = "";
     let messageThis = "";
-    
-    testParamObject.errors.forEach(elementThis => {
+
+    paramObject.errors.forEach(elementThis => {
         if (typeof elementThis === 'string' && elementThis.length > 0) {
             keyOne = elementThis;
             messageThis = errorMessageLibrary.messages[keyOne].message;
-        }else{
+        } else {
             keyOne = elementThis[0];
             keyTwo = elementThis[1];
             messageThis = errorMessageLibrary.messages[keyOne][keyTwo].message;
         }
-        testParamObject.errorMessages.push(messageThis);
+        paramObject.errorMessages.push(messageThis);
         // console.log(messageThis);
     });
-    
-    // console.warn(testParamObject.testingData.resultDescr);
-    // testParamObject.testingData = {};//WHY
-    // testParamObject.
-    // console.warn('testParamObject: ');
-    // console.warn(testParamObject);
-    // ø <the Whole Banana>
-    // console.warn('testParamObject: ');
-    // console.warn(testParamObject);
-    // ø </the Whole Banana>
-    // ø <the Critical Components> do pick & choose though
-    // console.warn(testParamObject.testingData.resultDescr);
-    // ! <---------- \_ single string for last, not useful _/ ---------->
-    // console.warn('testParamObject.errors: that is, rendered messages pending:');
-    // console.warn(testParamObject.errors);
-    console.warn('testParamObject.errorMessages: that is rendered message array ');
-    console.warn(testParamObject.errorMessages);
+}
+
+// console.warn(testParamObject.testingData.resultDescr);
+// testParamObject.testingData = {};//WHY
+// testParamObject.
+// console.warn('testParamObject: ');
+// console.warn(testParamObject);
+// ø <the Whole Banana>
+// console.warn('testParamObject: ');
+// console.warn(testParamObject);
+// ø </the Whole Banana>
+// ø <the Critical Components> do pick & choose though
+// console.warn(testParamObject.testingData.resultDescr);
+// ! <---------- \_ single string for last, not useful _/ ---------->
+// console.warn('testParamObject.errors: that is, rendered messages pending:');
+// console.warn(testParamObject.errors);
+console.warn('testParamObject.errorMessages: that is rendered message array ');
+console.warn(testParamObject.errorMessages);
 // ! <---------- \_ display message array to be rendered _/ ---------->
-console.warn('testParamObject.errors: that is, rendered messages pending:');
-console.warn(testParamObject.errors);
+// console.warn('testParamObject.errors: that is, rendered messages pending:');
+// console.warn(testParamObject.errors);
 // ! <---------- \_ display message action required _/ ---------->
-console.warn('testParamObject.UnExpectedResultArray: ');
-console.warn(testParamObject.UnExpectedResultArray);
+// console.warn('testParamObject.UnExpectedResultArray: ');
+// console.warn(testParamObject.UnExpectedResultArray);
 // ! <---------- \_ critical testing errors _/ ---------->
-console.warn('testParamObject.ExpectedHypothesisFalseResultArray: ');
-console.warn(testParamObject.ExpectedHypothesisFalseResultArray);
+// console.warn('testParamObject.ExpectedHypothesisFalseResultArray: ');
+// console.warn(testParamObject.ExpectedHypothesisFalseResultArray);
 // ! <---------- \_ critical validation results _/ ---------->
-console.warn('testParamObject.ExpectedHypothesisTrueResultArray: ');
-console.warn(testParamObject.ExpectedHypothesisTrueResultArray);
+// console.warn('testParamObject.ExpectedHypothesisTrueResultArray: ');
+// console.warn(testParamObject.ExpectedHypothesisTrueResultArray);
 // ø </the Critical Components>
 
 
