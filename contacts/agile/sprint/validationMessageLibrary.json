@@ -1,0 +1,50 @@
+{
+    "messages": {
+        "#phemValueEM": {
+            "NO_AT": {
+                "message": "an Email must have an '@' symbol"
+            },
+            "AT_ZERO": {
+                "message": "an Email cannot have the '@' symbol as the first character"
+            },
+            "NO_DOT": {
+                "message": "an Email must have at least one '.' (dot) after the '@' symbol"
+            },
+            "comments": "multiple '@'s could be added, but lack of 'patternCount()' is limiting"
+        },
+        "#​​​phemValuePH": {
+            "message": "a phone must contain at least 10 numeric characters (digits)",
+            "comments": "only validation is too short, because of extensions, this could be more than 10"
+        },
+        "#labelKey": {
+            "message": "a label must not be an empty string"
+        },
+        "#addrssStreetAddress": {
+            "message": "Stret Address must not be an empty string"
+        },
+        "#addrssCity": {
+            "message": "City must not be an empty string"
+        },
+        "#addrssPostalCode": {
+            "LENGTH": {
+                "message": "the Zip Code must be 5 characters in length"
+            },
+            "NON_DIGITS": {
+                "message": "the Zip Code must be entirely numeric characters (digits)"
+            }
+        }
+    },
+    "comments": [
+        "this is primarily for Validating Forms",
+        "• so the bulk of the first bunch will be 'keyed' by the WiX inpuElementId including the'#'",
+        "Specifically:",
+        "• if the input element has only one validation criteria, the message is key _only_ by the Wix inputElementId",
+        "• otherwise, it is _that_ and then by a custom 'code' for the criteria (example 'NoAT' for email without an @ sign",
+        "This Library: (however)",
+        "• is all objects and elements, since arrays (as I understand them in JS) are not associative",
+        "↪ if I discover I am wrong about this, or if JS adds them, then and only then will this structure be revisited",
+        "• no punctuation at the beginning or the end of a message (as little as possible anywhere)",
+        "• no capitalization at the beginning of a message (as little as possible anywhere)",
+        "• use _contextual_ 'comments' aarrays for any specific comment(s), use this only for overall comments"
+    ]
+}
