@@ -4,45 +4,129 @@ let testFormDataObject = {};
 // ! <---------- <all attributes>  ---------->
 // ! <---------- <YIKES: match WiX object element>  ---------->
 // ø email attributes and phone attributes prefixed because of overlap
-testFormDataObject.emails.email = "bradlowry@gmail.com";
-testFormDataObject.emails.tag = "UNTAGGED";
-testFormDataObject.emails.primary = true;
-testFormDataObject.phones.phone = "218-310-5153";
-testFormDataObject.phones.tag = "UNTAGGED";
-testFormDataObject.phones.primary = true;
-testFormDataObject.labelKey = "HAPPY";
-testFormDataObject.addrssStreetAddress = "315 N 3rd Ave E #101";
-testFormDataObject.address.streetAddress.number = "315";
-testFormDataObject.address.streetAddress.name = "N 3rd Ave E # 101";
-testFormDataObject.addressLine2 = "Apt 101";
-testFormDataObject.city = "Duluth";
-testFormDataObject.subdivision = "MN";
-testFormDataObject.postalCode = "55805";
-testFormDataObject.country = "US";
-testFormDataObject.location.latitude = "15.5423";
-testFormDataObject.location.longitude = "-102.1378";
-testFormDataObject.formatted = "PPENDING";
+// ! <---------- <kind-count>  ---------->
+testFormDataObject.StateKind = "emails";
+// testFormDataObject.StateKind = "phones";
+// testFormDataObject.StateKind = "labelKeys";
+testFormDataObject.StateKind = "addresses";
+testFormDataObject.StateCount = 2;
+// ! <---------- </kind-count> ---------->
+switch (testFormDataObject.StateKind) {
+    case "emails":
+        testFormDataObject.emails = {};
+        // ! <---------- <test Emails>  ---------->
+        testFormDataObject.emails.email = "bradlowry@gmail.com";
+        testFormDataObject.emails.tag = "UNTAGGED";
+        testFormDataObject.emails.primary = true;
+        // ! <-----\_  one _/ ----->
+        testFormDataObject.emails.email = "bradlowry@gmailcom";
+        testFormDataObject.emails.tag = "UNTAGGED";
+        testFormDataObject.emails.primary = true;
+        // ! <-----\_  two _/ ----->
+        // ! <---------- </test Emails> ---------->
+        break;
+
+    case "phones":
+        testFormDataObject.phones = {};
+        // ! <---------- <test Phones>  ---------->
+        testFormDataObject.phones.phone = "218-310-5153";
+        testFormDataObject.phones.tag = "UNTAGGED";
+        testFormDataObject.phones.primary = true;
+        // ! <-----\_  one _/ ----->
+        testFormDataObject.phones.phone = "218-310-515";
+        testFormDataObject.phones.tag = "UNTAGGED";
+        testFormDataObject.phones.primary = true;
+        // ! <-----\_  two _/ ----->
+        // ! <---------- </test Phones> ---------->
+        break;
+
+    case "labelKeys":
+        // ! <---------- <test labelKeys>  ---------->
+        testFormDataObject.labelKey = "HAPPY";
+        // ! <-----\_  one _/ ----->
+        testFormDataObject.labelKey = "     ";
+        // ! <-----\_  two _/ ----->
+        // ! <---------- </test labelKeys> ---------->
+        break;
+
+    case "addresses":
+        // ! <---------- <test Addresses>  ---------->
+        testFormDataObject.tag = "UNTAGGED";
+        testFormDataObject.addrssStreetAddress = "315 N 3rd Ave E #101";
+        // testFormDataObject.address = {};
+        // testFormDataObject.address.streetAddress = {};
+        // testFormDataObject.address.streetAddress.number = "315";
+        // testFormDataObject.address.streetAddress.name = "N 3rd Ave E # 101";
+        testFormDataObject.addressLine2 = "Apt 101";
+        testFormDataObject.city = "Duluth";
+        testFormDataObject.subdivision = "MN";
+        testFormDataObject.postalCode = "55805";
+        testFormDataObject.country = "US";
+        testFormDataObject.location = {};
+        testFormDataObject.location.latitude = "46.786671";
+        testFormDataObject.location.longitude = "-92.100487";
+        testFormDataObject.formatted = "PPENDING";
+        // ! <-----\_  one _/ ----->
+        testFormDataObject.tag = "UNTAGGED";
+        testFormDataObject.addrssStreetAddress = "    315 N 3rd Ave E #101";
+        // testFormDataObject.address = {};
+        // testFormDataObject.address.streetAddress = {};
+        // testFormDataObject.address.streetAddress.number = "315";
+        // testFormDataObject.address.streetAddress.name = "N 3rd Ave E # 101";
+        testFormDataObject.addressLine2 = "   Apt 101   ";
+        testFormDataObject.city = "   Duluth   ";
+        testFormDataObject.subdivision = "MN";
+        testFormDataObject.postalCode = "5580O";
+        testFormDataObject.country = "US";
+        testFormDataObject.location = {};
+        testFormDataObject.location.latitude = "46.786671";
+        testFormDataObject.location.longitude = "-92.100487";
+        testFormDataObject.formatted = "PPENDING";
+        // ! <-----\_  two _/ ----->
+        // ! <---------- </test Addresses> ---------->
+        break;
+
+    default:
+        break;
+}
 // ! <---------- </YIKES: match WiX object element> ---------->
 // ! <---------- </all attributes> ---------->
-
 // ø <---------- </Simple Test> ---------->
+
 // ø <---------- <Core Implementation>  ---------->
 let kind = "PUT";
 let paramObjectThis = {};
 paramObjectThis.state = {};
 paramObjectThis.state.wix = wixBoolean === true ? true : false;
 paramObjectThis.state.action = "PUT";
-paramObjectThis.state.kind = $w('#recievedKind').value;
-paramObjectThis.state.count = $w('#recievedCount').value;
-paramObjectThis.state.maxIndex = $w('#recievedCount').value;
-paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
-paramObjectThis.formData = wixBoolean === true ? {} : testFormDataObject;
+paramObjectThis.state.kind = paramObjectThis.state.wix === true ? $w('#recievedKind').value : testFormDataObject.StateKind;
+paramObjectThis.state.count = paramObjectThis.state.wix === true ? $w('#recievedCount').value : testFormDataObject.StateCount;
+paramObjectThis.state.maxIndex = paramObjectThis.state.count;
+paramObjectThis.state.nextIndex = paramObjectThis.state.count + 1;
+paramObjectThis.testFormDataObject = wixBoolean === true ? {} : testFormDataObject;
+paramObjectThis.formData = {};
 paramObjectThis.logs = [];
 paramObjectThis.warnings = [];
 paramObjectThis.errors = [];
 paramObjectThis.errorMessages = [];
 paramObjectThis.overallResultMessages = [];
 // ø <---------- </Core Implementation> ---------->
+
+
+
+console.warn('paramObjectThis.state: ');
+console.warn(paramObjectThis.state);
+console.warn('paramObjectThis.testFormDataObject: ');
+console.warn(paramObjectThis.testFormDataObject);
+// ! <---------- <Actual Code>  ---------->
+preBuildFormDataObject(paramObjectThis);
+// console.warn('paramObjectThis.formData: ');
+// console.warn(paramObjectThis.formData);
+console.warn('paramObjectThis.formData: ');
+console.warn(paramObjectThis.formData);
+// ! <---------- </Actual Code> ---------->
+
+
 
 
 
@@ -83,48 +167,53 @@ export function preBuildFormDataObject(paramObject) {
             break;
 
         case 'addresses':
+            paramObjectThis.formData.address = {};
             if (paramObject.state.wix) {
                 paramObjectThis.formData.tag = $w('#addrssTag').value;
-                paramObjectThis.formData.addrssStreetAddress = $w('#addrssStreetAddress').value;
-                paramObjectThis.formData.addressLine2 = $w('#addrssAddressLine2').value;
-                paramObjectThis.formData.city = $w('#addrssCity').value;
-                paramObjectThis.formData.subdivision = $w('#addrssSubdivision').value;
-                paramObjectThis.formData.postalCode = $w('#addrssPostalCode').value;
-                paramObjectThis.formData.country = "US";
-                paramObjectThis.formData.location.latitude = $w('#addrssLocationLatitude').value;
-                paramObjectThis.formData.location.longitude = $w('#addrssLocationLongitude').value;
-                paramObjectThis.formData.formatted = "PPENDING";
+                paramObjectThis.formData.address.addrssStreetAddress = $w('#addrssStreetAddress').value;
+                paramObjectThis.formData.address.addressLine2 = $w('#addrssAddressLine2').value;
+                paramObjectThis.formData.address.city = $w('#addrssCity').value;
+                paramObjectThis.formData.address.subdivision = $w('#addrssSubdivision').value;
+                paramObjectThis.formData.address.postalCode = $w('#addrssPostalCode').value;
+                paramObjectThis.formData.address.country = "US";
+                paramObjectThis.formData.address.location.latitude = $w('#addrssLocationLatitude').value;
+                paramObjectThis.formData.address.location.longitude = $w('#addrssLocationLongitude').value;
+                paramObjectThis.formData.address.formatted = "PPENDING";
             } else {
-                paramObjectThis.formData.addrssStreetAddress = testFormDataObject.addrssStreetAddress;
-                paramObjectThis.formData.addressLine2 = testFormDataObject.addressLine2;
-                paramObjectThis.formData.city = testFormDataObject.city;
-                paramObjectThis.formData.subdivision = testFormDataObject.subdivision;
-                paramObjectThis.formData.postalCode = testFormDataObject.postalCode;
-                paramObjectThis.formData.country = "US";
-                paramObjectThis.formData.location.latitude = testFormDataObject.location.latitude;
-                paramObjectThis.formData.location.longitude = testFormDataObject.location.longitude;
-                paramObjectThis.formData.formatted = "PPENDING";
+                paramObjectThis.formData.tag = testFormDataObject.tag;
+                paramObjectThis.formData.address.addrssStreetAddress = testFormDataObject.addrssStreetAddress;
+                paramObjectThis.formData.address.addressLine2 = testFormDataObject.addressLine2;
+                paramObjectThis.formData.address.city = testFormDataObject.city;
+                paramObjectThis.formData.address.subdivision = testFormDataObject.subdivision;
+                paramObjectThis.formData.address.postalCode = testFormDataObject.postalCode;
+                paramObjectThis.formData.address.country = "US";
+                paramObjectThis.formData.address.location = {};
+                paramObjectThis.formData.address.location.latitude = testFormDataObject.location.latitude;
+                paramObjectThis.formData.address.location.longitude = testFormDataObject.location.longitude;
+                paramObjectThis.formData.address.formatted = "PPENDING";
             }
-            tempSplit = (paramObjectThis.formData.addrssStreetAddress).split(' ');
-            testFormDataObject.address.streetAddress.number = tempSplit.shift();
-            testFormDataObject.address.streetAddress.name = tempSplit.join(' ');
+            tempSplit = (paramObjectThis.formData.address.addrssStreetAddress).split(' ');
+            paramObjectThis.formData.address.streetAddress = {};
+            paramObjectThis.formData.address.streetAddress.number = tempSplit.shift();
+            paramObjectThis.formData.address.streetAddress.name = tempSplit.join(' ');
             break;
 
         default:
             paramObjectThis.overallResultMessages.push(paramObject.state.kind + ' is Not Supported for this SWITCH');
             break;
     }
-}
+}//END preBuildFormDataObject(paramObject)
+
 // ø <----- </preBuildParamObject> ----->
-throw error('Force Halt');
+// throw error('Force Halt');
 
-testParamObjectArray.forEach(testingDataObject => {
-    testParamObject.testingData = testingDataObject;
+// testParamObjectArray.forEach(testingDataObject => {
+//     testParamObject.testingData = testingDataObject;
 
-    // ! <-------------------- <do Call>  -------------------->
-    prePutValidation(testParamObject);
-    // ! <-------------------- </do Call> -------------------->
-});
+//     // ! <-------------------- <do Call>  -------------------->
+//     prePutValidation(testParamObject);
+//     // ! <-------------------- </do Call> -------------------->
+// });
 
 export function gatherErrorMessage(paramObject) {
 
@@ -147,7 +236,7 @@ export function gatherErrorMessage(paramObject) {
         paramObject.errorMessages.push(messageThis);
         // console.log(messageThis);
     });
-}
+}//END gatherErrorMessage(paramObject)
 
 // console.warn(testParamObject.testingData.resultDescr);
 // testParamObject.testingData = {};//WHY
@@ -163,8 +252,8 @@ export function gatherErrorMessage(paramObject) {
 // ! <---------- \_ single string for last, not useful _/ ---------->
 // console.warn('testParamObject.errors: that is, rendered messages pending:');
 // console.warn(testParamObject.errors);
-console.warn('testParamObject.errorMessages: that is rendered message array ');
-console.warn(testParamObject.errorMessages);
+// console.warn('testParamObject.errorMessages: that is rendered message array ');
+// console.warn(testParamObject.errorMessages);
 // ! <---------- \_ display message array to be rendered _/ ---------->
 // console.warn('testParamObject.errors: that is, rendered messages pending:');
 // console.warn(testParamObject.errors);
