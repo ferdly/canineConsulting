@@ -1,3 +1,16 @@
+paramObjectThis.state = {};
+paramObjectThis.state.action = "PUT";
+paramObjectThis.state.kind = $w('#recievedKind').value;
+paramObjectThis.state.maxIndex = $w('#recievedCount').value;
+paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
+/**
+ * @ Refactor Notes
+ * $recievedKind to $recievedArrayName
+ * ø kind to arrayName (have both for explicitness)
+ * ø count to maxIndex 
+ * ø add nextIndex 
+ */
+
 export function doPut(paramObject = {}){
 	
     /**
@@ -7,7 +20,7 @@ export function doPut(paramObject = {}){
          * Repopulate JSON box via stringify
          */
 
-
+        
         console.log("holder for three blocks (called functions -- maybe only Addresses)")
         let kind = $w('#recievedKind').value;
         paramObject.new_updatedElement = {};

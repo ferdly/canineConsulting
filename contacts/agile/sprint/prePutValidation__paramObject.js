@@ -1,3 +1,12 @@
+/** NOTES:
+ * ø do NOT push to paramObject because no mix-and-match of where to collect
+ * ø ↪ form data
+ * ø do return errorMessagesArray[] for display (and abort)
+ */
+
+
+
+
 let live = null;
 live = true;
 live = false;
