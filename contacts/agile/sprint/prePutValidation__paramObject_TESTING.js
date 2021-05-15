@@ -18,28 +18,17 @@ if ("environment" === "live") {
 // testParamObject.testingData = {};
 // ! </enable for Scenario Building>
 // ø <---------- <Email>  ---------->
-// testParamObject.testingData.hypothesis = {};
 // testParamObject.testingData.action = 'preDo Validate';
 // testParamObject.testingData.kind = 'emails';
 // ø <----- <Scenarios Succeed>  ----->
-// testParamObject.testingData.email = "bradlowry@gmail.com";
-// testParamObject.testingData.email = "brad.lowry@gmail.com";
 // testParamObject.testingData.email = "tim.walz@governor.us.mn.gov";
 // testParamObject.testingData.isValidHypothesis = true;
 // testParamObject.testingData.scenarioDescr = "Gov. Walz with multiple DOTs";
-// console.warn(testParamObject.testingData);
 // ø <----- </Scenarios Succeed> ----->
 // ø <----- <Scenarios Fail>  ----->
-// testParamObject.testingData.email = "ZZZZ_BASE_ZZZZrichard.feynman@steamda.com";
-// testParamObject.testingData.email = "richard.feynmansteamda.com";
-// testParamObject.testingData.email = "@steamda.com";
 // testParamObject.testingData.email = "richard.feynman@steamdacom";
-// testParamObject.testingData.email = "richard@feynman@steamda.com";
 // testParamObject.testingData.isValidHypothesis = false;
-// testParamObject.testingData.scenarioDescr = "multiple ATs";
-// console.warn('testParamObjectArray: ');
-// console.warn(testParamObject.testingData);
-// console.warn(testParamObjectArray);
+// testParamObject.testingData.scenarioDescr = "No DOTs after AT";
 // ø <----- </Scenarios Fail> ----->
 // ø <---------- </Email> ---------->
 // ø <---------- <Phone>  ---------->
@@ -49,7 +38,6 @@ if ("environment" === "live") {
 // testParamObject.testingData.phone = "(315) 287-2578 ext 544";
 // testParamObject.testingData.isValidHypothesis = true;
 // testParamObject.testingData.scenarioDescr = "extension example";
-
 // ø <----- </Scenarios Succeed> ----->
 // ø <----- <Scenarios Fail>  ----->
 // testParamObject.testingData.phone = "315-287-257";

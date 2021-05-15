@@ -1,6 +1,6 @@
 {
     "messages": {
-        "#phemValueEM": {
+        "phemValueEM": {
             "NO_AT": {
                 "message": "an Email must have an '@' symbol"
             },
@@ -12,20 +12,20 @@
             },
             "comments": "multiple '@'s could be added, but lack of 'patternCount()' is limiting"
         },
-        "#​​​phemValuePH": {
+        "​​​phemValuePH": {
             "message": "a phone must contain at least 10 numeric characters (digits)",
             "comments": "only validation is too short, because of extensions, this could be more than 10"
         },
-        "#labelKey": {
+        "labelKey": {
             "message": "a label must not be an empty string"
         },
-        "#addrssStreetAddress": {
+        "addrssStreetAddress": {
             "message": "Stret Address must not be an empty string"
         },
-        "#addrssCity": {
+        "addrssCity": {
             "message": "City must not be an empty string"
         },
-        "#addrssPostalCode": {
+        "addrssPostalCode": {
             "LENGTH": {
                 "message": "the Zip Code must be 5 characters in length"
             },
@@ -36,7 +36,7 @@
     },
     "comments": [
         "this is primarily for Validating Forms",
-        "• so the bulk of the first bunch will be 'keyed' by the WiX inpuElementId including the'#'",
+        "• so the bulk of the first bunch will be 'keyed' by the WiX inpuElementId including the''",
         "Specifically:",
         "• if the input element has only one validation criteria, the message is key _only_ by the Wix inputElementId",
         "• otherwise, it is _that_ and then by a custom 'code' for the criteria (example 'NoAT' for email without an @ sign",
