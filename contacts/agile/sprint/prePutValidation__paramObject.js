@@ -94,7 +94,8 @@ if ("environment" === "live") {
 // ! ============================================================
 // ø <---------- <Core Implementation>  ---------->
 let testParamObject = {};
-testParamObject.testingData = {};
+testParamObject.formData = {};
+// testParamObject.testingData = {};
 testParamObject.logs = [];
 testParamObject.warnings = [];
 testParamObject.errors = [];
@@ -105,9 +106,9 @@ let testParamObjectArray = [];
 // testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"bradlowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"brad.lowry@gmail.com",isValidHypothesis:!0,scenarioDescr:"my email with early DOT"});
 // testParamObjectArray.push({ action: "preDo Validate", kind: "emails", email: "tim.walz@governor.us.mn.gov", isValidHypothesis: !0, scenarioDescr: "Gov. Walz with multiple DOTs" });
-testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynmansteamda.com",isValidHypothesis:!1,scenarioDescr:"No AT (@)"});
-testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"@steamda.com",isValidHypothesis:!1,scenarioDescr:"AT (@) at beginning"});
-testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynman@steamdacom",isValidHypothesis:!1,scenarioDescr:"No DOT (.) after AT"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynmansteamda.com",isValidHypothesis:!1,scenarioDescr:"No AT (@)"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"@steamda.com",isValidHypothesis:!1,scenarioDescr:"AT (@) at beginning"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.feynman@steamdacom",isValidHypothesis:!1,scenarioDescr:"No DOT (.) after AT"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard@feynman@steamda.com",isValidHypothesis:!1,scenarioDescr:"multiple ATs"});
 // ø <---------- </Email> ---------->
 // ø <---------- <Phone>  ---------->
@@ -115,30 +116,30 @@ testParamObjectArray.push({action:"preDo Validate",kind:"emails",email:"richard.
 // testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"315-287-2578",isValidHypothesis:!0,scenarioDescr:"simple common formatting"});
 // testParamObjectArray.push({ action: "preDo Validate", kind: "phones", phone: "(315) 287-2578", isValidHypothesis: !0, scenarioDescr: "more formal common formatting" });
 // testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"3# 1! 5% 2@ 8* 7& 2@ 5% 7& 8*",isValidHypothesis:!0,scenarioDescr:"crazy extra characters"});
-testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"(612) 625-5000 ext 778",isValidHypothesis:!0,scenarioDescr:"extension example main: reason to NOT limit to 10"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"phones",phone:"(612) 625-5000 ext 778",isValidHypothesis:!0,scenarioDescr:"extension example main: reason to NOT limit to 10"});
 // testParamObjectArray.push({action:"preDoValidate",kind:"phones",phone:"625-5000 ext.728",isValidHypothesis:!1,scenarioDescr:"no area code, three digit extension: reason to NOT RegEx otherwise valid",isValid:!0,testHypothesisResult:!0,resultDescr:"Hypothesis failed: UnExpected 'isValid' testResult: true"});
 // testParamObjectArray.push({ action: "preDo Validate", kind: "phones", phone: "315-287-257", isValidHypothesis: !1, scenarioDescr: "too few characters (oops! keystroke for last digit fails)" });
 // ø <---------- </Phone> ---------->
 // ø <---------- <Label>  ---------->
 // testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys", labelKey: "HAPPY", isValidHypothesis: !0, scenarioDescr: "just a word" });
 // testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys", labelKey: "", isValidHypothesis: !1, scenarioDescr: "just an empty string" });
-testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys",labelKey: "     ", isValidHypothesis: !1, scenarioDescr: "just 5 spaces as empty string"});
+// testParamObjectArray.push({ action: "preDo Validate", kind: "labelKeys",labelKey: "     ", isValidHypothesis: !1, scenarioDescr: "just 5 spaces as empty string"});
 // ø <---------- </Label> ---------->
 // ø <---------- <Address>  ---------->
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"55805",isValidHypothesis:!0,scenarioDescr:"My Addres (just validated data)"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"     315 N 3rd Ave E #101",city:"Duluth     ",postalCode:"    55805     ",isValidHypothesis:!0,scenarioDescr:"5 spaces before address, after city and either side of zip"});
-testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
-testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"city is 5 spaces (as empty)"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"",city:"Duluth",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"streetAddress is empty"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"55805",isValidHypothesis:!1,scenarioDescr:"city is 5 spaces (as empty)"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"     ",postalCode:"5580Z",isValidHypothesis:!1,scenarioDescr:"city empty, zip nondigits "});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"558055",isValidHypothesis:!1,scenarioDescr:"Zip too many Digits"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580 5",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with internal space"});
 // testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"Z55805",isValidHypothesis:!1,scenarioDescr:"Zip too many characters with non-digit before"});
-testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580O",isValidHypothesis:!1,scenarioDescr:"Zip 5 characters with 1 non-digit after (capital o for fun)"});
+// testParamObjectArray.push({action:"preDo Validate",kind:"addresses",addrssStreetAddress:"315 N 3rd Ave E #101",city:"Duluth",postalCode:"5580O",isValidHypothesis:!1,scenarioDescr:"Zip 5 characters with 1 non-digit after (capital o for fun)"});
 // ø <---------- </Address> ---------->
 // testParamObject.UnExpectedResultArray = [];
-testParamObject.ExpectedHypothesisFalseResultArray = [];
-testParamObject.ExpectedHypothesisTrueResultArray = [];
-testParamObject.UnExpectedResultArray = [];
+// testParamObject.ExpectedHypothesisFalseResultArray = [];
+// testParamObject.ExpectedHypothesisTrueResultArray = [];
+// testParamObject.UnExpectedResultArray = [];
 // testParamObject.testingData = testParamObjectArray[0];
 // console.warn(testParamObjectArray);
 // console.warn(testParamObject);
@@ -149,27 +150,27 @@ testParamObjectArray.forEach(testingDataObject => {
     // ! <-------------------- <do Call>  -------------------->
     prePutValidation(testParamObject);
     // ! COULD BE an object method:
-    if (testParamObject.testingData.isValid === testParamObject.testingData.isValidHypothesis) {
-        testParamObject.testingData.testHypothesisResult = true;
-        testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected \'isValid\' testResult: ' + testParamObject.testingData.isValidHypothesis.toString();
-        let errorObject = testParamObject.testingData;
-        let hypothesistTrue = testParamObject.testingData.isValidHypothesis;
-        if (hypothesistTrue) {
-            testParamObject.ExpectedHypothesisTrueResultArray.push(errorObject);
-        } else {
-            testParamObject.ExpectedHypothesisFalseResultArray.push(errorObject);
-        }
-    } else {
-        testParamObject.testingData.testHypothesisResult = true;
-        testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected \'isValid\' testResult: '
-            + testParamObject.isValid.toString();
-        let errorObject = testParamObject.testingData;
-        testParamObject.UnExpectedResultArray.push(errorObject);
-        // console.warn('errorObject: ');
-        // console.warn(errorObject);
-        // console.warn('testParamObjectArray.UnExpectedResultArray: ');
-        // console.warn(testParamObjectArray.UnExpectedResultArray);
-    }
+    // if (testParamObject.testingData.isValid === testParamObject.testingData.isValidHypothesis) {
+    //     testParamObject.testingData.testHypothesisResult = true;
+    //     testParamObject.testingData.resultDescr = 'Hypothesis succeeded: Expected \'isValid\' testResult: ' + testParamObject.testingData.isValidHypothesis.toString();
+    //     let errorObject = testParamObject.testingData;
+    //     let hypothesistTrue = testParamObject.testingData.isValidHypothesis;
+    //     if (hypothesistTrue) {
+    //         testParamObject.ExpectedHypothesisTrueResultArray.push(errorObject);
+    //     } else {
+    //         testParamObject.ExpectedHypothesisFalseResultArray.push(errorObject);
+    //     }
+    // } else {
+    //     testParamObject.testingData.testHypothesisResult = true;
+    //     testParamObject.testingData.resultDescr = 'Hypothesis failed: UnExpected \'isValid\' testResult: '
+    //         + testParamObject.isValid.toString();
+    //     let errorObject = testParamObject.testingData;
+    //     testParamObject.UnExpectedResultArray.push(errorObject);
+    //     // console.warn('errorObject: ');
+    //     // console.warn(errorObject);
+    //     // console.warn('testParamObjectArray.UnExpectedResultArray: ');
+    //     // console.warn(testParamObjectArray.UnExpectedResultArray);
+    // }
     // ! <-------------------- </do Call> -------------------->
 });
     // ! <errorMessageLibrary>
