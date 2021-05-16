@@ -11,10 +11,10 @@ testFormDataObject.StateKind = "emails";
 // testFormDataObject.StateKind = "addresses";
 let realCurrentData = true;
 let currentObectArrayJSON = [];
-if(realCurrentData){
-    if(wixBoolean){
+if (realCurrentData) {
+    if (wixBoolean) {
         currentObectArrayJSON = $w('#selectListData');
-    }else{
+    } else {
         currentObectArrayJSON = [
             {
                 "tag": "othER",
@@ -30,7 +30,7 @@ if(realCurrentData){
     testFormDataObject.StateCurrentObectArray = currentObectArrayJSON;
     let liveCount = testFormDataObject.StateCurrentObectArray.length;
     testFormDataObject.StateCount = liveCount - 1;
-}else{
+} else {
     testFormDataObject.StateCount = 2;
 }
 testFormDataObject.StateIndexSelected = 0;
@@ -158,12 +158,12 @@ preBuildFormDataObject(paramObjectThis);
 console.warn('Before Validation: paramObjectThis.formData: ');
 console.warn(paramObjectThis.formData);
 prePutValidation(paramObjectThis);
-if(paramObjectThis.errors.length > 0){
+if (paramObjectThis.errors.length > 0) {
     gatherErrorMessage(paramObjectThis);
     console.warn('After Validation: paramObjectThis.formData: ');
     console.warn(paramObjectThis.formData);
     console.warn("No More: display Error Messages and ")
-}else{
+} else {
     console.warn('After Validation: paramObjectThis.formData: ');
     console.warn(paramObjectThis.formData);
     console.warn("Finish Put: return to List");
@@ -179,18 +179,58 @@ if(paramObjectThis.errors.length > 0){
 
 
 // ø <----- <prePopulate from Index>  ----->
-export function prePopulateByIndexSelected(paramObject){
-    if(paramObject.state.selectedIndex < paramObject.state.nextIndex){
-        console.warn("prePopulate: with Element [" + paramObject.state.selectedIndex + "]");
-        paramObject.state.prepopulateElementObject = paramObject.state.currentObectArray[paramObject.state.selectedIndex];
-        console.warn('paramObject.state.prepopulateElementObject: ');
-        console.warn(paramObject.state.prepopulateElementObject);
-    }else{
-        console.warn("prePopulate NOT: Element [" + paramObject.state.selectedIndex + "] is the Next Index");
-        paramObject.state.prepopulateElementObject = {};
+export function prePopulateByIndexSelected(paramObject) {
+    let action = 'prepopulate';
+    let prePopulateKind = paramObject.state.kind
+    prePopulateKind = paramObject.state.selectedIndex < paramObject.state.nextIndex ? prePopulateKind : "NNEW";
+    prePopulateKind = paramObjectThis.state.wix === true ? prePopulateKind : "WWIX";
+    let overallMessage = [];
+    overallMessage.push(action);
+    switch (prePopulateKind) {
+        case "NNEW":
+            overallMessage.push("new array element object, no prepoulate indicated");
+            paramObjectThis.overallResultMessages.push(overallMessage);
+            break;
 
+        case "WWIX":
+            overallMessage.push("wix boolean is false, no prepoulate indicated");
+            paramObjectThis.overallResultMessages.push(overallMessage);
+            break;
+
+        case "emails":
+            $w('#phemValue').value = paramObject.state.currentObectArray.emails.email;
+            $w('#phemTag').value = paramObject.state.currentObectArray.emails.tag;
+            $w('#phemPrimary').checked = paramObject.state.currentObectArray.emails.primary === true ? true : false;
+            break;
+
+        case "phones":
+            $w('#phemValue').value = paramObject.state.currentObectArray.phones.phone;
+            $w('#phemTag').value = paramObject.state.currentObectArray.phones.tag;
+            $w('#phemPrimary').checked = paramObject.state.currentObectArray.phones.primary === true ? true : false;
+
+            break;
+
+        case "labelKeys":
+            $w('#labelKey').value = paramObject.state.currentObectArray.labelKey
+            break;
+
+        case "addresses":
+            $w('#addrssTag').value = paramObject.state.currentObectArray.tag;
+            $w('#addrssStreetAddress').value = paramObject.state.currentObectArray.address.addrssStreetAddress;
+            $w('#addrssAddressLine2').value = paramObject.state.currentObectArray.address.addressLine2;
+            $w('#addrssCity').value = paramObject.state.currentObectArray.address.city;
+            $w('#addrssSubdivision').value = paramObject.state.currentObectArray.address.subdivision;
+            $w('#addrssPostalCode').value = paramObject.state.currentObectArray.address.postalCode;
+            $w('#addrssLocationLatitude').value = paramObject.state.currentObectArray.address.location.latitude;
+            $w('#addrssLocationLongitude').value = paramObject.state.currentObectArray.address.location.longitude;
+            break;
+
+        default:
+            overallMessage.push(paramObject.state.kind + ' is Not Supported for this SWITCH');
+            paramObjectThis.overallResultMessages.push(overallMessage);
+            break;
     }
-}
+}//END prePopulateByIndexSelected(paramObject)
 // ø <----- </prePopulate from Index> ----->
 // ø <----- <preBuildParamObject>  ----->
 export function preBuildFormDataObject(paramObject) {
@@ -265,8 +305,8 @@ export function preBuildFormDataObject(paramObject) {
             break;
     }
 }//END preBuildFormDataObject(paramObject)
-
 // ø <----- </preBuildParamObject> ----->
+
 // throw error('Force Halt');
 
 // testParamObjectArray.forEach(testingDataObject => {
@@ -277,6 +317,7 @@ export function preBuildFormDataObject(paramObject) {
 //     // ! <-------------------- </do Call> -------------------->
 // });
 
+// ø <----- <gatherErrorMessage>  ----->
 export function gatherErrorMessage(paramObject) {
 
     // ! <errorMessageLibrary>
@@ -299,6 +340,7 @@ export function gatherErrorMessage(paramObject) {
         // console.log(messageThis);
     });
 }//END gatherErrorMessage(paramObject)
+// ø <----- </gatherErrorMessage> ----->
 
 // console.warn(testParamObject.testingData.resultDescr);
 // testParamObject.testingData = {};//WHY
@@ -332,6 +374,7 @@ export function gatherErrorMessage(paramObject) {
 
 
 
+// ø <----- <prePutValidation>  ----->
 export function prePutValidation(paramObject = {}) {
     /**
      * ø Validations
@@ -458,8 +501,9 @@ export function prePutValidation(paramObject = {}) {
     paramObject.isValid = isValid;
     Array.prototype.push.apply(paramObject.errors, isValidNOTlog);
 
-}//END lightboxCoreSwitchSkeleton(paramObject = {})
+}//END prePutValidation(paramObject = {})
+// ø <----- </prePutValidation> ----->
 
-export function getCurrentByIndex(paramObject){
+export function getCurrentByIndex(paramObject) {
 
 }
