@@ -8,8 +8,32 @@ let testFormDataObject = {};
 testFormDataObject.StateKind = "emails";
 // testFormDataObject.StateKind = "phones";
 // testFormDataObject.StateKind = "labelKeys";
-testFormDataObject.StateKind = "addresses";
-testFormDataObject.StateCount = 2;
+// testFormDataObject.StateKind = "addresses";
+let realCurrentData = true;
+let currentObectArrayJSON = [];
+if(realCurrentData){
+    if(wixBoolean){
+        currentObectArrayJSON = $w('#selectListData');
+    }else{
+        currentObectArrayJSON = [
+            {
+                "tag": "othER",
+                "email": "floyd.holt@example.com"
+            },
+            {
+                "tag": "Login",
+                "email": "qiqgroup+floyd@gmail.com",
+                "primary": "true"
+            }
+        ];
+    }
+    testFormDataObject.StateCurrentObectArray = currentObectArrayJSON;
+    let liveCount = testFormDataObject.StateCurrentObectArray.length;
+    testFormDataObject.StateCount = liveCount - 1;
+}else{
+    testFormDataObject.StateCount = 2;
+}
+testFormDataObject.StateIndexSelected = 0;
 // ! <---------- </kind-count> ---------->
 switch (testFormDataObject.StateKind) {
     case "emails":
@@ -19,9 +43,9 @@ switch (testFormDataObject.StateKind) {
         testFormDataObject.emails.tag = "UNTAGGED";
         testFormDataObject.emails.primary = true;
         // ! <-----\_  one _/ ----->
-        testFormDataObject.emails.email = "bradlowry@gmailcom";
-        testFormDataObject.emails.tag = "UNTAGGED";
-        testFormDataObject.emails.primary = true;
+        // testFormDataObject.emails.email = "bradlowry@gmailcom";
+        // testFormDataObject.emails.tag = "UNTAGGED";
+        // testFormDataObject.emails.primary = true;
         // ! <-----\_  two _/ ----->
         // ! <---------- </test Emails> ---------->
         break;
@@ -101,8 +125,10 @@ paramObjectThis.state.wix = wixBoolean === true ? true : false;
 paramObjectThis.state.action = "PUT";
 paramObjectThis.state.kind = paramObjectThis.state.wix === true ? $w('#recievedKind').value : testFormDataObject.StateKind;
 paramObjectThis.state.count = paramObjectThis.state.wix === true ? $w('#recievedCount').value : testFormDataObject.StateCount;
+paramObjectThis.state.selectedIndex = paramObjectThis.state.wix === true ? $w('#selectIndexEmailPhone').value : testFormDataObject.StateIndexSelected;
 paramObjectThis.state.maxIndex = paramObjectThis.state.count;
 paramObjectThis.state.nextIndex = paramObjectThis.state.count + 1;
+paramObjectThis.state.currentObectArray = paramObjectThis.state.wix === true ? JSON.parse($w('#selectListData').value) : testFormDataObject.StateCurrentObectArray;
 paramObjectThis.testFormDataObject = wixBoolean === true ? {} : testFormDataObject;
 paramObjectThis.formData = {};
 paramObjectThis.logs = [];
@@ -114,22 +140,58 @@ paramObjectThis.overallResultMessages = [];
 
 
 
+
+
+
 console.warn('paramObjectThis.state: ');
 console.warn(paramObjectThis.state);
 console.warn('paramObjectThis.testFormDataObject: ');
 console.warn(paramObjectThis.testFormDataObject);
 // ! <---------- <Actual Code>  ---------->
+// ! <----- <¿Button Click Create-Update?>  ----->
+prePopulateByIndexSelected(paramObjectThis);
+// ! <----- </¿Button Click Create-Update?> ----->
+// ! <----- <¿Button Click doPut?>  ----->
 preBuildFormDataObject(paramObjectThis);
 // console.warn('paramObjectThis.formData: ');
 // console.warn(paramObjectThis.formData);
-console.warn('paramObjectThis.formData: ');
+console.warn('Before Validation: paramObjectThis.formData: ');
 console.warn(paramObjectThis.formData);
+prePutValidation(paramObjectThis);
+if(paramObjectThis.errors.length > 0){
+    gatherErrorMessage(paramObjectThis);
+    console.warn('After Validation: paramObjectThis.formData: ');
+    console.warn(paramObjectThis.formData);
+    console.warn("No More: display Error Messages and ")
+}else{
+    console.warn('After Validation: paramObjectThis.formData: ');
+    console.warn(paramObjectThis.formData);
+    console.warn("Finish Put: return to List");
+}
+// ! <----- </¿Button Click doPut?> ----->
 // ! <---------- </Actual Code> ---------->
 
 
 
 
 
+
+
+
+// ø <----- <prePopulate from Index>  ----->
+export function prePopulateByIndexSelected(paramObject){
+    if(paramObject.state.selectedIndex < paramObject.state.nextIndex){
+        console.warn("prePopulate: with Element [" + paramObject.state.selectedIndex + "]");
+        paramObject.state.prepopulateElementObject = paramObject.state.currentObectArray[paramObject.state.selectedIndex];
+        console.warn('paramObject.state.prepopulateElementObject: ');
+        console.warn(paramObject.state.prepopulateElementObject);
+    }else{
+        console.warn("prePopulate NOT: Element [" + paramObject.state.selectedIndex + "] is the Next Index");
+        paramObject.state.prepopulateElementObject = {};
+
+    }
+}
+// ø <----- </prePopulate from Index> ----->
 // ø <----- <preBuildParamObject>  ----->
 export function preBuildFormDataObject(paramObject) {
     let tempSplit = []
@@ -281,8 +343,8 @@ export function prePutValidation(paramObject = {}) {
      */
     // let kind = $w('#recievedKind').value;
     let messageThis = '';
-    let kind = paramObject.testingData.kind;
-    let action = paramObject.testingData.action;
+    let kind = paramObject.state.kind;
+    let action = paramObject.state.action;
     let isValid = true;
     let isValidNOTlog = [];
     let tempString = '';
@@ -291,10 +353,10 @@ export function prePutValidation(paramObject = {}) {
             messageThis = action + ' | ' + kind
             paramObject.logs.push(messageThis);
             // let email = $w('#phemValue').value;
-            let email = paramObject.testingData.email;
+            let email = paramObject.formData.email;//paramObject.testingData.email;
             email = email.trim();
             // $w('#phemValue').value = email;
-            paramObject.testingData.email = email;
+            paramObject.formData.email = email;//paramObject.testingData.email = email;
             let locationAT = email.indexOf('@');
             let locationDOT = email.indexOf('.', locationAT);
             let errNoAT = locationAT < 0 ? true : false;
@@ -310,7 +372,7 @@ export function prePutValidation(paramObject = {}) {
 
         case 'phones':
             // let phone = $w('#phemValue').value;
-            let phone = paramObject.testingData.phone;
+            let phone = paramObject.formData.phone;//paramObject.testingData.phone;
             // $w('#phemValue').value = phone;
             phone = phone.trim();
             messageThis = action + ' | ' + kind
@@ -325,26 +387,26 @@ export function prePutValidation(paramObject = {}) {
 
         case 'addresses':
             messageThis = action + ' | ' + kind
-            tempString = paramObject.testingData.addrssStreetAddress;
+            tempString = paramObject.formData.addrssStreetAddress;//paramObject.testingData.addrssStreetAddress;
             // tempString = $w('#addrssStreetAddress').value;
             tempString = tempString.trim();
             let addressLength = tempString.length;
             // $w('#addrssStreetAddress').value = tempString;
-            paramObject.testingData.addrssStreetAddress = tempString;
+            paramObject.formData.addrssStreetAddress = tempString;//paramObject.testingData.addrssStreetAddress = tempString;
             // ø \_ streetAddress
-            tempString = paramObject.testingData.city;
+            tempString = paramObject.formData.city;//paramObject.testingData.city;
             // tempString = $w('#addrssCity').value;
             tempString = tempString.trim();
             let cityLength = tempString.length;
             // $w('#addrssCity').value = tempString;
-            paramObject.testingData.city = tempString;
+            paramObject.formData.city = tempString;//paramObject.testingData.city = tempString;
             // ø \_ city
-            tempString = paramObject.testingData.postalCode;
+            tempString = paramObject.formData.postalCode;//paramObject.testingData.postalCode;
             // tempString = $w('#addrssPostalCode').value;
             tempString = tempString.trim();
             let zipLength = tempString.length;
             // $w('#addrssPostalCode').value = tempString;
-            paramObject.testingData.postalCode = tempString;
+            paramObject.formData.postalCode = tempString;//paramObject.testingData.postalCode = tempString;
             tempString = tempString.replace(/[^0-9]/g, '');
             let zipLengthDigits = tempString.length
             // ø \_ zip
@@ -374,10 +436,10 @@ export function prePutValidation(paramObject = {}) {
         case 'labelKeys':
             messageThis = action + ' | ' + kind
             // tempString = $w('#labelKey').value;
-            tempString = paramObject.testingData.labelKey;
+            tempString = paramObject.formData.labelKey;//paramObject.testingData.labelKey;
             tempString = tempString.trim();
             // $w('#labelKey').value = tempString;
-            paramObject.testingData.labelKey = tempString;
+            paramObject.formData.labelKey = tempString;//paramObject.testingData.labelKey = tempString;
             // console.log('tempString.length: ' + tempString.length);
             isValid = tempString.length < 1 ? false : true;
             if (!isValid) { isValidNOTlog.push('labelKey') };
@@ -391,8 +453,13 @@ export function prePutValidation(paramObject = {}) {
             break;
     }
 
-    paramObject.testingData.isValid = isValid;
+    paramObject.formData.isValid = isValid;//paramObject.testingData.isValid = isValid;
+    //formData
     paramObject.isValid = isValid;
     Array.prototype.push.apply(paramObject.errors, isValidNOTlog);
 
 }//END lightboxCoreSwitchSkeleton(paramObject = {})
+
+export function getCurrentByIndex(paramObject){
+
+}
