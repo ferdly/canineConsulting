@@ -1,0 +1,70 @@
+[
+    {
+        "_createdDate": "2021-05-12T11:55:53.000Z",
+        "displayName": "Enter Contest",
+        "key": "custom.enter-contest",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-05-12T11:55:53.000Z"
+    },
+    {
+        "_createdDate": "2021-05-12T11:47:05.000Z",
+        "displayName": "Get a Quote",
+        "key": "custom.get-a-quote",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-05-12T11:47:05.000Z"
+    },
+    {
+        "_createdDate": "2021-04-16T14:51:05.000Z",
+        "displayName": "Subscribers",
+        "key": "custom.subscribers",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-04-16T14:51:05.000Z"
+    },
+    {
+        "_createdDate": "2021-03-17T15:14:05.000Z",
+        "displayName": "Barking Intensive (long weekend)",
+        "key": "custom.barking-intensive-long-weekend",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-03-17T15:14:05.000Z"
+    },
+    {
+        "_createdDate": "2021-03-16T19:07:09.000Z",
+        "displayName": "Puppy Training COURSE",
+        "key": "custom.puppy-training-course",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-03-22T19:50:49.000Z"
+    },
+    {
+        "_createdDate": "2021-02-09T00:56:34.000Z",
+        "displayName": "Contact",
+        "key": "custom.contact",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-02-09T00:56:34.000Z"
+    },
+    {
+        "_createdDate": "2021-01-13T14:02:14.000Z",
+        "displayName": "Demo Label",
+        "key": "custom.demo-label",
+        "labelType": "USER_DEFINED",
+        "namespace": "custom",
+        "_updatedDate": "2021-01-13T14:02:14.000Z"
+    },
+    {
+        "displayName": "Customers",
+        "key": "contacts.customers",
+        "labelType": "SYSTEM",
+        "namespace": "contacts"
+    },
+    {
+        "displayName": "Contacted Me",
+        "key": "contacts.contacted-me",
+        "labelType": "SYSTEM",
+        "namespace": "contacts"
+    }
+]
