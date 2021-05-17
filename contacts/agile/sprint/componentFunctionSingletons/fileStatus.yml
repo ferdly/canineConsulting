@@ -1,0 +1,12 @@
+btnGoToState_click.js
+  - likely abandoned
+coreImplementationBlock
+  - now a Function and moved to WiX successfully
+gatherErrorsMessage.js
+  - little tweak (overall message) abandoned
+preBuildFormDataObject
+  - hard to believe better than _current_ but I hope so
+prePopulateByIndexSelected
+  - test pending
+prePutValidation
+  - no action
