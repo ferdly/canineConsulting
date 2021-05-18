@@ -1,8 +1,6 @@
 // API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/1-hello-world
 // import {fetch} from 'wix-fetch';
 import {getJSON} from 'wix-fetch';
-// import wixCrmBackend from 'wix-crm-backend';
 // import { contacts } from 'wix-crm-backend'
 import { multiply } from 'backend/randomAPI.jsw'
 import { composeWixContactCode } from 'backend/randomAPI.jsw'
@@ -12,19 +10,9 @@ import wixWindow from 'wix-window';
 
 
 $w.onReady(function () {
-	// Write your JavaScript here
-
-	// To select an element by ID use: $w("#elementID")
-
-	// Click "Preview" to run your code
-	// $w("#topMenu").scrollTo();
 	$w("#anchorRandomUser").scrollTo();
 });
 
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export function btnClearMember_click(event) {
 	$w("#memberJSON").value = " ";
 	$w("#crmContactId").value = '';
@@ -52,17 +40,12 @@ export function btnClearContact_click(event) {
 	$w("#anchorClearMember").scrollTo()
 }
 
-
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export function btnGetContactById_click(event) {
 	let currMemberId = $w('#crmContactId').value;
-	console.log('currMemberId: ' + currMemberId)
+	//console.log('currMemberId: ' + currMemberId)
 	let contact = steamdaGetContactFunction(currMemberId)
 		.then(contactReturned => {
-			console.log(contactReturned);
+			//console.log(contactReturned);
 			$w('#inputRevision').value = contactReturned.revision;
 			$w('#contactCurrent').value = JSON.stringify(contactReturned, undefined, 4);
 		})
@@ -74,49 +57,21 @@ export function btnGetContactById_click(event) {
 }
 
 
-// export function myGetContactFunction() {
-//   const contactId = "5448c23a-2723-44f9-9809-cd7ec099a3b5";
-//   return contactId;
-// // return myBackendFunction(contactId);
-// //   const options = {
-// //     suppressAuth: false
-// //   };
-
-// //   return contacts.getContact(contactId, options)
-// //     .then((contact) => {
-// //       return contact;
-// //     })
-// //     .catch((error) => {
-// //       console.error(error);
-// //     });
-// }
-// export function myBackendFunction(contactId) {
-//   return wixCrmBackend.getContactById(contactId);
-// }
-
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export function btnMultiply_click(event) {
 	let operand1 = $w('#operand1').value;
 	let resultObject = {};
-	console.log('operand1: ' + operand1 + '|' + $w('#operand1').value);
+	//console.log('operand1: ' + operand1 + '|' + $w('#operand1').value);
 	let operand2 = $w('#operand2').value;
-	console.log('operand2: ' + operand2 + '|' + $w('#operand2').value);
+	//console.log('operand2: ' + operand2 + '|' + $w('#operand2').value);
 	let product = multiply(operand1,operand2)
 		.then(result => {
-		console.log(operand1 + ' * ' + operand2 + ' = ' + result);
+		//console.log(operand1 + ' * ' + operand2 + ' = ' + result);
 		$w('#product').value = result;
 		return result;
 		});
 
 }
 
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export function btnPostUpdate_click(event) {
 	let result = doContactUpdatePost("post");
 }
@@ -127,7 +82,7 @@ export function doContactUpdatePost(step){
 
 export function doContactUpdatePrep(step){
 	let paramObject = {};
-	console.log($w('#chkbxOptions').value);
+	//console.log($w('#chkbxOptions').value);
 	let optionsArray = $w('#chkbxOptions').value;
 	let updateOptions = {};
 	let key = 'allowDuplicates';
@@ -156,10 +111,6 @@ export function btnPrepUpdate_click(event) {
 	let result = doContactUpdatePrep("prep");
 }
 
-/**
- *	<Update Sequence Tabs>
- *	 @param {$w.MouseEvent} event
- */
 export function tabContactPrep_click(event) {
 	$w("#multiboxUpdateStatus").changeState("ContactPrep");
 }
@@ -171,10 +122,6 @@ export function tabDoUpdate_click(event) {
 }
 // </Update Sequence Tabs>
 
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export function appendKVPtoContactInfo_click(event) {
 	let result = doAppendKVPtoContactInfo("appendKVPtoContactInfo");
 }
@@ -185,10 +132,7 @@ export function doAppendKVPtoContactInfo(step){
 	contactInfoRaw.trim();
 	contactInfoRaw = contactInfoRaw.substr(0,1) === "{" ? contactInfoRaw :'{}';
 	let contactInfoHolder = JSON.parse(contactInfoRaw);
-	// if(typeof contactInfoHolder.contactInfo.name === 'undefined'){
-	// 	contactInfoHolder.contactInfo.name = {};
-	// }
-			// let contactInfo = {};
+	
 	let attributeChain = "contactInfoHolder";
 	let attributeChainArray = [];
 	let path = $w('#ddInputKey').value;
@@ -196,10 +140,10 @@ export function doAppendKVPtoContactInfo(step){
 	let inputKey = pathSplit.pop();
 	let inputValue = $w('#inputValue').value;
 	let inputKeyChunk = "['" + inputKey + "']";
-	console.log('inputKeyChunk: ');
-	console.log(inputKeyChunk);
-	console.log('inputValue: ');
-	console.log(inputValue);
+	//console.log('inputKeyChunk: ');
+	//console.log(inputKeyChunk);
+	//console.log('inputValue: ');
+	//console.log(inputValue);
 	let chunkCount = 0;
 	let attribute = '';
     pathSplit.forEach(chunk => {
@@ -211,30 +155,19 @@ export function doAppendKVPtoContactInfo(step){
 		if(typeof testChain === 'undefined'){
 			let instantiateChain = attributeChain + " = {}";
 			eval(instantiateChain);
-			console.log('contactInfoHolder instaantiate: ');
-			console.log(instantiateChain);
-			console.log(contactInfoHolder);
+			//console.log('contactInfoHolder instaantiate: ');
+			//console.log(instantiateChain);
+			//console.log(contactInfoHolder);
 		}
-		// // test = eval(attributeChain);
-		// try {
-		// 	eval(attributeChain);
-		// } catch (e) {
-		// 	attributeChainInstantiate = attributeChain + " = {}"
-		// 	eval(attributeChainInstantiate);
-		// }
-		// console.log('[chunk ' + chunkCount + ']contactInfoHolder AFTER: ');
-		// console.log(contactInfoHolder);
-		// console.log('[chunk ' + chunkCount + ']attributeChainArray AFTER: ');
-		// console.log(attributeChainArray);
     });
-	console.log('[chunk ' + chunkCount + ']attributeChainArray Final: ');
-	console.log(attributeChainArray);
+	//console.log('[chunk ' + chunkCount + ']attributeChainArray Final: ');
+	//console.log(attributeChainArray);
 	
 	let attributeChainAssign = attributeChain + inputKeyChunk + " = '" + inputValue + "'"
 	eval(attributeChainAssign);
-	console.log('attributeChainAssign: ');
-	console.log(attributeChainAssign);
-	console.log(contactInfoHolder);
+	//console.log('attributeChainAssign: ');
+	//console.log(attributeChainAssign);
+	//console.log(contactInfoHolder);
 	// eval(attributeChainAssign);
 	$w('#codePrepContact').value = JSON.stringify(contactInfoHolder,undefined,4)
 	
@@ -287,14 +220,14 @@ async function doFetch(kind, paramObject){
 	switch (kind) {
 		case 'randomUser':
 			resolvedResponse = await doRandomUser(paramObject);//.then(result => {return result});
-			console.log("TWO: case 'randomUser':");
-			console.log(resolvedResponse);
+			//console.log("TWO: case 'randomUser':");
+			//console.log(resolvedResponse);
 			break;
 
 		default:
 			break;
 	}
-	console.log('return from SWITCH');
+	//console.log('return from SWITCH');
 	// resultString = JSON.stringify(resultStringSwitch,undefined,4);
 	return resolvedResponse;
 }
@@ -333,8 +266,8 @@ async function doRandomUser(paramObject = {}){
 	// fetchParamObject.noinfo   = '';//'&noinfo';
 	// fetchParamObject.callback = '';//'&callback=randomuserdata';
 	//</assign NonEmptyParameter getElementArray values>
-	console.log('fetchParamObject via after Override')
-	console.log(fetchParamObject)
+	//console.log('fetchParamObject via after Override')
+	//console.log(fetchParamObject)
 	//<append Empty or Not>
 	let requestString = '';
 	getElementArray.forEach(element => {
@@ -346,8 +279,8 @@ async function doRandomUser(paramObject = {}){
 	requestString = fetchParamObject.url + fetchParamObject.version + requestString;
 	// console.log(requestString);
 	let response = await getJSON(requestString);
-	console.log("ONE.a: response after 'await getJSON'");
-	console.log(response);
+	//console.log("ONE.a: response after 'await getJSON'");
+	//console.log(response);
 	// let user = await response.json();//.json() is a promise
 	// let resolvedResponse = await Promise.resolve(response);
 	let resolvedResponse = response.results[0];
@@ -409,29 +342,13 @@ async function doRandomUser(paramObject = {}){
 	resolvedResponse.developer = {};
 	resolvedResponse.developer.transformedAttributes = transformedAttributes;
 
-	console.log("ONE.b: resolvedResponse after 'await getJSON'");
-	console.log(resolvedResponse);
+	//console.log("ONE.b: resolvedResponse after 'await getJSON'");
+	//console.log(resolvedResponse);
 	return resolvedResponse;
 	
 }
-/**
- * $.ajax({
- *   url: 'https://randomuser.me/api/',
- *  dataType: 'json',
- *  success: function(data) {
- *    console.log(data);
- *  }
- * });
- * 
- */
 //</WiX API>
 
-
-
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
 export async function btnFetchRandomPerson_click(event) {
 	// let paramObject = {};
 	let paramObject = JSON.parse($w('#boxParamObject').value);
@@ -440,31 +357,23 @@ export async function btnFetchRandomPerson_click(event) {
 		addToCache = false;
 	}
 
-	console.log('PREP: click + paramObject');
-	console.log(paramObject);
-	// paramObject.seed = "51c8e9b89b6955b0";
+	//console.log('PREP: click + paramObject');
+	//console.log(paramObject);
 	let resolvedResponse = await doFetch("randomUser", paramObject);
-	console.log('THREE: click + resolvedResponse');
-	console.log(resolvedResponse);
-	// let promisKey = 'justUser'
-	// let justUserDoubleResult = randomUser[[PromiseResult]].results.results[0];
-	// console.log(justUserDoubleResult);
-	// let justUserSingleResult = randomUser[[PromiseResult]].results[0];
-	// console.log(justUserSingleResult);
+	//console.log('THREE: click + resolvedResponse');
+	//console.log(resolvedResponse);
 	if(typeof resolvedResponse === 'undefined'){
 		resolvedResponse = "'randomUser' is undefined"
 	}
-	// console.log('click + randomUser');
-	// console.log(randomUser);
 	if(addToCache){
 		let name = resolvedResponse.name.last + ', ' + resolvedResponse.name.first;
 		let seed = resolvedResponse.seed;
 		let element = {};
 		element.name = name;
 		element.seed = seed;
-		console.log(element);
+		//console.log(element);
 		let userCacheObject = JSON.parse($w('#randomUserCache').value);
-		console.log(userCacheObject);
+		//console.log(userCacheObject);
 		userCacheObject.userCache.push(element);
 		$w('#randomUserCache').value = JSON.stringify(userCacheObject,undefined,4);
 	}
@@ -606,15 +515,7 @@ export function btnClearSeedUI_click(event) {
 */
 export function swtchUSAonly_change(event) {
 	let paramObject = JSON.parse($w('#boxParamObject').value);
-	// let userCache = JSON.parse($w('#randomUserCache').value).userCache;
-	// let seedWhich = $w('#seedWhich').value;
-	// if(seedWhich.length === 0){
-		// \_ this validation should be redundant
-		// $w('#seedWhich').value = '';
-		// $w('#seedSelected').value = '';//may turn red - a bonus
-	// }
-	// let seedIndex = Number(seedWhich);
-	// let user = userCache[seedIndex];
+
 	if($w("#swtchUSAonly").checked){
 		delete paramObject.nat;
 	}else{
@@ -659,8 +560,8 @@ export async function doContactInfoFromRandom(){
 	// console.log(thisRandomUserDotMeJSON);
 	let response = "NOT CORRECT: nothing from the backend...";
 	response = await composeWixContactCode(thisRandomUserDotMeJSON, thisParamObject);
-	console.log('[~LINE 596 FRONT]result: ');
-	console.log(response);
+	//console.log('[~LINE 596 FRONT]result: ');
+	//console.log(response);
 	$w('#codePrepContact').value = JSON.stringify(response,undefined,4);
 	// $w('#codePrepContact').value = response.toString();
 	// $w('#codePrepContact').value = JSON.stringify(response,undefined,4);
@@ -691,7 +592,7 @@ export function doShowHideOnDeckObject(paramObject = {}){
 		}
 		if(currentCount >= 0){
 			currentCountPathArray = "currentObject.info" + currentCountPathArray;
-			console.log(currentCountPathArray)
+			//console.log(currentCountPathArray)
 			currentCountArray = eval(currentCountPathArray);
 			if(typeof currentCountArray === 'undefined'){
 				currentCount = -1;
@@ -699,9 +600,9 @@ export function doShowHideOnDeckObject(paramObject = {}){
 				currentCount = currentCountArray.length;
 			}
 		}
-		console.log('currentCount: ' + currentCount)
+		//console.log('currentCount: ' + currentCount)
 		currentCount = currentCount >= 0 ? currentCount : 0;
-		console.log('currentCount: ' + currentCount)
+		//console.log('currentCount: ' + currentCount)
 		if(typeof currentCount === undefined){
 			currentCount = 0;
 		}
@@ -710,11 +611,11 @@ export function doShowHideOnDeckObject(paramObject = {}){
 		currentCountString += '[next: ' + currentCount + ']]';
 		$w('#ddOnDeckIndex').value = currentCount
 	}
-	console.log('$w(#ddInputKey).value.indexOf(emailThis): ' + $w('#ddInputKey').value.indexOf('emailThis'));
-	console.log('$w(#ddInputKey).value: ' + $w('#ddInputKey').value);
-	console.log('titleStringWas: ' + titleStringWas);
-	console.log('titleKey: ' + titleKey);
-	console.log('titleString: ' + titleString);
+	//console.log('$w(#ddInputKey).value.indexOf(emailThis): ' + $w('#ddInputKey').value.indexOf('emailThis'));
+	//console.log('$w(#ddInputKey).value: ' + $w('#ddInputKey').value);
+	//console.log('titleStringWas: ' + titleStringWas);
+	//console.log('titleKey: ' + titleKey);
+	//console.log('titleString: ' + titleString);
 
 	// let showIdArray = ['#objectOnDeckTitle','#objectOnDeck','#ddOnDeckIndex','#btnOnDeckObjectAppend','#btnOnDeckObjectClear'];
 	let showIdArray = ['#objectOnDeckTitle'];
@@ -799,9 +700,9 @@ export function doAllClear(layoutObjectIdArrayParam = []){
 		let myType = $w(element).type; // "$w.Type"
 		if(myType === '$w.Text'){
 			$w(element).text = 'EEMPTY';
-			console.log('Text ' + myType);
+			//console.log('Text ' + myType);
 		}else{
-			console.log('Other ' + myType);
+			//console.log('Other ' + myType);
 			$w(element).value = '';
 			$w(element).resetValidityIndication();
 		}
@@ -838,8 +739,8 @@ export function btnClearCodePrepContact_click(event) {
 
 export function launchLightBox(key){
 	let wixContact = JSON.parse($w('#codePrepContact').value);
-	console.log('[~LINE 834]wixContact: ');
-	console.log(wixContact);
+	//console.log('[~LINE 834]wixContact: ');
+	//console.log(wixContact);
 	//<no validation of path at this time>
 	let keyArray = []; 
 	if(key === 'labelKeys'){
@@ -847,8 +748,8 @@ export function launchLightBox(key){
 	}else{
 		keyArray = wixContact['info'][key]; 
 	}
-	console.log('[~LINE 843]keyArray:');
-	console.log(keyArray);
+	//console.log('[~LINE 843]keyArray:');
+	//console.log(keyArray);
 	//</no validation of path at this time>
 	wixWindow.openLightbox("manageContactArrays", {
 			"path": key,
@@ -876,28 +777,28 @@ export function launchLightBox(key){
 				let currentContactObject = JSON.parse($w('#codePrepContact').value)
 				$w('#codePrepContact').value = ''; 
 				 if(key === 'phones'){
-					console.log('[~LINE879] if(key === phones): entered ');
-					console.log(currentContactObject);
-					console.log(JSON.parse($w('#objectOnDeck').value));
+					//console.log('[~LINE879] if(key === phones): entered ');
+					//console.log(currentContactObject);
+					//console.log(JSON.parse($w('#objectOnDeck').value));
 					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
-					console.log(currentContactObject);
+					//console.log(currentContactObject);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
 				 }
 				 if(key === 'emails'){
-					console.log('[~LINE887] if(key === emails): entered ');
-					console.log(currentContactObject);
-					console.log(JSON.parse($w('#objectOnDeck').value));
+					//console.log('[~LINE887] if(key === emails): entered ');
+					//console.log(currentContactObject);
+					//console.log(JSON.parse($w('#objectOnDeck').value));
 					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
-					console.log(currentContactObject);
+					//console.log(currentContactObject);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
 				 }
 				 if(key === 'labelKeys'){
-					console.log('[~LINE895] if(key === labelKeys): entered ')
+					//console.log('[~LINE895] if(key === labelKeys): entered ')
 					currentContactObject[key] = JSON.parse($w('#objectOnDeck').value);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
 				 }
 				 if(key === 'addresses'){
-					console.log('[~LINE900] if(key === labelKeys): entered ')
+					//console.log('[~LINE900] if(key === labelKeys): entered ')
 					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
 				 }
@@ -905,10 +806,7 @@ export function launchLightBox(key){
 		} );
 }
 
-/**
- *	Adds an event handler that runs when the element is clicked.
- *	 @param {$w.MouseEvent} event
- */
+// ø <launchLightBox("KIND")>
 export function btnManageEmails_click(event) {
 	launchLightBox("emails")
 }
@@ -924,11 +822,13 @@ export function btnManagePhones_click(event) {
 export function btnManageLabels_click(event) {
 	launchLightBox("labelKeys")
 }
+// ø </launchLightBox("KIND")>
 
 /**
  *	Adds an event handler that runs when the element is clicked.
  *	 @param {$w.MouseEvent} event
  */
+// ø <Random User UI>
 export function btnTgglChkBoxRandom_click(event) {
 	let chkbxOptions = $w("#chkbxContactAttributes").options;
 	let chkbxCurrent = $w("#chkbxContactAttributes").value;
@@ -941,10 +841,7 @@ export function btnTgglChkBoxRandom_click(event) {
 			chkbxToggleTo.push(valueThis);
 		}
 	});
-	// displayObject.options = chkbxOptions;
-	// displayObject.ocurrent = chkbxCurrent;
-	// displayObject.toggle = chkbxToggleTo;
-	// $w('#objectOnDeck').value = JSON.stringify(displayObject,undefined,4);
 	$w("#chkbxContactAttributes").value = chkbxToggleTo;
 }
+// ø </Random User UI>
 
