@@ -1,32 +1,18 @@
 import { contacts } from 'wix-crm-backend'
-
-export function steamdaCreateContactFunction(paramObject) {
-  const contactInfo = paramObject.contactInfo;
-  // const contactInfo = {
-  //   name: {
-  //     first: "Ari",
-  //     last: "Thereyet"
-  //   }
-  // };
-
-  const options = {}
-  if(typeof paramObject.options === 'object'){
-    options = paramObject.options;
-  }else{
-    options = {
-      allowDuplicates: false,
-      suppressAuth: false
-    };
-  }
-
-  return contacts.createContact(contactInfo, options)
-    .then((contact) => {
-      return contact;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+// ø <----------- <getCurrentContactLables Front-End>  ----------->
+export async function doCreateContact() {
+  let wixContactInfo = JSON.parse($w('#codePrepContact').value);
+  let paramObjectThis = {};
+  paramObjectThis.contactInfo = wixContactInfo.contactInfo;
+console.log("[~LINE 864]paramObjectThis.contactInfo: ")
+console.log(paramObjectThis)
+console.log(paramObjectThis.contactInfo)
+let wixContact = await steamdaCreateContactFunction(paramObjectThis);
+console.log('[~LINE 867]wixContact: ');
+console.log(wixContact);
+$w('#contactCurrent').value = JSON.stringify(wixContact,undefined,4);
 }
+// ø <----------- </getCurrentContactLables Front-End> ----------->
 
 /* Promise resolves to:
  * {
