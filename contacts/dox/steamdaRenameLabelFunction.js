@@ -1,8 +1,10 @@
 import { contacts } from 'wix-crm-backend';
 /*...*/
-export function steamdaRenameLabelFunction() {
-  const labelKey = "custom.incoming-leads";
-  const displayName = "Incoming";
+
+// ø <---------- <steamdaRenameLabelFunction>  ---------->
+export function steamdaRenameLabelFunction(paramObject) {
+  const labelKey = paramObject.labelKey;
+  const displayName = paramObject.displayName;
   const options = {
     suppressAuth: false
   };
@@ -15,6 +17,7 @@ export function steamdaRenameLabelFunction() {
       console.error(error);
     });
 }
+// ø <---------- </steamdaRenameLabelFunction> ---------->
 
 /* Promise resolves to:
  *

@@ -1,7 +1,7 @@
 import { contacts } from 'wix-crm-backend';
-
-export function steamdaDeleteLabelFunction() {
-  const labelKey = "custom.new-lead";
+// ø <---------- <steamdaDeleteLabelFunction>  ---------->
+export function steamdaDeleteLabelFunction(paramObject) {
+  const labelKey = paramObject.labelKey;
   const options = {
     suppressAuth: false
   };
@@ -14,3 +14,4 @@ export function steamdaDeleteLabelFunction() {
       console.error(error);
     });
 }
+// ø <---------- </steamdaDeleteLabelFunction> ---------->

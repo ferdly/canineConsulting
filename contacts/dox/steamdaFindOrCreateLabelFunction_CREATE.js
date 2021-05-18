@@ -11,6 +11,7 @@ let notesFind = [
 
 import { contacts } from 'wix-crm-backend';
 
+// ø <------------ <steamdaFindOrCreateLabelFunction>  ------------>
 export function steamdaFindOrCreateLabelFunction() {
     const displayName = "Active Customer";
     const options = {
@@ -25,6 +26,7 @@ export function steamdaFindOrCreateLabelFunction() {
             console.error(error);
         });
 }
+// ø <------------ </steamdaFindOrCreateLabelFunction> ------------>
 
 /*
  * Promise resolves to:
