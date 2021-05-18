@@ -8,6 +8,11 @@ import { steamdaGetContactFunction } from 'backend/crmModule.jsw'
 // import { myBackendFunction } from 'backend/aModule.jsw'
 import wixWindow from 'wix-window';
 
+/** 
+ * ! OVERALL WiX to vsCode and Other Notes:
+ * ø last confirmed tranferral to WiX from Commit SUCCESS:
+ * ø ø 20210518090500 - lots of cleanup, commented console.log's
+ */
 
 $w.onReady(function () {
 	$w("#anchorRandomUser").scrollTo();
