@@ -4,9 +4,11 @@
 import {getJSON} from 'wix-fetch';
 // import wixCrmBackend from 'wix-crm-backend';
 // import { contacts } from 'wix-crm-backend'
-import { multiply } from 'backend/crmModule.jsw'
+import { multiply } from 'backend/randomAPI.jsw'
+import { composeWixContactCode } from 'backend/randomAPI.jsw'
 import { steamdaGetContactFunction } from 'backend/crmModule.jsw'
 // import { myBackendFunction } from 'backend/aModule.jsw'
+import wixWindow from 'wix-window';
 
 
 $w.onReady(function () {
@@ -15,7 +17,8 @@ $w.onReady(function () {
 	// To select an element by ID use: $w("#elementID")
 
 	// Click "Preview" to run your code
-	$w("#topMenu").scrollTo()
+	// $w("#topMenu").scrollTo();
+	$w("#anchorRandomUser").scrollTo();
 });
 
 /**
@@ -173,17 +176,76 @@ export function tabDoUpdate_click(event) {
  *	 @param {$w.MouseEvent} event
  */
 export function appendKVPtoContactInfo_click(event) {
-	let result = doAppendKVPtoContactInfo("append");
+	let result = doAppendKVPtoContactInfo("appendKVPtoContactInfo");
 }
 
 export function doAppendKVPtoContactInfo(step){
 	$w('#errorTextBox').hide();
-	let contactInfoHolder = JSON.parse($w('#codePrepContact').value);
+	let contactInfoRaw = $w('#codePrepContact').value;
+	contactInfoRaw.trim();
+	contactInfoRaw = contactInfoRaw.substr(0,1) === "{" ? contactInfoRaw :'{}';
+	let contactInfoHolder = JSON.parse(contactInfoRaw);
+	// if(typeof contactInfoHolder.contactInfo.name === 'undefined'){
+	// 	contactInfoHolder.contactInfo.name = {};
+	// }
+			// let contactInfo = {};
+	let attributeChain = "contactInfoHolder";
+	let attributeChainArray = [];
+	let path = $w('#ddInputKey').value;
+	let pathSplit = path.split(".");
+	let inputKey = pathSplit.pop();
+	let inputValue = $w('#inputValue').value;
+	let inputKeyChunk = "['" + inputKey + "']";
+	console.log('inputKeyChunk: ');
+	console.log(inputKeyChunk);
+	console.log('inputValue: ');
+	console.log(inputValue);
+	let chunkCount = 0;
+	let attribute = '';
+    pathSplit.forEach(chunk => {
+		chunkCount++;
+		attribute = "['" + chunk + "']";
+		attributeChainArray.push(attribute);
+		attributeChain += attribute;
+		let testChain = eval(attributeChain);
+		if(typeof testChain === 'undefined'){
+			let instantiateChain = attributeChain + " = {}";
+			eval(instantiateChain);
+			console.log('contactInfoHolder instaantiate: ');
+			console.log(instantiateChain);
+			console.log(contactInfoHolder);
+		}
+		// // test = eval(attributeChain);
+		// try {
+		// 	eval(attributeChain);
+		// } catch (e) {
+		// 	attributeChainInstantiate = attributeChain + " = {}"
+		// 	eval(attributeChainInstantiate);
+		// }
+		// console.log('[chunk ' + chunkCount + ']contactInfoHolder AFTER: ');
+		// console.log(contactInfoHolder);
+		// console.log('[chunk ' + chunkCount + ']attributeChainArray AFTER: ');
+		// console.log(attributeChainArray);
+    });
+	console.log('[chunk ' + chunkCount + ']attributeChainArray Final: ');
+	console.log(attributeChainArray);
+	
+	let attributeChainAssign = attributeChain + inputKeyChunk + " = '" + inputValue + "'"
+	eval(attributeChainAssign);
+	console.log('attributeChainAssign: ');
+	console.log(attributeChainAssign);
 	console.log(contactInfoHolder);
-	// let contactInfo = {};
-	if(typeof contactInfoHolder.contactInfo.name === 'undefined'){
-		contactInfoHolder.contactInfo.name = {};
-	}
+	// eval(attributeChainAssign);
+	$w('#codePrepContact').value = JSON.stringify(contactInfoHolder,undefined,4)
+	
+
+
+
+
+
+
+
+	return;
 	let key = $w('#inputKey').value;
 	let stringValue = $w('#inputValue').value.trim();
 	let supportedKeyArray = ['last','first'];
@@ -292,40 +354,55 @@ async function doRandomUser(paramObject = {}){
 	resolvedResponse.seed = response.info.seed;
 	resolvedResponse.location.country = resolvedResponse.location.country === 'United States' ? 'US' : resolvedResponse.location.country;
 	// resolvedResponse.info = [];
-	let transformedAttributes = [];//[['locale','literal'],['postalCode','ensure 5 and string'],[['birthdate'],['dob.date to left 10'],[['subdivision'],['2letter vesion of "state" (not removed)'],[['Company'],['Street name + random business kind'],[['jobTitle'],['random jobTitle']]
+	let transformedAttributes = [];
 	resolvedResponse.locale = 'en-US';
-	transformedAttributes.push(['locale',"literal 'en-US'"]);
+	// transformedAttributes.push(['locale',"literal 'en-US'"]);
+	transformedAttributes.push(["locale: literal 'en-US'"]);
 	let postalCode = '00000' + resolvedResponse.location.postcode.toString();
 	postalCode = postalCode.substr(-5);
 	resolvedResponse.location.postalCode = postalCode;
-	transformedAttributes.push(['postalCode','ensure 5 and string - left postcode as number']);
+	// transformedAttributes.push(['postalCode','ensure 5 and string - left postcode as number']);
+	transformedAttributes.push(['postalCode: ensure 5 and string - left postcode as number']);
 	let birthdate = resolvedResponse.dob.date.substr(0,10);
 	resolvedResponse.birthdate = birthdate;
-	transformedAttributes.push(['birthdate','dob.date to left 10. no change to original']);
+	// transformedAttributes.push(['birthdate','dob.date to left 10. no change to original']);
+	transformedAttributes.push(['birthdate: dob.date to left 10. no change to original']);
 	let stateAbbrvObject = {"Alabama":"AL","Alaska":"AK","American Samoa":"AS","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE","District Of Columbia":"DC","Federated States Of Micronesia":"FM","Florida":"FL","Georgia":"GA","Guam":"GU","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME","Marshall Islands":"MH","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY","North Carolina":"NC","North Dakota":"ND","Northern Mariana Islands":"MP","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Palau":"PW","Pennsylvania":"PA","Puerto Rico":"PR","Rhode Island":"RI","South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virgin Islands":"VI","Virginia":"VA","Washington":"WA","West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY"};
 	let state = resolvedResponse.location.state
 	let subdivision = stateAbbrvObject[state];
 	resolvedResponse.location.subdivision = subdivision;
-	transformedAttributes.push(['subdivision',"2letter version of 'state' - original not removed"]);
+	// transformedAttributes.push(['subdivision',"2letter version of 'state' - original not removed"]);
+	transformedAttributes.push(["subdivision: 2letter version of 'state' - original not removed"]);
 	let company = resolvedResponse.location.street.name;
 	company = company.substr(0,company.indexOf(" "));//first word, how about all but last, but pretty good
 	let bussnessKindArray = ['Incorporated','Limited','Corporation','University','College','Auto Parts','Associates','Restaurant','Stores'];
 	company += ' ' + bussnessKindArray[Math.floor(Math.random() * bussnessKindArray.length)];
 	resolvedResponse.company = company;
-	transformedAttributes.push(['Company','Street name + random business kind']);
+	// transformedAttributes.push(['Company','Street name + random business kind']);
+	transformedAttributes.push(['Company: Street name + random business kind']);
 	let jobTitleArray = ['Manager','Sales','IT','Maintenance','Supervisor','Graphic Design','Accounting','Human Resources'];
 	let jobTitle = jobTitleArray[Math.floor(Math.random() * jobTitleArray.length)];
 	resolvedResponse.jobTitle = jobTitle;
-	transformedAttributes.push(['jobTitle','random jobTitle']);
+	// transformedAttributes.push(['jobTitle','random jobTitle']);
+	transformedAttributes.push(['jobTitle: random jobTitle']);
 	let emailPrimary = 'qiqgroup+' + resolvedResponse.name.first.toLowerCase() + '@gmail.com';
 	resolvedResponse.emailPrimary = emailPrimary;
-	transformedAttributes.push(['emailPrimary','qiqgroup + firstName - real so that enrollment happens']);
+	// transformedAttributes.push(['emailPrimary','qiqgroup + firstName - real so that enrollment happens']);
+	transformedAttributes.push(['emailPrimary: qiqgroup + firstName - real so that enrollment happens']);
 	let addressLine2TypeArray = ['#','Suite','Box']
 	let addressLine2 = Math.floor(Math.random() * 1000).toString();
 	let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
 	addressLine2 = addressLine2Type + ' ' + addressLine2;
 	resolvedResponse.location.addressLine2 = addressLine2;
-	transformedAttributes.push(['addressLine2','random number and random type']);
+	// transformedAttributes.push(['addressLine2','random number and random type']);
+	transformedAttributes.push(['addressLine2: random number and random type']);
+	// let addressLine2TypeArray = ['#','Suite','Box']
+	let apt = Math.floor(Math.random() * 1000).toString();
+	// let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
+	// addressLine2 = addressLine2Type + ' ' + addressLine2;
+	resolvedResponse.location.street.apt = apt;
+	// transformedAttributes.push(['street.apt','random number more useful than addressLine2']);
+	transformedAttributes.push(['street.apt: random number more useful than addressLine2']);
 	// console.log(('transformedAttributes: '))
 	// console.log((transformedAttributes))
 	// let transformedAttributes = [['locale','literal'],['postalCode','ensure 5 and string'],[['birthdate'],['dob.date to left 10'],[['subdivision'],['2letter vesion of "state" (not removed)'],[['Company'],['Street name + random business kind'],[['jobTitle'],['random jobTitle']]
@@ -556,3 +633,318 @@ export function btnClearFetched_click(event) {
 	$w('#randomuserDOTme').value = '';
 	$w('#randomuserDOTme').resetValidityIndication();
 }
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnContactInfoFromRandom_click(event) {
+	doContactInfoFromRandom(); 
+}
+
+export async function doContactInfoFromRandom(){
+	let thisParamObject = {};
+	thisParamObject.chkbxKeyArray = $w('#chkbxContactAttributes').value;
+	$w('#ddInputKey').value = '';
+	$w('#ddInputKey').resetValidityIndication();
+	$w('#objectOnDeck').value = '';
+	$w('#objectOnDeck').resetValidityIndication();
+	doShowHideOnDeckObject();
+	if(thisParamObject.chkbxKeyArray.length === 0){
+		$w('#codePrepContact').value = "Error: at least one Checkbox Attribute must be selected. No action taken, please try again or ask for assistance.";
+		return;
+	}
+	let thisRandomUserDotMeJSON = $w('#randomuserDOTme').value;
+	// console.log(thisParamObject);
+	// console.log(thisRandomUserDotMeJSON);
+	let response = "NOT CORRECT: nothing from the backend...";
+	response = await composeWixContactCode(thisRandomUserDotMeJSON, thisParamObject);
+	console.log('[~LINE 596 FRONT]result: ');
+	console.log(response);
+	$w('#codePrepContact').value = JSON.stringify(response,undefined,4);
+	// $w('#codePrepContact').value = response.toString();
+	// $w('#codePrepContact').value = JSON.stringify(response,undefined,4);
+}
+
+export function doShowHideOnDeckObject(paramObject = {}){
+	let currentObject = JSON.stringify($w('#codePrepContact').value,undefined,4);
+	let titleStringWas = $w("#objectOnDeckTitle").text;
+	let titleKey = $w('#ddInputKey').value.indexOf('emailThis') < 0 ? "PPENDING" : "Email";
+	titleKey = $w('#ddInputKey').value.indexOf('phoneThis') < 0 ? titleKey : "Phone";
+	titleKey = $w('#ddInputKey').value.indexOf('addressThis') < 0 ? titleKey : "Address";
+	titleKey = $w('#ddInputKey').value.indexOf('labelKeyThis') < 0 ? titleKey : "Label";
+
+	let currentCountArray = [];
+	let currentCount = 0;
+	let currentCountPathArray = "PPENDING";
+	let currentCountString = '[[current count unavailable]]';
+	if(titleKey !== "PPENDING"){
+		currentCountPathArray = titleKey === "Email" ? "emails" : currentCountPathArray;
+		currentCountPathArray = titleKey === "Phone" ? "phones" : currentCountPathArray;
+		currentCountPathArray = titleKey === "Address" ? "addresses" : currentCountPathArray;
+		currentCountPathArray = titleKey === "Label" ? "labelKeys" : currentCountPathArray;
+		// currentCountPathArray += ".length";
+		currentCountPathArray = "currentObject.info";
+		let info = eval(currentCountPathArray);
+		if(typeof info === 'undefined'){
+			currentCount = -1;
+		}
+		if(currentCount >= 0){
+			currentCountPathArray = "currentObject.info" + currentCountPathArray;
+			console.log(currentCountPathArray)
+			currentCountArray = eval(currentCountPathArray);
+			if(typeof currentCountArray === 'undefined'){
+				currentCount = -1;
+			}else{
+				currentCount = currentCountArray.length;
+			}
+		}
+		console.log('currentCount: ' + currentCount)
+		currentCount = currentCount >= 0 ? currentCount : 0;
+		console.log('currentCount: ' + currentCount)
+		if(typeof currentCount === undefined){
+			currentCount = 0;
+		}
+		currentCountString = '[[current: ' + currentCount + ']';
+		currentCount++;
+		currentCountString += '[next: ' + currentCount + ']]';
+		$w('#ddOnDeckIndex').value = currentCount
+	}
+	console.log('$w(#ddInputKey).value.indexOf(emailThis): ' + $w('#ddInputKey').value.indexOf('emailThis'));
+	console.log('$w(#ddInputKey).value: ' + $w('#ddInputKey').value);
+	console.log('titleStringWas: ' + titleStringWas);
+	console.log('titleKey: ' + titleKey);
+	console.log('titleString: ' + titleString);
+
+	// let showIdArray = ['#objectOnDeckTitle','#objectOnDeck','#ddOnDeckIndex','#btnOnDeckObjectAppend','#btnOnDeckObjectClear'];
+	let showIdArray = ['#objectOnDeckTitle'];
+	let titleString = showIdArray.shift();
+	titleString = titleKey;
+	titleString += ' ' + currentCountString;
+	// let hideIdArray = ['#codePrepContact'];
+	let hideIdArray = [];
+	
+	let ddShowOnDeckArray = ["info.labelKeyThis.labelKey","info.emailThis.email","info.emailThis.tag","info.emailThis.primary","info.phoneThis.phone","info.phoneThis.tag","info.phoneThis.primary","info.addressThis.tag","info.addressThis.address.streetAddress.name","info.addressThis.address.streetAddress.number","info.addressThis.address.streetAddress.apt","info.addressThis.address.addressLine2","info.addressThis.address.city","info.addressThis.address.subdivision","info.addressThis.address.postalCode","info.addressThis.address.country","info.addressThis.address.location.latitude","info.addressThis.address.location.longitude","info.addressThis.address.formatted"];
+	
+	let objectTypeEmailArray = ['info.emailThis.email','info.emailThis.tag','info.emailThis.primary'];
+	let objectTypePhoneArray = ['info.phoneThis.phone','info.phoneThis.tag','info.phoneThis.primary'];
+	let objectTypeAddressArray = ['info.addressThis.tag','info.addressThis.address.streetAddress.name','info.addressThis.address.streetAddress.number','info.addressThis.address.streetAddress.apt','info.addressThis.address.addressLine2','info.addressThis.address.city','info.addressThis.address.subdivision','info.addressThis.address.postalCode','info.addressThis.address.country','info.addressThis.address.location.latitude','info.addressThis.address.location.longitude','info.addressThis.address.formatted']
+
+	
+	let showOnDeckByDropDown = ddShowOnDeckArray.includes($w('#ddInputKey').value);
+	let showOnDeckByNonEmpty = $w('#objectOnDeck').value.length > 0 ? true : false;
+
+	let doContinue = titleStringWas.indexOf(titleKey) >= 0 ? true : false;
+	doContinue = showOnDeckByNonEmpty === false ? true : doContinue;
+	if(!doContinue){
+		titleString = titleStringWas + ' [STILL] (will clear Key)'
+		// $w('#codePrepContact').value = titleString;
+		$w('#objectOnDeckTitle').text = titleString;
+		return;
+	}
+	// $w('#codePrepContact').value = titleString;
+	$w('#objectOnDeckTitle').text = titleString;
+
+	let showFinal = false;
+	showFinal = showOnDeckByDropDown ? true : showFinal;
+	showFinal = showOnDeckByNonEmpty ? true : showFinal;
+	// $w('#codePrepContact').value += '\n' + $w('#ddInputKey').value;
+	// $w('#codePrepContact').value = '\nshowOnDeckByDropDown: ';
+	// $w('#codePrepContact').value = '\nshowOnDeckByNonEmpty: ';
+	if(showFinal){
+		showIdArray.forEach(element => {
+			$w(element).show();
+		});	
+		hideIdArray.forEach(element => {
+			$w(element).hide();
+		});
+		let lightboxParamObject = {};
+		lightboxParamObject.titleKey = titleKey;
+		// wixWindow.openLightbox("manageContactArrays", {
+		// 	"path": $w('#ddInputKey').value,
+		// 	"key": titleKey,
+		// 	"currentContactObjectJSON": JSON.parse($w('#codePrepContact').value)
+		// })
+		// .then( (data) => {
+		// 	// $w('#objectOnDeck').value = "RETURNED";//data.listTitle;
+		// 	$w('#objectOnDeck').value = data.listTitle;
+		// 	 $w('#inputValue').value = data.selectedIndex;
+		// 	 $w('#Z').value = data.buttonId;
+		// } );
+ 
+	}
+	else {
+		showIdArray.forEach(element => {
+			$w(element).hide();
+		});	
+		hideIdArray.forEach(element => {
+			$w(element).show();
+		});	
+	}
+}
+
+
+export function btnOnDeckObjectAppend_click(event) {
+	let result = doAppendKVPtoContactInfo("btnOnDeckObjectAppend");
+}
+
+export function doAllClear(layoutObjectIdArrayParam = []){
+	let layoutObjectIdArray = [];
+	if(typeof layoutObjectIdArrayParam === 'string'){
+		layoutObjectIdArray.push(layoutObjectIdArrayParam);
+	}else{
+		layoutObjectIdArray = layoutObjectIdArrayParam;
+	}
+	layoutObjectIdArray.forEach(element => { 
+		let myType = $w(element).type; // "$w.Type"
+		if(myType === '$w.Text'){
+			$w(element).text = 'EEMPTY';
+			console.log('Text ' + myType);
+		}else{
+			console.log('Other ' + myType);
+			$w(element).value = '';
+			$w(element).resetValidityIndication();
+		}
+	})
+}
+
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnOnDeckObjectClear_click(event) {
+	doAllClear(["#objectOnDeck","#objectOnDeckTitle"]);
+	// doShowHideOnDeckObject(); //might be able to fix, but lots of huzuma for something pretty much abandoned
+}
+
+/**
+*	Adds an event handler that runs when an input element's value
+ is changed.
+*	 @param {$w.Event} event
+*/
+export function ddInputKey_change(event) {
+	// console.log($w('#ddInputKey').value);
+	doShowHideOnDeckObject();
+}
+
+export function objectOnDeck_change(event) {
+		doShowHideOnDeckObject();
+}
+
+export function btnClearCodePrepContact_click(event) {
+	doAllClear("#codePrepContact");
+}
+
+export function launchLightBox(key){
+	let wixContact = JSON.parse($w('#codePrepContact').value);
+	console.log('[~LINE 834]wixContact: ');
+	console.log(wixContact);
+	//<no validation of path at this time>
+	let keyArray = []; 
+	if(key === 'labelKeys'){
+		keyArray = wixContact[key] ;
+	}else{
+		keyArray = wixContact['info'][key]; 
+	}
+	console.log('[~LINE 843]keyArray:');
+	console.log(keyArray);
+	//</no validation of path at this time>
+	wixWindow.openLightbox("manageContactArrays", {
+			"path": key,
+			"key": key,
+			"currentContactObjectJSON": keyArray
+		})
+		.then( (data) => {
+			// $w('#objectOnDeck').value = "RETURNED";//data.listTitle;
+			$w('#objectOnDeck').value = data.updatedObjectJSON;
+			 $w('#inputValue').value = data.selectedIndex;
+			 $w('#Z').value = data.buttonId;
+			 let doAbort = data.buttonId.indexOf('Abort') < 0 ? false : true;
+			 let doUpdate = data.buttonId.indexOf('Update') < 0 ? false : true;
+			//  doAbort = data.buttonId.indexOf('Abort') < 0 ? false : doAbort;
+			//  doUpdate = data.buttonId.indexOf('Update') < 0 ? false : doUpdate;
+			 let message = doAbort && doUpdate ? "Conflict: Both:" : "PPENDING";
+			 message = !doAbort && !doUpdate ? "Conflict: Neither:" : message;
+			 message = doAbort ? "Abort:" : message;
+			 message = doUpdate ? "Update:" : message;
+			 message += key;
+			 $w('#objectOnDeckTitle').show();
+			 $w('#objectOnDeckTitle').text = message;
+			 if(doUpdate){
+				 console.log('[~LINE875] if(doUpdate): entered ')
+				let currentContactObject = JSON.parse($w('#codePrepContact').value)
+				$w('#codePrepContact').value = ''; 
+				 if(key === 'phones'){
+					console.log('[~LINE879] if(key === phones): entered ');
+					console.log(currentContactObject);
+					console.log(JSON.parse($w('#objectOnDeck').value));
+					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					console.log(currentContactObject);
+					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
+				 }
+				 if(key === 'emails'){
+					console.log('[~LINE887] if(key === emails): entered ');
+					console.log(currentContactObject);
+					console.log(JSON.parse($w('#objectOnDeck').value));
+					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					console.log(currentContactObject);
+					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
+				 }
+				 if(key === 'labelKeys'){
+					console.log('[~LINE895] if(key === labelKeys): entered ')
+					currentContactObject[key] = JSON.parse($w('#objectOnDeck').value);
+					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
+				 }
+				 if(key === 'addresses'){
+					console.log('[~LINE900] if(key === labelKeys): entered ')
+					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
+				 }
+			 }
+		} );
+}
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnManageEmails_click(event) {
+	launchLightBox("emails")
+}
+
+export function btnManageAddresses_click(event) {
+	launchLightBox("addresses")
+}
+
+export function btnManagePhones_click(event) {
+	launchLightBox("phones")
+}
+
+export function btnManageLabels_click(event) {
+	launchLightBox("labelKeys")
+}
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnTgglChkBoxRandom_click(event) {
+	let chkbxOptions = $w("#chkbxContactAttributes").options;
+	let chkbxCurrent = $w("#chkbxContactAttributes").value;
+	let chkbxToggleTo = [];;
+	let displayObject = {};
+	let valueThis = '';
+	chkbxOptions.forEach(element => {
+		valueThis = element.value;
+		if(!chkbxCurrent.includes(valueThis)){
+			chkbxToggleTo.push(valueThis);
+		}
+	});
+	// displayObject.options = chkbxOptions;
+	// displayObject.ocurrent = chkbxCurrent;
+	// displayObject.toggle = chkbxToggleTo;
+	// $w('#objectOnDeck').value = JSON.stringify(displayObject,undefined,4);
+	$w("#chkbxContactAttributes").value = chkbxToggleTo;
+}
+
