@@ -1,0 +1,54 @@
+{
+    "contactCreateUpdateEtcResponseObjectArray": [
+        {
+            "coreAction": "CONTACT_UPDATE(D)",
+            "altActions": [
+                "alter First",
+                "add Job Title"
+            ],
+            "notes": [
+                "pretty simple, but three tests",
+                "1) update First",
+                "2) add Job Title",
+                "3) Last not 'blown away'"
+            ],
+            "response": {},
+            "seed": "2b09df5fa295637d"
+        },
+        {
+            "coreAction": "CONTACT_CREATED",
+            "altActions": [
+                "simplest Create"
+            ],
+            "notes": [
+                "simplest Create"
+            ],
+            "response": {
+                "_createdDate": "2021-05-18T22:58:00.144Z",
+                "_id": "6f933482-d574-4667-a57c-ce71db7d344e",
+                "info": {
+                    "extendedFields": {
+                        "contacts.displayByFirstName": "Jimmie Black",
+                        "contacts.displayByLastName": "Black Jimmie"
+                    },
+                    "name": {
+                        "first": "Jimmie",
+                        "last": "Black"
+                    },
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-18T22:58:00.144Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "revision": 0,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-18T22:58:00.145Z"
+            },
+            "seed": "2b09df5fa295637d"
+        }
+    ]
+}
