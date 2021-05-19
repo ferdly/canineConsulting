@@ -2,7 +2,7 @@
     "attributeArray": [
         {
             "name": "INSTANTIATE_ARRAY",
-            "path": "labelKeys",
+            "path": "info.labelKeys",
             "index": "NNULL",
             "ruMePath": "ZXZruMePath",
             "ruMeCode": "eval('[]')",
@@ -13,7 +13,7 @@
         },
         {
             "name": "labelKeys-Gender",
-            "path": "labelKeys.i",
+            "path": "info.labelKeys.i",
             "index": 0,
             "ruMePath": "gender",
             "ruMeCode": "eval('gender-' + this)",
@@ -24,7 +24,7 @@
         },
         {
             "name": "labelKeys-Seed",
-            "path": "labelKeys.i",
+            "path": "info.labelKeys.i",
             "index": 1,
             "ruMePath": "seed",
             "ruMeCode": "eval('seed-' + this)",
@@ -35,7 +35,7 @@
         },
         {
             "name": "labelKeys-Username",
-            "path": "labelKeys.i",
+            "path": "info.labelKeys.i",
             "index": 2,
             "ruMePath": "login.username",
             "ruMeCode": "eval('username-' + this)",
