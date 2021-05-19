@@ -1,12 +1,13 @@
 import { contacts } from 'wix-crm-backend';
 
-export function steamdaUpdateContactFunction(paramObject) {
+// ø <----------- <doRemoveCheckedFromPrep>  ----------->
+export function doRemoveCheckedFromPrep(paramObject) {
   const contactIdentifiers = paramObject.contactIdentifiers;
 //   const contactIdentifiers = {
 //     contactId: "0677ef55-cf20-4f68-989a-f31d3649eb72",
 //     revision: 6
 //   };
-  const contactInfo = .paramObject.contactInfo;
+  const contactInfo = paramObject.contactInfo;
 //   const contactInfo = {
 //     name: {
 //       first: "Annie",
@@ -29,6 +30,7 @@ export function steamdaUpdateContactFunction(paramObject) {
       console.error(error);
     });
 }
+// ø <----------- </doRemoveCheckedFromPrep> ----------->
 
 /* Promise resolves to:
   * {
