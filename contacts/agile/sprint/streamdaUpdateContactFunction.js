@@ -1,7 +1,7 @@
 import { contacts } from 'wix-crm-backend';
 
-// ø <----------- <doRemoveCheckedFromPrep>  ----------->
-export function doRemoveCheckedFromPrep(paramObject) {
+// ø <----------- <streamdaUpdateContactFunction>  ----------->
+export function streamdaUpdateContactFunction(paramObject) {
   const contactIdentifiers = paramObject.contactIdentifiers;
 //   const contactIdentifiers = {
 //     contactId: "0677ef55-cf20-4f68-989a-f31d3649eb72",
@@ -30,7 +30,7 @@ export function doRemoveCheckedFromPrep(paramObject) {
       console.error(error);
     });
 }
-// ø <----------- </doRemoveCheckedFromPrep> ----------->
+// ø <----------- </streamdaUpdateContactFunction> ----------->
 
 /* Promise resolves to:
   * {

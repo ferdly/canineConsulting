@@ -1,0 +1,305 @@
+{
+    "contactCreateUpdateEtcResponseObjectArray": [
+        {
+            "coreAction": "CONTACT_UPDATED",
+            "altActions": [
+                "add two random Phones and unique email",
+                "I think I added Birdate here (can check below)",
+                "add Label TermID 202106"
+            ],
+            "notes": [
+                "two random Phones and unique email all have IDs",
+                "primaryInfo from Primary true email/phone",
+                " ↪ this is a _thing_"
+            ],
+            "response": {
+                "_createdDate": "2021-05-18T22:58:00.144Z",
+                "_id": "6f933482-d574-4667-a57c-ce71db7d344e",
+                "info": {
+                    "birthdate": "1958-01-17",
+                    "company": "Frances Incorporated",
+                    "emails": [
+                        {
+                            "_id": "db82a3b0-bad9-4f4a-97e3-5cdb4c7a06b9",
+                            "tag": "MAIN",
+                            "email": "qiqgroup+jimmiezzz@gmail.com",
+                            "primary": true
+                        },
+                        {
+                            "_id": "9ac76b24-8d72-4b30-8d89-5641f4cfaf59",
+                            "tag": "UNTAGGED",
+                            "email": "jimmie.black@example.com",
+                            "primary": false
+                        }
+                    ],
+                    "extendedFields": {
+                        "contacts.displayByLastName": "Black James",
+                        "emailSubscriptions.deliverabilityStatus": "NOT_SET",
+                        "emailSubscriptions.subscriptionStatus": "NOT_SET",
+                        "emailSubscriptions.effectiveEmail": "jimmie.black@example.com",
+                        "contacts.displayByFirstName": "James Black"
+                    },
+                    "jobTitle": "Graphic Design",
+                    "labelKeys": [
+                        "custom.gender-male",
+                        "custom.primary-parent",
+                        "custom.t202106"
+                    ],
+                    "locale": "en-us",
+                    "name": {
+                        "first": "James",
+                        "last": "Black"
+                    },
+                    "phones": [
+                        {
+                            "_id": "4335bece-a79e-48c7-8c43-efeb78cf1553",
+                            "tag": "UNTAGGED",
+                            "phone": "(446)-659-3940",
+                            "primary": true
+                        },
+                        {
+                            "_id": "4e4a6be0-a5c1-4113-8832-1f255e70e33d",
+                            "tag": "UNTAGGED",
+                            "phone": "(307)-996-8899",
+                            "primary": false
+                        }
+                    ],
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-18T22:58:00.144Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "primaryInfo": {
+                    "email": "qiqgroup+jimmiezzz@gmail.com",
+                    "phone": "(446)-659-3940"
+                },
+                "revision": 4,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-20T03:10:13.437Z"
+            },
+            "seed": "2b09df5fa295637d"
+        },
+        {
+            "coreAction": "CONTACT_UPDATED",
+            "altActions": [
+                "Changed Primary Email to MAIN",
+                "Added two phones, made Cell Primary",
+                "Added Label Student",
+                "Two NEW phones each have IDs -- but they are fake Phones I've used often",
+                " ↪ didn't notice if there was an email ID before the Update",
+                " ↪ NONE of the ID's (phones and email) resolve to Contac/Memer",
+                " ↪  ↪ test on James Black next",
+                "primaryInfo set by Primary true Email and Phone",
+                "picture from Member (of course) but not 'updated' so auto-by-member"
+            ],
+            "notes": [
+                "Changed Primary Email to MAIN",
+                "Added two phones, made Cell Primary"
+            ],
+            "response": {
+                "_createdDate": "2021-03-22T11:23:52.156Z",
+                "_id": "d3e67a25-6eea-46ad-bd4c-ce8e155e776f",
+                "info": {
+                    "addresses": [
+                        {
+                            "address": {
+                                "formatted": "United States",
+                                "country": "US"
+                            },
+                            "tag": "UNTAGGED"
+                        }
+                    ],
+                    "emails": [
+                        {
+                            "_id": "6c81df03-9295-4aee-b9b8-869e31637e79",
+                            "tag": "MAIN",
+                            "email": "qiqgroup+ernie@gmail.com",
+                            "primary": true
+                        }
+                    ],
+                    "extendedFields": {
+                        "contacts.displayByLastName": "Echo Evangeline",
+                        "emailSubscriptions.deliverabilityStatus": "VALID",
+                        "members.membershipStatus": "APPROVED",
+                        "emailSubscriptions.subscriptionStatus": "NOT_SET",
+                        "members.mobile": false,
+                        "emailSubscriptions.effectiveEmail": "qiqgroup+ernie@gmail.com",
+                        "contacts.displayByFirstName": "Evangeline Echo"
+                    },
+                    "labelKeys": [
+                        "custom.barking-intensive-long-weekend",
+                        "custom.student"
+                    ],
+                    "name": {
+                        "first": "Evangeline",
+                        "last": "Echo"
+                    },
+                    "phones": [
+                        {
+                            "_id": "b0e987a8-5e90-4a29-8e0a-c19f141739f1",
+                            "tag": "MOBILE",
+                            "phone": "(218)310-5153",
+                            "primary": true
+                        },
+                        {
+                            "_id": "f0689996-2a1a-41c4-a07c-ea5ff15d2970",
+                            "tag": "FAX",
+                            "phone": "218-595-0499",
+                            "primary": false
+                        }
+                    ],
+                    "picture": {
+                        "image": "1bf8c6_edf568fd0ee54a61a1be9331851e0076~mv2.png",
+                        "imageProvider": "EXTERNAL"
+                    }
+                },
+                "lastActivity": {
+                    "activityDate": "2021-03-22T11:40:41.590Z",
+                    "activityType": "MEMBER_LOGIN"
+                },
+                "primaryInfo": {
+                    "email": "qiqgroup+ernie@gmail.com",
+                    "phone": "(218)310-5153"
+                },
+                "revision": 6,
+                "source": {
+                    "sourceType": "ADMIN"
+                },
+                "_updatedDate": "2021-05-20T02:39:37.245Z"
+            },
+            "seed": "NA"
+        },
+        {
+            "coreAction": "CONTACT_UPDATED",
+            "altActions": [
+                "add Label gender",
+                "add Label Primary Parent",
+                "add Label TermID 202106"
+            ],
+            "notes": [
+                "Added three Labels...",
+                " ↪ from labelFun from yesterday)"
+            ],
+            "response": {
+                "_createdDate": "2021-05-18T22:58:00.144Z",
+                "_id": "6f933482-d574-4667-a57c-ce71db7d344e",
+                "info": {
+                    "company": "Frances Incorporated",
+                    "extendedFields": {
+                        "contacts.displayByFirstName": "James Black",
+                        "contacts.displayByLastName": "Black James"
+                    },
+                    "jobTitle": "Graphic Design",
+                    "name": {
+                        "first": "James",
+                        "last": "Black"
+                    },
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-18T22:58:00.144Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "revision": 2,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-20T01:47:02.799Z"
+            },
+            "seed": "2b09df5fa295637d"
+        },
+        {
+            "coreAction": "CONTACT_UPDATED",
+            "altActions": [
+                "alter First",
+                "add Job Title"
+            ],
+            "notes": [
+                "pretty simple, but three tests",
+                "1) update First",
+                "2) add Job Title",
+                "3) Last not 'blown away'",
+                "ooops! forgot to change 'Jimmie' to 'James'",
+                " ↪ all good: ",
+                " ↪ • 'jobTitle' to 'Graphic Design' (revison 1 not captured here)",
+                " ↪ • Same test but Different (revision2)",
+                " ↪ • 'company' to 'Frances Incorporated'",
+                " ↪ • 'first' to 'James'",
+                " ↪ • 'jobTitle' to 'not blown away'"
+            ],
+            "response": {
+                "_createdDate": "2021-05-18T22:58:00.144Z",
+                "_id": "6f933482-d574-4667-a57c-ce71db7d344e",
+                "info": {
+                    "company": "Frances Incorporated",
+                    "extendedFields": {
+                        "contacts.displayByFirstName": "James Black",
+                        "contacts.displayByLastName": "Black James"
+                    },
+                    "jobTitle": "Graphic Design",
+                    "labelKeys": [
+                        "custom.gender-male",
+                        "custom.primary-parent",
+                        "custom.t202106"
+                    ],
+                    "name": {
+                        "first": "James",
+                        "last": "Black"
+                    },
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-18T22:58:00.144Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "revision": 3,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-20T02:00:37.141Z"
+            },
+            "seed": "2b09df5fa295637d"
+        },
+        {
+            "coreAction": "CONTACT_CREATED",
+            "altActions": [
+                "simplest Create"
+            ],
+            "notes": [
+                "simplest Create"
+            ],
+            "response": {
+                "_createdDate": "2021-05-18T22:58:00.144Z",
+                "_id": "6f933482-d574-4667-a57c-ce71db7d344e",
+                "info": {
+                    "extendedFields": {
+                        "contacts.displayByFirstName": "Jimmie Black",
+                        "contacts.displayByLastName": "Black Jimmie"
+                    },
+                    "name": {
+                        "first": "Jimmie",
+                        "last": "Black"
+                    },
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-18T22:58:00.144Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "revision": 0,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-18T22:58:00.145Z"
+            },
+            "seed": "2b09df5fa295637d"
+        }
+    ]
+}

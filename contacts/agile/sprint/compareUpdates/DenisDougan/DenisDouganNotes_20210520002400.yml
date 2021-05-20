@@ -1,0 +1,8 @@
+[bug] cannot edit existing country only address
+once I added an address crap and new got Ids
+changed tag from UNTAGGED to MAIN it got an ID
+¿when 'touched' as Contact it gets an ID?
+Formatted is auto-magic in WiX, no need to work at it.
+apt, I _think_ just there for WiX, empty, but there
+<---------->
+my guess is that _nothing_ in member gets changed when contact gets changed
