@@ -5,17 +5,15 @@ import {getJSON} from 'wix-fetch';
 import { multiply } from 'backend/randomAPI.jsw'
 import { composeWixContactCode } from 'backend/randomAPI.jsw'
 import { steamdaGetContactFunction } from 'backend/crmModule.jsw'
+import { steamdaCreateContactFunction } from 'backend/contactReference.jsw'
+import { streamdaUpdateContactFunction } from 'backend/contactReference.jsw'
 // import { myBackendFunction } from 'backend/aModule.jsw'
 import wixWindow from 'wix-window';
 
-/** 
- * ! OVERALL WiX to vsCode and Other Notes:
- * ø last confirmed tranferral to WiX from Commit SUCCESS:
- * ø ø 20210518090500 - lots of cleanup, commented console.log's
- */
 
 $w.onReady(function () {
 	$w("#anchorRandomUser").scrollTo();
+	$w("#codeHolder").wrap = "soft";
 });
 
 export function btnClearMember_click(event) {
@@ -53,6 +51,7 @@ export function btnGetContactById_click(event) {
 			//console.log(contactReturned);
 			$w('#inputRevision').value = contactReturned.revision;
 			$w('#contactCurrent').value = JSON.stringify(contactReturned, undefined, 4);
+			$w('#contactJSON').value = JSON.stringify(contactReturned, undefined, 4);
 		})
 		.catch(err => {
 			$w('#contactCurrent').value = err;
@@ -132,6 +131,8 @@ export function appendKVPtoContactInfo_click(event) {
 }
 
 export function doAppendKVPtoContactInfo(step){
+	// let pathPrefix = 'info'; 
+	let pathPrefix = 'contactInfo'; 
 	$w('#errorTextBox').hide();
 	let contactInfoRaw = $w('#codePrepContact').value;
 	contactInfoRaw.trim();
@@ -153,6 +154,7 @@ export function doAppendKVPtoContactInfo(step){
 	let attribute = '';
     pathSplit.forEach(chunk => {
 		chunkCount++;
+		chunk = chunk === 'info' ? pathPrefix : chunk;
 		attribute = "['" + chunk + "']";
 		attributeChainArray.push(attribute);
 		attributeChain += attribute;
@@ -236,8 +238,17 @@ async function doFetch(kind, paramObject){
 	// resultString = JSON.stringify(resultStringSwitch,undefined,4);
 	return resolvedResponse;
 }
+// ø <---------- <doRandomUser>  ---------->
 async function doRandomUser(paramObject = {}){
 	//https://randomuser.me/documentation
+	let now = new Date();// AT TOP NOW
+	let stringYYYY = "YYYY";
+	if(Object.keys(paramObject).includes('instantiated')){
+		stringYYYY = paramObject.instantiated.substr(0,4);
+	}else{
+		stringYYYY = (now.getFullYear()).toString();
+		// stringYYYY += "Z";//CONFIRM DIFFERENCE
+	}
 	let fetchParamObject = {};
 	let getElementArray = ['results','gender','password','seed','format','nat','page','inc','exc','dl','noinfo','callback'];;
 	//<instantiateEmpty>
@@ -259,7 +270,7 @@ async function doRandomUser(paramObject = {}){
 	fetchParamObject.version = '';//'/1.3/'
 	//<assign NonEmptyParameter getElementArray values>
 	// fetchParamObject.results  = '';//'&results=5000';
-	// fetchParamObject.gender   = '';//'&gender=female';
+	// fetchParamObject.gender   = '';//fetchParamObject.gender.substr(0,1).toUpperCase() + fetchParamObject.gender.substr(1).toLowerCase();//'&gender=female';
 	// fetchParamObject.password = '';//'&password=upper,lower,1-16';
 	// fetchParamObject.seed     = /*'';*/'&seed=8edfefd3e6f5ba90';
 	// fetchParamObject.format   = '';//'&format=csv';
@@ -292,71 +303,93 @@ async function doRandomUser(paramObject = {}){
 	resolvedResponse.seed = response.info.seed;
 	resolvedResponse.location.country = resolvedResponse.location.country === 'United States' ? 'US' : resolvedResponse.location.country;
 	// resolvedResponse.info = [];
+	// ø <Transformations>
 	let transformedAttributes = [];
+	// let now = new Date();// AT TOP NOW
+	let streetNumberBase = resolvedResponse.location.street.number;
+	let tempIndex = 0;
+	transformedAttributes.push(["streetNumberBase: used as a 'random' number for populating _consistent/random_ data by 'seed''"]);
+	// ø <----- \_ streetNumberBase _/  ----->
 	resolvedResponse.locale = 'en-US';
-	// transformedAttributes.push(['locale',"literal 'en-US'"]);
 	transformedAttributes.push(["locale: literal 'en-US'"]);
+	// ø <----- \_ locale _/  ----->
 	let postalCode = '00000' + resolvedResponse.location.postcode.toString();
 	postalCode = postalCode.substr(-5);
 	resolvedResponse.location.postalCode = postalCode;
-	// transformedAttributes.push(['postalCode','ensure 5 and string - left postcode as number']);
 	transformedAttributes.push(['postalCode: ensure 5 and string - left postcode as number']);
+	// ø <----- \_ postalCode _/ ----->
 	let birthdate = resolvedResponse.dob.date.substr(0,10);
 	resolvedResponse.birthdate = birthdate;
-	// transformedAttributes.push(['birthdate','dob.date to left 10. no change to original']);
 	transformedAttributes.push(['birthdate: dob.date to left 10. no change to original']);
+	// ø <----- \_ birthdate _/ ----->
 	let stateAbbrvObject = {"Alabama":"AL","Alaska":"AK","American Samoa":"AS","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE","District Of Columbia":"DC","Federated States Of Micronesia":"FM","Florida":"FL","Georgia":"GA","Guam":"GU","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME","Marshall Islands":"MH","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY","North Carolina":"NC","North Dakota":"ND","Northern Mariana Islands":"MP","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Palau":"PW","Pennsylvania":"PA","Puerto Rico":"PR","Rhode Island":"RI","South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virgin Islands":"VI","Virginia":"VA","Washington":"WA","West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY"};
 	let state = resolvedResponse.location.state
 	let subdivision = stateAbbrvObject[state];
 	resolvedResponse.location.subdivision = subdivision;
-	// transformedAttributes.push(['subdivision',"2letter version of 'state' - original not removed"]);
 	transformedAttributes.push(["subdivision: 2letter version of 'state' - original not removed"]);
+	// ø <----- \_ subdivison _/ ----->
 	let company = resolvedResponse.location.street.name;
 	company = company.substr(0,company.indexOf(" "));//first word, how about all but last, but pretty good
-	let bussnessKindArray = ['Incorporated','Limited','Corporation','University','College','Auto Parts','Associates','Restaurant','Stores'];
-	company += ' ' + bussnessKindArray[Math.floor(Math.random() * bussnessKindArray.length)];
+	let businessKindArray = ['Incorporated','Limited','Corporation','University','College','Auto Parts','Associates','Restaurant','Stores'];
+	tempIndex = streetNumberBase % businessKindArray.length;
+	company += ' ' + businessKindArray[tempIndex];
 	resolvedResponse.company = company;
-	// transformedAttributes.push(['Company','Street name + random business kind']);
 	transformedAttributes.push(['Company: Street name + random business kind']);
+	// ø <----- \_ company _/ ----->
 	let jobTitleArray = ['Manager','Sales','IT','Maintenance','Supervisor','Graphic Design','Accounting','Human Resources'];
-	let jobTitle = jobTitleArray[Math.floor(Math.random() * jobTitleArray.length)];
+	tempIndex = streetNumberBase % jobTitleArray.length;
+	let jobTitle = jobTitleArray[tempIndex];
 	resolvedResponse.jobTitle = jobTitle;
-	// transformedAttributes.push(['jobTitle','random jobTitle']);
 	transformedAttributes.push(['jobTitle: random jobTitle']);
+	// ø <----- \_ jobTitle _/ ----->
 	let emailPrimary = 'qiqgroup+' + resolvedResponse.name.first.toLowerCase() + '@gmail.com';
 	resolvedResponse.emailPrimary = emailPrimary;
-	// transformedAttributes.push(['emailPrimary','qiqgroup + firstName - real so that enrollment happens']);
 	transformedAttributes.push(['emailPrimary: qiqgroup + firstName - real so that enrollment happens']);
+	// ø <----- \_ emailPrimary _/ ----->
 	let addressLine2TypeArray = ['#','Suite','Box']
-	let addressLine2 = Math.floor(Math.random() * 1000).toString();
-	let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
+	tempIndex = streetNumberBase % addressLine2TypeArray.length;
+	let addressLine2 = ((streetNumberBase % 51) + 1).toString();
+	let addressLine2Type = addressLine2TypeArray[tempIndex];
 	addressLine2 = addressLine2Type + ' ' + addressLine2;
 	resolvedResponse.location.addressLine2 = addressLine2;
-	// transformedAttributes.push(['addressLine2','random number and random type']);
-	transformedAttributes.push(['addressLine2: random number and random type']);
-	// let addressLine2TypeArray = ['#','Suite','Box']
-	let apt = Math.floor(Math.random() * 1000).toString();
-	// let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
-	// addressLine2 = addressLine2Type + ' ' + addressLine2;
+	transformedAttributes.push(['addressLine2: random number and random type (now consistent by seed)']);
+	// ø <----- \_ addressLine2 _/ ----->
+	let apt = (streetNumberBase % 74) + 1;
 	resolvedResponse.location.street.apt = apt;
-	// transformedAttributes.push(['street.apt','random number more useful than addressLine2']);
-	transformedAttributes.push(['street.apt: random number more useful than addressLine2']);
-	// console.log(('transformedAttributes: '))
-	// console.log((transformedAttributes))
-	// let transformedAttributes = [['locale','literal'],['postalCode','ensure 5 and string'],[['birthdate'],['dob.date to left 10'],[['subdivision'],['2letter vesion of "state" (not removed)'],[['Company'],['Street name + random business kind'],[['jobTitle'],['random jobTitle']]
+	transformedAttributes.push(['street.apt: random number more useful than addressLine2 (now consistent by seed)']);
+	// ø <----- \_ street.apt _/ ----->
+	let gender = resolvedResponse.gender;
+	gender = 'custom.gender-' + gender;
+	resolvedResponse.gender = gender;
+	transformedAttributes.push(['gender: changed to labelKey (original overloaded because of other code, also, core data not changed)']);
+	// ø <----- \_ gender _/ ----->
+	let roleNumber = (streetNumberBase % 100) + 1;
+	let roleLabel = "custom.student";
+	roleLabel = roleNumber > 40 ? "custom.primary-parent" : roleLabel;
+	roleLabel = roleNumber > 80 ? "custom.secondary-parent" : roleLabel;
+	resolvedResponse.login.usernameOrig = resolvedResponse.login.username;
+	resolvedResponse.login.username = roleLabel;
+	transformedAttributes.push(['login.username: changed to role labelKey (orig renamed usernameOrig)']);
+	// ø <----- \_ login.username _/ ----->
+	let labelKey = stringYYYY;//(now.getFullYear()).toString();
+	labelKey = 'custom.t' + labelKey + '06';
+	resolvedResponse.dob.age = labelKey;
+	transformedAttributes.push(['dob.age: changed to current summer termId tYYYY06 labelKey (age is calcuable)']);
+	// ø <----- \_ dob.age _/ ----->
 	resolvedResponse.developer = {};
 	resolvedResponse.developer.transformedAttributes = transformedAttributes;
-
-	//console.log("ONE.b: resolvedResponse after 'await getJSON'");
-	//console.log(resolvedResponse);
+	// ø </Transformations>
 	return resolvedResponse;
 	
-}
+} //END doRandomUser()
+// ø <---------- </doRandomUser> ---------->
 //</WiX API>
 
 export async function btnFetchRandomPerson_click(event) {
 	// let paramObject = {};
 	let paramObject = JSON.parse($w('#boxParamObject').value);
+	console.log('[~LINE 383]paramObject: ');
+	console.log(paramObject);
 	let addToCache = true;
 	if(Object.keys(paramObject).includes('seed')){
 		addToCache = false;
@@ -373,9 +406,11 @@ export async function btnFetchRandomPerson_click(event) {
 	if(addToCache){
 		let name = resolvedResponse.name.last + ', ' + resolvedResponse.name.first;
 		let seed = resolvedResponse.seed;
+		let now  = new Date();
 		let element = {};
 		element.name = name;
 		element.seed = seed;
+		element.instantiated = now.toISOString();
 		//console.log(element);
 		let userCacheObject = JSON.parse($w('#randomUserCache').value);
 		//console.log(userCacheObject);
@@ -423,6 +458,7 @@ export function selectSeed(direction = 'next'){
 	}else{
 		$w('#seedWhich').value = seedIndexString;
 		$w('#seedSelected').value = seedArray[seedIndex].name;
+		// $w('#seedSelected').value = seedThis;
 	}
 }
 
@@ -442,6 +478,7 @@ export function btnSelectSeed_click(event) {
 	let seedIndex = Number(seedWhich);
 	let user = userCache[seedIndex];
 	paramObject.seed = user.seed;
+	paramObject.instantiated = user.instantiated;
 
 
 	$w('#boxParamObject').value = JSON.stringify(paramObject,undefined,4);
@@ -467,7 +504,8 @@ export function doLoadTenUserCache (indexParam){
 	index = index % kMax;
 	switch (index) {
 		case 0:
-			userCacheObj = {userCache:[{name:"Black, Jimmie",seed:"2b09df5fa295637d"},{name:"Tucker, Diane",seed:"fdc6f82f108d8876"},{name:"Gilbert, Jennie",seed:"8627a076736ce3ab"},{name:"Grant, Joyce",seed:"3a7115223d7b50ca"},{name:"Morales, Melanie",seed:"11e1224a47da24d0"},{name:"Ray, Armando",seed:"4473bfcd948b0007"},{name:"Ward, Christian",seed:"07e361e2ffd995da"},{name:"Ryan, Amy",seed:"9d01656202b5481d"},{name:"Armstrong, Noah",seed:"5bcd9a445221856c"},{name:"Holt, Floyd",seed:"3628bfbbd09c27aa"}]};
+			// userCacheObj = {userCache:[{name:"Black, Jimmie",seed:"2b09df5fa295637d"},{name:"Tucker, Diane",seed:"fdc6f82f108d8876"},{name:"Gilbert, Jennie",seed:"8627a076736ce3ab"},{name:"Grant, Joyce",seed:"3a7115223d7b50ca"},{name:"Morales, Melanie",seed:"11e1224a47da24d0"},{name:"Ray, Armando",seed:"4473bfcd948b0007"},{name:"Ward, Christian",seed:"07e361e2ffd995da"},{name:"Ryan, Amy",seed:"9d01656202b5481d"},{name:"Armstrong, Noah",seed:"5bcd9a445221856c"},{name:"Holt, Floyd",seed:"3628bfbbd09c27aa"}]};
+			userCacheObj = { userCache: [{ name: "Black, Jimmie", seed: "2b09df5fa295637d", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Tucker, Diane", seed: "fdc6f82f108d8876", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Gilbert, Jennie", seed: "8627a076736ce3ab", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Grant, Joyce", seed: "3a7115223d7b50ca", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Morales, Melanie", seed: "11e1224a47da24d0", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Ray, Armando", seed: "4473bfcd948b0007", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Ward, Christian", seed: "07e361e2ffd995da", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Ryan, Amy", seed: "9d01656202b5481d", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Armstrong, Noah", seed: "5bcd9a445221856c", "instantiated": "2021-05-20T14:42:28.442Z" }, { name: "Holt, Floyd", seed: "3628bfbbd09c27aa", "instantiated": "2021-05-20T14:42:28.442Z" }] };
 			break;
 
 		default:
@@ -567,7 +605,10 @@ export async function doContactInfoFromRandom(){
 	response = await composeWixContactCode(thisRandomUserDotMeJSON, thisParamObject);
 	//console.log('[~LINE 596 FRONT]result: ');
 	//console.log(response);
-	$w('#codePrepContact').value = JSON.stringify(response,undefined,4);
+	let newResponse = {};
+	newResponse.contactInfo = response.info;
+	// $w('#codePrepContact').value = JSON.stringify(response,undefined,4);
+	$w('#codePrepContact').value = JSON.stringify(newResponse,undefined,4);
 	// $w('#codePrepContact').value = response.toString();
 	// $w('#codePrepContact').value = JSON.stringify(response,undefined,4);
 }
@@ -614,7 +655,7 @@ export function doShowHideOnDeckObject(paramObject = {}){
 		currentCountString = '[[current: ' + currentCount + ']';
 		currentCount++;
 		currentCountString += '[next: ' + currentCount + ']]';
-		$w('#ddOnDeckIndex').value = currentCount
+		$w('#ddOnDeckIndex').value = currentCount.toString()
 	}
 	//console.log('$w(#ddInputKey).value.indexOf(emailThis): ' + $w('#ddInputKey').value.indexOf('emailThis'));
 	//console.log('$w(#ddInputKey).value: ' + $w('#ddInputKey').value);
@@ -695,6 +736,9 @@ export function btnOnDeckObjectAppend_click(event) {
 }
 
 export function doAllClear(layoutObjectIdArrayParam = []){
+	// let wrapping = $w("#codeHolder").wrap; // "soft"
+	// $w('#errorTextBox').show();
+	// $w('#errorTextBox').value = "let wrapping = $w('#codeHolder').wrap; [result: " + wrapping + "]";
 	let layoutObjectIdArray = [];
 	if(typeof layoutObjectIdArrayParam === 'string'){
 		layoutObjectIdArray.push(layoutObjectIdArrayParam);
@@ -747,11 +791,14 @@ export function launchLightBox(key){
 	//console.log('[~LINE 834]wixContact: ');
 	//console.log(wixContact);
 	//<no validation of path at this time>
-	let keyArray = []; 
+	let keyArray = [];
+	// let pathPrefix = 'info'; 
+	let pathPrefix = 'contactInfo'; 
 	if(key === 'labelKeys'){
-		keyArray = wixContact[key] ;
+		// keyArray = wixContact[key] ;
+		keyArray = wixContact[pathPrefix][key] ;
 	}else{
-		keyArray = wixContact['info'][key]; 
+		keyArray = wixContact[pathPrefix][key]; 
 	}
 	//console.log('[~LINE 843]keyArray:');
 	//console.log(keyArray);
@@ -779,13 +826,16 @@ export function launchLightBox(key){
 			 $w('#objectOnDeckTitle').text = message;
 			 if(doUpdate){
 				 console.log('[~LINE875] if(doUpdate): entered ')
+				// let pathPrefix = 'info';
+				let pathPrefix = 'contactInfo';
 				let currentContactObject = JSON.parse($w('#codePrepContact').value)
 				$w('#codePrepContact').value = ''; 
 				 if(key === 'phones'){
 					//console.log('[~LINE879] if(key === phones): entered ');
 					//console.log(currentContactObject);
 					//console.log(JSON.parse($w('#objectOnDeck').value));
-					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					// currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					currentContactObject[pathPrefix][key] = JSON.parse($w('#objectOnDeck').value);
 					//console.log(currentContactObject);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
 				 }
@@ -793,18 +843,20 @@ export function launchLightBox(key){
 					//console.log('[~LINE887] if(key === emails): entered ');
 					//console.log(currentContactObject);
 					//console.log(JSON.parse($w('#objectOnDeck').value));
-					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					// currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					currentContactObject[pathPrefix][key] = JSON.parse($w('#objectOnDeck').value);
 					//console.log(currentContactObject);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4); 
 				 }
 				 if(key === 'labelKeys'){
 					//console.log('[~LINE895] if(key === labelKeys): entered ')
-					currentContactObject[key] = JSON.parse($w('#objectOnDeck').value);
+					// currentContactObject[key] = JSON.parse($w('#objectOnDeck').value);
+					currentContactObject[pathPrefix][key] = JSON.parse($w('#objectOnDeck').value);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
 				 }
 				 if(key === 'addresses'){
 					//console.log('[~LINE900] if(key === labelKeys): entered ')
-					currentContactObject['info'][key] = JSON.parse($w('#objectOnDeck').value);
+					currentContactObject[pathPrefix][key] = JSON.parse($w('#objectOnDeck').value);
 					$w('#codePrepContact').value = JSON.stringify(currentContactObject,undefined,4) 
 				 }
 			 }
@@ -850,3 +902,250 @@ export function btnTgglChkBoxRandom_click(event) {
 }
 // ø </Random User UI>
 
+// ø <----------- <getCurrentContactLables Front-End>  ----------->
+export async function doCreateContact() {
+    let wixContactInfo = JSON.parse($w('#codePrepContact').value);
+    let paramObjectThis = {};
+    paramObjectThis.contactInfo = wixContactInfo.contactInfo;
+	console.log("[~LINE 864]paramObjectThis.contactInfo: ")
+	console.log(paramObjectThis)
+	console.log(paramObjectThis.contactInfo)
+	let wixContact = await steamdaCreateContactFunction(paramObjectThis);
+	console.log('[~LINE 867]wixContact: ');
+	console.log(wixContact);
+	$w('#crmContactId').value = wixContact._id;
+	$w('#inputRevision').value = wixContact.revision;
+	$w('#contactCurrent').value = JSON.stringify(wixContact,undefined,4);
+}
+// ø <----------- </getCurrentContactLables Front-End> ----------->
+
+
+// // ø <----------- <getCurrentContactLables Front-End>  ----------->
+// export async function doRenameLablesYIKES() {
+//     let wixContactInfo = JSON.parse($w('#codePrepContact').value);
+//     let paramObjectThis = {};
+// 	paramObjectThis.contactIdentifiers = {};
+// 	paramObjectThis.contactIdentifiers.contactId = $w('#crmContactId').value;
+// 	paramObjectThis.contactIdentifiers.revision = $w('#inputRevision').value;
+	
+//     paramObjectThis.contactInfo = wixContactInfo.contactInfo;
+// 	console.log("[~LINE 897]paramObjectThis.contactInfo: ")
+// 	console.log(paramObjectThis)
+// 	// console.log(paramObjectThis.contactInfo)
+// 	let wixContact = await steamdaRenameLabelFunction(paramObjectThis);
+// 	console.log('[~LINE 901]wixContact: ');
+// 	console.log(wixContact);
+// 	$w('#crmContactId').value = wixContact._id;
+// 	$w('#inputRevision').value = wixContact.revision;
+// 	$w('#contactCurrent').value = JSON.stringify(wixContact,undefined,4);
+// }
+// // ø <----------- </getCurrentContactLables Front-End> ----------->
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnCreateContact_click(event) {
+	doCreateContact(); 
+}
+
+
+export function doConveyContactCurrentForUpdate(){
+	let KLUDGE = $w('#contactCurrent').value;
+	let currentContact = JSON.parse(KLUDGE);
+	let SOME_CHECKBOX_FOR_EXCLUDE_EXTENDED_FIELDS = false;
+	if(SOME_CHECKBOX_FOR_EXCLUDE_EXTENDED_FIELDS){
+		delete currentContact.extendedFields
+	}
+	let contactNew = {};
+	contactNew.contactInfo = currentContact.info;
+	$w('#codePrepContact').value = JSON.stringify(contactNew,undefined,4);
+}
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnRemoveCheckedFromPrep_click(event) {
+	doRemoveCheckedFromPrep();
+}
+
+// ø <----------- <doRemoveCheckedFromPrep>  ----------->
+export function doRemoveCheckedFromPrep() {
+    let removeByAction = $w('#radioEmptyOrDelete').value;
+    let currentContact = JSON.parse($w('#codePrepContact').value);
+    let checkboxArray = $w('#chkbxRemoveCheckedOne').value;
+    Array.prototype.push.apply(checkboxArray,$w('#chkbxRemoveCheckedTwo').value)
+    for (let index = 0; index < checkboxArray.length; index++) {
+        const element = checkboxArray[index];
+
+        // checkboxArray.forEach(element => {
+        console.log('Overall: ' + removeByAction + ': ' + element);
+        switch (element) {
+            case 'name':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[testing]: ' + element);
+                    delete currentContact.contactInfo.name;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[testing]: ' + element);
+                    currentContact.contactInfo.name = {};
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+            
+			case 'picture':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[testing]: ' + element);
+                    delete currentContact.contactInfo.picture;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[testing]: ' + element);
+                    currentContact.contactInfo.picture = {};
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            case 'nonname':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+					delete currentContact.contactInfo.company;
+					delete currentContact.contactInfo.jobTitle;
+					delete currentContact.contactInfo.locale;
+					delete currentContact.contactInfo.birthdate;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+					currentContact.contactInfo.company = "";
+					currentContact.contactInfo.jobTitle = "";
+					currentContact.contactInfo.locale = "";
+					currentContact.contactInfo.birthdate = "";
+				} else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            case 'emails':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    delete currentContact.contactInfo.emails;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    currentContact.contactInfo.emails = [];
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+				
+            case 'phones':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    delete currentContact.contactInfo.phones;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    currentContact.contactInfo.phones = [];
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            case 'addresses':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    delete currentContact.contactInfo.addresses;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    currentContact.contactInfo.addresses = [];
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            case 'labelKeys':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    delete currentContact.contactInfo.labelKeys;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    currentContact.contactInfo.labelKeys = [];
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            case 'extendedFields':
+                if (removeByAction === 'DELETE') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    delete currentContact.contactInfo.extendedFields;
+                } else if (removeByAction === 'EMPTY') {
+                    // console.log(removeByAction + '[working]: ' + element);
+                    currentContact.contactInfo.extendedFields = {};
+                } else {
+                    // console.log(removeByAction + ': ' + element);
+                    console.log('DEFAULT: Switch does NOT support the action for the element: element & action: [' + element + ' & ' + removeByAction + ']');
+                }
+                break;
+
+            default:
+                console.log('DEFAULT: Switch does NOT support the element, regardless of action: element & action: [' + element + ' & ' + removeByAction + ']');
+                break;
+        }
+    }//END for (let index = 0; index < checkboxArray.length; index++)
+    $w('#chkbxRemoveCheckedOne').value = [];
+    $w('#chkbxRemoveCheckedOne').resetValidityIndication();
+    $w('#chkbxRemoveCheckedTwo').value = [];
+    $w('#chkbxRemoveCheckedTwo').resetValidityIndication();
+    $w('#radioEmptyOrDelete').value = '';
+    $w('#radioEmptyOrDelete').resetValidityIndication();
+    $w('#codePrepContact').value = JSON.stringify(currentContact, undefined, 4);
+	
+}//END doRemoveCheckedFromPrep
+// ø <----------- </doRemoveCheckedFromPrep> ----------->
+
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnUpdateContact_click(event) {
+	doUpdateContact(); 
+}
+
+// ø <----------- <getCurrentContactLables Front-End>  ----------->
+export async function doUpdateContact() {
+    let wixContactInfo = JSON.parse($w('#codePrepContact').value);
+	console.log("[~LINE 1060]wixContactInfo.contactInfo [within whole below]: ")
+	console.log(wixContactInfo);
+    let paramObjectThis = {};
+	paramObjectThis.contactIdentifiers = {};
+	paramObjectThis.contactIdentifiers.contactId = $w('#crmContactId').value;
+	paramObjectThis.contactIdentifiers.revision = $w('#inputRevision').value;
+    paramObjectThis.contactInfo = wixContactInfo.contactInfo;
+	console.log("[~LINE 1060]paramObjectThis.contactInfo: ")
+	console.log(paramObjectThis)
+	console.log(paramObjectThis.contactInfo);
+	// $w('#errorTextBox').value = 'TESING: doUpdateContact()';
+	// return;
+	let wixContact = await streamdaUpdateContactFunction(paramObjectThis);
+	console.log('[~LINE 1064]wixContact: ');
+	console.log(wixContact);
+	$w('#crmContactId').value = wixContact._id;
+	$w('#inputRevision').value = wixContact.revision;
+	$w('#contactCurrent').value = JSON.stringify(wixContact,undefined,4);
+}
+// ø <----------- </getCurrentContactLables Front-End> ----------->
+
+
+
+/**
+ *	Adds an event handler that runs when the element is clicked.
+ *	 @param {$w.MouseEvent} event
+ */
+export function btnConveyContactForUpdating_click(event) {
+	doConveyContactCurrentForUpdate();
+}
