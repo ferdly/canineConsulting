@@ -26,11 +26,11 @@
             "name": "labelKeys-Seed",
             "path": "info.labelKeys.i",
             "index": 1,
-            "ruMePath": "seed",
+            "ruMePath": "dob.age",
             "ruMeCode": "eval('seed-' + this)",
             "uiKey": "labelKeys",
             "ruMeNotes": [
-                "for repeatable ruMe calls"
+                "transformed to termID"
             ]
         },
         {
@@ -41,7 +41,7 @@
             "ruMeCode": "eval('username-' + this)",
             "uiKey": "labelKeys",
             "ruMeNotes": [
-                "for another label"
+                "transformed to role"
             ]
         },
         {
@@ -130,7 +130,7 @@
             "path": "info.emails.i.tag",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "new String('othER')",
+            "ruMeCode": "new String('UNTAGGED')",
             "uiKey": "email",
             "ruMeNotes": [
                 "test of weird case for normal word",
@@ -181,7 +181,7 @@
             "path": "info.emails.i.tag",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "new String('Login')",
+            "ruMeCode": "new String('MAIN')",
             "uiKey": "emailP",
             "ruMeNotes": []
         },
@@ -282,7 +282,7 @@
             "path": "info.phones.i.tag",
             "index": 0,
             "ruMePath": "NNULL",
-            "ruMeCode": "new String('cell')",
+            "ruMeCode": "new String('MOBILE')",
             "uiKey": "phoneP",
             "ruMeNotes": []
         },
@@ -327,7 +327,7 @@
             "path": "info.phones.i.tag",
             "index": 1,
             "ruMePath": "NNULL",
-            "ruMeCode": "new String('home')",
+            "ruMeCode": "new String('HOME')",
             "uiKey": "phone",
             "ruMeNotes": []
         },
@@ -343,9 +343,9 @@
         {
             "name": "primary",
             "path": "info.phones.i.primary",
-            "index": 1,
+            "index": "i",
             "ruMePath": "NNULL",
-            "ruMeCode": "eval(true)",
+            "ruMeCode": "eval(false)",
             "uiKey": "phone",
             "ruMeNotes": []
         }

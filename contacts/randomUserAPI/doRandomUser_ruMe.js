@@ -1,19 +1,4 @@
-async function doFetch(kind, paramObject){
-	let resolvedResponse = {};
-	switch (kind) {
-		case 'randomUser':
-			resolvedResponse = await doRandomUser(paramObject);//.then(result => {return result});
-			//console.log("TWO: case 'randomUser':");
-			//console.log(resolvedResponse);
-			break;
-
-		default:
-			break;
-	}
-	//console.log('return from SWITCH');
-	// resultString = JSON.stringify(resultStringSwitch,undefined,4);
-	return resolvedResponse;
-}
+// ø <---------- <doRandomUser>  ---------->
 async function doRandomUser(paramObject = {}){
 	//https://randomuser.me/documentation
 	let fetchParamObject = {};
@@ -70,71 +55,83 @@ async function doRandomUser(paramObject = {}){
 	resolvedResponse.seed = response.info.seed;
 	resolvedResponse.location.country = resolvedResponse.location.country === 'United States' ? 'US' : resolvedResponse.location.country;
 	// resolvedResponse.info = [];
+	// ø <Transformations>
 	let transformedAttributes = [];
+	let now = new Date();
+	let streetNumberBase = resolvedResponse.location.street.number;
+	let tempIndex = 0;
+	transformedAttributes.push(["streetNumberBase: used as a 'random' number for populating _consistent/random_ data by 'seed''"]);
+	// ø <----- \_ streetNumberBase _/  ----->
 	resolvedResponse.locale = 'en-US';
-	// transformedAttributes.push(['locale',"literal 'en-US'"]);
 	transformedAttributes.push(["locale: literal 'en-US'"]);
+	// ø <----- \_ locale _/  ----->
 	let postalCode = '00000' + resolvedResponse.location.postcode.toString();
 	postalCode = postalCode.substr(-5);
 	resolvedResponse.location.postalCode = postalCode;
-	// transformedAttributes.push(['postalCode','ensure 5 and string - left postcode as number']);
 	transformedAttributes.push(['postalCode: ensure 5 and string - left postcode as number']);
+	// ø <----- \_ postalCode _/ ----->
 	let birthdate = resolvedResponse.dob.date.substr(0,10);
 	resolvedResponse.birthdate = birthdate;
-	// transformedAttributes.push(['birthdate','dob.date to left 10. no change to original']);
 	transformedAttributes.push(['birthdate: dob.date to left 10. no change to original']);
+	// ø <----- \_ birthdate _/ ----->
 	let stateAbbrvObject = {"Alabama":"AL","Alaska":"AK","American Samoa":"AS","Arizona":"AZ","Arkansas":"AR","California":"CA","Colorado":"CO","Connecticut":"CT","Delaware":"DE","District Of Columbia":"DC","Federated States Of Micronesia":"FM","Florida":"FL","Georgia":"GA","Guam":"GU","Hawaii":"HI","Idaho":"ID","Illinois":"IL","Indiana":"IN","Iowa":"IA","Kansas":"KS","Kentucky":"KY","Louisiana":"LA","Maine":"ME","Marshall Islands":"MH","Maryland":"MD","Massachusetts":"MA","Michigan":"MI","Minnesota":"MN","Mississippi":"MS","Missouri":"MO","Montana":"MT","Nebraska":"NE","Nevada":"NV","New Hampshire":"NH","New Jersey":"NJ","New Mexico":"NM","New York":"NY","North Carolina":"NC","North Dakota":"ND","Northern Mariana Islands":"MP","Ohio":"OH","Oklahoma":"OK","Oregon":"OR","Palau":"PW","Pennsylvania":"PA","Puerto Rico":"PR","Rhode Island":"RI","South Carolina":"SC","South Dakota":"SD","Tennessee":"TN","Texas":"TX","Utah":"UT","Vermont":"VT","Virgin Islands":"VI","Virginia":"VA","Washington":"WA","West Virginia":"WV","Wisconsin":"WI","Wyoming":"WY"};
 	let state = resolvedResponse.location.state
 	let subdivision = stateAbbrvObject[state];
 	resolvedResponse.location.subdivision = subdivision;
-	// transformedAttributes.push(['subdivision',"2letter version of 'state' - original not removed"]);
 	transformedAttributes.push(["subdivision: 2letter version of 'state' - original not removed"]);
+	// ø <----- \_ subdivison _/ ----->
 	let company = resolvedResponse.location.street.name;
 	company = company.substr(0,company.indexOf(" "));//first word, how about all but last, but pretty good
-	let bussnessKindArray = ['Incorporated','Limited','Corporation','University','College','Auto Parts','Associates','Restaurant','Stores'];
-	company += ' ' + bussnessKindArray[Math.floor(Math.random() * bussnessKindArray.length)];
+	let businessKindArray = ['Incorporated','Limited','Corporation','University','College','Auto Parts','Associates','Restaurant','Stores'];
+	tempIndex = streetNumberBase % businessKindArray.length;
+	company += ' ' + businessKindArray[tempIndex];
 	resolvedResponse.company = company;
-	// transformedAttributes.push(['Company','Street name + random business kind']);
 	transformedAttributes.push(['Company: Street name + random business kind']);
+	// ø <----- \_ company _/ ----->
 	let jobTitleArray = ['Manager','Sales','IT','Maintenance','Supervisor','Graphic Design','Accounting','Human Resources'];
-	let jobTitle = jobTitleArray[Math.floor(Math.random() * jobTitleArray.length)];
+	tempIndex = streetNumberBase % jobTitleArray.length;
+	let jobTitle = jobTitleArray[tempIndex];
 	resolvedResponse.jobTitle = jobTitle;
-	// transformedAttributes.push(['jobTitle','random jobTitle']);
 	transformedAttributes.push(['jobTitle: random jobTitle']);
+	// ø <----- \_ jobTitle _/ ----->
 	let emailPrimary = 'qiqgroup+' + resolvedResponse.name.first.toLowerCase() + '@gmail.com';
 	resolvedResponse.emailPrimary = emailPrimary;
-	// transformedAttributes.push(['emailPrimary','qiqgroup + firstName - real so that enrollment happens']);
 	transformedAttributes.push(['emailPrimary: qiqgroup + firstName - real so that enrollment happens']);
+	// ø <----- \_ emailPrimary _/ ----->
 	let addressLine2TypeArray = ['#','Suite','Box']
-	let addressLine2 = Math.floor(Math.random() * 1000).toString();
-	let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
+	tempIndex = streetNumberBase % addressLine2TypeArray.length;
+	let addressLine2 = (streetNumberBase % 51) + 1;
+	let addressLine2Type = addressLine2TypeArray[tempIndex];
 	addressLine2 = addressLine2Type + ' ' + addressLine2;
 	resolvedResponse.location.addressLine2 = addressLine2;
-	// transformedAttributes.push(['addressLine2','random number and random type']);
-	transformedAttributes.push(['addressLine2: random number and random type']);
-	// let addressLine2TypeArray = ['#','Suite','Box']
-	let apt = Math.floor(Math.random() * 1000).toString();
-	// let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
-	// addressLine2 = addressLine2Type + ' ' + addressLine2;
+	transformedAttributes.push(['addressLine2: random number and random type (now consistent by seed)']);
+	// ø <----- \_ addressLine2 _/ ----->
+	let apt = ((streetNumberBase % 74) + 1).toString();
 	resolvedResponse.location.street.apt = apt;
-	// transformedAttributes.push(['street.apt','random number more useful than addressLine2']);
-	transformedAttributes.push(['street.apt: random number more useful than addressLine2']);
+	transformedAttributes.push(['street.apt: random number more useful than addressLine2 (now consistent by seed)']);
+	// ø <----- \_ street.apt _/ ----->
 	let gender = resolvedResponse.gender;
-	// gender = gender = gender.substr(0,1).toUpperCase() + gender.substr(1).toLowerCase();
 	gender = 'custom.gender-' + gender;
-	// let addressLine2Type = Number(addressLine2) < 40 ? 'Floor' : addressLine2TypeArray[Math.floor(Math.random() * addressLine2TypeArray.length)];
-	// addressLine2 = addressLine2Type + ' ' + addressLine2;
 	resolvedResponse.gender = gender;
-	// transformedAttributes.push(['street.apt','random number more useful than addressLine2']);
-	transformedAttributes.push(['gender: changed to labelKey (original overloaded because of other code)']);
-	// console.log(('transformedAttributes: '))
-	// console.log((transformedAttributes))
-	// let transformedAttributes = [['locale','literal'],['postalCode','ensure 5 and string'],[['birthdate'],['dob.date to left 10'],[['subdivision'],['2letter vesion of "state" (not removed)'],[['Company'],['Street name + random business kind'],[['jobTitle'],['random jobTitle']]
+	transformedAttributes.push(['gender: changed to labelKey (original overloaded because of other code, also, core data not changed)']);
+	// ø <----- \_ gender _/ ----->
+	let roleNumber = (streetNumberBase % 100) + 1;
+	let roleLabel = "custom.student";
+	roleLabel = roleNumber > 40 ? "custom.primary-parent" : roleLabel;
+	roleLabel = roleNumber > 80 ? "custom.secondary-parent" : roleLabel;
+	resolvedResponse.login.usernameOrig = resolvedResponse.login.username;
+	resolvedResponse.login.username = roleLabel;
+	transformedAttributes.push(['login.username: changed to role labelKey (orig renamed usernameOrig)']);
+	// ø <----- \_ login.username _/ ----->
+	let labelKey = (now.getFullYear()).toString();
+	labelKey = 't' + labelKey + '06';
+	resolvedResponse.dob.age = labelKey;
+	transformedAttributes.push(['dob.age: changed to current summer termId tYYYY06 labelKey (age is calcuable)']);
+	// ø <----- \_ dob.age _/ ----->
 	resolvedResponse.developer = {};
 	resolvedResponse.developer.transformedAttributes = transformedAttributes;
-
-	//console.log("ONE.b: resolvedResponse after 'await getJSON'");
-	//console.log(resolvedResponse);
+	// ø </Transformations>
 	return resolvedResponse;
 	
-}
+} //END doRandomUser()
+// ø <---------- </doRandomUser> ---------->
