@@ -1,6 +1,29 @@
 {
     "contactCreateUpdateEtcResponseObjectArray": [
         {
+            "coreAction": "MEMBER_CREATE",
+            "altActions": [
+                "a6"
+            ],
+            "notes": [
+                "Diane Tucker (second of Ten"
+                ,"Automatic from Random as per Role"
+                ,"LightBox Announcement to be Suppressed"
+                ,"Auto Autormization needed"
+                ,"Email Suppression/Customization needed"
+            ],
+            "response": {
+                "status": "PENDING",
+                "approvalToken": "JWS.eyJraWQiOiJSc012MmV3MiIsImFsZyI6IkhTMjU2In0.eyJkYXRhIjoie1wiaWRcIjpcIjg4ZjhiMDMyLTI4ZmQtNDhiMS1hYTk3LTM2OTc1YTdjMGRkZVwiLFwiY29sbGVjdGlvbklkXCI6XCIxMTcwNzUwOC0xOGVkLTRhOGEtYTNjZS1lNmQ5ODkwMDdiODNcIn0iLCJpYXQiOjE2MjE2MDAyNTQsImV4cCI6MTYyMTcwODI1NH0.P3c_VDSQq5UeCbWRBdXFUej0zmYXnxXCb9WU9ImR3O4",
+                "user": {
+                    "loggedIn": false,
+                    "id": "88f8b032-28fd-48b1-aa97-36975a7c0dde",
+                    "role": "Visitor"
+                }
+            },
+            "seed": "fdc6f82f108d8876"
+        },
+        {
             "coreAction": "CONTACT_UPDATED",
             "altActions": [
                 "add two random Phones and unique email",

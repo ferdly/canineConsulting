@@ -1,0 +1,81 @@
+(same thing for Member Tab)
+
+<---------- <111>  ----------->
+
+ContactID: abc777 || RevisionID: 7 || isValidCode: true
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: SHOW
+
+<---------- </111> ----------->
+
+
+
+<---------- <110>  ----------->
+
+ContactID: abc777 || RevisionID: 7 || isValidCode: false
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </110> ----------->
+
+
+
+<---------- <101>  ----------->
+
+ContactID: abc777 || RevisionID:  || isValidCode: true
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: SHOW || btnContact_UPDATE: HIDE
+
+<---------- </101> ----------->
+
+
+
+<---------- <100>  ----------->
+
+ContactID: abc777 || RevisionID:  || isValidCode: false
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </100> ----------->
+
+
+
+<---------- <011>  ----------->
+
+ContactID:  || RevisionID: 7 || isValidCode: true
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </011> ----------->
+
+
+
+<---------- <010>  ----------->
+
+ContactID:  || RevisionID: 7 || isValidCode: false
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </010> ----------->
+
+
+
+<---------- <001>  ----------->
+
+ContactID:  || RevisionID:  || isValidCode: true
+
+|Correct: True  || btnContact_NEW: SHOW || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </001> ----------->
+
+
+
+<---------- <000>  ----------->
+
+ContactID:  || RevisionID:  || isValidCode: false
+
+|Correct: True  || btnContact_NEW: HIDE || btnContact_GET: HIDE || btnContact_UPDATE: HIDE
+
+<---------- </000> ----------->
+
+
