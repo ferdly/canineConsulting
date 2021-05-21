@@ -1,16 +1,184 @@
 {
     "contactCreateUpdateEtcResponseObjectArray": [
         {
+            "coreAction": "EEMPTY",
+            "altActions": [
+                "EEMPTY"
+            ],
+            "notes": [
+                "EEMPTY"
+            ],
+            "response": {
+                "info": "EEMPTY"
+            },
+            "seed": "EEMPTY"
+        },
+        {
+            "coreAction": "CONTACT_UPDATE",
+            "altActions": [
+                "yada yada"
+            ],
+            "notes": [
+                "Diane Tuker",
+                "lableKeys array"
+            ],
+            "response": {
+                "_createdDate": "2021-05-21T12:30:54.000Z",
+                "_id": "88f8b032-28fd-48b1-aa97-36975a7c0dde",
+                "info": {
+                    "addresses": [
+                        {
+                            "address": {
+                                "formatted": "United States",
+                                "country": "US"
+                            },
+                            "tag": "UNTAGGED"
+                        }
+                    ],
+                    "birthdate": "1985-09-19",
+                    "company": "Mcgowen Associates",
+                    "emails": [
+                        {
+                            "tag": "UNTAGGED",
+                            "email": "qiqgroup+diane177@gmail.com",
+                            "primary": true
+                        }
+                    ],
+                    "extendedFields": {
+                        "contacts.displayByLastName": "Tucker Diane",
+                        "emailSubscriptions.deliverabilityStatus": "NOT_SET",
+                        "members.membershipStatus": "APPROVED",
+                        "emailSubscriptions.subscriptionStatus": "NOT_SET",
+                        "members.mobile": false,
+                        "emailSubscriptions.effectiveEmail": "qiqgroup+diane177@gmail.com",
+                        "contacts.displayByFirstName": "Diane Tucker"
+                    },
+                    "jobTitle": "Sales",
+                    "labelKeys": [
+                        "custom.gender-female",
+                        "custom.primary-parent",
+                        "custom.t202106"
+                    ],
+                    "locale": "en-us",
+                    "name": {
+                        "first": "Diane",
+                        "last": "Tucker"
+                    },
+                    "phones": [
+                        {
+                            "tag": "UNTAGGED",
+                            "phone": "(648)-335-1217",
+                            "primary": true
+                        }
+                    ],
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-21T13:18:21.522Z",
+                    "activityType": "MEMBER_STATUS_CHANGED"
+                },
+                "primaryInfo": {
+                    "email": "qiqgroup+diane177@gmail.com",
+                    "phone": "(648)-335-1217"
+                },
+                "revision": 4,
+                "source": {
+                    "appId": "eb377299-86b4-4a86-a1b5-774a2d1d374b",
+                    "sourceType": "WIX_SITE_MEMBERS"
+                },
+                "_updatedDate": "2021-05-21T15:47:03.997Z"
+            },
+            "seed": "fdc6f82f108d8876"
+        },
+        {
+            "coreAction": "CONTACT_UPDATE",
+            "altActions": [
+                "select from Repeater",
+                "Load Contact",
+                "click 'Get Contact'",
+                "fancy UI",
+                "click 'Update Contact'",
+                "revision for 2 to 3 (now 'Contact Tab' has 2 and 'Response Area' has 3"
+            ],
+            "notes": [
+                "Diane Tucker (second of Ten",
+                "Test of simple fields Update",
+                "worked perfectly"
+            ],
+            "response": {
+                "_createdDate": "2021-05-21T12:30:54.000Z",
+                "_id": "88f8b032-28fd-48b1-aa97-36975a7c0dde",
+                "info": {
+                    "addresses": [
+                        {
+                            "address": {
+                                "formatted": "United States",
+                                "country": "US"
+                            },
+                            "tag": "UNTAGGED"
+                        }
+                    ],
+                    "birthdate": "1985-09-19",
+                    "company": "Mcgowen Associates",
+                    "emails": [
+                        {
+                            "tag": "UNTAGGED",
+                            "email": "qiqgroup+diane177@gmail.com",
+                            "primary": true
+                        }
+                    ],
+                    "extendedFields": {
+                        "contacts.displayByLastName": "Tucker Diane",
+                        "emailSubscriptions.deliverabilityStatus": "NOT_SET",
+                        "members.membershipStatus": "APPROVED",
+                        "emailSubscriptions.subscriptionStatus": "NOT_SET",
+                        "members.mobile": false,
+                        "emailSubscriptions.effectiveEmail": "qiqgroup+diane177@gmail.com",
+                        "contacts.displayByFirstName": "Diane Tucker"
+                    },
+                    "jobTitle": "Sales",
+                    "locale": "en-us",
+                    "name": {
+                        "first": "Diane",
+                        "last": "Tucker"
+                    },
+                    "phones": [
+                        {
+                            "tag": "UNTAGGED",
+                            "phone": "(648)-335-1217",
+                            "primary": true
+                        }
+                    ],
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-21T13:18:21.522Z",
+                    "activityType": "MEMBER_STATUS_CHANGED"
+                },
+                "primaryInfo": {
+                    "email": "qiqgroup+diane177@gmail.com",
+                    "phone": "(648)-335-1217"
+                },
+                "revision": 3,
+                "source": {
+                    "appId": "eb377299-86b4-4a86-a1b5-774a2d1d374b",
+                    "sourceType": "WIX_SITE_MEMBERS"
+                },
+                "_updatedDate": "2021-05-21T15:41:27.549Z"
+            },
+            "seed": "fdc6f82f108d8876"
+        },
+        {
             "coreAction": "MEMBER_CREATE",
             "altActions": [
                 "a6"
             ],
             "notes": [
-                "Diane Tucker (second of Ten"
-                ,"Automatic from Random as per Role"
-                ,"LightBox Announcement to be Suppressed"
-                ,"Auto Autormization needed"
-                ,"Email Suppression/Customization needed"
+                "Diane Tucker (second of Ten",
+                "Automatic from Random as per Role",
+                "LightBox Announcement to be Suppressed",
+                "Auto Autormization needed",
+                "Email Suppression/Customization needed"
             ],
             "response": {
                 "status": "PENDING",
