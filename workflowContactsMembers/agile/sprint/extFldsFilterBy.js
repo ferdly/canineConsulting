@@ -2,13 +2,18 @@
 export function extFldsFilterBy(paramObject = {}) {
  
     let paramKeyArray = Object.keys(paramObject);
-    let filterByLabelNameSpace = paramKeyArray.includes('namespace');
-    let nameSpaceFilterValue = !filterByLabelType ? 'SSKIP' : paramObject.labelType; 
-    let filterByDisplayNameEquals = paramKeyArray.includes('displayNameEquals');
-    let displayNameFilterValueEquals = !filterByDisplayNameEquals ? 'SSKIP' : paramObject.displayNameEquals; 
-    let filterByDisplayNameStartsWith = paramKeyArray.includes('displayNameStartsWith');
-    let displayNameFilterValueStartsWith = !filterByDisplayNameStartsWith ? 'SSKIP' : paramObject.displayNameStartsWith; 
-    let displayNameFilterValueStartsWithLength = displayNameFilterValueStartsWith.length; 
+    let filterByNameSpace = paramKeyArray.includes('namespace');
+    let nameSpaceFilterValue = !filterByNameSpace ? 'SSKIP' : paramObject.namespace; 
+    let ZZfilterByDisplayNameEquals = paramKeyArray.includes('displayNameEquals');
+    let ZZdisplayNameFilterValueEquals = !ZZfilterByDisplayNameEquals ? 'SSKIP' : paramObject.ZZdisplayNameEquals; 
+    let ZZfilterByDisplayNameStartsWith = paramKeyArray.includes('displayNameStartsWith');
+    let ZZdisplayNameFilterValueStartsWith = !ZZfilterByDisplayNameStartsWith ? 'SSKIP' : paramObject.ZZdisplayNameStartsWith; 
+    let ZZdisplayNameFilterValueStartsWithLength = ZZdisplayNameFilterValueStartsWith.length; 
+    let ZXZfilterByDisplayNameEquals = paramKeyArray.includes('displayNameEquals');
+    let ZXZdisplayNameFilterValueEquals = !ZXZfilterByDisplayNameEquals ? 'SSKIP' : paramObject.ZXZdisplayNameEquals; 
+    let ZXZfilterByDisplayNameStartsWith = paramKeyArray.includes('displayNameStartsWith');
+    let ZXZdisplayNameFilterValueStartsWith = !ZXZfilterByDisplayNameStartsWith ? 'SSKIP' : paramObject.ZXZdisplayNameStartsWith; 
+    let ZXZdisplayNameFilterValueStartsWithLength = ZXZdisplayNameFilterValueStartsWith.length; 
     let returnString = '';
     let returnStringThis = '';
     let doAppend = false;
@@ -23,20 +28,28 @@ export function extFldsFilterBy(paramObject = {}) {
 	console.log(Array.isArray(extFldsKeys));
     extFldsKeys.forEach(element => {
         keyCount++;
-        // console.warn(element.displayName + ' [' + element.key + ']');
-        returnStringThis = element.displayName + ' [' + element.key + ']\n';
+        // console.warn(element.ZZdisplayName + ' [' + element.key + ']');
+        returnStringThis = element.ZZdisplayName + ' [' + element.key + ']\n';
         doAppend = true;
-        if(filterByLabelNameSpace){
+        if(filterByNameSpace){
             doAppend = element.namespace === nameSpaceFilterValue ? true : false;
             filterHeader = '\nnameSpace = ' + nameSpaceFilterValue;
         }
-        if(filterByDisplayNameEquals){
-            doAppend = element.displayName === displayNameFilterValueEquals ? true : false;
-            filterHeader = "\ndisplayName [equals] '" + displayNameFilterValueEquals + "'";
+        if(ZZfilterByDisplayNameEquals){
+            doAppend = element.ZZdisplayName === ZZdisplayNameFilterValueEquals ? true : false;
+            filterHeader = "\ndisplayName [equals] '" + ZZdisplayNameFilterValueEquals + "'";
         }
-        if(filterByDisplayNameStartsWith){
-            doAppend = element.displayName.substr(0,displayNameFilterValueStartsWithLength) === displayNameFilterValueStartsWith ? true : false;
-            filterHeader = "\ndisplayName [starts with] '" + displayNameFilterValueStartsWith + "'";
+        if(ZZfilterByDisplayNameStartsWith){
+            doAppend = element.ZZdisplayName.substr(0,ZZdisplayNameFilterValueStartsWithLength) === ZZdisplayNameFilterValueStartsWith ? true : false;
+            filterHeader = "\ndisplayName [starts with] '" + ZZdisplayNameFilterValueStartsWith + "'";
+        }
+        if(ZXZfilterByDisplayNameEquals){
+            doAppend = element.ZXZdisplayName === ZXZdisplayNameFilterValueEquals ? true : false;
+            filterHeader = "\ndisplayName [equals] '" + ZXZdisplayNameFilterValueEquals + "'";
+        }
+        if(ZXZfilterByDisplayNameStartsWith){
+            doAppend = element.ZXZdisplayName.substr(0,ZXZdisplayNameFilterValueStartsWithLength) === ZXZdisplayNameFilterValueStartsWith ? true : false;
+            filterHeader = "\ndisplayName [starts with] '" + ZXZdisplayNameFilterValueStartsWith + "'";
         }
         // ! <doAppend>
         if(doAppend){
