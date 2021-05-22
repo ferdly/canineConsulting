@@ -1,5 +1,6 @@
 import { contacts } from 'wix-crm-backend';
 /*...*/
+// ø <------------ <steamdaQueryLabelsFunction>  ------------>
 export function steamdaQueryLabelsFunction() {
   return contacts.queryLabels()
     .find()
@@ -18,7 +19,7 @@ export function steamdaQueryLabelsFunction() {
       console.error(error);
     });
 }
-
+// ø <------------ </steamdaQueryLabelsFunction> ------------>
 /* Returns items:
  * [
  *   {
