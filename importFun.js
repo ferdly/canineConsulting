@@ -7,6 +7,7 @@ import { steamdaFindOrCreateLabelFunction } from 'backend/contactReference';
 import { steamdaDeleteLabelFunction } from 'backend/contactReference';
 import { steamdaRenameLabelFunction } from 'backend/contactReference';
 import { steamdaQueryExtendedFieldsFunction } from 'backend/contactReference';
+import { steamdaFindOrCreateExtendedFieldFunction } from 'backend/contactReference';
 $w.onReady(function () {
 	// Write your JavaScript here
 
@@ -189,6 +190,7 @@ export function btnExecuteFilter_click(event) {
 }
 
 export function btnExecuteNewFilter_click(event) {
+	//  \_ unfortunate ElementId, not worth changing _/
 	doCreateNewLabel();
 }
 
@@ -325,6 +327,25 @@ export function constructParamObjectExtFlds(){
     return paramObject;
 }//END constructParamObject()
 // ø <----------- </constructParamObjectExtFlds()> ----------->
+
+export function btnExecuteNewExtFld_click(event) {
+	doCreateNewExtFld(); 
+}
+
+// ø <----------- <doCreateNewExtFld Front-End>  ----------->
+export async function doCreateNewExtFld() {
+	let paramObjectThis = {};
+	paramObjectThis.displayName = $w("#inputNewExtFld").value;
+	paramObjectThis.dataType = $w("#ddNewExtFldType").value;
+	console.log('paramObjectThis: ');
+	console.log(paramObjectThis);
+	let newExtFldItem = await steamdaFindOrCreateExtendedFieldFunction(paramObjectThis);
+	console.log('newExtFldItem: ');
+	console.log(newExtFldItem);
+	$w('#iportExtFldsReturn').value = JSON.stringify(newExtFldItem,undefined,4);
+}
+// ø <----------- </doCreateNewExtFld Front-End> ----------->
+
 // ø <======================================================================>
 // ø <=================</         Extended Fields         >=================>
 // ø <======================================================================>
