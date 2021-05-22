@@ -87,8 +87,8 @@ export function constructParamObject(){
     // paramObject.displayNameEquals = "Barking Intensive (long weekend)";
     // paramObject.displayNameEquals = "Clever Dog";
     // paramObject.displayNameStartsWith = "Contact";
-    console.warn('paramObject: ');
-    console.warn(paramObject);
+    // console.warn('paramObject: ');
+    // console.warn(paramObject);
     return paramObject;
 }//END constructParamObject()
 // ø <----------- </constructParamObject()> ----------->
@@ -211,42 +211,120 @@ export function btnRenameLabel_click(event) {
 // ø <======================================================================>
 // ø <=================<          Extended Fields         >=================>
 // ø <======================================================================>
-// ø <---------- <getAllExtendedFields>  ---------->
-// ø <----------- <getCurrentContactLables Front-End>  ----------->
 
-
-
+// ø <----------- <getCurrentExtFlds Front-End>  ----------->
 export async function getCurrentExtFlds_click(event) {
 	let extFildItems = await steamdaQueryExtendedFieldsFunction();
 	$w('#iportExtFldsReturn').value = JSON.stringify(extFildItems,undefined,4);
 }
-export async function ZZZgetCurrentContactLables_click(event) {
-	// let labelItems = ['Label_01','Label_02','Label_03','Label_04'];
-	// let paramObjectThis = {};
-	// let labelItems = labelKeysFilterBy(paramObjectThis);
-	// console.log('labelItems: ' + labelItems);
-}
-// ø <----------- </getCurrentContactLables Front-End> ----------->
+// ø <----------- </getCurrentExtFlds Front-End> ----------->
 
-
-
-export function getAllExtendedFields() {
-    let labelKeyArray = $w('#iportExtFldsReturn').value;
-	let labelKeyArrayIsArray = true;
-	labelKeyArrayIsArray = labelKeyArray.substr(0,1) !== '[' ? false : labelKeyArrayIsArray;
-	labelKeyArrayIsArray = labelKeyArray.substr(-1) !== ']' ? false : labelKeyArrayIsArray;
-	if(!labelKeyArrayIsArray){
-		$w('#renderJSON').text = "Invalid Label Array, please click 'Current Contact Labels' before clicking 'Execute Filter'";
+// ø <---------- <getAllExtFlds>  ---------->
+export function getAllExtFlds() {
+    let extFldKeyArray = $w('#iportExtFldsReturn').value;
+	let extFldKeyArrayIsArray = true;
+	extFldKeyArrayIsArray = extFldKeyArray.substr(0,1) !== '[' ? false : extFldKeyArrayIsArray;
+	extFldKeyArrayIsArray = extFldKeyArray.substr(-1) !== ']' ? false : extFldKeyArrayIsArray;
+	if(!extFldKeyArrayIsArray){
+		$w('#renderJSONExtFlds').text = "Invalid Extended-Field Array, please click 'Current Extended Fields' before clicking 'Execute Filter'";
 		return;
 	}
-	return labelKeyArray;
+	return extFldKeyArray;
 }
-// ø <---------- </getAllExtendedFields> ---------->
+// ø <---------- </getAllExtFlds> ---------->
 
 
+// ø <----------- <extFldsFilterBy()>  ----------->
+export function extFldsFilterBy(paramObject = {}) {
+ 
+    let paramKeyArray = Object.keys(paramObject);
+    let filterByNameSpace = paramKeyArray.includes('namespace');
+    let nameSpaceFilterValue = !filterByNameSpace ? 'SSKIP' : paramObject.namespace; 
+    let filterByDisplayNameEquals = paramKeyArray.includes('displayNameEquals');
+    let displayNameFilterValueEquals = !filterByDisplayNameEquals ? 'SSKIP' : paramObject.displayNameEquals; 
+    let filterByDisplayNameStartsWith = paramKeyArray.includes('displayNameStartsWith');
+    let displayNameFilterValueStartsWith = !filterByDisplayNameStartsWith ? 'SSKIP' : paramObject.displayNameStartsWith; 
+    let displayNameFilterValueStartsWithLength = displayNameFilterValueStartsWith.length; 
+    let filterByKeyEquals = paramKeyArray.includes('keyEquals');
+    let keyFilterValueEquals = !filterByKeyEquals ? 'SSKIP' : paramObject.keyEquals; 
+    let filterByKeyStartsWith = paramKeyArray.includes('keyStartsWith');
+    let keyFilterValueStartsWith = !filterByKeyStartsWith ? 'SSKIP' : paramObject.keyStartsWith; 
+    let keyFilterValueStartsWithLength = keyFilterValueStartsWith.length; 
+    let returnString = '';
+    let returnStringThis = '';
+    let doAppend = false;
+    let keyCount = 0;
+    let appendCount = 0;
+    let filterHeader = '';
+    let extFldsKeysString = getAllExtFlds();
+    let extFldsKeys = JSON.parse(extFldsKeysString);
+	console.log('[~LINE 256] extFldsKeys: ');
+	console.log(extFldsKeys);
+	console.log('[~LINE 258] extFldsKeys: isArray ');
+	console.log(Array.isArray(extFldsKeys));
+    extFldsKeys.forEach(element => {
+        keyCount++;
+        // console.warn(element.displayName + ' [' + element.key + ']');
+        returnStringThis = element.displayName + ' [' + element.key + ']\n';
+        doAppend = true;
+        if(filterByNameSpace){
+            doAppend = element.namespace === nameSpaceFilterValue ? true : false;
+            filterHeader = '\nnameSpace = ' + nameSpaceFilterValue;
+        }
+        if(filterByDisplayNameEquals){
+            doAppend = element.displayName === displayNameFilterValueEquals ? true : false;
+            filterHeader = "\ndisplayName [equals] '" + displayNameFilterValueEquals + "'";
+        }
+        if(filterByDisplayNameStartsWith){
+            doAppend = element.displayName.substr(0,displayNameFilterValueStartsWithLength) === displayNameFilterValueStartsWith ? true : false;
+            filterHeader = "\ndisplayName [starts with] '" + displayNameFilterValueStartsWith + "'";
+        }
+        if(filterByKeyEquals){
+            doAppend = element.key === keyFilterValueEquals ? true : false;
+            filterHeader = "\ndisplayName [equals] '" + keyFilterValueEquals + "'";
+        }
+        if(filterByKeyStartsWith){
+            doAppend = element.key.substr(0,keyFilterValueStartsWithLength) === keyFilterValueStartsWith ? true : false;
+            filterHeader = "\ndisplayName [starts with] '" + keyFilterValueStartsWith + "'";
+        }
+        // ! <doAppend>
+        if(doAppend){
+            appendCount++;
+            returnString += returnStringThis;
+        }
+        // ! </doAppend>
+        
+    });
+    returnString = 'Filtered List of extFldsKeys: [' + appendCount + ' of ' + keyCount + ']' + filterHeader + '\n==========\n' + returnString;
+    return returnString;
+}//END extFldsKeysFilterBy()
+// ø <----------- </extFldsFilterBy()> ----------->
 
+export function btnExecuteFilterExtFlds_click(event) {
+	let paramObjectThis = constructParamObjectExtFlds();
+	if(typeof paramObjectThis !== 'object'){
+		$w('#renderJSON').text = 'Invalid \'paramObjectThis = constructParamObject();';
+		return;
+	}
+	let reportString = extFldsFilterBy(paramObjectThis);
+	$w('#renderJSONExtFlds').text = reportString;
+	$w('#anchorBelowReport').scrollTo();
+}
 
+// ø <----------- <constructParamObjectExtFlds()>  ----------->
+export function constructParamObjectExtFlds(){
+    let paramObject = {};
+	let inputFilterValue = $w('#inputFilterValueExtFlds').value;
+	let inputFilterMethod = $w('#ddFilterMethodExtFlds').value;
+    // paramObject.labelType = "USER_DEFINED";
+	if(inputFilterMethod !== "NNULL"){
+		paramObject[inputFilterMethod] = inputFilterValue;
+	}
+    console.warn('paramObject: ');
+    console.warn(paramObject);
+    return paramObject;
+}//END constructParamObject()
+// ø <----------- </constructParamObjectExtFlds()> ----------->
 // ø <======================================================================>
 // ø <=================</         Extended Fields         >=================>
 // ø <======================================================================>
-
