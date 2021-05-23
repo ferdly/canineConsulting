@@ -1,0 +1,47 @@
+[
+    {
+        "dataType": "TEXT",
+        "key": "custom.current-region",
+        "action": "BUILD",
+        "konstant": "Charlottesville",
+        "ruMePath": "if Applicable",
+        "transformation": "if Applicable",
+        "notes": []
+    },
+    {
+        "dataType": "TEXT",
+        "key": "custom.timezone-offset",
+        "action": "BUILD",
+        "konstant": "if Applicable",
+        "ruMePath": "location.timezone.offset",
+        "transformation": "if Applicable",
+        "notes": ["could be konstant, or by region","ruMe path for this purpose"]
+    },
+    {
+        "dataType": "TEXT",
+        "key": "custom.grade-level",
+        "action": "BUILD",
+        "konstant": "3-5",
+        "ruMePath": "if Applicable",
+        "transformation": "perhaps randomize by street.number % 4",
+        "notes": []
+    },
+    {
+        "dataType": "TEXT",
+        "key": "custom.legal-first",
+        "action": "BUILD",
+        "konstant": "if Applicable",
+        "ruMePath": "name.first",
+        "transformation": "if Applicable",
+        "notes": ["good testing to overload to more formal version ('Jimmie' to 'James' and so on)"]
+    },
+    {
+        "dataType": "TEXT",
+        "key": "custom.seed",
+        "action": "BUILD",
+        "konstant": "if Applicable",
+        "ruMePath": "if Applicable",
+        "transformation": "if Applicable",
+        "notes": []
+    }
+]
