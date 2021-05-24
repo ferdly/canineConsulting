@@ -36,11 +36,12 @@ export function jsonToTable(jsonData, paramJSON) {
     testReturnLog += '<p>hard-coded "dataArray" to get past the bump, and all good</p>';
     // let tbodyElementArray = jsonData[tableDataObjectArrayKey];
     // let tbodyElementArray = jsonData["dataArray"];
-    let tbodyElementArray = jsonData; // MOOT but not rewriting code below until certain
+    let tbodyElementArray = JSON.parse(jsonData); // MOOT but not rewriting code below until certain
+    // testReturnString = JSON.stringify(tbodyElementArray);
     // testReturnString = tbodyElementArray;
+    // return testReturnString;
     testReturnLog += '<p>NOPE: much of above is MOOT, can pass just the JSON Array Of Objects as param</p>';
     // return testReturnObject;
-    // return testReturnString;
     // return testReturnString;
     // let jsonDataObject = JSON.parse(jsonData);
     // let theseKeys = Object.keys(jsonDataObject);
@@ -68,23 +69,23 @@ export function jsonToTable(jsonData, paramJSON) {
     let tFootElement = {};
     let tHeadValues = [];
     let tableKeys = [];
-    testReturnString = typeof paramObjectObject.tHeadElement;
-    return testReturnString;
+    // testReturnString = typeof paramObject.tHeadElement;
+    // return testReturnString;
 
     // console.log(Object.keys(tHeadElement).length)
     // if (typeof paramObject.tHeadElement === 'object') {
     if (Object.keys(paramObject.tHeadElement).length > 0) {
         tHeadElement = paramObject.tHeadElement;
-        testReturnObject = tHeadElement;
-        return testReturnObject;
+        // testReturnString = JSON.stringify(tHeadElement);
+        // return testReturnString;
         // console.log(tHeadElement);
         // tfootElement = tbodyElementArray.pop();
         tableKeys = Object.keys(paramObject.tHeadElement);
         tHeadValues = Object.values(tHeadElement);
     } else {
         tHeadElement = tbodyElementArray[0];
-        testReturnObject = tHeadElement;
-        return testReturnObject;
+        // testReturnString = JSON.stringify(tHeadElement);
+        // return testReturnString;
         // console.log(tHeadElement);
         tableKeys = Object.keys(tHeadElement);
         tHeadValues = Object.keys(tHeadElement);
@@ -98,11 +99,13 @@ export function jsonToTable(jsonData, paramJSON) {
         tHead += '<th>' + element + '</th>';
     })
     tHead += '</tr></thead>';
+    // testReturnString = tHead;
+    // return testReturnString;
     // console.log(typeof paramObject.tHeadElement)
     // console.log(tHeadElement);
-    console.log(tableKeys);
+    // console.log(tableKeys);
     // console.log(theadValues);
-    console.log(tHead);
+    // console.log(tHead);
     //</tHead could become a function>
 
 
@@ -124,6 +127,8 @@ export function jsonToTable(jsonData, paramJSON) {
 
     // console.log(tbodyElementArray)
     // <tBody could become a function>
+    // testReturnString = tbodyElementArray.toString();
+    // return testReturnString;
     let tRowCode = '';
     let tBody = '<tbody>';
     tbodyElementArray.forEach(tRowObect => {
@@ -137,6 +142,8 @@ export function jsonToTable(jsonData, paramJSON) {
         tBody += tRowCode;
     });
     tBody += '</tbody>';
+    // testReturnString = tBody;
+    // return testReturnString;
     // console.log(tBody);
     //</tBody could become a function>
 
@@ -262,8 +269,9 @@ export function jsonToTable(jsonData, paramJSON) {
     // tFoot += '</tr></tfoot>';
 
     let style = ' style="align:center;id:test-table;border:1;"';
-    let returnedTable = '<table align="center" id="test-table" border="1">';
+    // let returnedTable = '<table align="center" id="test-table" border="1">';
     // let returnedTable = '<table' + style + '>';
+    let returnedTable = '<table>';
     returnedTable += tHead;
     returnedTable += tBody;
     returnedTable += tFoot;
