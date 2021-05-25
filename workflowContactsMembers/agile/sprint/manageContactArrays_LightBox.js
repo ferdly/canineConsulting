@@ -118,11 +118,11 @@ $w.onReady( function () {
  }//END manageRecievedObject()
  
 export function stateById(wixId){
-	if(wixId === 'kindEmailPhone' && $w('#recievedKind').value === 'emails'){
+	if(wixId === 'kindEmailPhone' && memory.getItem("recievedKind") === 'emails'){
         //ZXZ#recievedKind
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Work",value:"WORK"}];
 	}
-	if(wixId === 'kindEmailPhone' && $w('#recievedKind').value === 'phones'){
+	if(wixId === 'kindEmailPhone' && memory.getItem("recievedKind") === 'phones'){
         //ZXZ#recievedKind
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Cell",value:"MOBILE"},{label:"Work",value:"WORK"},{label:"Fax",value:"FAX"}];
 	}
