@@ -49,10 +49,10 @@ $w.onReady( function () {
     console.log(log);
 	$w('#recievedKind').value = key;
     memory.setItem("recievedKind", key);
-    //ZXZ#recievedKindZXZ
+    //ZXZ#recievedKindZXZ777
     log = 'memory.getItem("recievedKind"): ';
     log += memory.getItem("recievedKind");
-    //ZXZ#recievedKindZXZ
+    //ZXZ#recievedKindZXZ777
     console.log(log);
 	$w('#txtSelectListByKind').text = 'Select List' + key;
 	$w('#txtEmailPhoneByKind').text = 'Manage Object' + key;
@@ -121,11 +121,11 @@ $w.onReady( function () {
  
 export function stateById(wixId){
 	if(wixId === 'kindEmailPhone' && memory.getItem("recievedKind") === 'emails'){
-        //ZXZ#recievedKindZXZ
+        //ZXZ#recievedKindZXZ777
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Work",value:"WORK"}];
 	}
 	if(wixId === 'kindEmailPhone' && memory.getItem("recievedKind") === 'phones'){
-        //ZXZ#recievedKindZXZ
+        //ZXZ#recievedKindZXZ777
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Cell",value:"MOBILE"},{label:"Work",value:"WORK"},{label:"Fax",value:"FAX"}];
 	}
 	$w("#manageArrayElements").changeState(wixId);
@@ -244,7 +244,7 @@ export function btnAddressPostUpdate_click(event) {
 	paramObjectThis.state = {};
 	paramObjectThis.state.action = "PUT";
 	paramObjectThis.state.kind = memory.getItem("recievedKind");
-    //ZXZ#recievedKindZXZ
+    //ZXZ#recievedKindZXZ777
 	paramObjectThis.state.count = $w('#recievedCount').value;
 	paramObjectThis.state.maxIndex = $w('#recievedCount').value;
 	paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
@@ -266,7 +266,7 @@ export function doPut(paramObject = {}){
 
         console.log("holder for three blocks (called functions -- maybe only Addresses)")
         let kind = memory.getItem("recievedKind");
-        //ZXZ#recievedKindZXZ
+        //ZXZ#recievedKindZXZ777
         paramObject.new_updatedElement = {};
         let currentArray = JSON.parse($w('#selectListData').value);
         if($w('#phemPrimary').checked){
@@ -362,9 +362,9 @@ export function doPut(paramObject = {}){
             default:
                 console.log("Do: NNOTHING: " + kind + ' – is not supported in Switch')
                 // $w('#devNotes').value = "unsupported Kind: " + memory.getItem("recievedKind")
-                //ZXZ#recievedKindZXZ               
+                //ZXZ#recievedKindZXZ777               
                 console.log("unsupported Kind: " + memory.getItem("recievedKind"));
-                //ZXZ#recievedKindZXZ
+                //ZXZ#recievedKindZXZ777
                 break;
         }
         // let indexObjectArray = $w('#selectIndexEmailPhone').value;
@@ -395,7 +395,7 @@ export function doPut(paramObject = {}){
 export function switchIsPrimary_change(event) {
 	let warnTxt = "When marking an email as 'primary' \nother emails become unmarked...";
     warnTxt = memory.getItem("recievedKind") === 'phones' ? "When marking a phone as 'primary' \nother phones become unmarked..." : warnTxt;
-    //ZXZ#recievedKindZXZ
+    //ZXZ#recievedKindZXZ777
 	if($w("#switchIsPrimary").checked){
         $w('#primaryWarnTxt').text = warnTxt;
         $w('#primaryWarnTxt').show();
@@ -438,7 +438,7 @@ export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     paramObject.state.wix = wixBoolean === true ? true : false;
     paramObject.state.action = typeof paramObject.state.action === 'string' ? paramObject.state.action : "UUNKNOWN";
     paramObject.state.kind = paramObject.state.wix === true ? memory.getItem("recievedKind") : testFormDataObject.StateKind;
-    //ZXZ#recievedKindZXZ
+    //ZXZ#recievedKindZXZ777
     paramObject.state.kindSingular = paramObject.state.kind === "addresses" ? "address" : paramObject.state.kind.substr(0, (paramObject.state.kind.length - 1));
     paramObject.state.kindSingularTitle = paramObject.state.kindSingular.substr(0,1).toUpperCase() + paramObject.state.kindSingular.substr(1);
     paramObject.state.boxState = paramObject.state.kindSingular === 'email' || paramObject.state.kindSingular === 'phone' ? 'EmailPhone' : paramObject.state.kindSingular;
@@ -539,7 +539,7 @@ export async function doSelectListDataTable(){
 	let paramJSONthis = `{}`;
     let styleObjectJSONthis = `{}`;
     switch (memory.getItem("recievedKind")) {
-        //ZXZ#recievedKindZXZ
+        //ZXZ#recievedKindZXZ777
         case "emails":
 	        paramJSONthis = `{"numbering":{},"tHeadElement":{"email":"eMail Address","tag":"Kind","primary":"Primary"},"tFootObject":{},"tableDataObjectArrayKey":"dataArray"}`;
             styleObjectJSONthis = `{"table":"text-align: center;color:blue;font-family: Arial, Helvetica, sans-serif;font-size: 14px;background-color:white;border: 5px solid blue;","thead":"color: white;background-color:blue;","tbody":false,"trow":false,"tdata":"border: 10px solid white;","tfoot":false}`;
@@ -580,7 +580,7 @@ export async function doSelectListDataTable(){
 	console.log(theHTML);
     let supportedKinds = ['emails','phones','addresses'];
     if(supportedKinds.includes(memory.getItem("recievedKind"))){
-        //ZXZ#recievedKindZXZ
+        //ZXZ#recievedKindZXZ777
         $w('#htmlTable').html = theHTML;
     }
 
