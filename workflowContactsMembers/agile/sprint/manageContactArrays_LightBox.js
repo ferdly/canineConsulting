@@ -47,7 +47,6 @@ $w.onReady( function () {
     log = 'memory.getItem("selectListData"): ';
     log += memory.getItem("selectListData");
     console.log(log);
-	$w('#recievedKind').value = key;
     memory.setItem("recievedKind", key);
     //ZXZ#recievedKindZXZ777
     log = 'memory.getItem("recievedKind"): ';
