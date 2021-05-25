@@ -119,9 +119,11 @@ $w.onReady( function () {
  
 export function stateById(wixId){
 	if(wixId === 'kindEmailPhone' && $w('#recievedKind').value === 'emails'){
+        //ZXZ#recievedKind
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Work",value:"WORK"}];
 	}
 	if(wixId === 'kindEmailPhone' && $w('#recievedKind').value === 'phones'){
+        //ZXZ#recievedKind
 		$w('#phemTag').options = [{label:"Other",value:"UNTAGGED"},{label:"Main",value:"MAIN"},{label:"Home",value:"HOME"},{label:"Cell",value:"MOBILE"},{label:"Work",value:"WORK"},{label:"Fax",value:"FAX"}];
 	}
 	$w("#manageArrayElements").changeState(wixId);
@@ -240,6 +242,7 @@ export function btnAddressPostUpdate_click(event) {
 	paramObjectThis.state = {};
 	paramObjectThis.state.action = "PUT";
 	paramObjectThis.state.kind = $w('#recievedKind').value;
+    //ZXZ#recievedKind
 	paramObjectThis.state.count = $w('#recievedCount').value;
 	paramObjectThis.state.maxIndex = $w('#recievedCount').value;
 	paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
@@ -261,6 +264,7 @@ export function doPut(paramObject = {}){
 
         console.log("holder for three blocks (called functions -- maybe only Addresses)")
         let kind = $w('#recievedKind').value;
+        //ZXZ#recievedKind
         paramObject.new_updatedElement = {};
         let currentArray = JSON.parse($w('#selectListData').value);
         if($w('#phemPrimary').checked){
@@ -356,7 +360,9 @@ export function doPut(paramObject = {}){
             default:
                 console.log("Do: NNOTHING: " + kind + ' – is not supported in Switch')
                 // $w('#devNotes').value = "unsupported Kind: " + $w('#recievedKind').value
+                //ZXZ#recievedKind                
                 console.log("unsupported Kind: " + $w('#recievedKind').value);
+                //ZXZ#recievedKind
                 break;
         }
         // let indexObjectArray = $w('#selectIndexEmailPhone').value;
@@ -387,6 +393,7 @@ export function doPut(paramObject = {}){
 export function switchIsPrimary_change(event) {
 	let warnTxt = "When marking an email as 'primary' \nother emails become unmarked...";
     warnTxt = $w('#recievedKind').value === 'phones' ? "When marking a phone as 'primary' \nother phones become unmarked..." : warnTxt;
+    //ZXZ#recievedKind
 	if($w("#switchIsPrimary").checked){
         $w('#primaryWarnTxt').text = warnTxt;
         $w('#primaryWarnTxt').show();
@@ -429,6 +436,7 @@ export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     paramObject.state.wix = wixBoolean === true ? true : false;
     paramObject.state.action = typeof paramObject.state.action === 'string' ? paramObject.state.action : "UUNKNOWN";
     paramObject.state.kind = paramObject.state.wix === true ? $w('#recievedKind').value : testFormDataObject.StateKind;
+    //ZXZ#recievedKind
     paramObject.state.kindSingular = paramObject.state.kind === "addresses" ? "address" : paramObject.state.kind.substr(0, (paramObject.state.kind.length - 1));
     paramObject.state.kindSingularTitle = paramObject.state.kindSingular.substr(0,1).toUpperCase() + paramObject.state.kindSingular.substr(1);
     paramObject.state.boxState = paramObject.state.kindSingular === 'email' || paramObject.state.kindSingular === 'phone' ? 'EmailPhone' : paramObject.state.kindSingular;
@@ -529,6 +537,7 @@ export async function doSelectListDataTable(){
 	let paramJSONthis = `{}`;
     let styleObjectJSONthis = `{}`;
     switch ($w('#recievedKind').value) {
+        //ZXZ#recievedKind
         case "emails":
 	        paramJSONthis = `{"numbering":{},"tHeadElement":{"email":"eMail Address","tag":"Kind","primary":"Primary"},"tFootObject":{},"tableDataObjectArrayKey":"dataArray"}`;
             styleObjectJSONthis = `{"table":"text-align: center;color:blue;font-family: Arial, Helvetica, sans-serif;font-size: 14px;background-color:white;border: 5px solid blue;","thead":"color: white;background-color:blue;","tbody":false,"trow":false,"tdata":"border: 10px solid white;","tfoot":false}`;
@@ -569,6 +578,7 @@ export async function doSelectListDataTable(){
 	console.log(theHTML);
     let supportedKinds = ['emails','phones','addresses'];
     if(supportedKinds.includes($w('#recievedKind').value)){
+        //ZXZ#recievedKind
         $w('#htmlTable').html = theHTML;
     }
 
