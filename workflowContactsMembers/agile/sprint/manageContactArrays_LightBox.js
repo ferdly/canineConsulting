@@ -16,6 +16,10 @@ import {local, session, memory} from 'wix-storage';
 // 	// Click "Preview" to run your code
 // });
 $w.onReady( function () {
+    //ZXZZXZRefactorToDo
+    //ZXZ#recievedObjectJSON
+    //ZXZ#recievedObjectJSON
+    //ZXZ#coreImplementationJSONZXZ
 	/*currentContactObjectJSON.info.emails"*/
    let received = wixWindow.lightbox.getContext();
    $w('#recievedObjectJSON').value = JSON.stringify(received,undefined,4);
@@ -112,7 +116,9 @@ $w.onReady( function () {
 	paramObjectThis.state.action = 'RECEIVE';
 	coreImplementation(paramObjectThis);
 	$w("#btnNewUpdate").label = paramObjectThis.state.btnNewUpdateLabel;
-	$w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+	// $w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+    memory.setItem("coreImplementationJSON", JSON.stringify(paramObjectThis));
+    //ZXZ#coreImplementationJSONZXZ
     doSelectListDataTable();
  }//END manageRecievedObject()
  
@@ -211,7 +217,9 @@ export function selectIndexEmailPhone_change(event) {
 	let maxIndex = 999;
 	let labelThis = $w('#selectIndexEmailPhone').value > memory.getItem("recievedCount") ? "New " : "Update ";
     //ZXZ#recievedCountZXZ777
-	let objectThis = JSON.parse($w('#coreImplementationJSON').value);
+	// let objectThis = JSON.parse($w('#coreImplementationJSON').value);
+    let objectThis = memory.getItem("coreImplementationJSON");
+    //ZXZ#coreImplementationJSONZXZ
 	let kindThis = typeof objectThis.state.kindSingularTitle !== 'string' ? 'objectNot' : objectThis.state.kindSingularTitle;
 	let append = ' [obj]'
 	if(kindThis === 'jsonNotString'){
@@ -411,12 +419,16 @@ export function btnNewUpdate_click(event) {
 	paramObjectThis.state.action = 'GOTO_FORM';
 	coreImplementation(paramObjectThis);
 	// console.log("coreImplementation(paramObjectThis)");
-	$w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+	// $w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+    memory.setItem("coreImplementationJSON", JSON.stringify(paramObjectThis));
+    //ZXZ#coreImplementationJSONZXZ
 	// stateById('dataOnly');
 	paramObjectThis.state.action = 'PREPOPULATE';
 	prePopulateByIndexSelected(paramObjectThis);
 	console.log("coreImplementation(paramObjectThis)");
-	$w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+	// $w('#coreImplementationJSON').value = JSON.stringify(paramObjectThis,undefined,4);
+    memory.setItem("coreImplementationJSON", JSON.stringify(paramObjectThis));
+    //ZXZ#coreImplementationJSONZXZ
 	// stateById('dataOnly');
 	console.log("AFTER: prePopulateByIndexSelected: paramObjectThis: ");
 	console.log(paramObjectThis);
