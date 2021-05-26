@@ -6,6 +6,7 @@ import { jsonToTable } from 'backend/htmlTableFromJSON';
 import { multiply } from 'backend/htmlTableFromJSON';
 import {local, session, memory} from 'wix-storage';
 
+
  
 
 $w.onReady( function () {
@@ -29,18 +30,18 @@ $w.onReady( function () {
             elementObject.tag = toUntaggedArray.includes(elementObject.tag) ? 'UNTAGGED' : elementObject.tag;
             elementObject.tag = toMainArray.includes(elementObject.tag) ? 'MAIN' : elementObject.tag;
         }
-        console.log(keysArray);
+        //console.log(keysArray);
     });
     let log = "instantiated";
 	$w('#selectListData').value = JSON.stringify(currentContactObject,undefined,4);
     memory.setItem("selectListData", JSON.stringify(currentContactObject));
     log = 'memory.getItem("selectListData"): ';
     log += memory.getItem("selectListData");
-    console.log(log);
+    //console.log(log);
     memory.setItem("recievedKind", key);
     log = 'memory.getItem("recievedKind"): ';
     log += memory.getItem("recievedKind");
-    console.log(log);
+    //console.log(log);
 	$w('#txtSelectListByKind').text = 'Select List' + key;
 	$w('#txtEmailPhoneByKind').text = 'Manage Object' + key;
 
@@ -48,7 +49,7 @@ $w.onReady( function () {
     memory.setItem("recievedCount", (nextIndex - 1).toString());
     log = 'memory.getItem("recievedCount"): ';
     log += memory.getItem("recievedCount");
-    console.log(log);
+    //console.log(log);
 
 	let dropdownOptions = [];
 	let indexString = '100';
@@ -169,13 +170,13 @@ export function btnEmailPostUpdate_click(event) {
 *	 @param {$w.Event} event
 */
 export function selectIndexEmailPhone_change(event) {
-    console.log('[~LINE 219] INSIDE: selectIndexEmailPhone_change()');
+    //console.log('[~LINE 219] INSIDE: selectIndexEmailPhone_change()');
 	let selectedIndex = Number($w('#selectIndexEmailPhone').value);
 	let maxIndex = 999;
 	let labelThis = selectedIndex > Number(memory.getItem("recievedCount")) ? "New " : "Update ";
     let objectThis = JSON.parse(memory.getItem("coreImplementationJSON"));
-    console.log('[~LINE 227]objectThis: ');
-    console.log(objectThis);
+    //console.log('[~LINE 227]objectThis: ');
+    //console.log(objectThis);
 	let kindThis = typeof objectThis.state.kindSingularTitle !== 'string' ? 'objectNot' : objectThis.state.kindSingularTitle;
 	let append = ' [obj]'
 	$w("#btnNewUpdate").label = labelThis + kindThis;// + append;
@@ -207,7 +208,7 @@ export function btnAddressPostUpdate_click(event) {
 
 export function doPut(paramObject = {}){
 
-        console.log("holder for three blocks (called functions -- maybe only Addresses)")
+        //console.log("holder for three blocks (called functions -- maybe only Addresses)")
         let kind = memory.getItem("recievedKind");
         paramObject.new_updatedElement = {};
         let currentArray = JSON.parse($w('#selectListData').value);
@@ -217,12 +218,12 @@ export function doPut(paramObject = {}){
             });
         }
         let indexObjectArray = Number($w('#selectIndexEmailPhone').value);
-        console.log($w('#phemValue').value);
-        console.log($w('#phemTag').value);
-        console.log($w('#phemPrimary').checked);
+        //console.log($w('#phemValue').value);
+        //console.log($w('#phemTag').value);
+        //console.log($w('#phemPrimary').checked);
         switch (kind) {
             case 'emails':
-                console.log("Do: emails: " + kind)
+                //console.log("Do: emails: " + kind)
                 paramObject.new_updatedElement.email = $w('#phemValue').value;
                 paramObject.new_updatedElement.tag = $w('#phemTag').value;
                 if($w('#phemPrimary').checked){
@@ -231,7 +232,7 @@ export function doPut(paramObject = {}){
                 break;
     
             case 'phones':
-                console.log("Do: phones: " + kind)
+                //console.log("Do: phones: " + kind)
                 paramObject.new_updatedElement.phone = $w('#phemValue').value;
                 paramObject.new_updatedElement.tag = $w('#phemTag').value;
                 if($w('#phemPrimary').checked){
@@ -240,7 +241,7 @@ export function doPut(paramObject = {}){
                 break;
     
             case 'addresses':
-                console.log("Do: addresses: " + kind)
+                //console.log("Do: addresses: " + kind)
                 paramObject.new_updatedElement.address = {};
                 paramObject.new_updatedElement.address.streetAddress = {};
 
@@ -265,9 +266,9 @@ export function doPut(paramObject = {}){
                 //     streetApt = streetSplit.pop();
                 // }
                 let streetName = streetSplit.join(' ');
-                // console.warn('streetNumber: ' + streetNumber);
-                // console.warn('streetName: ' + streetName);
-                // console.warn('streetApt: ' + streetApt);
+                // //console.warn('streetNumber: ' + streetNumber);
+                // //console.warn('streetName: ' + streetName);
+                // //console.warn('streetApt: ' + streetApt);
                 
     
                 paramObject.new_updatedElement.address.streetAddress.number = streetNumber
@@ -286,24 +287,24 @@ export function doPut(paramObject = {}){
                 }else{
                     paramObject.new_updatedElement.labelKey = $w('#labelKey').value;
                 }
-                console.log("Do: labelKeys: " + kind)
+                //console.log("Do: labelKeys: " + kind)
                 currentArray[indexObjectArray] = paramObject.new_updatedElement.labelKey;
                 break;
     
             default:
-                console.log("Do: NNOTHING: " + kind + ' – is not supported in Switch')
-                console.log("unsupported Kind: " + memory.getItem("recievedKind"));
+                //console.log("Do: NNOTHING: " + kind + ' – is not supported in Switch')
+                //console.log("unsupported Kind: " + memory.getItem("recievedKind"));
                 break;
         }
         paramObject.indexObjectArray = indexObjectArray;
         
-        console.log('BEFORE currentArray: ');
-        console.log(currentArray);
+        //console.log('BEFORE currentArray: ');
+        //console.log(currentArray);
         if(kind !== 'labelKeys'){
             currentArray[indexObjectArray] = paramObject.new_updatedElement;
         }
-        console.log('AFTER currentArray: ');
-        console.log(currentArray);
+        //console.log('AFTER currentArray: ');
+        //console.log(currentArray);
         $w('#selectListData').value = JSON.stringify(currentArray,undefined,4);
         stateById("selectList");
     }
@@ -339,17 +340,17 @@ export function btnNewUpdate_click(event) {
     memory.setItem("coreImplementationJSON", JSON.stringify(paramObjectThis));
 	paramObjectThis.state.action = 'PREPOPULATE';
 	prePopulateByIndexSelected(paramObjectThis);
-	console.log("coreImplementation(paramObjectThis)");
+	//console.log("coreImplementation(paramObjectThis)");
     memory.setItem("coreImplementationJSON", JSON.stringify(paramObjectThis));
-	console.log("AFTER: prePopulateByIndexSelected: paramObjectThis: ");
-	console.log(paramObjectThis);
+	//console.log("AFTER: prePopulateByIndexSelected: paramObjectThis: ");
+	//console.log(paramObjectThis);
 	stateById(paramObjectThis.state.boxState);
 }
 // ø <---------- <Core Implementation>  ---------->
 export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     let wixBoolean = typeof testFormDataObject.wixBoolean === 'boolean' ? testFormDataObject.wixBoolean : true;
-    console.warn('wixBoolean: ' + wixBoolean);
-    console.log(typeof paramObject.state.action === 'string');
+    //console.warn('wixBoolean: ' + wixBoolean);
+    //console.log(typeof paramObject.state.action === 'string');
     if(typeof paramObject.state !== 'object'){
         paramObject.state = {};
     }
@@ -487,7 +488,7 @@ export async function doSelectListDataTable(){
     
 	let theTABLE = await jsonToTable(jsonDataThis, paramJSONthis, styleObjectJSONthis);
 	let theHTML = '<div style="margin: 0 auto">' + theTABLE + '</div>';
-	console.log(theHTML);
+	//console.log(theHTML);
     let supportedKinds = ['emails','phones','addresses'];
     if(supportedKinds.includes(memory.getItem("recievedKind"))){
         $w('#htmlTable').html = theHTML;
