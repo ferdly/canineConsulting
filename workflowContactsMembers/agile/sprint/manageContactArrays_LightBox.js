@@ -16,12 +16,10 @@ import {local, session, memory} from 'wix-storage';
 // 	// Click "Preview" to run your code
 // });
 $w.onReady( function () {
-    //ZXZZXZRefactor ø <ToDo>
+    //ZXZZXZRefactorToDo
     //ZXZ#recievedCountZXZ77_ToNumber
     //ZXZ#recievedObjectJSONZXZ
     //ZXZ#coreImplementationJSONZXZ
-    //ZXZ_doRemoveLayoutItemsAbove
-    //ZXZZXZRefactor ø </ToDo>
 	/*currentContactObjectJSON.info.emails"*/
    let received = wixWindow.lightbox.getContext();
 //    $w('#recievedObjectJSON').value = JSON.stringify(received,undefined,4);
@@ -218,13 +216,16 @@ export function btnEmailPostUpdate_click(event) {
 *	 @param {$w.Event} event
 */
 export function selectIndexEmailPhone_change(event) {
-	let selectedIndex = $w('#selectIndexEmailPhone').value;
+    console.log('[~LINE 219] INSIDE: selectIndexEmailPhone_change()');
+	let selectedIndex = Number($w('#selectIndexEmailPhone').value);
 	let maxIndex = 999;
-	let labelThis = Number($w('#selectIndexEmailPhone').value) > Number(memory.getItem("recievedCount")) ? "New " : "Update ";
+	let labelThis = selectedIndex > Number(memory.getItem("recievedCount")) ? "New " : "Update ";
     //ZXZ#recievedCountZXZ777_ToNumber
 	// let objectThis = JSON.parse($w('#coreImplementationJSON').value);
-    let objectThis = memory.getItem("coreImplementationJSON");
+    let objectThis = JSON.parse(memory.getItem("coreImplementationJSON"));
     //ZXZ#coreImplementationJSONZXZ
+    console.log('[~LINE 227]objectThis: ');
+    console.log(objectThis);
 	let kindThis = typeof objectThis.state.kindSingularTitle !== 'string' ? 'objectNot' : objectThis.state.kindSingularTitle;
 	let append = ' [obj]'
 	if(kindThis === 'jsonNotString'){
