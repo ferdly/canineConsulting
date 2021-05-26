@@ -56,8 +56,6 @@ $w.onReady( function () {
 	$w('#txtEmailPhoneByKind').text = 'Manage Object' + key;
 
 	let nextIndex = currentContactObject.length;
-	// memory.getItem("recievedCount") = (nextIndex - 1).toString();
-    //ZXZ#recievedCountZXZ
     memory.setItem("recievedCount", (nextIndex - 1).toString());
     log = 'memory.getItem("recievedCount"): ';
     log += memory.getItem("recievedCount");
@@ -212,7 +210,7 @@ export function selectIndexEmailPhone_change(event) {
 	let selectedIndex = $w('#selectIndexEmailPhone').value;
 	let maxIndex = 999;
 	let labelThis = $w('#selectIndexEmailPhone').value > memory.getItem("recievedCount") ? "New " : "Update ";
-    //ZXZ#recievedCountZXZ
+    //ZXZ#recievedCountZXZ777
 	let objectThis = JSON.parse($w('#coreImplementationJSON').value);
 	let kindThis = typeof objectThis.state.kindSingularTitle !== 'string' ? 'objectNot' : objectThis.state.kindSingularTitle;
 	let append = ' [obj]'
@@ -246,11 +244,11 @@ export function btnAddressPostUpdate_click(event) {
 	paramObjectThis.state.kind = memory.getItem("recievedKind");
     //ZXZ#recievedKindZXZ777
 	paramObjectThis.state.count = memory.getItem("recievedCount");
-    //ZXZ#recievedCountZXZ
+    //ZXZ#recievedCountZXZ777
 	paramObjectThis.state.maxIndex = memory.getItem("recievedCount");
-    //ZXZ#recievedCountZXZ
+    //ZXZ#recievedCountZXZ777
 	paramObjectThis.state.nextIndex = memory.getItem("recievedCount") + 1;
-    //ZXZ#recievedCountZXZ
+    //ZXZ#recievedCountZXZ777
 	doPut(paramObjectThis);
     doSelectListDataTable();
 	// abortFrom("#btnAddressPostUpdate")
@@ -284,7 +282,6 @@ export function doPut(paramObject = {}){
         switch (kind) {
             case 'emails':
                 console.log("Do: emails: " + kind)
-                // $w('#devNotes').value = 'going to edit a ' + objectCurrentNew + ' object element;\n'
                 // stateById("kindEmailPhone");
                 paramObject.new_updatedElement.email = $w('#phemValue').value;
                 paramObject.new_updatedElement.tag = $w('#phemTag').value;
@@ -295,7 +292,6 @@ export function doPut(paramObject = {}){
     
             case 'phones':
                 console.log("Do: phones: " + kind)
-                // $w('#devNotes').value = 'going to edit a ' + objectCurrentNew + ' object element;\n'
                 // stateById("kindEmailPhone");
                 paramObject.new_updatedElement.phone = $w('#phemValue').value;
                 paramObject.new_updatedElement.tag = $w('#phemTag').value;
@@ -306,7 +302,6 @@ export function doPut(paramObject = {}){
     
             case 'addresses':
                 console.log("Do: addresses: " + kind)
-                // $w('#devNotes').value = 'going to edit a ' + objectCurrentNew + ' object element;\n'
                 // stateById("kindAddress");
                 paramObject.new_updatedElement.address = {};
                 paramObject.new_updatedElement.address.streetAddress = {};
@@ -358,13 +353,11 @@ export function doPut(paramObject = {}){
                     paramObject.new_updatedElement.labelKey = $w('#labelKey').value;
                 }
                 console.log("Do: labelKeys: " + kind)
-                // $w('#devNotes').value = 'going to edit a ' + objectCurrentNew + ' object element;\n'
                 currentArray[indexObjectArray] = paramObject.new_updatedElement.labelKey;
                 break;
     
             default:
                 console.log("Do: NNOTHING: " + kind + ' – is not supported in Switch')
-                // $w('#devNotes').value = "unsupported Kind: " + memory.getItem("recievedKind")
                 //ZXZ#recievedKindZXZ777               
                 console.log("unsupported Kind: " + memory.getItem("recievedKind"));
                 //ZXZ#recievedKindZXZ777
@@ -372,7 +365,7 @@ export function doPut(paramObject = {}){
         }
         // let indexObjectArray = $w('#selectIndexEmailPhone').value;
         paramObject.indexObjectArray = indexObjectArray;
-        $w('#devNotes').value = JSON.stringify(paramObject, undefined, 4);
+        
         // let currentArray = JSON.parse($w('#selectListData').value);
         console.log('BEFORE currentArray: ');
         console.log(currentArray);
@@ -449,7 +442,7 @@ export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     paramObject.state.boxState = paramObject.state.kindSingular === 'address' ? 'Address' : paramObject.state.boxState;
     paramObject.state.boxState = 'kind' + paramObject.state.boxState;
     paramObject.state.count = paramObject.state.wix === true ? Number(memory.getItem("recievedCount")) : testFormDataObject.StateCount;
-    //ZXZ#recievedCountZXZ
+    //ZXZ#recievedCountZXZ77
     paramObject.state.selectedIndex = paramObject.state.wix === true ? Number($w('#selectIndexEmailPhone').value) : testFormDataObject.StateIndexSelected;
     paramObject.state.maxIndex = paramObject.state.count;
     paramObject.state.nextIndex = paramObject.state.count + 1;
