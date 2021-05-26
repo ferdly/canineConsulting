@@ -18,6 +18,7 @@ import {local, session, memory} from 'wix-storage';
 $w.onReady( function () {
     //ZXZZXZRefactorToDo
     //ZXZ#recievedObjectJSON
+    //ZXZ#recievedCountZXZ77_ToNumber
     //ZXZ#recievedObjectJSON
     //ZXZ#coreImplementationJSONZXZ
 	/*currentContactObjectJSON.info.emails"*/
@@ -215,8 +216,8 @@ export function btnEmailPostUpdate_click(event) {
 export function selectIndexEmailPhone_change(event) {
 	let selectedIndex = $w('#selectIndexEmailPhone').value;
 	let maxIndex = 999;
-	let labelThis = $w('#selectIndexEmailPhone').value > memory.getItem("recievedCount") ? "New " : "Update ";
-    //ZXZ#recievedCountZXZ777
+	let labelThis = Number($w('#selectIndexEmailPhone').value) > Number(memory.getItem("recievedCount")) ? "New " : "Update ";
+    //ZXZ#recievedCountZXZ777_ToNumber
 	// let objectThis = JSON.parse($w('#coreImplementationJSON').value);
     let objectThis = memory.getItem("coreImplementationJSON");
     //ZXZ#coreImplementationJSONZXZ
@@ -251,12 +252,12 @@ export function btnAddressPostUpdate_click(event) {
 	paramObjectThis.state.action = "PUT";
 	paramObjectThis.state.kind = memory.getItem("recievedKind");
     //ZXZ#recievedKindZXZ777
-	paramObjectThis.state.count = memory.getItem("recievedCount");
-    //ZXZ#recievedCountZXZ777
-	paramObjectThis.state.maxIndex = memory.getItem("recievedCount");
-    //ZXZ#recievedCountZXZ777
-	paramObjectThis.state.nextIndex = memory.getItem("recievedCount") + 1;
-    //ZXZ#recievedCountZXZ777
+	paramObjectThis.state.count = Number(memory.getItem("recievedCount"));
+    //ZXZ#recievedCountZXZ777_ToNumber
+	paramObjectThis.state.maxIndex = Number(memory.getItem("recievedCount"));
+    //ZXZ#recievedCountZXZ777_ToNumber
+	paramObjectThis.state.nextIndex = Number(memory.getItem("recievedCount")) + 1;
+    //ZXZ#recievedCountZXZ777_ToNumber
 	doPut(paramObjectThis);
     doSelectListDataTable();
 	// abortFrom("#btnAddressPostUpdate")
@@ -454,7 +455,7 @@ export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     paramObject.state.boxState = paramObject.state.kindSingular === 'address' ? 'Address' : paramObject.state.boxState;
     paramObject.state.boxState = 'kind' + paramObject.state.boxState;
     paramObject.state.count = paramObject.state.wix === true ? Number(memory.getItem("recievedCount")) : testFormDataObject.StateCount;
-    //ZXZ#recievedCountZXZ77
+    //ZXZ#recievedCountZXZ77_ToNumber
     paramObject.state.selectedIndex = paramObject.state.wix === true ? Number($w('#selectIndexEmailPhone').value) : testFormDataObject.StateIndexSelected;
     paramObject.state.maxIndex = paramObject.state.count;
     paramObject.state.nextIndex = paramObject.state.count + 1;
