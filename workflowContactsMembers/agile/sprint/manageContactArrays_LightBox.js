@@ -56,7 +56,7 @@ $w.onReady( function () {
 	$w('#txtEmailPhoneByKind').text = 'Manage Object' + key;
 
 	let nextIndex = currentContactObject.length;
-	memory.getItem("recievedCount") = (nextIndex - 1).toString();
+	// memory.getItem("recievedCount") = (nextIndex - 1).toString();
     //ZXZ#recievedCountZXZ
     memory.setItem("recievedCount", (nextIndex - 1).toString());
     log = 'memory.getItem("recievedCount"): ';
