@@ -1,0 +1,106 @@
+{
+    "contactCreateUpdateEtcResponseObjectArray": [
+        {
+            "coreAction": "FULL-ON Secondary Parent",
+            "altActions": [
+                "EEMPTY"
+            ],
+            "notes": [
+                "EEMPTY"
+            ],
+            "response": {
+                "_createdDate": "2021-05-26T21:21:23.712Z",
+                "_id": "9e26a8e6-65d4-4aad-a298-bb72e72c79f1",
+                "info": {
+                    "addresses": [
+                        {
+                            "address": {
+                                "formatted": "686 Green Rd 21, Box 24, Spokane, CT 12819, USA",
+                                "location": {
+                                    "latitude": -48.7967,
+                                    "longitude": 44.2458
+                                },
+                                "city": "Spokane",
+                                "subdivision": "US-CT",
+                                "country": "US",
+                                "postalCode": "12819",
+                                "streetAddress": {
+                                    "name": "Green Rd",
+                                    "number": "686",
+                                    "apt": "21"
+                                },
+                                "addressLine2": "Box 24"
+                            },
+                            "_id": "ee6200c4-760f-4fb7-8fc9-9a4d74ca5d2f",
+                            "tag": "UNTAGGED"
+                        }
+                    ],
+                    "birthdate": "1977-12-09",
+                    "company": "Green Corporation",
+                    "emails": [
+                        {
+                            "_id": "5ef56959-7142-40c0-a38c-877921681725",
+                            "tag": "MAIN",
+                            "email": "qiqgroup+amanda686@gmail.com",
+                            "primary": true
+                        },
+                        {
+                            "_id": "986b3a4b-51d6-4f7e-8f29-b7218bbd0a6c",
+                            "tag": "UNTAGGED",
+                            "email": "amanda.morris@example.com",
+                            "primary": false
+                        }
+                    ],
+                    "extendedFields": {
+                        "contacts.displayByLastName": "Morris Amanda",
+                        "emailSubscriptions.deliverabilityStatus": "NOT_SET",
+                        "emailSubscriptions.subscriptionStatus": "NOT_SET",
+                        "emailSubscriptions.effectiveEmail": "amanda.morris@example.com",
+                        "contacts.displayByFirstName": "Amanda Morris"
+                    },
+                    "jobTitle": "Accounting",
+                    "labelKeys": [
+                        "custom.gender-female",
+                        "custom.t202106",
+                        "custom.secondary-parent"
+                    ],
+                    "locale": "en-us",
+                    "name": {
+                        "first": "Amanda",
+                        "last": "Morris"
+                    },
+                    "phones": [
+                        {
+                            "_id": "780dda57-9db6-48c0-9bf1-6e1f8a4821eb",
+                            "tag": "MOBILE",
+                            "phone": "(488)-548-7768",
+                            "primary": true
+                        },
+                        {
+                            "_id": "d446a0dd-f892-41be-b224-7eb96bab6e7d",
+                            "tag": "HOME",
+                            "phone": "(363)-865-0407",
+                            "primary": false
+                        }
+                    ],
+                    "picture": {}
+                },
+                "lastActivity": {
+                    "activityDate": "2021-05-26T21:21:23.712Z",
+                    "activityType": "CONTACT_CREATED"
+                },
+                "primaryInfo": {
+                    "email": "qiqgroup+amanda686@gmail.com",
+                    "phone": "(488)-548-7768"
+                },
+                "revision": 0,
+                "source": {
+                    "appId": "v4.createContact",
+                    "sourceType": "OTHER"
+                },
+                "_updatedDate": "2021-05-26T21:21:23.714Z"
+            },
+            "seed": "4f7c23784562f83a"
+        }
+    ]
+}
