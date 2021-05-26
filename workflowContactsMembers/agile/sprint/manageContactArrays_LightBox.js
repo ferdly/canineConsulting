@@ -17,19 +17,21 @@ import {local, session, memory} from 'wix-storage';
 // });
 $w.onReady( function () {
     //ZXZZXZRefactorToDo
-    //ZXZ#recievedObjectJSON
     //ZXZ#recievedCountZXZ77_ToNumber
-    //ZXZ#recievedObjectJSON
+    //ZXZ#recievedObjectJSONZXZ
     //ZXZ#coreImplementationJSONZXZ
 	/*currentContactObjectJSON.info.emails"*/
    let received = wixWindow.lightbox.getContext();
-   $w('#recievedObjectJSON').value = JSON.stringify(received,undefined,4);
+//    $w('#recievedObjectJSON').value = JSON.stringify(received,undefined,4);
+   memory.setItem("recievedObjectJSON", JSON.stringify(received));
+   //ZXZ#recievedObjectJSONZXZ
    manageRecievedObject()
-	// $w('#selectListData').value = $w('#recievedObjectJSON').value;
  } );
 
  export function manageRecievedObject(){
-	let recievedObject = JSON.parse($w('#recievedObjectJSON').value);
+	// let recievedObject = JSON.parse($w('#recievedObjectJSON').value);
+	let recievedObject = JSON.parse(memory.getItem("recievedObjectJSON"));
+    //ZXZ#recievedObjectJSONZXZ
 	let key = recievedObject.key;
 	let currentContactObject = recievedObject.currentContactObjectJSON;
     currentContactObject.forEach(elementObject => {
