@@ -37,7 +37,6 @@ $w.onReady( function () {
             elementObject.tag = toMobileArray.includes(elementObject.tag) ? 'MOBILE' : elementObject.tag;
             elementObject.tag = toUntaggedArray.includes(elementObject.tag) ? 'UNTAGGED' : elementObject.tag;
             elementObject.tag = toMainArray.includes(elementObject.tag) ? 'MAIN' : elementObject.tag;
-            // ! Proof-Of-Concept use above to find the tag that is intended
         }
         console.log(keysArray);
     });
@@ -57,7 +56,8 @@ $w.onReady( function () {
 	$w('#txtEmailPhoneByKind').text = 'Manage Object' + key;
 
 	let nextIndex = currentContactObject.length;
-	$w('#recievedCount').value = (nextIndex - 1).toString();
+	memory.getItem("recievedCount") = (nextIndex - 1).toString();
+    //ZXZ#recievedCountZXZ
     memory.setItem("recievedCount", (nextIndex - 1).toString());
     log = 'memory.getItem("recievedCount"): ';
     log += memory.getItem("recievedCount");
@@ -211,7 +211,8 @@ export function btnEmailPostUpdate_click(event) {
 export function selectIndexEmailPhone_change(event) {
 	let selectedIndex = $w('#selectIndexEmailPhone').value;
 	let maxIndex = 999;
-	let labelThis = $w('#selectIndexEmailPhone').value > $w('#recievedCount').value ? "New " : "Update ";
+	let labelThis = $w('#selectIndexEmailPhone').value > memory.getItem("recievedCount") ? "New " : "Update ";
+    //ZXZ#recievedCountZXZ
 	let objectThis = JSON.parse($w('#coreImplementationJSON').value);
 	let kindThis = typeof objectThis.state.kindSingularTitle !== 'string' ? 'objectNot' : objectThis.state.kindSingularTitle;
 	let append = ' [obj]'
@@ -244,9 +245,12 @@ export function btnAddressPostUpdate_click(event) {
 	paramObjectThis.state.action = "PUT";
 	paramObjectThis.state.kind = memory.getItem("recievedKind");
     //ZXZ#recievedKindZXZ777
-	paramObjectThis.state.count = $w('#recievedCount').value;
-	paramObjectThis.state.maxIndex = $w('#recievedCount').value;
-	paramObjectThis.state.nextIndex = $w('#recievedCount').value + 1;
+	paramObjectThis.state.count = memory.getItem("recievedCount");
+    //ZXZ#recievedCountZXZ
+	paramObjectThis.state.maxIndex = memory.getItem("recievedCount");
+    //ZXZ#recievedCountZXZ
+	paramObjectThis.state.nextIndex = memory.getItem("recievedCount") + 1;
+    //ZXZ#recievedCountZXZ
 	doPut(paramObjectThis);
     doSelectListDataTable();
 	// abortFrom("#btnAddressPostUpdate")
@@ -444,7 +448,8 @@ export function coreImplementation(paramObject = {}, testFormDataObject = {}) {
     paramObject.state.boxState = paramObject.state.kindSingular === 'labelKey' ? 'Label' : paramObject.state.boxState;
     paramObject.state.boxState = paramObject.state.kindSingular === 'address' ? 'Address' : paramObject.state.boxState;
     paramObject.state.boxState = 'kind' + paramObject.state.boxState;
-    paramObject.state.count = paramObject.state.wix === true ? Number($w('#recievedCount').value) : testFormDataObject.StateCount;
+    paramObject.state.count = paramObject.state.wix === true ? Number(memory.getItem("recievedCount")) : testFormDataObject.StateCount;
+    //ZXZ#recievedCountZXZ
     paramObject.state.selectedIndex = paramObject.state.wix === true ? Number($w('#selectIndexEmailPhone').value) : testFormDataObject.StateIndexSelected;
     paramObject.state.maxIndex = paramObject.state.count;
     paramObject.state.nextIndex = paramObject.state.count + 1;
