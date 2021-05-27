@@ -1,5 +1,32 @@
 let extendedFieldArrayAsReturnedByWixJSON = `[
     {
+        "_createdDate": "2021-05-25T13:43:16.000Z",
+        "dataType": "DATE",
+        "displayName": "SteamDA Last Update",
+        "fieldType": "USER_DEFINED",
+        "key": "custom.lastupdate",
+        "namespace": "custom",
+        "_updatedDate": "2021-05-25T13:44:32.000Z"
+    },
+    {
+        "_createdDate": "2021-05-22T18:28:27.000Z",
+        "dataType": "TEXT",
+        "displayName": "DELETEME rregion",
+        "fieldType": "USER_DEFINED",
+        "key": "custom.rregion",
+        "namespace": "custom",
+        "_updatedDate": "2021-05-23T12:04:36.000Z"
+    },
+    {
+        "_createdDate": "2021-05-22T18:27:35.000Z",
+        "dataType": "TEXT",
+        "displayName": "red-bicycle",
+        "fieldType": "USER_DEFINED",
+        "key": "custom.red-bicycle",
+        "namespace": "custom",
+        "_updatedDate": "2021-05-22T18:27:35.000Z"
+    },
+    {
         "_createdDate": "2021-05-22T16:26:09.000Z",
         "dataType": "TEXT",
         "displayName": "current-region",
@@ -152,26 +179,60 @@ allExtendedFieldArray.forEach(element => {
 // console.warn('extendedFieldArray: ');
 // console.warn(extendedFieldArray);
 // ø <UNCOMMENT: if you need to re-build the 'consumable code' array>
-let consumableCodeArray = [];
-let ccElement = {};
-extendedFieldArray.forEach(element => {
-    // console.log(element);
-    ccElement = {};
-    ccElement.dataType = element.dataType;
-    ccElement.key = element.key;
-    ccElement.action = "BUILD";//as default
-    ccElement.konstant = "if Applicable";
-    ccElement.ruMePath = "if Applicable";
-    ccElement.transformation = "if Applicable";
-    ccElement.notes = [];
-    consumableCodeArray.push(ccElement);
-});
-// console.warn('consumableCodeArray: ');
-// console.warn(consumableCodeArray);
-let consumableCodeArrayJSON = JSON.stringify(consumableCodeArray);
-console.warn('consumableCodeArrayJSON: ');
-console.warn(consumableCodeArrayJSON);
+// let consumableCodeArray = [];
+// let ccElement = {};
+// extendedFieldArray.forEach(element => {
+//     // console.log(element);
+//     ccElement = {};
+//     ccElement.name = element.displayName;
+//     ccElement.path = 'info.extendedFields["' + (element.key).replaceAll('.', 'ZdotZ').replaceAll('-', 'ZdashZ') + '"]';
+//     ccElement.index = "NNA";
+//     ccElement.ruMeCode = "ifKonstant";
+//     ccElement.uiKey = "hholder";
+//     ccElement.ruMeNotes = [];
+//     ccElement.dataType = element.dataType;
+//     ccElement.key = element.key;
+//     ccElement.action = "BUILD";//as default
+//     ccElement.konstant = "ifApplicable";
+//     ccElement.ruMePath = "ifApplicable";
+//     ccElement.transformation = "ifApplicable";
+//     ccElement.notes = [];
+//     consumableCodeArray.push(ccElement);
+// });
+// // console.warn('consumableCodeArray: ');
+// // console.warn(consumableCodeArray);
+// let consumableCodeArrayJSON_AUTO = JSON.stringify(consumableCodeArray);
+// console.warn('consumableCodeArrayJSON_AUTO: ');
+// console.warn(consumableCodeArrayJSON_AUTO);
+// return;
 // ø </UNCOMMENT: if you need to re-build the 'consumable code' array>
 // consumableLiteralCodeArray = [{"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"if Applicable","ruMePath":"if Applicable"},{"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"if Applicable","ruMePath":"if Applicable"},{"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"if Applicable","ruMePath":"if Applicable"},{"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"if Applicable","ruMePath":"if Applicable"},{"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"if Applicable","ruMePath":"if Applicable"}];
+let consumableCodeArrayJSON = `[{"path":"info.extendedFields['customZdotZlastupdate']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"DATE","key":"custom.lastupdate","action":"BUILD","konstant":"ifApplicable","ruMePath":"custom.lastupdate","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZrregion']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.rregion","action":"SSKIP","konstant":"ifApplicable","ruMePath":"ifApplicable","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZredZdashZbicycle']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.red-bicycle","action":"SSKIP","konstant":"ifApplicable","ruMePath":"ifApplicable","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZcurrentZdashZregion']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.current-region","action":"BUILD","konstant":"ifApplicable","ruMePath":"custom.currentZdashZregion","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZtimezoneZdashZoffset']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.timezone-offset","action":"BUILD","konstant":"ifApplicable","ruMePath":"location.timezone.offset","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZgradeZdashZlevel']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.grade-level","action":"SSKIP","konstant":"ifApplicable","ruMePath":"ifApplicable","transformation":"ifApplicable","notes":[]},{"path":"info.extendedFields['customZdotZlegalZdashZfirst']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.legal-first","action":"BUILD","konstant":"ifApplicable","ruMePath":"name.first","transformation":"ifApplicable","notes":["use Custom Update for legal-first/preferred"]},{"path":"info.extendedFields['customZdotZseed']","index":"NNA","ruMeCode":"ifKonstant","uiKey":"hholder","ruMeNotes":[],"dataType":"TEXT","key":"custom.seed","action":"BUILD","konstant":"ifApplicable","ruMePath":"seed","transformation":"ifApplicable","notes":[]}]`;
+let skinnyFlatObject = {};
+skinnyFlatObject.attributeArray = [];
+let skinnyFlatElementObject = {};
+let consumableCodeArray = JSON.parse(consumableCodeArrayJSON);
 
-
+consumableCodeArray.forEach(elementObject => {
+    // console.log(elementObject);
+    if(elementObject.action === 'BUILD'){
+        skinnyFlatElementObject = {};
+        skinnyFlatElementObject.name = elementObject.name;
+        skinnyFlatElementObject.path = elementObject.path;
+        skinnyFlatElementObject.index = elementObject.index;
+        skinnyFlatElementObject.ruMePath = elementObject.ruMePath;
+        skinnyFlatElementObject.ruMeCode = elementObject.ruMeCode;
+        skinnyFlatElementObject.uiKey = elementObject.uiKey;
+        skinnyFlatElementObject.ruMeNotes = elementObject.ruMeNotes;
+        // "name": "SOMETHING",
+        // "path": "info.extendedFields",
+        // "index": "NNULL",
+        // "ruMePath": "NNULL",
+        // "ruMeCode": "eval('[]')",
+        // "uiKey": "phones",
+        // "ruMeNotes": []
+        skinnyFlatObject.attributeArray.push(skinnyFlatElementObject) 
+    }
+});
+console.warn('skinnyFlatObject.attributeArray: ');
+console.warn(JSON.stringify(skinnyFlatObject.attributeArray,undefined,4));

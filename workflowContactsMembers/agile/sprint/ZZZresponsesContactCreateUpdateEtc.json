@@ -8,9 +8,11 @@
             "notes": [
                 "EEMPTY"
             ],
+            "response_start": "START",
             "response": {
                 "info": "EEMPTY"
             },
+            "response_end": "END",
             "seed": "EEMPTY"
         },
         {
