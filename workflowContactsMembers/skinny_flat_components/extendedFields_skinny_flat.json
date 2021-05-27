@@ -6,7 +6,7 @@
             "index": "NNA",
             "ruMePath": "NNA",
             "ruMeCode": "eval('{}')",
-            "uiKey": "NNULL",
+            "uiKey": "extendedFields",
             "ruMeNotes": []
         },
         {
@@ -15,7 +15,7 @@
             "index": "NNA",
             "ruMePath": "custom.lastupdate",
             "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
+            "uiKey": "extendedFields",
             "ruMeNotes": []
         },
         {
@@ -24,7 +24,7 @@
             "index": "NNA",
             "ruMePath": "custom.currentZdashZregion",
             "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
+            "uiKey": "extendedFields",
             "ruMeNotes": []
         },
         {
@@ -33,7 +33,7 @@
             "index": "NNA",
             "ruMePath": "location.timezone.offset",
             "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
+            "uiKey": "extendedFields",
             "ruMeNotes": []
         },
         {
@@ -42,7 +42,7 @@
             "index": "NNA",
             "ruMePath": "name.first",
             "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
+            "uiKey": "extendedFields",
             "ruMeNotes": []
         },
         {
