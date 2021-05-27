@@ -1,7 +1,8 @@
 {
-    "consumableCodeArrayJSON_CURRENT": [
+    "consumableCodeArrayJSON_20210527065600": [
         {
-            "path": "info.extendedFields['customZdotZlastupdate']",
+            "name": "SteamDA Last Update",
+            "path": "info.extendedFields.customZdotZlastupdate",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -15,7 +16,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZrregion']",
+            "name": "DELETEME rregion",
+            "path": "info.extendedFields.customZdotZrregion",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -29,7 +31,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZredZdashZbicycle']",
+            "name": "red-bicycle",
+            "path": "info.extendedFields.customZdotZredZdashZbicycle",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -43,7 +46,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZcurrentZdashZregion']",
+            "name": "current-region",
+            "path": "info.extendedFields.customZdotZcurrentZdashZregion",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -57,7 +61,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZtimezoneZdashZoffset']",
+            "name": "timezone-offset",
+            "path": "info.extendedFields.customZdotZtimezoneZdashZoffset",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -71,7 +76,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZgradeZdashZlevel']",
+            "name": "grade-level",
+            "path": "info.extendedFields.customZdotZgradeZdashZlevel",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -85,7 +91,8 @@
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZlegalZdashZfirst']",
+            "name": "legal-first",
+            "path": "info.extendedFields.customZdotZlegalZdashZfirst",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
@@ -96,128 +103,11 @@
             "konstant": "ifApplicable",
             "ruMePath": "name.first",
             "transformation": "ifApplicable",
-            "notes": [
-                "use Custom Update for legal-first/preferred"
-            ]
-        },
-        {
-            "path": "info.extendedFields['customZdotZseed']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.seed",
-            "action": "BUILD",
-            "konstant": "ifApplicable",
-            "ruMePath": "seed",
-            "transformation": "ifApplicable",
-            "notes": []
-        }
-    ],
-    "consumableCodeArrayJSON_20210526221700": [
-        {
-            "path": "info.extendedFields['customZdotZlastupdate']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "DATE",
-            "key": "custom.lastupdate",
-            "action": "BUILD",
-            "konstant": "ifApplicable",
-            "ruMePath": "custom.lastupdate",
-            "transformation": "ifApplicable",
             "notes": []
         },
         {
-            "path": "info.extendedFields['customZdotZrregion']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.rregion",
-            "action": "SSKIP",
-            "konstant": "ifApplicable",
-            "ruMePath": "ifApplicable",
-            "transformation": "ifApplicable",
-            "notes": []
-        },
-        {
-            "path": "info.extendedFields['customZdotZredZdashZbicycle']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.red-bicycle",
-            "action": "SSKIP",
-            "konstant": "ifApplicable",
-            "ruMePath": "ifApplicable",
-            "transformation": "ifApplicable",
-            "notes": []
-        },
-        {
-            "path": "info.extendedFields['customZdotZcurrentZdashZregion']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.current-region",
-            "action": "BUILD",
-            "konstant": "ifApplicable",
-            "ruMePath": "custom.currentZdashZregion",
-            "transformation": "ifApplicable",
-            "notes": []
-        },
-        {
-            "path": "info.extendedFields['customZdotZtimezoneZdashZoffset']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.timezone-offset",
-            "action": "BUILD",
-            "konstant": "ifApplicable",
-            "ruMePath": "location.timezone.offset",
-            "transformation": "ifApplicable",
-            "notes": []
-        },
-        {
-            "path": "info.extendedFields['customZdotZgradeZdashZlevel']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.grade-level",
-            "action": "SSKIP",
-            "konstant": "ifApplicable",
-            "ruMePath": "ifApplicable",
-            "transformation": "ifApplicable",
-            "notes": []
-        },
-        {
-            "path": "info.extendedFields['customZdotZlegalZdashZfirst']",
-            "index": "NNA",
-            "ruMeCode": "ifKonstant",
-            "uiKey": "hholder",
-            "ruMeNotes": [],
-            "dataType": "TEXT",
-            "key": "custom.legal-first",
-            "action": "BUILD",
-            "konstant": "ifApplicable",
-            "ruMePath": "name.first",
-            "transformation": "ifApplicable",
-            "notes": [
-                "use Custom Update for legal-first/preferred"
-            ]
-        },
-        {
-            "path": "info.extendedFields['customZdotZseed']",
+            "name": "seed",
+            "path": "info.extendedFields.customZdotZseed",
             "index": "NNA",
             "ruMeCode": "ifKonstant",
             "uiKey": "hholder",
