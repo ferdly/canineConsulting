@@ -14,7 +14,8 @@
             },
             "response_end": "END",
             "seed": "EEMPTY"
-        },,{
+        },
+        {
             "coreAction": "FULL-ON Secondary Parent",
             "altActions": [
                 "EEMPTY"
