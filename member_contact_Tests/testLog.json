@@ -1,0 +1,96 @@
+{
+    "testArray": [
+        {
+            "id": 1,
+            "code": {
+                "email": "qiqgroup+chester@gmail.com",
+                "password": "test",
+                "firstName": "Chester",
+                "lastName": "Davis",
+                "phone": "(343)-985-1369"
+            },
+            "reason": "init",
+            "hypothesis": "works",
+            "result": "",
+            "resultIndicatesTest": "same email different phone",
+            "iDoFresultIndicatesTest": "2",
+            "additionalNotes": []
+        },
+        {
+            "id": 2,
+            "code": {
+                "email": "qiqgroup+chester@gmail.com",
+                "password": "test",
+                "firstName": "Marais",
+                "lastName": "Sasha",
+                "phone": "(218)-985-1369"
+            },
+            "reason": "same email different phone",
+            "hypothesis": "refused",
+            "result": "yes, refused",
+            "resultIndicatesTest": "different email same phone",
+            "iDoFresultIndicatesTest": "3",
+            "additionalNotes": []
+        },
+        {
+            "id": 3,
+            "code": {
+                "email": "qiqgroup+marais@gmail.com",
+                "password": "test",
+                "firstName": "Marais",
+                "lastName": "Sasha",
+                "phone": "(343)-985-1369"
+            },
+            "reason": "different email same phone",
+            "hypothesis": "maybe",
+            "result": "",
+            "resultIndicatesTest": "existing contact email as new member",
+            "iDoFresultIndicatesTest": "4",
+            "additionalNotes": []
+        },
+        {
+            "id": 4,
+            "code": {
+                "email": "qiqgroup+marcy@gmail.com",
+                "password": "test",
+                "firstName": "Feather",
+                "lastName": "Watertown",
+                "phone": "(262)-153-2856"
+            },
+            "reason": "existing contact email smae as this member",
+            "hypothesis": "maybe",
+            "result": "All Good, Member _same_ Id as Contact",
+            "resultIndicatesTest": "same as this, untagged and unprimary email",
+            "iDoFresultIndicatesTest": "5",
+            "additionalNotes": [
+                "Marcy Evansville just previously created as contact",
+                "same phone too",
+                "635a74f0-7655-48f2-9436-f81321c35611",
+                "No change to Contact Data",
+                "No change to Member Data",
+                "but IDs synced by email"
+            ]
+        },
+        {
+            "id": 5,
+            "code": {
+                "email": "qiqgroup+stew@gmail.com",
+                "password": "test",
+                "firstName": "Reggie",
+                "lastName": "Sheldon",
+                "phone": "(315)-322-3261"
+            },
+            "reason": "same as [4], untagged and unprimary email, different phone",
+            "hypothesis": "probably",
+            "result": "",
+            "resultIndicatesTest": "",
+            "iDoFresultIndicatesTest": "",
+            "additionalNotes": [
+                "Stewaart Lee just previously created as contact",
+                "Stewaart Lee contactId: 09af070d-04da-4e04-85d4-8d3ac6178f21",
+                "auto-primary-ed both email and phone, so changing phone here",
+                "Reggie Sheldon: 09af070d-04da-4e04-85d4-8d3ac6178f21"
+            ]
+        }
+    ]
+}
