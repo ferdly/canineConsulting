@@ -1,0 +1,32 @@
+[
+    {
+        "thingCol": "Apple",
+        "typeCol": "Fruit",
+        "colorCol": "Green"
+    },
+    {
+        "thingCol": "Bear",
+        "typeCol": "Big",
+        "colorCol": "Brown"
+    },
+    {
+        "thingCol": "Corvette",
+        "typeCol": "Little",
+        "colorCol": "Red"
+    },
+    {
+        "thingCol": "Dime",
+        "typeCol": "Thin",
+        "colorCol": "Silver"
+    },
+    {
+        "thingCol": "Ears",
+        "typeCol": "Flopy",
+        "colorCol": "Black"
+    },
+    {
+        "thingCol": "Flamingo",
+        "typeCol": "Tall",
+        "colorCol": "Pink"
+    }
+]

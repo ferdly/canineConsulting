@@ -1,0 +1,29 @@
+[
+    {
+      "id": "col1",
+      "dataPath": "thingCol",
+      "label": "Thing",
+      "width": 100,
+      "visible": true,
+      "type": "string",
+      "linkPath": "link-field-or-property"
+    },
+    {
+      "id": "col2",
+      "dataPath": "typeCol",
+      "label": "Type",
+      "width": 100,
+      "visible": true,
+      "type": "string",
+      "linkPath": "link-field-or-property"
+    },
+    {
+      "id": "col3",
+      "dataPath": "colorCol",
+      "label": "Color",
+      "width": 100,
+      "visible": true,
+      "type": "string",
+      "linkPath": "link-field-or-property"
+    }
+  ]
