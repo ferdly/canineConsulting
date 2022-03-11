@@ -1,0 +1,21 @@
+{
+        "versioning": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0,
+            "isoStamp": "2022-03-10T16:43:29.884Z"
+        },
+        "source": {
+            "name": "STRING",
+            "kind": "STRING",
+            "fullPath": "STRING",
+            "codePath": "STRING",
+            "codePathDescr": "STRING",
+            "attributes": [],
+            "count": 777,
+            "throttle": 777,
+            "testQuery": "SELECT * FROM myTaskszxx",
+            "testQueryNotes": []
+        }
+    }
+    
