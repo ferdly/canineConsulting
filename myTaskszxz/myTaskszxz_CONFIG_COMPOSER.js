@@ -154,22 +154,23 @@ function calculateFinalWidthPixels(visibleColumnsObject = {}, targetColumnsArray
                     }
                 }
             }
+            if (type === 'number'){
+                if(targetColumnFound.width <= totalWidthPixelsRemainder ){
+                    widthPixels = targetColumnFound.width
+                    totalWidthPixels += widthPixels
+                }else{
+                    widthMinusOneCount = 1
+                    totalWidthMinusOneCount += widthMinusOneCount
+                }
+            }
             if (widthPixels + widthPercent + widthMinusOneCount === 0) {
                 widthMinusOneCount = 1
                 totalWidthMinusOneCount += widthMinusOneCount
             }
             console.log(`≈155≈ targetColumnsArray: [array below]`)
-            let targetColumnIndex = -99
-            if (targetColumnIndex === -99) {
-                console.log(JSON.stringify(targetColumnsArray))
-                targetColumnIndex++
-            }
-            if (targetColumnIndex >= 0) {
-                targetColumnFound.widthPixels = widthPixels
-                targetColumnFound.widthPercent = widthPercent
-                targetColumnFound.widthMinusOneCount = widthMinusOneCount
-
-            }
+            targetColumnFound.widthPixels = widthPixels
+            targetColumnFound.widthPercent = widthPercent
+            targetColumnFound.widthMinusOneCount = widthMinusOneCount
         }
     }
 }
