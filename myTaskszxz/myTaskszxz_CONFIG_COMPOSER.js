@@ -2,9 +2,20 @@ import selectStar from "/Users/brad/Documents/bradRepositories/vsCode/canineCons
 import { unCamelCaseString } from "/Users/brad/Documents/bradRepositories/vsCode/utilities/unCamelCase/unCamelCase.js"
 import { wixElement } from '/Users/brad/Documents/bradRepositories/vsCode/canineConsultingLocal/canineConsulting/myTaskszxz/wixElement/wixElementCOMPOSER.js'
 let wixElementNEW = Object.create(wixElement).init('taskSourceTBL')
-// wixElementNEW.setAttributes(['thisTRUE','thatTRUE','theOtherTRUE'], true) 
-// wixElementNEW.setAttributes(['thisFALSE','thatFALSE','theOtherFALSE'], false) 
-wixElementNEW.setAttributes(['thisNA','thatNA','theOtherNA']) 
+// ø <Attributes: INCLUDE> [ in the data in addition to Visible]
+// wixElementNEW.includeAttributes(false, ['thisFALSE','thatFALSE','theOtherFALSE']) 
+// wixElementNEW.includeAttributes(true, ['thisTRUE','thatTRUE','theOtherTRUE'], true) 
+wixElementNEW.includeAttributes(true) 
+// ø <Attributes: INCLUDE/>
+// ø <setDecoration> [Title and so on]
+let title = 'Title String'
+let subTitle = 'Sub-Title String'
+let longishDescr = 'Longish Description String'
+// wixElementNEW.setDecoration(title) 
+// wixElementNEW.setDecoration(title,subTitle) 
+wixElementNEW.setDecoration(title,subTitle,longishDescr) 
+// ø <setDecoration/>
+
 console.warn(`wixElementNEW: [object below][by Object.create().init()]`)
 console.log(wixElementNEW)
 

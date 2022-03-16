@@ -10,8 +10,13 @@ export var wixElement = {
                 this.wId = wId
                 return this
             }
-    , setAttributes: function (columns = [], star = false){
+    , includeAttributes: function (star = false, columns = []){
                         this.attributesIncludeStar = star
                         this.attributesIncludeColumns = star ? [] : columns
+                    }
+    , setDecoration: function (title = 'Title', subTitle = null, longishDescr = null){
+                        this.title = title
+                        this.subTitle = subTitle
+                        this.longishDescr = longishDescr
                     }
 }
