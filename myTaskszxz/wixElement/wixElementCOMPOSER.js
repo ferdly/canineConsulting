@@ -20,3 +20,14 @@ export var wixElement = {
                         this.longishDescr = longishDescr
                     }
 }
+
+// ! <PRE_TRASH - BACKUP>
+// ! INCLUDE visible and non-visible in query (star)
+// ø star overloads visible
+// wixElementConfigObject.attributesInclude.columns = [] 
+// ! INCLUDE visible PLUS '.columns' in query
+// ø naming convention same as SQL module .star is boolean overloads anything
+// ø naming convention same as SQL module .custom is a list of attributes
+// ø  ø  '.columns' will only APPEND to visible
+// ø  ø  '.columns'  any unmatching attributes just ignored => NO ERROR, NO WARNING
+// ! <PRE_TRASH - BACKUP/>
