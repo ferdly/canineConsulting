@@ -19,30 +19,13 @@ wixElementNEW.setDecoration(title,subTitle,longishDescr)
 console.warn(`wixElementNEW: [object below][by Object.create().init()]`)
 console.log(wixElementNEW)
 
-// let wixElementConfigObject = {}
-// wixElementConfigObject.title = 'Title'
-// wixElementConfigObject.subTitle = 'Sub-Title'
-// wixElementConfigObject.longishDescr = 'Longish Description'
-// wixElementConfigObject.attributes = {}
-// wixElementConfigObject.attributesInclude = {}
-// wixElementConfigObject.attributesInclude.star = true 
-// ! INCLUDE visible and non-visible in query (star)
-// ø star overloads visible
-// wixElementConfigObject.attributesInclude.columns = [] 
-// ! INCLUDE visible PLUS '.columns' in query
-// ø naming convention same as SQL module .star is boolean overloads anything
-// ø naming convention same as SQL module .custom is a list of attributes
-// ø  ø  '.columns' will only APPEND to visible
-// ø  ø  '.columns'  any unmatching attributes just ignored => NO ERROR, NO WARNING
-
-
 // ø <tableELementConfigObject>
 let tableElementConfigObject = {}
 tableElementConfigObject.width = 400
 // ø </tableELementConfigObject>
 wixElementConfigObject.tableElementConfigObject = tableElementConfigObject
 
-console.warn(`≈15≈!≈ Big Config Object ONE: `)
+console.warn(`≈15≈!≈ Big Config Object ONE: ONE_TWO_THREE`)
 console.warn(`≈16≈!≈ wixElementConfigObject: [object below] [JSON-stringify]`)
 console.warn(JSON.stringify(wixElementConfigObject,undefined,4))
 
@@ -81,7 +64,7 @@ esotericConfigObject.visibleColumnsObject[visibleColumnObject.id] = visibleColum
 
 // console.warn(JSON.stringify(selectStar,undefined,4))
 
-console.warn(`≈46≈!≈ Big Config Object TWO: `)
+console.warn(`≈46≈!≈ Big Config Object TWO:  ONE_TWO_THREE`)
 console.warn(`≈47≈!≈ esotericConfigObject: [object below] [JSON-stringify]`)
 console.warn(JSON.stringify(esotericConfigObject,undefined,4))
 
@@ -163,7 +146,7 @@ for (const column of configObject.source.selectStar.columns) {
 // string`
 calculateFinalWidthPixels(esotericConfigObject.visibleColumnsObject, configObject.target.columns, tableElementConfigObject)
 
-console.warn(`≈128≈!≈ Big Config Object THREE: `)
+console.warn(`≈128≈!≈ Big Config Object THREE:  ONE_TWO_THREE`)
 console.warn(`≈129≈!≈ configObject: [object below] [JSON-stringify]`)
 console.warn(`≈130≈!≈ => with esotericConfigObject applied`)
 console.warn(JSON.stringify(configObject, undefined, 4))
