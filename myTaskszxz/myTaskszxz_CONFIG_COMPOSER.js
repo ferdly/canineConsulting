@@ -1,23 +1,63 @@
 import selectStar from "/Users/brad/Documents/bradRepositories/vsCode/canineConsultingLocal/canineConsulting/myTaskszxz/selectStar_myTaskszxz.json"
 import { unCamelCaseString } from "/Users/brad/Documents/bradRepositories/vsCode/utilities/unCamelCase/unCamelCase.js"
+import { wixElement } from '/Users/brad/Documents/bradRepositories/vsCode/canineConsultingLocal/canineConsulting/myTaskszxz/wixElement/wixElementCOMPOSER.js'
+let wixElementNEW = Object.create(wixElement).init('taskSourceTBL')
+// wixElementNEW.setAttributes(['thisTRUE','thatTRUE','theOtherTRUE'], true) 
+// wixElementNEW.setAttributes(['thisFALSE','thatFALSE','theOtherFALSE'], false) 
+wixElementNEW.setAttributes(['thisNA','thatNA','theOtherNA']) 
+console.warn(`wixElementNEW: [object below][by Object.create().init()]`)
+console.log(wixElementNEW)
 
+// let wixElementConfigObject = {}
+// wixElementConfigObject.title = 'Title'
+// wixElementConfigObject.subTitle = 'Sub-Title'
+// wixElementConfigObject.longishDescr = 'Longish Description'
+// wixElementConfigObject.attributes = {}
+// wixElementConfigObject.attributesInclude = {}
+// wixElementConfigObject.attributesInclude.star = true 
+// ! INCLUDE visible and non-visible in query (star)
+// ø star overloads visible
+// wixElementConfigObject.attributesInclude.columns = [] 
+// ! INCLUDE visible PLUS '.columns' in query
+// ø naming convention same as SQL module .star is boolean overloads anything
+// ø naming convention same as SQL module .custom is a list of attributes
+// ø  ø  '.columns' will only APPEND to visible
+// ø  ø  '.columns'  any unmatching attributes just ignored => NO ERROR, NO WARNING
+
+
+// ø <tableELementConfigObject>
 let tableElementConfigObject = {}
 tableElementConfigObject.width = 400
+// ø </tableELementConfigObject>
+wixElementConfigObject.tableElementConfigObject = tableElementConfigObject
+
+console.warn(`≈15≈!≈ Big Config Object ONE: `)
+console.warn(`≈16≈!≈ wixElementConfigObject: [object below] [JSON-stringify]`)
+console.warn(JSON.stringify(wixElementConfigObject,undefined,4))
+
 
 let esotericConfigObject = {}
 esotericConfigObject.table = {}
 esotericConfigObject.table.width = 500
 esotericConfigObject.visibleColumnsObject = {}
 let visibleColumnObject = {}
+
+// ø <SINGLETON visibleColumnObject>
 visibleColumnObject = {}
 visibleColumnObject.id = "title"//esoteric so manual, if not in table, then MOOT
 visibleColumnObject.label = "Task Name"
+
 visibleColumnObject.width = 100
+visibleColumnObject.width = '100px'
+visibleColumnObject.width = '30%'
+
 // visibleColumnObject.dataPath = "dataPath"
 // visibleColumnObject.linkPath = "linkPath"
 // visibleColumnObject.visible = true //necessary?
 // visibleColumnObject.type = "type"
+// ø <SINGLETON visibleColumnObject>
 esotericConfigObject.visibleColumnsObject[visibleColumnObject.id] = visibleColumnObject
+
 visibleColumnObject = {}
 visibleColumnObject.id = "doggyDOB"//esoteric so manual, if not in table, then MOOT
 visibleColumnObject.label = "Dog Date of Birth"
@@ -30,7 +70,9 @@ esotericConfigObject.visibleColumnsObject[visibleColumnObject.id] = visibleColum
 
 // console.warn(JSON.stringify(selectStar,undefined,4))
 
-// console.warn(JSON.stringify(esotericConfigObject,undefined,4))
+console.warn(`≈46≈!≈ Big Config Object TWO: `)
+console.warn(`≈47≈!≈ esotericConfigObject: [object below] [JSON-stringify]`)
+console.warn(JSON.stringify(esotericConfigObject,undefined,4))
 
 let configObject = {}
 
@@ -58,7 +100,6 @@ configObject.source.selectStar = {}
 configObject.source.selectStar.isoExecution = selectStar.timeEndExecution
 configObject.source.selectStar.columns = selectStar.payload.data.columns
 
-
 configObject.target = {}
 configObject.target.columns = []
 
@@ -74,13 +115,13 @@ for (const column of configObject.source.selectStar.columns) {
     columnElementObject.dataPath = 'dataPathFAUX'
     columnElementObject.label = unCamelCaseString(column)
     if (visibleColumnKeyArray.includes('label')) {
-        console.warn(`visibleColumnKeyArray.includes('label'): ${visibleColumnKeyArray.includes('label')}`)
+        // console.warn(`visibleColumnKeyArray.includes('label'): ${visibleColumnKeyArray.includes('label')}`)
         columnElementObject.label = esotericConfigObject.visibleColumnsObject[column]['label']
     }
     columnElementObject.type = typeof selectStar.payload.data.rows[0][column]
     columnElementObject.width = -1
     if (visibleColumnKeyArray.includes('width')) {
-        console.warn(`visibleColumnKeyArray.includes('width'): ${visibleColumnKeyArray.includes('width')}`)
+        // console.warn(`visibleColumnKeyArray.includes('width'): ${visibleColumnKeyArray.includes('width')}`)
         columnElementObject.width = esotericConfigObject.visibleColumnsObject[column]['width']
     }
     columnElementObject.visible = columnIsVisible
@@ -88,28 +129,32 @@ for (const column of configObject.source.selectStar.columns) {
     configObject.target.columns.push(columnElementObject)
 }
 
-configObject.target.columnsDOX =
-    `id
-string
+// configObject.target.columnsDOX =
+//     `id
+// string
 
-dataPath
-string
+// dataPath
+// string
 
-label
-string
+// label
+// string
 
-type
-string
+// type
+// string
 
-width
-number
+// width
+// number
 
-visible
-boolean
+// visible
+// boolean
 
-linkPath
-string`
+// linkPath
+// string`
 calculateFinalWidthPixels(esotericConfigObject.visibleColumnsObject, configObject.target.columns, tableElementConfigObject)
+
+console.warn(`≈128≈!≈ Big Config Object THREE: `)
+console.warn(`≈129≈!≈ configObject: [object below] [JSON-stringify]`)
+console.warn(`≈130≈!≈ => with esotericConfigObject applied`)
 console.warn(JSON.stringify(configObject, undefined, 4))
 
 function calculateFinalWidthPixels(visibleColumnsObject = {}, targetColumnsArray = [], tableElementConfigObject = {}) {
@@ -127,7 +172,7 @@ function calculateFinalWidthPixels(visibleColumnsObject = {}, targetColumnsArray
             return item.id === visibleColumnThis
         })
         if (targetColumnFound) {
-            console.warn(`≈129≈ targetColumnFound: [¿single element array? or ¿element object?]`)
+            console.warn(`≈148≈X≈ targetColumnFound: [¿single element array? or ¿element object?]`)
             console.warn(JSON.stringify(targetColumnFound, undefined, 4))
             targetColumnFound.widthOrig = targetColumnFound.width
             widthPixels = 0
@@ -167,10 +212,35 @@ function calculateFinalWidthPixels(visibleColumnsObject = {}, targetColumnsArray
                 widthMinusOneCount = 1
                 totalWidthMinusOneCount += widthMinusOneCount
             }
-            console.log(`≈155≈ targetColumnsArray: [array below]`)
+            console.warn(`≈188≈?X≈ targetColumnsArray: [array below]`)
             targetColumnFound.widthPixels = widthPixels
             targetColumnFound.widthPercent = widthPercent
             targetColumnFound.widthMinusOneCount = widthMinusOneCount
         }
+    }
+
+    finalizeWidths(targetColumnsArray)
+    function finalizeWidths(targetColumnsArray){
+        // console.groupCollapsed(`finalizeWidths(visibleColumnsObject)`)
+        console.group(`finalizeWidths(targetColumnsArray)`)
+        console.warn(`targetColumnsArray [object below][json-stringified]`)
+        console.warn(JSON.stringify(targetColumnsArray,undefined,4))
+        // return
+        // visibleColumnsObjectKeyArray = Object.keys(visibleColumnsObject)
+        for (let index = 0; index < targetColumnsArray.length; index++) {
+            const targetColumnObject = targetColumnsArray[index]
+            if(targetColumnObject.visible){
+                targetColumnObject.KeepRemove = 'KEEP'
+            }else{
+                targetColumnObject.KeepRemove = 'REMOVE'
+            }
+            // console.warn(`≈213≈!≈ Big Config Object THREE: `)
+            console.warn(`≈214≈!≈ targetColumnObject: [object below] [JSON-stringify]`)
+            console.warn(`≈215≈!≈ => with KeepRemove applied`)
+            console.warn(JSON.stringify(targetColumnObject, undefined, 4))
+
+        }
+        console.warn(`groupEnd: finalizeWidths(visibleColumnsObject)`)
+        console.groupEnd()
     }
 }
